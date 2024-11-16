@@ -5,18 +5,24 @@ const MOVE_TIMER = 1.0
 const GRID_SIZE = 1.0
 const PUSH_FORCE = 1.0
 
+const HEAD_OFFSET = Vector3(0,0,0.0)
 @onready var body_parts: Node3D = $"../BodyParts"
+@onready var worm_body: Path3D = $"../worm_body"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	move_ready = true
 	snap_to_grid()
+	worm_body.curve.add_point(self.position + HEAD_OFFSET)
+	for body in body_parts.get_children():
+		worm_body.curve.add_point(body.global_position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	move()
 	move_and_slide()
+	worm_body.curve.set_point_position(0, self.position + HEAD_OFFSET)
 	
 func move() -> void:
 	if move_ready:
@@ -29,12 +35,15 @@ func move() -> void:
 			self.velocity = Vector3(0,0,0)
 			
 			snap_to_grid()
-			
 			if self.position.x != round(last_pos.x) or self.position.z != round(last_pos.z):
+				worm_body.curve.clear_points()
+				worm_body.curve.add_point(self.position + HEAD_OFFSET)
+				
 				for body in body_parts.get_children():
 					var temp = body.global_position
 					body.global_position = last_pos
 					last_pos = temp
+					worm_body.curve.add_point(body.global_position)
 			
 			move_ready = true
 	

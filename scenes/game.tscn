@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=8 format=3 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
 [ext_resource type="Script" path="res://scenes/worm.gd" id="2_5refw"]
@@ -10,12 +10,18 @@ uv1_offset = Vector3(0.094, 0, -0.031)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfxgd"]
-albedo_color = Color(0.13, 0.1445, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sbug"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8tw7j"]
 
 [sub_resource type="Environment" id="Environment_s4d8a"]
+
+[sub_resource type="Curve3D" id="Curve3D_xtqf4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.5, 2.685, 0, 0, 0, 0, 0, 0, 0, 0.5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Game" type="Node3D"]
 
@@ -28,32 +34,41 @@ material = SubResource("StandardMaterial3D_8xpbn")
 [node name="BodyParts" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 
-[node name="gfx" type="CSGBox3D" parent="BodyParts"]
+[node name="part1" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-material_override = SubResource("StandardMaterial3D_yfxgd")
-use_collision = true
 
-[node name="gfx2" type="CSGBox3D" parent="BodyParts"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/part1/StaticBody3D"]
+shape = SubResource("BoxShape3D_7sbug")
+
+[node name="part2" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-material_override = SubResource("StandardMaterial3D_yfxgd")
-use_collision = true
 
-[node name="gfx3" type="CSGBox3D" parent="BodyParts"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/part2/StaticBody3D"]
+shape = SubResource("BoxShape3D_7sbug")
+
+[node name="part3" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-material_override = SubResource("StandardMaterial3D_yfxgd")
-use_collision = true
 
-[node name="gfx4" type="CSGBox3D" parent="BodyParts"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/part3/StaticBody3D"]
+shape = SubResource("BoxShape3D_7sbug")
+
+[node name="part4" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-material_override = SubResource("StandardMaterial3D_yfxgd")
-use_collision = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/part4/StaticBody3D"]
+shape = SubResource("BoxShape3D_7sbug")
 
 [node name="Worm" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 script = ExtResource("2_5refw")
-
-[node name="gfx" type="CSGBox3D" parent="Worm"]
-material_override = SubResource("StandardMaterial3D_yfxgd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Worm"]
 shape = SubResource("BoxShape3D_8tw7j")
@@ -71,3 +86,20 @@ transform = Transform3D(1, 0, 0, 0, -0.0740563, 0.997254, 0, -0.997254, -0.07405
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97534, 0.485, 0.000854492)
 use_collision = true
 size = Vector3(0.940918, 1, 0.916748)
+
+[node name="worm_body" type="Path3D" parent="."]
+curve = SubResource("Curve3D_xtqf4")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
+polygon = PackedVector2Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5)
+mode = 2
+path_node = NodePath("../worm_body")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
