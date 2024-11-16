@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=11 format=3 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
 [ext_resource type="Script" path="res://Scripts/worm.gd" id="2_5refw"]
@@ -22,11 +22,8 @@ sky_material = SubResource("ProceduralSkyMaterial_8libr")
 background_mode = 2
 sky = SubResource("Sky_oi8rl")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_awdf2"]
-height = 0.929189
-radius = 0.322478
-
-[sub_resource type="Curve3D" id="Curve3D_3i6xr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_smpsk"]
+size = Vector3(0.6, 0.98584, 0.6)
 
 [node name="Game" type="Node3D"]
 
@@ -78,15 +75,13 @@ script = ExtResource("3_au2t2")
 [node name="BodyParts" type="Node3D" parent="Complete_Worm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 
-[node name="Worm" type="CharacterBody3D" parent="Complete_Worm" node_paths=PackedStringArray("body_parts", "worm_body", "worm_gfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 0)
+[node name="Worm" type="CharacterBody3D" parent="Complete_Worm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 3)
 script = ExtResource("2_5refw")
-body_parts = NodePath("../BodyParts")
-worm_body = NodePath("../worm_body")
-worm_gfx = NodePath("../Worm_GFX")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Complete_Worm/Worm"]
-shape = SubResource("CylinderShape3D_awdf2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00708008, 0)
+shape = SubResource("BoxShape3D_smpsk")
 
 [node name="Head" type="CSGSphere3D" parent="Complete_Worm/Worm"]
 material_override = ExtResource("3_6t2pa")
@@ -95,9 +90,45 @@ radial_segments = 16
 rings = 12
 
 [node name="worm_body" type="Path3D" parent="Complete_Worm"]
-curve = SubResource("Curve3D_3i6xr")
 
 [node name="Worm_GFX" type="CSGPolygon3D" parent="Complete_Worm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
+material_override = ExtResource("3_6t2pa")
+mode = 2
+path_node = NodePath("../worm_body")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+
+[node name="Complete_Worm2" type="Node3D" parent="."]
+script = ExtResource("3_au2t2")
+
+[node name="BodyParts" type="Node3D" parent="Complete_Worm2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
+
+[node name="Worm" type="CharacterBody3D" parent="Complete_Worm2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 0)
+script = ExtResource("2_5refw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Complete_Worm2/Worm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00708008, 0)
+shape = SubResource("BoxShape3D_smpsk")
+
+[node name="Head" type="CSGSphere3D" parent="Complete_Worm2/Worm"]
+material_override = ExtResource("3_6t2pa")
+radius = 0.51
+radial_segments = 16
+rings = 12
+
+[node name="worm_body" type="Path3D" parent="Complete_Worm2"]
+
+[node name="Worm_GFX" type="CSGPolygon3D" parent="Complete_Worm2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
 material_override = ExtResource("3_6t2pa")
 mode = 2

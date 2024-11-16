@@ -27,22 +27,14 @@ const points = [
 	]
 
 var last_dir = Vector2(0,0) # Stopping the player from going backwards
-@export var body_parts: Node3D
-@export var worm_body: Path3D
-@export var worm_gfx: CSGPolygon3D
+var body_parts: Node3D
+var worm_body: Path3D
+var worm_gfx: CSGPolygon3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	move_ready = true
 	snap_to_grid()
-	
-	# Adding the worm's head and body parts to the Worm_body 3D path
-	worm_body.curve.add_point(self.position)
-	for body in body_parts.get_children():
-		worm_body.curve.add_point(body.global_position)
-	
-	# Making the "Worm_GFX" log like
-	worm_gfx.polygon = points
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,10 +42,7 @@ func _process(delta: float) -> void:
 	self.velocity.y = GRAVITY
 	move()
 	move_and_slide()
-	
-	# Connecting the Worm's head to the rest of the body (In process so it won't be tied to the await function)
 	worm_body.curve.set_point_position(0, self.position)
-	
 	
 func move() -> void:
 	if move_ready:
