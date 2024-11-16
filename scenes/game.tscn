@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=9 format=3 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
 [ext_resource type="Script" path="res://scenes/worm.gd" id="2_5refw"]
+[ext_resource type="Script" path="res://scenes/bodyPart.gd" id="2_51lut"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xpbn"]
 albedo_texture = ExtResource("1_6hh32")
@@ -36,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 
 [node name="part1" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("2_51lut")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part1"]
 
@@ -44,6 +46,7 @@ shape = SubResource("BoxShape3D_7sbug")
 
 [node name="part2" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_51lut")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part2"]
 
@@ -52,6 +55,7 @@ shape = SubResource("BoxShape3D_7sbug")
 
 [node name="part3" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("2_51lut")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part3"]
 
@@ -60,11 +64,15 @@ shape = SubResource("BoxShape3D_7sbug")
 
 [node name="part4" type="Node3D" parent="BodyParts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+script = ExtResource("2_51lut")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BodyParts/part4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyParts/part4/StaticBody3D"]
 shape = SubResource("BoxShape3D_7sbug")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="BodyParts/part4"]
+radius = 0.53
 
 [node name="Worm" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
@@ -75,6 +83,9 @@ shape = SubResource("BoxShape3D_8tw7j")
 
 [node name="Camera3D" type="Camera3D" parent="Worm"]
 transform = Transform3D(0.707107, -0.547969, 0.446912, 0, 0.632029, 0.774944, -0.707107, -0.547969, 0.446912, 3.318, 4.785, 3.335)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Worm"]
+radius = 0.53
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s4d8a")
@@ -90,9 +101,8 @@ size = Vector3(0.940918, 1, 0.916748)
 [node name="worm_body" type="Path3D" parent="."]
 curve = SubResource("Curve3D_xtqf4")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+[node name="Worm_GFX" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
-polygon = PackedVector2Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5)
 mode = 2
 path_node = NodePath("../worm_body")
 path_interval_type = 0
@@ -103,3 +113,4 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+smooth_faces = true

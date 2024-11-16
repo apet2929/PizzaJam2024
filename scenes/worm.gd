@@ -5,9 +5,31 @@ const MOVE_TIMER = 1.0
 const GRID_SIZE = 1.0
 const PUSH_FORCE = 1.0
 
+# These are the points to make the "Worm_GFX" circular
+const points = [
+		Vector2(0.5, 0.0),
+		Vector2(0.46194, 0.191341),
+		Vector2(0.353553, 0.353553),
+		Vector2(0.191341, 0.46194),
+		Vector2(0.0, 0.5),
+		Vector2(-0.191341, 0.46194),
+		Vector2(-0.353553, 0.353553),
+		Vector2(-0.46194, 0.191341),
+		Vector2(-0.5, 0.0),
+		Vector2(-0.46194, -0.191341),
+		Vector2(-0.353553, -0.353553),
+		Vector2(-0.191341, -0.46194),
+		Vector2(0.0, -0.5),
+		Vector2(0.191341, -0.46194),
+		Vector2(0.353553, -0.353553),
+		Vector2(0.46194, -0.191341),
+		Vector2(0.5, 0.0)
+	]
+
 const HEAD_OFFSET = Vector3(0,0,0.0)
 @onready var body_parts: Node3D = $"../BodyParts"
 @onready var worm_body: Path3D = $"../worm_body"
+@onready var worm_gfx: CSGPolygon3D = $"../Worm_GFX"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +38,8 @@ func _ready() -> void:
 	worm_body.curve.add_point(self.position + HEAD_OFFSET)
 	for body in body_parts.get_children():
 		worm_body.curve.add_point(body.global_position)
+	
+	worm_gfx.polygon = points
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
