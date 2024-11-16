@@ -1,8 +1,7 @@
 extends Camera3D
 
-const DISTANCE_OFFSET = 3.0
+const DISTANCE_OFFSET = 4.0
 const FOLLOW_SPEED = 1.2
-const HEIGHT_OFFSET = 5.0  # Adjust this value based on the worm's height
 var worms = []
 
 # Helper function to calculate the midpoint of all worms
@@ -18,7 +17,11 @@ func _process(delta: float) -> void:
 	
 	# Calculate the midpoint of all worms
 	var middle_point = get_midpoint()
-	var distance = abs((worms[0].global_position.x - worms[1].global_position.x) + (worms[0].global_position.z - worms[1].global_position.z))
+	var distance = 0.0
+	if len(worms) > 1:
+		distance = abs((worms[0].global_position.x - worms[1].global_position.x) + (worms[0].global_position.z - worms[1].global_position.z))
+	else:
+		distance = 5.0
 	# Update the camera's position to follow the worms smoothly
 	var target_position = middle_point + Vector3(DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance)
 	

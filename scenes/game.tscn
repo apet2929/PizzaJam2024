@@ -23,7 +23,7 @@ background_mode = 2
 sky = SubResource("Sky_oi8rl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_smpsk"]
-size = Vector3(0.6, 0.98584, 0.6)
+size = Vector3(0.65, 0.986, 0.65)
 
 [node name="Game" type="Node3D"]
 
