@@ -27,9 +27,9 @@ const points = [
 	]
 
 var last_dir = Vector2(0,0) # Stopping the player from going backwards
-@onready var body_parts: Node3D = $"../BodyParts"
-@onready var worm_body: Path3D = $"../worm_body"
-@onready var worm_gfx: CSGPolygon3D = $"../Worm_GFX"
+@export var body_parts: Node3D
+@export var worm_body: Path3D
+@export var worm_gfx: CSGPolygon3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
