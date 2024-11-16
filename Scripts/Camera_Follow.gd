@@ -1,9 +1,28 @@
 extends Camera3D
 
-const DISTANCE = 3.3
-const FOLLOW_SPEED = 1.8
-@onready var worm: Node3D = $"../Complete_Worm/Worm"
+const DISTANCE_OFFSET = 3.0
+const FOLLOW_SPEED = 1.2
+const HEIGHT_OFFSET = 5.0  # Adjust this value based on the worm's height
+var worms = []
+
+# Helper function to calculate the midpoint of all worms
+func get_midpoint() -> Vector3:
+	var total_position = Vector3()
+	for worm in worms:
+		total_position += worm.global_position
+	return total_position / worms.size()
 
 func _process(delta: float) -> void:
-	self.position.x = lerp(self.position.x, worm.position.x + DISTANCE, FOLLOW_SPEED * delta)
-	self.position.z = lerp(self.position.z, worm.position.z + DISTANCE, FOLLOW_SPEED * delta)
+	if worms.size() == 0:
+		return  # Avoid division by zero if no worms are available
+	
+	# Calculate the midpoint of all worms
+	var middle_point = get_midpoint()
+	var distance = abs((worms[0].global_position.x - worms[1].global_position.x) + (worms[0].global_position.z - worms[1].global_position.z))
+	# Update the camera's position to follow the worms smoothly
+	var target_position = middle_point + Vector3(DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance)
+	
+	# Lerp the camera position smoothly towards the target position
+	self.position.x = lerp(self.position.x, target_position.x, FOLLOW_SPEED * delta)
+	self.position.y = lerp(self.position.y, target_position.y, FOLLOW_SPEED * delta)
+	self.position.z = lerp(self.position.z, target_position.z, FOLLOW_SPEED * delta)

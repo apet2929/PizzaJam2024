@@ -7,6 +7,7 @@ const HEAD_AND_TAIL = 2
 @onready var worm_body: Path3D = $worm_body
 @onready var worm_gfx: CSGPolygon3D = $Worm_GFX
 @onready var worm: CharacterBody3D = $Worm
+@onready var camera: Camera3D = $"../Camera3D"
 
 const PART_1 = preload("res://scenes/part1.tscn")
 const TAIL_1 = preload("res://scenes/tail1.tscn")
@@ -18,6 +19,8 @@ func _ready() -> void:
 	worm_body.curve = Curve3D.new()
 	worm.worm_body = worm_body
 	worm.worm_gfx = worm_gfx
+	
+	camera.worms.append(self.worm)
 	
 	# Making the "Worm_GFX" log like
 	worm_gfx.polygon = worm.points
