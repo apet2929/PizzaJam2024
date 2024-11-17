@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://louuxlvspu2o"]
+
+[ext_resource type="PackedScene" uid="uid://bub4ijd8q83jt" path="res://assets/worm.glb" id="2_o5ffi"]
+[ext_resource type="Script" path="res://Scripts/worm_model.gd" id="3_7hjhi"]
+[ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="3_je2r2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm05c"]
+albedo_texture = ExtResource("3_je2r2")
+uv1_scale = Vector3(0.063, 0.063, 0.063)
+uv1_offset = Vector3(0.094, 0, -0.031)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fbqd2"]
+
+[sub_resource type="Sky" id="Sky_oi8rl"]
+sky_material = SubResource("ProceduralSkyMaterial_fbqd2")
+
+[sub_resource type="Environment" id="Environment_i71mm"]
+background_mode = 2
+sky = SubResource("Sky_oi8rl")
+
+[node name="WormDemo2" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_hm05c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i71mm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.783015, 0.510812, -0.354906, -0.0422388, 0.612936, 0.789003, 0.620567, -0.602811, 0.501514, -2.87056, 11.9545, 8.75929)
+fov = 35.0
+
+[node name="worm" parent="." instance=ExtResource("2_o5ffi")]
+script = ExtResource("3_7hjhi")
