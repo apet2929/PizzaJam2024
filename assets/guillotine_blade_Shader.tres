@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cri5qjjrfjhvl"]
+
+[ext_resource type="Texture2D" uid="uid://boilhjiuaagns" path="res://assets/guillotine_Blade_Texture.png" id="1_0fi5k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2psff"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.385
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_2psff")
+albedo_texture = ExtResource("1_0fi5k")

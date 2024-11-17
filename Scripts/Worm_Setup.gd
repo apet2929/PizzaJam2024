@@ -1,6 +1,6 @@
 extends Node
 
-var worm_length = 3
+var worm_length = 6
 const HEAD_AND_TAIL = 2
 
 @onready var body_parts: Node3D = $BodyParts

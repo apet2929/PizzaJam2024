@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ewie75fvsy07"]
 
 [ext_resource type="Script" path="res://Scripts/bodyPart.gd" id="1_gia24"]
-[ext_resource type="Material" uid="uid://d0nkfn05hauam" path="res://assets/Worm_Body.tres" id="2_w3bau"]
+[ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_7shw5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_umux1"]
 radius = 0.45
@@ -15,7 +15,7 @@ script = ExtResource("1_gia24")
 shape = SubResource("SphereShape3D_umux1")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-material_override = ExtResource("2_w3bau")
+material_override = ExtResource("2_7shw5")
 radius = 0.51
 radial_segments = 16
 rings = 12
