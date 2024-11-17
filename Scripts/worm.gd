@@ -7,6 +7,13 @@ const PUSH_FORCE = 4.0
 
 var last_dir = Vector2(0,0) # Stopping the player from going backwards
 var body_parts: Node3D
+var worm_body: Path3D
+var worm_gfx: CSGPolygon3D
+
+@onready var down_ray: RayCast3D = $DownRay
+@onready var up_ray: RayCast3D = $UpRay
+@onready var left_ray: RayCast3D = $LeftRay
+@onready var right_ray: RayCast3D = $RightRay
 
 var t = 0
 
@@ -32,6 +39,9 @@ func _process(delta: float) -> void:
 func move() -> void:
 	if move_ready:
 		var dir = Input.get_vector("forward", "backward", "right", "left")
+		
+		if not wall_check(dir):
+			return
 		
 		# Checking if: Input is pressed, Not trying to move diagonally, Isn't trying to move back inside the worm
 		if dir != Vector2(0,0) and abs(dir.x) != abs(dir.y) and dir != -last_dir:
@@ -61,7 +71,14 @@ func start_move(direction):
 		body.move_to(last_body_pos)
 		last_body_pos = body.get_position()
 	
-
+	
+func wall_check(dir):
+	#if (dir.x == -1 and up_ray.is_colliding()) or (dir.x == 1 and down_ray.is_colliding()) or (dir.y == -1 and right_ray.is_colliding()) or (dir.y == 1 and left_ray.is_colliding()):
+		#return false
+	
+	return true
+	
+	
 func snap_to_grid():
 	self.global_position.x = round(self.global_position.x)
 	self.global_position.z = round(self.global_position.z)

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bo4onna3kwhrh"]
+
+[ext_resource type="Texture2D" uid="uid://3yriu16tj71k" path="res://assets/guillotine_Frame_Texture.png" id="1_a76sh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igen0"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.15
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_igen0")
+albedo_texture = ExtResource("1_a76sh")
