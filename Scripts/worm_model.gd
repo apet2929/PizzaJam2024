@@ -33,7 +33,7 @@ func run():
 func _process(delta: float) -> void:
 	var skel = $Armature/Skeleton3D
 	t += delta
-	
+	#
 	for i in range(0, bones.size()):
 		foo(skel, i, t)
 	

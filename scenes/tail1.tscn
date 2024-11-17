@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ewie75fvsy07"]
+[gd_scene load_steps=4 format=3 uid="uid://cev8dut46ahyd"]
 
 [ext_resource type="Script" path="res://Scripts/bodyPart.gd" id="1_gia24"]
-[ext_resource type="Material" uid="uid://d0nkfn05hauam" path="res://assets/Worm_Body.tres" id="2_w3bau"]
+[ext_resource type="Material" uid="uid://lrll4jbmxvwc" path="res://assets/Worm_Body.tres" id="2_w3bau"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_umux1"]
 radius = 0.45

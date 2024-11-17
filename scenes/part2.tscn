@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c77sklosfhkke"]
+
+[ext_resource type="Script" path="res://Scripts/bodyPart2.gd" id="1_dr7si"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_16b3g"]
+radius = 0.45
+
+[node name="part1" type="Node3D"]
+script = ExtResource("1_dr7si")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_16b3g")

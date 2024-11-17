@@ -5,31 +5,10 @@ const MOVE_TIMER = 0.25
 const GRAVITY = -20 # Used to counter a bug that lets you fly
 const PUSH_FORCE = 4.0
 
-# These are the points to make the "Worm_GFX" log like
-const points = [
-		Vector2(0.5, 0.0),
-		Vector2(0.46194, 0.191341),
-		Vector2(0.353553, 0.353553),
-		Vector2(0.191341, 0.46194),
-		Vector2(0.0, 0.5),
-		Vector2(-0.191341, 0.46194),
-		Vector2(-0.353553, 0.353553),
-		Vector2(-0.46194, 0.191341),
-		Vector2(-0.5, 0.0),
-		Vector2(-0.46194, -0.191341),
-		Vector2(-0.353553, -0.353553),
-		Vector2(-0.191341, -0.46194),
-		Vector2(0.0, -0.5),
-		Vector2(0.191341, -0.46194),
-		Vector2(0.353553, -0.353553),
-		Vector2(0.46194, -0.191341),
-		Vector2(0.5, 0.0)
-	]
-
 var last_dir = Vector2(0,0) # Stopping the player from going backwards
 var body_parts: Node3D
-var worm_body: Path3D
-var worm_gfx: CSGPolygon3D
+
+var t = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,11 +18,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	delta 
 	self.velocity.y = GRAVITY
-	move()
-	move_and_slide()
-	worm_body.curve.set_point_position(0, self.position)
+	#move()
+	#move_and_slide()
+	#t += delta
+	#if t > 1:
+		#var c = body_parts.get_children()[0]
+		#c.move_to(c.next_pos + Vector3(1,0,0))
+		#t = 0
+	pass
+	
 	
 func move() -> void:
 	if move_ready:
@@ -62,7 +46,7 @@ func move() -> void:
 			last_dir = dir # Saving the last movement so the player wouldn't be able to go back
 			move_ready = true
 	
-	
+
 func start_move(direction):
 	self.velocity = Vector3(direction.x, 0, direction.y) * PUSH_FORCE
 	

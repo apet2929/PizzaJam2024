@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
 [ext_resource type="Script" path="res://Scripts/worm.gd" id="2_5refw"]
-[ext_resource type="Material" uid="uid://lrll4jbmxvwc" path="res://assets/Worm_Body.tres" id="3_6t2pa"]
 [ext_resource type="Script" path="res://Scripts/Worm_Setup.gd" id="3_au2t2"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_q77ka"]
+[ext_resource type="PackedScene" uid="uid://bub4ijd8q83jt" path="res://assets/worm.glb" id="6_yhtu8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xpbn"]
 albedo_texture = ExtResource("1_6hh32")
@@ -77,69 +77,11 @@ script = ExtResource("3_au2t2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 
 [node name="Worm" type="CharacterBody3D" parent="Complete_Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 3)
 script = ExtResource("2_5refw")
+
+[node name="Model" parent="Complete_Worm/Worm" instance=ExtResource("6_yhtu8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.506367, 0.468108, 2.98774)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Complete_Worm/Worm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00708008, 0)
 shape = SubResource("BoxShape3D_smpsk")
-
-[node name="Head" type="CSGSphere3D" parent="Complete_Worm/Worm"]
-material_override = ExtResource("3_6t2pa")
-radius = 0.51
-radial_segments = 16
-rings = 12
-
-[node name="worm_body" type="Path3D" parent="Complete_Worm"]
-
-[node name="Worm_GFX" type="CSGPolygon3D" parent="Complete_Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
-material_override = ExtResource("3_6t2pa")
-mode = 2
-path_node = NodePath("../worm_body")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-smooth_faces = true
-
-[node name="Complete_Worm2" type="Node3D" parent="."]
-script = ExtResource("3_au2t2")
-
-[node name="BodyParts" type="Node3D" parent="Complete_Worm2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
-
-[node name="Worm" type="CharacterBody3D" parent="Complete_Worm2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 0)
-script = ExtResource("2_5refw")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Complete_Worm2/Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00708008, 0)
-shape = SubResource("BoxShape3D_smpsk")
-
-[node name="Head" type="CSGSphere3D" parent="Complete_Worm2/Worm"]
-material_override = ExtResource("3_6t2pa")
-radius = 0.51
-radial_segments = 16
-rings = 12
-
-[node name="worm_body" type="Path3D" parent="Complete_Worm2"]
-
-[node name="Worm_GFX" type="CSGPolygon3D" parent="Complete_Worm2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
-material_override = ExtResource("3_6t2pa")
-mode = 2
-path_node = NodePath("../worm_body")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-smooth_faces = true
