@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=12 format=3 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
+[ext_resource type="Script" path="res://Scripts/debug_draw_worm.gd" id="1_j0d0h"]
 [ext_resource type="Script" path="res://Scripts/worm.gd" id="2_5refw"]
 [ext_resource type="Script" path="res://Scripts/Worm_Setup.gd" id="3_au2t2"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_q77ka"]
@@ -26,6 +27,16 @@ sky = SubResource("Sky_oi8rl")
 size = Vector3(0.65, 0.986, 0.65)
 
 [node name="Game" type="Node3D"]
+
+[node name="DebugDraw" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="DebugDrawWorm" type="Control" parent="DebugDraw"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j0d0h")
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -66,11 +77,13 @@ use_collision = true
 size = Vector3(0.940918, 1, 0.916748)
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 6.1, 3.3)
 fov = 35.0
 script = ExtResource("4_q77ka")
 
 [node name="Complete_Worm" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549347, 0.229334, 3.05493)
 script = ExtResource("3_au2t2")
 
 [node name="BodyParts" type="Node3D" parent="Complete_Worm"]
@@ -80,7 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 script = ExtResource("2_5refw")
 
 [node name="Model" parent="Complete_Worm/Worm" instance=ExtResource("6_yhtu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.506367, 0.468108, 2.98774)
+unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Complete_Worm/Worm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00708008, 0)

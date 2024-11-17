@@ -18,13 +18,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.velocity.y = GRAVITY
-	#move()
+	#self.velocity.y = GRAVITY
+	move()
 	#move_and_slide()
 	#t += delta
 	#if t > 1:
 		#var c = body_parts.get_children()[0]
-		#c.move_to(c.next_pos + Vector3(1,0,0))
+		#c.move_to(Vector3(0,1,2))
 		#t = 0
 	pass
 	
@@ -40,7 +40,7 @@ func move() -> void:
 			await get_tree().create_timer(MOVE_TIMER).timeout
 			
 			# Snapping the Worm's head to the grid
-			self.velocity = Vector3(0,self.velocity.y,0)
+			#self.velocity = Vector3(0,self.velocity.y,0)
 			snap_to_grid()
 			
 			last_dir = dir # Saving the last movement so the player wouldn't be able to go back
@@ -48,15 +48,20 @@ func move() -> void:
 	
 
 func start_move(direction):
-	self.velocity = Vector3(direction.x, 0, direction.y) * PUSH_FORCE
+	#self.velocity = Vector3(direction.x, 0, direction.y) * PUSH_FORCE
 	
 	# Going through all of the Worm's body parts and telling them to move
-	var last_body_pos = self.position
-	for body in body_parts.get_children():
+	var parts = body_parts.get_children()
+	var head = parts[0]
+	print("head pos: ", head.get_position())
+	head.move_to(head.get_position() + Vector3(direction.x, 0, direction.y))
+	var last_body_pos = head.get_position()
+	for i in range(1, parts.size()):
+		var body = parts[i]
 		body.move_to(last_body_pos)
-		last_body_pos = body.global_position
+		last_body_pos = body.get_position()
 	
-	
+
 func snap_to_grid():
 	self.global_position.x = round(self.global_position.x)
 	self.global_position.z = round(self.global_position.z)

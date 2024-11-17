@@ -28,3 +28,4 @@ func _ready() -> void:
 		new_part.skeleton = skeleton
 		new_part.bone_id = i
 		new_part.set_position(Vector3(worm.global_position.x + i,worm.global_position.y,worm.global_position.z))
+	

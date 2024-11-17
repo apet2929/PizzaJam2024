@@ -17,10 +17,25 @@ func _process(delta: float) -> void:
 func go_to_position(main_node, target_pos, delta):
 #	todo: rotation
 	var current_transform = skeleton.get_bone_pose(bone_id)
-	current_transform.origin = lerp(current_transform.origin, target_pos, SPEED * delta)
-	#current_transform = current_transform.rotated(Vector3(0,0,1), )
-	skeleton.set_bone_pose(bone_id, current_transform)
 	
+	var temp = current_transform.origin
+	
+	# rotation
+	var a = Vector2(current_transform.origin.x, current_transform.origin.z)
+	var b = Vector2(target_pos.x, target_pos.z)
+	if a.distance_to(b) > 0.001:
+		var temp_target = target_pos
+		temp_target.y = 1
+		current_transform = current_transform.looking_at(temp_target) # rotate around correct axis
+	
+	current_transform.origin = lerp(current_transform.origin, target_pos, SPEED * delta)
+	
+	skeleton.set_bone_pose(bone_id, current_transform)
+
+func get_position():
+	var t = skeleton.get_bone_pose(self.bone_id)
+	return t.origin
+
 func set_position(position):
 	var t = skeleton.get_bone_pose(self.bone_id)
 	t.origin = position
@@ -29,9 +44,12 @@ func set_position(position):
 func move_to(pos):
 	next_pos = pos
 	can_move = true
+	
+	print(next_pos)
 
 func snap_to_grid(node):
 	var t = skeleton.get_bone_pose(self.bone_id)
 	t.origin = next_pos
 	skeleton.set_bone_pose(self.bone_id, t)
 	print(t.origin)
+	
