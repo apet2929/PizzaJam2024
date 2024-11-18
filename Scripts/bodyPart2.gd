@@ -26,7 +26,7 @@ func go_to_position(main_node, target_pos, delta):
 	if a.distance_to(b) > 0.001:
 		var temp_target = target_pos
 		temp_target.y = 100
-		var rotated = current_transform.looking_at(temp_target, Vector3.UP, true) # rotate around correct axis
+		var rotated = current_transform.looking_at(temp_target, Vector3.UP, true).orthonormalized()
 		current_transform.basis = lerp(current_transform.basis, rotated.basis, SPEED * delta)
 	
 	current_transform.origin = lerp(current_transform.origin, target_pos, SPEED * delta)
