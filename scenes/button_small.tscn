@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/button_small.gd" id="1_begb6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cpkp"]
-size = Vector3(1.29352, 0.450317, 1.24121)
+size = Vector3(1.29352, 0.767151, 1.24121)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ug5gw"]
 resource_name = "Material.002"
@@ -172,7 +172,7 @@ collision_mask = 2
 script = ExtResource("1_begb6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196228, 0.274841, 0.00146484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196228, 0.433258, 0.00146484)
 shape = SubResource("BoxShape3D_7cpkp")
 
 [node name="Model" type="Node3D" parent="."]
