@@ -6,7 +6,7 @@ const HEAD_AND_TAIL = 2
 @onready var body_parts: Node3D = $BodyParts
 @onready var worm_body: Path3D = $worm_body
 @onready var worm_gfx: CSGPolygon3D = $Worm_GFX
-@onready var worm: CharacterBody3D = $Worm
+@onready var worm: CharacterBody3D = $Body
 @onready var camera: Camera3D = $"../Camera3D"
 
 const PART_1 = preload("res://scenes/part1.tscn")
@@ -23,12 +23,12 @@ func create_worm(old_points):
 	worm_body.curve = Curve3D.new()
 	worm.worm_body = worm_body
 	worm.worm_gfx = worm_gfx
-	
+
 	camera.worms.append(self.worm)
-	
+
 	# Making the "Worm_GFX" log like
 	worm_gfx.polygon = worm.points
-	
+
 	worm_body.curve.clear_points()
 	var old_points_used = 0
 	
@@ -51,6 +51,7 @@ func create_worm(old_points):
 				new_part.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
 		
 	# Creating the worm's tail
+	
 	var new_tail = TAIL_1.instantiate()
 	body_parts.add_child(new_tail, true)
 	new_tail.name += str(worm_length - 1)
@@ -70,3 +71,14 @@ func create_worm(old_points):
 	worm_body.curve.add_point(worm.global_position)
 	for body in body_parts.get_children():
 		worm_body.curve.add_point(body.global_position)
+
+func setup():
+	pass
+	
+func set_length(length):
+#	TODO: Implement me!
+	pass
+	
+func _on_button_body_entered(body: Node3D) -> void:
+	$"../Guillotine".drop()
+	
