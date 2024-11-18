@@ -9,6 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 # two spheres for head and tail
 # body rendered by Worm_GFX
 	# 1 point per tile
@@ -24,4 +25,3 @@ func _process(delta: float) -> void:
 # nodes
 #- addPoint() : adds a node to children list, returns point id (index)
 #- removePoint(point_id)
-- 

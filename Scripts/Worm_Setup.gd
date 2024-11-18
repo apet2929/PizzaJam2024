@@ -58,11 +58,5 @@ func set_length(length):
 	pass
 	
 func _on_button_body_entered(body: Node3D) -> void:
-	print("foo")
-	#var worm_scene = load("res://scenes/worm.tscn")
-	#var new_worm = worm_scene.instantiate()
-	#new_worm.worm_length = 2
-	#new_worm.global_position = Vector3(0,0,0)
-	#get_parent().add_child(new_worm)
-	set_length(2)
+	$"../Guillotine".drop()
 	

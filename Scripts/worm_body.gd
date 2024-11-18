@@ -79,7 +79,7 @@ func start_move(direction):
 		body.move_to(last_body_pos)
 		last_body_pos = body.global_position
 	
-	
+
 func wall_check(dir):
 	if (dir.x == -1 and up_ray.is_colliding()) or (dir.x == 1 and down_ray.is_colliding()) or (dir.y == -1 and right_ray.is_colliding()) or (dir.y == 1 and left_ray.is_colliding()):
 		return false

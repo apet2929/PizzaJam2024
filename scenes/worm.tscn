@@ -15,6 +15,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
 
 [node name="Body" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 3)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_3dpsy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
@@ -28,16 +30,16 @@ radial_segments = 16
 rings = 12
 
 [node name="DownRay" type="RayCast3D" parent="Body"]
-target_position = Vector3(1, 0, 0)
+target_position = Vector3(1.5, 0, 0)
 
 [node name="UpRay" type="RayCast3D" parent="Body"]
-target_position = Vector3(-1, 0, 0)
+target_position = Vector3(-1.5, 0, 0)
 
 [node name="LeftRay" type="RayCast3D" parent="Body"]
-target_position = Vector3(0, 0, 1)
+target_position = Vector3(0, 0, 1.5)
 
 [node name="RightRay" type="RayCast3D" parent="Body"]
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.5)
 
 [node name="worm_body" type="Path3D" parent="."]
 
