@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=26 format=4 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_q77ka"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://bf5p4wgfygcfi" path="res://assets/Button_Shader.tres" id="6_i8ufo"]
 [ext_resource type="Material" uid="uid://bo4onna3kwhrh" path="res://assets/guillotine_frame_Shader.tres" id="7_j3hln"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="8_htbw6"]
+[ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="8_u2nke"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xpbn"]
 albedo_texture = ExtResource("1_6hh32")
@@ -228,5 +229,8 @@ transform = Transform3D(0.0566846, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.93404, 0)
 material_override = ExtResource("8_htbw6")
 mesh = SubResource("ArrayMesh_r5qrm")
 skeleton = NodePath("")
+
+[node name="ButtonSmall" parent="." instance=ExtResource("8_u2nke")]
+transform = Transform3D(-2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0, 0.5, -0.431566, 0.48116, -1.01169)
 
 [connection signal="body_entered" from="Button" to="Worm" method="_on_button_body_entered"]

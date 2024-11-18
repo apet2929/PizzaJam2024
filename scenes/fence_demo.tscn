@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ol1gaosehd4h"]
+
+[ext_resource type="Script" path="res://Scripts/fence_demo.gd" id="1_fqs4l"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="2_jjpym"]
+
+[sub_resource type="Environment" id="Environment_h3uv1"]
+
+[node name="FenceDemo" type="Node3D"]
+script = ExtResource("1_fqs4l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5672)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h3uv1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="Fence" parent="." instance=ExtResource("2_jjpym")]

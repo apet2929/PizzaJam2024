@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://k10usb8384ng"]
+
+[ext_resource type="Script" path="res://Scripts/fence.gd" id="1_p6fl6"]
+[ext_resource type="PackedScene" uid="uid://biiqnl77k0pmo" path="res://assets/fence.glb" id="2_f8pwh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tr1uf"]
+size = Vector3(2.15875, 1.97327, 0.37915)
+
+[sub_resource type="Animation" id="Animation_thbas"]
+resource_name = "Open"
+length = 0.75
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0333333, 1, 0, 0, 0, 1, 0.633333, 1, 0, 0.707107, 0, 0.707107)
+
+[sub_resource type="Animation" id="Animation_354bv"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lekm5"]
+_data = {
+"Open": SubResource("Animation_thbas"),
+"RESET": SubResource("Animation_354bv")
+}
+
+[node name="Fence" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00176525, 0, 0)
+script = ExtResource("1_p6fl6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tr1uf")
+
+[node name="OpenPosition" type="Node3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="ClosedPosition" type="Node3D" parent="CollisionShape3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.946939, 0, 0)
+
+[node name="Model" parent="Pivot" instance=ExtResource("2_f8pwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946939, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Model"]
+libraries = {
+"": SubResource("AnimationLibrary_lekm5")
+}
