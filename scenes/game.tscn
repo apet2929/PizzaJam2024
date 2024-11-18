@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=4 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=25 format=4 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
-[ext_resource type="Script" path="res://Scripts/worm.gd" id="2_5refw"]
-[ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_ky6b3"]
-[ext_resource type="Script" path="res://Scripts/Worm_Setup.gd" id="3_au2t2"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_q77ka"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="4_rcbs6"]
+[ext_resource type="PackedScene" uid="uid://civlghphf23pl" path="res://scenes/worm.tscn" id="6_f16xe"]
 [ext_resource type="Material" uid="uid://bf5p4wgfygcfi" path="res://assets/Button_Shader.tres" id="6_i8ufo"]
 [ext_resource type="Material" uid="uid://bo4onna3kwhrh" path="res://assets/guillotine_frame_Shader.tres" id="7_j3hln"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="8_htbw6"]
@@ -26,9 +25,6 @@ background_mode = 2
 sky = SubResource("Sky_oi8rl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y3sje"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_smpsk"]
-size = Vector3(0.65, 0.986, 0.65)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2pj0"]
 resource_name = "Material"
@@ -68,6 +64,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a205s")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n2wv"]
+size = Vector3(4, 10, 4)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6n3bx"]
 
@@ -197,67 +196,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36149, 0.485, -0.540771)
 use_collision = true
 size = Vector3(1.773, 1, 2)
 
+[node name="Worm" parent="." instance=ExtResource("6_f16xe")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 6.1, 3.3)
 fov = 35.0
 script = ExtResource("4_q77ka")
 
-[node name="Complete_Worm" type="Node3D" parent="."]
-script = ExtResource("3_au2t2")
-
-[node name="BodyParts" type="Node3D" parent="Complete_Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0298046, 0.485583, 0)
-
-[node name="Worm" type="CharacterBody3D" parent="Complete_Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 3)
-script = ExtResource("2_5refw")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Complete_Worm/Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00708008, 0)
-shape = SubResource("BoxShape3D_smpsk")
-
-[node name="Head" type="CSGSphere3D" parent="Complete_Worm/Worm"]
-material_override = ExtResource("2_ky6b3")
-radius = 0.51
-radial_segments = 16
-rings = 12
-
-[node name="DownRay" type="RayCast3D" parent="Complete_Worm/Worm"]
-target_position = Vector3(1, 0, 0)
-
-[node name="UpRay" type="RayCast3D" parent="Complete_Worm/Worm"]
-target_position = Vector3(-1, 0, 0)
-
-[node name="LeftRay" type="RayCast3D" parent="Complete_Worm/Worm"]
-target_position = Vector3(0, 0, 1)
-
-[node name="RightRay" type="RayCast3D" parent="Complete_Worm/Worm"]
-target_position = Vector3(0, 0, -1)
-
-[node name="worm_body" type="Path3D" parent="Complete_Worm"]
-
-[node name="Worm_GFX" type="CSGPolygon3D" parent="Complete_Worm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
-material_override = ExtResource("2_ky6b3")
-mode = 2
-path_node = NodePath("../worm_body")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-smooth_faces = true
-
-[node name="Button_Model" type="Node3D" parent="."]
+[node name="Button" type="Area3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3, 0, 3)
+script = ExtResource("4_rcbs6")
 
-[node name="Button" type="MeshInstance3D" parent="Button_Model"]
+[node name="ButtonModel" type="MeshInstance3D" parent="Button"]
 material_override = ExtResource("6_i8ufo")
 mesh = SubResource("ArrayMesh_3pm1v")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button"]
+shape = SubResource("BoxShape3D_1n2wv")
 
 [node name="guillotine" type="Node3D" parent="."]
 transform = Transform3D(-9.39795e-09, 0, -0.215, 0, 0.215, 0, 0.215, 0, -9.39795e-09, -2.97788, 0.0842808, -0.499307)
@@ -272,3 +228,5 @@ transform = Transform3D(0.0566846, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.93404, 0)
 material_override = ExtResource("8_htbw6")
 mesh = SubResource("ArrayMesh_r5qrm")
 skeleton = NodePath("")
+
+[connection signal="body_entered" from="Button" to="Worm" method="_on_button_body_entered"]

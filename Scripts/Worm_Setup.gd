@@ -6,7 +6,7 @@ const HEAD_AND_TAIL = 2
 @onready var body_parts: Node3D = $BodyParts
 @onready var worm_body: Path3D = $worm_body
 @onready var worm_gfx: CSGPolygon3D = $Worm_GFX
-@onready var worm: CharacterBody3D = $Worm
+@onready var worm: CharacterBody3D = $Body
 @onready var camera: Camera3D = $"../Camera3D"
 
 const PART_1 = preload("res://scenes/part1.tscn")
@@ -37,14 +37,33 @@ func _ready() -> void:
 		new_part.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
 	
 	# Creating the worm's tail
-	var new_tail = TAIL_1.instantiate()
-	body_parts.add_child(new_tail, true)
-	new_tail.name += str(worm_length - 1)
-	new_tail.worm_body = worm_body
-	var part_number = int(new_tail.name.substr(4, new_tail.name.length() - 4))
-	new_tail.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
+	
+	#var new_tail = TAIL_1.instantiate()
+	#body_parts.add_child(new_tail, true)
+	#new_tail.name += str(worm_length - 1)
+	#new_tail.worm_body = worm_body
+	#var part_number = int(new_tail.name.substr(4, new_tail.name.length() - 4))
+	#new_tail.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
 	
 	# Adding the Worm's body parts to the worm_body 3D Path
 	worm_body.curve.add_point(worm.global_position)
 	for body in body_parts.get_children():
 		worm_body.curve.add_point(body.global_position)
+
+func setup():
+	pass
+	
+
+func set_length(length):
+	while body_parts.get_children().size() > length - HEAD_AND_TAIL:
+		body_parts.remove_child(body_parts.get_children()[0])
+
+func _on_button_body_entered(body: Node3D) -> void:
+	print("foo")
+	#var worm_scene = load("res://scenes/worm.tscn")
+	#var new_worm = worm_scene.instantiate()
+	#new_worm.worm_length = 2
+	#new_worm.global_position = Vector3(0,0,0)
+	#get_parent().add_child(new_worm)
+	set_length(2)
+	
