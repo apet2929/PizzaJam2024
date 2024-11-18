@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://civlghphf23pl"]
+[gd_scene load_steps=6 format=3 uid="uid://civlghphf23pl"]
 
 [ext_resource type="Script" path="res://Scripts/Worm_Setup.gd" id="1_5xmqh"]
 [ext_resource type="Script" path="res://Scripts/worm_body.gd" id="2_3dpsy"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="3_2gjon"]
+[ext_resource type="Material" uid="uid://d0nkfn05hauam" path="res://assets/Worm_Body.tres" id="4_kbdl8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ismby"]
 size = Vector3(0.65, 0.986, 0.65)
@@ -28,6 +29,7 @@ material_override = ExtResource("3_2gjon")
 radius = 0.51
 radial_segments = 16
 rings = 12
+material = ExtResource("4_kbdl8")
 
 [node name="DownRay" type="RayCast3D" parent="Body"]
 target_position = Vector3(1.5, 0, 0)
@@ -57,3 +59,4 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 smooth_faces = true
+material = ExtResource("4_kbdl8")

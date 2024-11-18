@@ -75,10 +75,11 @@ func create_worm(old_points):
 func setup():
 	pass
 	
-func set_length(length):
-#	TODO: Implement me!
-	pass
-	
 func _on_button_body_entered(body: Node3D) -> void:
 	$"../Guillotine".drop()
 	
+func _on_button_small_button_pressed(button_id) -> void:
+	if button_id == "test":
+		# split the worm in half
+		
+		pass

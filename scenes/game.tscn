@@ -135,3 +135,6 @@ transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795
 
 [node name="ButtonSmall" parent="." instance=ExtResource("7_34d5a")]
 transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.481159, 0.597803, -1.01251)
+button_id = "2"
+
+[connection signal="button_pressed" from="ButtonSmall" to="Camera3D" method="_on_button_small_button_pressed"]
