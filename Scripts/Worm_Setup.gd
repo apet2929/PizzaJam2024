@@ -1,6 +1,6 @@
 extends Node
 
-var worm_length = 6
+var worm_length = 3
 const HEAD_AND_TAIL = 2
 
 @onready var body_parts: Node3D = $BodyParts
@@ -14,6 +14,10 @@ const TAIL_1 = preload("res://scenes/tail1.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var array = [Vector3(-0.03, 0.486, 4),Vector3(-1.03, 0.486, 4),Vector3(-2.03, 0.486, 4),Vector3(-3.03, 0.486, 4),Vector3(-4.03, 0.486, 4),Vector3(-5.03, 0.486, 4)]
+	create_worm(array)
+
+func create_worm(old_points):
 	# Setting the worm's head stats
 	worm.body_parts = body_parts
 	worm_body.curve = Curve3D.new()
@@ -26,6 +30,7 @@ func _ready() -> void:
 	worm_gfx.polygon = worm.points
 	
 	worm_body.curve.clear_points()
+	var old_points_used = 0
 	
 	# Creating all of the worm's middle body part
 	for i in worm_length - HEAD_AND_TAIL:
@@ -34,15 +39,32 @@ func _ready() -> void:
 		
 		var part_number = int(body_parts.get_child(i).name.substr(4, body_parts.get_child(i).name.length() - 4))
 		new_part.worm_body = worm_body
-		new_part.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
-	
+		
+		if i < len(old_points):
+			new_part.global_position = old_points[i]
+			old_points_used += 1
+		else:
+			if old_points != []:
+				var last_old_point = old_points[max(0,old_points_used - 1)]
+				new_part.global_position = Vector3(last_old_point.x,last_old_point.y,last_old_point.z + part_number)
+			else:
+				new_part.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
+		
 	# Creating the worm's tail
 	var new_tail = TAIL_1.instantiate()
 	body_parts.add_child(new_tail, true)
 	new_tail.name += str(worm_length - 1)
 	new_tail.worm_body = worm_body
 	var part_number = int(new_tail.name.substr(4, new_tail.name.length() - 4))
-	new_tail.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
+	
+	if worm_length < len(old_points):
+		new_tail.global_position = old_points[old_points_used]
+	else:
+		if old_points != []:
+			var last_old_point = old_points[len(old_points) - 1]
+			new_tail.global_position = Vector3(last_old_point.x,last_old_point.y,last_old_point.z + part_number)
+		else:
+			new_tail.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
 	
 	# Adding the Worm's body parts to the worm_body 3D Path
 	worm_body.curve.add_point(worm.global_position)

@@ -35,7 +35,9 @@ func update_worm_body():
 	# This gets the body part's index in the worm_body path
 	var my_name = self.name
 	var current_index = int(my_name.substr(4, my_name.length() - 4))
-	worm_body.curve.set_point_position(current_index, self.global_position)
+	
+	if worm_body != null:
+		worm_body.curve.set_point_position(current_index, self.global_position)
 
 
 func snap_to_grid(node):
