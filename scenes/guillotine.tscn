@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://br1c6x1rx1cy8"]
+[gd_scene load_steps=18 format=4 uid="uid://br1c6x1rx1cy8"]
 
 [ext_resource type="Script" path="res://Scripts/guillotine.gd" id="1_ldeu0"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="2_7kxm5"]
@@ -46,6 +46,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xw8nt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3i75u"]
+size = Vector3(4.81372, 3.55811, 4.96082)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6n3bx"]
 
@@ -130,6 +133,12 @@ transform = Transform3D(0.0566846, 0, -7.10543e-15, 0, 1, 0, 8.88178e-16, 0, 1, 
 material_override = ExtResource("2_7kxm5")
 mesh = SubResource("ArrayMesh_m2va2")
 skeleton = NodePath("")
+
+[node name="BladeCollision" type="Area3D" parent="Model/Blade"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Blade/BladeCollision"]
+transform = Transform3D(0.999969, 0, -3.97904e-13, 0, 0.999972, 0, -8.88178e-16, 0, 0.999972, 0.158381, -1.27903, 0.0746418)
+shape = SubResource("BoxShape3D_3i75u")
 
 [node name="Frame" type="MeshInstance3D" parent="Model"]
 material_override = ExtResource("3_de2mh")

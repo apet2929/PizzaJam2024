@@ -1,7 +1,7 @@
 extends Camera3D
 
 const DISTANCE_OFFSET = 4.0
-const FOLLOW_SPEED = 1.2
+const FOLLOW_SPEED = 1.1
 var worms = []
 
 
@@ -10,7 +10,7 @@ var worms = []
 func get_midpoint() -> Vector3:
 	var total_position = Vector3()
 	for worm in worms:
-		total_position += worm.global_position
+		total_position += worm.get_head().global_position
 	return total_position / worms.size()
 
 func _process(delta: float) -> void:

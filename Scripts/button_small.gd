@@ -15,20 +15,8 @@ var pressed = false
 func _ready() -> void:
 	pressed = false
 	$Model/AnimationPlayer.play("ButtonUnpress")
-
-
-
-func _on_body_entered(body: Node3D) -> void:
-	print("foo")
-	if is_worm(body):
-		press()
 		
 
-func _on_body_exited(body: Node3D) -> void:
-	print("bar")
-	if is_worm(body):
-		unpress()
-			
 func is_worm(body: Node3D) -> bool:
 	match body.get_script():
 		WORM:

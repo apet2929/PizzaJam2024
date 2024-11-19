@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	var cam: Camera3D = $"../../Camera3D"
+	var cam: Camera3D = $"../../GameCamera"
 	var worm = $"../../Worm"
-	var pos = cam.unproject_position(worm.global_position)
-	draw_circle(pos, 5, Color.AQUA)
+	if cam and worm:
+		var pos = cam.unproject_position(worm.global_position)
+		draw_circle(pos, 5, Color.AQUA)

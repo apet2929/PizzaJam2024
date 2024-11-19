@@ -26,6 +26,7 @@ const PUSH_FORCE = 4.0
 
 const WORM_BODY_SEGMENT_SCENE = preload("res://scenes/worm_body_segment.tscn")
 const WORM_SCENE = preload("res://scenes/new_worm.tscn")
+const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 
 
 @export var worm_length = 4
@@ -50,6 +51,9 @@ var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
 
 func _ready() -> void:
+	if has_node("../GameCamera"):
+		var camera = get_node("../GameCamera")
+		camera.worms.append(self)
 	move_ready = true
 	$Curve.curve = Curve3D.new()
 	curve = $Curve.curve
@@ -76,6 +80,19 @@ func _process(delta: float) -> void:
 	
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
+		
+
+func _on_button_small_body_entered(body: Node3D) -> void:
+	if body == self:
+		self.split()
+
+func is_worm(body: Node3D) -> bool:
+	match body.get_script():
+		WORM_SCRIPT:
+			return true
+		_:
+			return false
+
 
 func handle_movement(dir):
 	if wall_check(dir):
@@ -128,8 +145,8 @@ func split():
 		var old_pos = sp[seg]
 		positions.append(old_pos - new_head_pos)
 	new_worm.spawn_points = positions
-	new_worm.global_position = spg[new_head]
 	get_parent().add_child(new_worm)
+	new_worm.global_position = spg[new_head]
 	
 func kill():
 	self.queue_free()
@@ -167,8 +184,6 @@ func get_head():
 
 func get_tail():
 	return segments[segments.size()-1]
-
-
 
 # TODO: Only allow adding and removing from the end!
 func add_segment_to_tail(offset_from_tail: Vector3):

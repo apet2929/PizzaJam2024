@@ -2,7 +2,7 @@ extends Node3D
 
 var can_move = false
 var next_pos # global coordinates, not local
-const SPEED = 12
+const SPEED = 10
 const SNAP_SPEED = 12.0
 const DISTANCE_FROM_NEXT_POINT = 0.1
 

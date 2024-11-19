@@ -28,3 +28,4 @@ func reset():
 	$DroppedCollision.collision_layer = 0
 	
 	
+	
