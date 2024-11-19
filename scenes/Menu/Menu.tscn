@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxx6j45f7tm7s"]
+
+[ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="1_b5od1"]
+[ext_resource type="Script" path="res://assets/Menu/Load_btn.gd" id="2_eiiix"]
+[ext_resource type="Script" path="res://assets/Menu/Quit_btn.gd" id="2_k2rki"]
+[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="4_rmout"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uo3po"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slkdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llscb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5p07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gcru"]
+
+[sub_resource type="Theme" id="Theme_5ieg2"]
+Button/font_sizes/font_size = 81
+Button/fonts/font = ExtResource("1_b5od1")
+Button/styles/disabled = SubResource("StyleBoxEmpty_uo3po")
+Button/styles/focus = SubResource("StyleBoxEmpty_slkdk")
+Button/styles/hover = SubResource("StyleBoxEmpty_llscb")
+Button/styles/normal = SubResource("StyleBoxEmpty_r5p07")
+Button/styles/pressed = SubResource("StyleBoxEmpty_4gcru")
+
+[node name="Menu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play_btn" type="Button" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -153.0
+offset_right = 290.065
+offset_bottom = -72.0
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+theme = SubResource("Theme_5ieg2")
+text = "Play"
+script = ExtResource("2_eiiix")
+
+[node name="Quit" type="Button" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -166.0
+offset_right = 291.0
+offset_bottom = -84.0
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+theme = SubResource("Theme_5ieg2")
+text = "Quit"
+script = ExtResource("2_k2rki")
+
+[node name="SceneTransition" parent="." instance=ExtResource("4_rmout")]
+
+[connection signal="pressed" from="CanvasLayer/Menu/Play_btn" to="CanvasLayer/Menu/Play_btn" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Quit" to="CanvasLayer/Menu/Quit" method="_on_pressed"]
+
+[editable path="SceneTransition"]

@@ -91,3 +91,38 @@ func is_worm(body: Node3D) -> bool:
 			return true
 		_:
 			return false
+
+func drop_guillotine():
+	$"../Guillotine".drop()
+	await get_tree().create_timer(2).timeout
+	$"../Guillotine".undrop()
+
+func _on_pressure_pad_body_entered(body: Node3D) -> void:
+	print("foo")
+	if is_worm(body):
+		var worm1_pts = [self.worm.global_position]
+		var worm2_pts = []
+		var segments = body_parts.get_children()
+		var pts = []
+		for i in range(segments.size()):
+			pts.append(segments[i].global_position)
+			if i < segments.size() / 2:
+				worm1_pts.append(segments[i].global_position)
+			else:
+				worm2_pts.append(segments[i].global_position)
+		
+		print(pts)
+		var worms = get_tree().get_nodes_in_group("worms")
+		self.queue_free()
+		camera.worms.erase(self.worm)
+		spawn_worm(pts)
+
+
+func spawn_worm(pts):
+	var new_worm = WORM_SCENE.instantiate()
+	var num_worms = get_tree().get_nodes_in_group("worms").size()
+	new_worm.worm_id = num_worms
+	#new_worm.worm.global_position = pts[0]
+	new_worm.worm_length = pts.size()
+	new_worm.spawn_points = pts
+	get_parent().add_child(new_worm)
