@@ -4,6 +4,7 @@ const DISTANCE_OFFSET = 4.0
 const FOLLOW_SPEED = 1.2
 var worms = []
 
+
 @onready var WORM = preload("res://scenes/worm.tscn")
 # Helper function to calculate the midpoint of all worms
 func get_midpoint() -> Vector3:
@@ -30,10 +31,3 @@ func _process(delta: float) -> void:
 	self.position.x = lerp(self.position.x, target_position.x, FOLLOW_SPEED * delta)
 	self.position.y = lerp(self.position.y, target_position.y, FOLLOW_SPEED * delta)
 	self.position.z = lerp(self.position.z, target_position.z, FOLLOW_SPEED * delta)
-
-
-func _on_button_small_button_pressed(button_id) -> void:
-	if button_id == "test":
-		# split the worm in half
-		get_tree()
-		pass
