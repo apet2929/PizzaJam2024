@@ -34,8 +34,7 @@ const WORM_SCENE = preload("res://scenes/new_worm.tscn")
 
 var move_ready = false
 var last_dir
-var segments = [] # List of Vector3, positions relative to body (head at 0,0,0 by convention)
-@onready var curve: Path3D = $Curve
+
 @onready var up_ray = $Rays/UpRay
 @onready var down_ray = $Rays/DownRay
 @onready var left_ray = $Rays/LeftRay
@@ -50,26 +49,33 @@ var segments = [] # List of Vector3, positions relative to body (head at 0,0,0 b
 # Curve & Worm_GFX: Draws body
 	# each frame, curve[i] = segments[i]
 
+# Each segment has to have a reference to this because
+	# otherwise, the head and the root will be misaligned
+	# (segments update after root)
+
+var segments = [] # list of Node3D
+var curve: Curve3D
 
 # self.global_position = initial position of the head
 # TODO: Is the order of the nodes important? 
 func _ready() -> void:
-	segments.append_array(spawn_points)
+	print("ready")
+	$Curve.curve = Curve3D.new()
+	curve = $Curve.curve
+	print(curve)
 	$Worm_GFX.polygon = worm_gfx_polygon_points
-	var head = $Body/Head
-	var segment_id = ResourceUID.create_id()
-	
-	head.position = segments[0]
+
 	for i in range(1, spawn_points.size()):
 		var p = spawn_points[i]
 		add_segment_to_end(p)
 
 func add_segment_to_end(pos):
-	segments.append(pos)
+	
 	var segment_scene = WORM_BODY_SEGMENT_SCENE.instantiate()
-	segment_scene.position = pos
+	segment_scene.position = Vector3(pos)
+	segments.append(segment_scene)
 	$Body.add_child(segment_scene)
-	self.curve.curve.add_point(pos) # adds to the end of the curve
+	self.curve.add_point(Vector3(pos)) # adds to the end of the curve
 
 func remove_segment(segment):
 	# TODO: Depends on segment pos matching its position within the curve. Is this reasonable to expect?
@@ -77,90 +83,15 @@ func remove_segment(segment):
 	
 	var pos = segment.position
 	var segment_index = self.curve.curve.get_baked_points().find(pos)
-	self.curve.curve.remove_point(segment_index)
+	self.curve.remove_point(segment_index)
 
 func move_to(offset):
 	$Body/Head.move_to(self.global_position + offset)
 
 # Important - This is called before the _process fn of all segments
 func _process(delta: float) -> void:
-	var segments = get_segments()
-	update_segments()
 	var head_pos = segments[0].position
 	self.position += head_pos
 	for segment in segments:
 		segment.position = segment.position - head_pos
-		curve.curve.set_point_position(segment.segment_id, segment.position)
-
-func update_segments():
-	var segments = get_segments()
-	
-	segments[0].get_node("Sphere").visible = true
-	segments[segments.size()-1].get_node("Sphere").visible = true
-	
-	for i in range(1, segments.size()-1):
-		segments[i].is_end_segment = false
-
-func split():
-	var new_worm = WORM_SCENE.instantiate()
-	new_worm.spawn_points.clear()
-	
-	var segs = get_segments()
-	var start = segs.size() / 2
-	var end = segs.size()-1
-	if end - start < 2:
-		print("can't split, too short")
-		return
-		
-	new_worm.global_position = segs[start].global_position
-	var head_pos = segs[start].position
-	for i in range(start, end):
-		new_worm.spawn_points.append(segs[i].position - head_pos)
-		self.remove_segment(segs[i])
-		# TODO: Adjust segment ids
-		# TODO: remove id from add_segment func
-		# TODO: test splitting
-		# TODO: test instantiating the scene from code
-		# TODO: debug why having more than 1 worm fucks things up
-
-func move(dir) -> void:
-	if move_ready:
-		
-		if not wall_check(dir):
-			return
-		
-		# Checking if: Input is pressed, Not trying to move diagonally, Isn't trying to move back inside the worm
-		if dir != Vector2(0,0) and abs(dir.x) != abs(dir.y) and dir != -last_dir:
-			start_move(dir)
-			move_ready = false
-			await get_tree().create_timer(MOVE_TIMER).timeout
-			
-			# Snapping the Worm's head to the grid
-			self.velocity = Vector3(0,self.velocity.y,0)
-			snap_to_grid()
-			
-			last_dir = dir # Saving the last movement so the player wouldn't be able to go back
-			move_ready = true
-
-func start_move(direction):
-	# Going through all of the Worm's body parts and telling them to move
-	var last_body_pos = self.global_position + direction
-	var segs = self.get_segments()
-	
-	for i in range(0, segs.size()):
-		segs[i].move_to(last_body_pos)
-		last_body_pos = segs[i].global_position
-
-func wall_check(dir):
-	if (dir.x == -1 and up_ray.is_colliding()) or (dir.x == 1 and down_ray.is_colliding()) or (dir.y == -1 and right_ray.is_colliding()) or (dir.y == 1 and left_ray.is_colliding()):
-		return false
-	
-	return true
-	
-func snap_to_grid():
-	self.global_position.x = round(self.global_position.x)
-	self.global_position.z = round(self.global_position.z)
-	
-	
-	
-	
+		curve.set_point_position(segments.find(segment), segment.position)

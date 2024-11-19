@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqqp3t3gyi13u"]
+[gd_scene load_steps=4 format=3 uid="uid://bqqp3t3gyi13u"]
 
 [ext_resource type="Script" path="res://Scripts/new_worm.gd" id="1_ecb6o"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_ru6pc"]
-[ext_resource type="PackedScene" uid="uid://cud1xmc3mx8ag" path="res://scenes/worm_body_segment.tscn" id="3_e5hjy"]
 
 [sub_resource type="Curve3D" id="Curve3D_cqnwp"]
 
@@ -27,9 +26,6 @@ path_joined = false
 smooth_faces = true
 
 [node name="Body" type="Node3D" parent="."]
-
-[node name="Head" parent="Body" instance=ExtResource("3_e5hjy")]
-is_end_segment = true
 
 [node name="Rays" type="Node3D" parent="."]
 
