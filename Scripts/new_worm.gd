@@ -117,6 +117,39 @@ func handle_movement(dir):
 		last_dir = dir # Saving the last movement so the player wouldn't be able to go back
 		move_ready = true
 
+func split():
+	var sp = {} # positions of each segment relative to head
+	var spg = {}
+	# segment.position isn't valida fter its removed from the tree (no parent to compare to)
+	# so I grab the positions now, before they're removed
+	for segment in segments:
+		sp[segment] = Vector3(segment.position)
+		spg[segment] = Vector3(segment.global_position)
+	var cut_off = []
+	for i in range(floor(segments.size() / 2.0), segments.size()):
+		var seg = self.remove_segment(self.get_tail())
+		cut_off.append(seg)
+	
+	if cut_off.size() < 2:
+		if self.segments.size() < 2:
+			self.kill()
+		return
+	
+	cut_off.reverse()
+	var new_worm = WORM_SCENE.instantiate()
+	var positions = []
+	var new_head = cut_off[0]
+	var new_head_pos = sp[new_head]
+	for seg in cut_off:
+		var old_pos = sp[seg]
+		positions.append(old_pos - new_head_pos)
+	new_worm.spawn_points = positions
+	new_worm.global_position = spg[new_head]
+	get_parent().add_child(new_worm)
+	
+func kill():
+	self.queue_free()
+
 func start_move(direction):
 	# Going through all of the Worm's body parts and telling them to move
 	var last_body_pos = self.global_position + Vector3(direction.x, 0, direction.y)
@@ -183,6 +216,8 @@ func remove_segment(segment):
 	if segments.size() == 0:
 		print("no segments left, killing self")
 		self.queue_free()
+		
+	return segment
 
 func move_to(offset):
 	last_dir = offset

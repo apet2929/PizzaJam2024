@@ -31,6 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 light_energy = 5.0
 
 [node name="NewWorm" parent="." instance=ExtResource("1_eodnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13823, 0, 0)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03559, 0)
@@ -41,3 +42,5 @@ collision_layer = 2
 collision_mask = 2
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_6kpoj")
+
+[node name="NewWorm2" parent="." instance=ExtResource("1_eodnv")]
