@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqqp3t3gyi13u"]
+
+[ext_resource type="Script" path="res://Scripts/new_worm.gd" id="1_ecb6o"]
+[ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_ru6pc"]
+[ext_resource type="Material" uid="uid://d0nkfn05hauam" path="res://assets/Worm_Body.tres" id="3_7aiqq"]
+
+[sub_resource type="Curve3D" id="Curve3D_cqnwp"]
+
+[node name="NewWorm" type="Node3D"]
+script = ExtResource("1_ecb6o")
+worm_length = null
+spawn_points = null
+
+[node name="Curve" type="Path3D" parent="."]
+curve = SubResource("Curve3D_cqnwp")
+
+[node name="Worm_GFX" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041368, -0.014457, 0.00684547)
+material_override = ExtResource("2_ru6pc")
+mode = 2
+path_node = NodePath("../Curve")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+smooth_faces = true
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="Tail" type="CSGSphere3D" parent="Body"]
+material_override = ExtResource("2_ru6pc")
+radius = 0.51
+radial_segments = 16
+rings = 12
+material = ExtResource("3_7aiqq")
+
+[node name="Head" type="CSGSphere3D" parent="Body"]
+material_override = ExtResource("2_ru6pc")
+radius = 0.51
+radial_segments = 16
+rings = 12
+material = ExtResource("3_7aiqq")

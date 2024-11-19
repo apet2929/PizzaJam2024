@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=15 format=3 uid="uid://dqit8xb7wfk0i"]
 
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="1_6hh32"]
 [ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="1_twxce"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="7_34d5a"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="7_tygho"]
 [ext_resource type="Script" path="res://Scripts/pressure_pad.gd" id="8_wofyd"]
+[ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="9_qy50k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xpbn"]
 albedo_texture = ExtResource("1_6hh32")
@@ -97,6 +98,15 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.99848, 2.38419e-0
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("8_wofyd")
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+
+[node name="DrawWormPos" type="Control" parent="DebugLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_qy50k")
 
 [connection signal="button_pressed" from="ButtonSmall" to="Camera3D" method="_on_button_small_button_pressed"]
 [connection signal="body_entered" from="PressurePad" to="Worm" method="_on_pressure_pad_body_entered"]

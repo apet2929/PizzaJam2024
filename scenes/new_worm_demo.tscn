@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://djg47v68prgjm"]
+
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="1_eodnv"]
+[ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="2_8qhyh"]
+[ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="3_v27iu"]
+
+[sub_resource type="Environment" id="Environment_yn4nj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kpoj"]
+albedo_texture = ExtResource("3_v27iu")
+uv1_scale = Vector3(0.063, 0.063, 0.063)
+uv1_offset = Vector3(0.094, 0, -0.031)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="NewWormDemo" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.92722, -0.356074, 0.116078, 0.0498782, 0.424587, 0.904012, -0.371181, -0.832429, 0.411446, 1.50122, 4.96533, 2.3247)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yn4nj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+light_energy = 5.0
+
+[node name="NewWorm" parent="." instance=ExtResource("1_eodnv")]
+worm_length = 4
+spawn_points = [Vector3(-1, 0, 0), Vector3(-2, 0, 0), Vector3(-2, 0, 1)]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03559, 0)
+layers = 2
+material_override = ExtResource("2_8qhyh")
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_6kpoj")

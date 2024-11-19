@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cud1xmc3mx8ag"]
+
+[ext_resource type="Script" path="res://Scripts/worm_body_segment.gd" id="1_3sfep"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0djs4"]
+radius = 0.45
+
+[node name="WormBodySegment" type="Node3D"]
+script = ExtResource("1_3sfep")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_0djs4")

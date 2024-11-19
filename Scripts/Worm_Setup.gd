@@ -23,6 +23,7 @@ func _ready() -> void:
 func create_worm(old_points):
 	# Setting the worm's head stats
 	worm.body_parts = body_parts
+	#worm.global_position = old_points[0]
 	worm_body.curve = Curve3D.new()
 	worm.worm_body = worm_body
 	worm.worm_gfx = worm_gfx
@@ -131,12 +132,10 @@ func _on_pressure_pad_body_entered(body: Node3D) -> void:
 		#new_worm_2.spawn_points = worm2_pts
 		#get_parent().add_child(new_worm_1)
 		
-		
 func spawn_worm(pts):
 	var new_worm = WORM_SCENE.instantiate()
 	var num_worms = get_tree().get_nodes_in_group("worms").size()
 	new_worm.worm_id = num_worms
-	new_worm.get_tree().get("Body").global_position = pts[0]
 	new_worm.worm_length = pts.size()
 	new_worm.spawn_points = pts
 	get_parent().add_child(new_worm)
