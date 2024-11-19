@@ -46,24 +46,9 @@ var last_dir = Vector2(0,0) # Stopping the player from going backwards
 @onready var left_ray = $Rays/LeftRay
 @onready var right_ray = $Rays/RightRay
 
-# self.segments is the 1 source of truth for segment positions
-# Body: Contains instances of WormBodySegment
-	# positions updated by self.segments
-	# order does not matter
-# WormBodySegment: handles collision, draws endcaps
-	# identified by guid
-# Curve & Worm_GFX: Draws body
-	# each frame, curve[i] = segments[i]
-
-# Each segment has to have a reference to this because
-	# otherwise, the head and the root will be misaligned
-	# (segments update after root)
-
-var segments = [] # list of Node3D
+var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
 
-# self.global_position = initial position of the head
-# TODO: Is the order of the nodes important? 
 func _ready() -> void:
 	move_ready = true
 	$Curve.curve = Curve3D.new()
@@ -85,11 +70,10 @@ func _process(delta: float) -> void:
 	var should_snap = get_head().update(delta)
 	for i in range(1, segments.size()):
 		segments[i].update(delta)
-		
+	
 	if should_snap:
 		snap_to_grid()
-	var head_pos = Vector3(get_head().position)
-
+	
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
 
