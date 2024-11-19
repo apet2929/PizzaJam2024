@@ -91,13 +91,14 @@ func is_worm(body: Node3D) -> bool:
 		_:
 			return false
 
+func drop_guillotine():
+	$"../Guillotine".drop()
+	await get_tree().create_timer(2).timeout
+	$"../Guillotine".undrop()
+
 func _on_pressure_pad_body_entered(body: Node3D) -> void:
 	print("foo")
 	if is_worm(body):
-		#$"../Guillotine".drop()
-		#await get_tree().create_timer(2).timeout
-		#$"../Guillotine".undrop()
-		
 		var worm1_pts = [self.worm.global_position]
 		var worm2_pts = []
 		var segments = body_parts.get_children()
@@ -110,33 +111,17 @@ func _on_pressure_pad_body_entered(body: Node3D) -> void:
 				worm2_pts.append(segments[i].global_position)
 		
 		print(pts)
-		print(self.worm.global_position)
-		print()
-		print(worm1_pts)
-		print(worm2_pts)
-		
 		var worms = get_tree().get_nodes_in_group("worms")
 		self.queue_free()
 		camera.worms.erase(self.worm)
-		#print(worm1_pts)
-		#print(worm2_pts)
-		
-		if worm1_pts.size() > 1:
-			spawn_worm(worm1_pts)
-		#if worm2_pts.size() > 1:
-			#spawn_worm(worm2_pts)
-		#var new_worm_2 = WORM_SCENE.instantiate()
-		#new_worm_2.worm_id = num_worms + 1
-		#new_worm_2.worm_length = worm2_pts.size()
-		#new_worm_2.spawn_points = worm2_pts
-		#get_parent().add_child(new_worm_1)
-		
-		
+		spawn_worm(pts)
+
+
 func spawn_worm(pts):
 	var new_worm = WORM_SCENE.instantiate()
 	var num_worms = get_tree().get_nodes_in_group("worms").size()
 	new_worm.worm_id = num_worms
-	new_worm.get_tree().get("Body").global_position = pts[0]
+	#new_worm.worm.global_position = pts[0]
 	new_worm.worm_length = pts.size()
 	new_worm.spawn_points = pts
 	get_parent().add_child(new_worm)
