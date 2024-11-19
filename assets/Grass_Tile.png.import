@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4apjiddnuk65"
-path.s3tc="res://.godot/imported/guillotine_guillotine_Frame_Texture.png-5cf2431c0378b8e8f578391dca1fd6dc.s3tc.ctex"
+uid="uid://b6t875vqcy5kn"
+path="res://.godot/imported/Grass_Tile.png-69ab54306efcb360080428f8a5a99206.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/guillotine_guillotine_Frame_Texture.png"
-dest_files=["res://.godot/imported/guillotine_guillotine_Frame_Texture.png-5cf2431c0378b8e8f578391dca1fd6dc.s3tc.ctex"]
+source_file="res://assets/Grass_Tile.png"
+dest_files=["res://.godot/imported/Grass_Tile.png-69ab54306efcb360080428f8a5a99206.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

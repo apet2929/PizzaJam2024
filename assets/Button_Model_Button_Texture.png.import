@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4apjiddnuk65"
-path.s3tc="res://.godot/imported/guillotine_guillotine_Frame_Texture.png-5cf2431c0378b8e8f578391dca1fd6dc.s3tc.ctex"
+uid="uid://ckqk1tiux1t17"
+path.s3tc="res://.godot/imported/Button_Model_Button_Texture.png-074be5213872f095f1c5fd517ab70111.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "f93e33b4268df36efd3e3ba880db9c9e"
+}
 
 [deps]
 
-source_file="res://assets/guillotine_guillotine_Frame_Texture.png"
-dest_files=["res://.godot/imported/guillotine_guillotine_Frame_Texture.png-5cf2431c0378b8e8f578391dca1fd6dc.s3tc.ctex"]
+source_file="res://assets/Button_Model_Button_Texture.png"
+dest_files=["res://.godot/imported/Button_Model_Button_Texture.png-074be5213872f095f1c5fd517ab70111.s3tc.ctex"]
 
 [params]
 

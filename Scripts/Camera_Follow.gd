@@ -1,6 +1,6 @@
 extends Camera3D
 
-const DISTANCE_OFFSET = 4.0
+const DISTANCE_OFFSET = 2.0
 const FOLLOW_SPEED = 1.1
 var worms = []
 
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	if len(worms) > 1:
 		distance = abs((worms[0].global_position.x - worms[1].global_position.x) + (worms[0].global_position.z - worms[1].global_position.z))
 	else:
-		distance = 5.0
+		distance = 15.0
 	# Update the camera's position to follow the worms smoothly
 	var target_position = middle_point + Vector3(DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance)
 
