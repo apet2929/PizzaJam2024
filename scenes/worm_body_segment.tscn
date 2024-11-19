@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cud1xmc3mx8ag"]
+[gd_scene load_steps=5 format=3 uid="uid://cud1xmc3mx8ag"]
 
 [ext_resource type="Script" path="res://Scripts/worm_body_segment.gd" id="1_3sfep"]
+[ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_8x4a5"]
+[ext_resource type="Material" uid="uid://d0nkfn05hauam" path="res://assets/Worm_Body.tres" id="3_q1mi8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0djs4"]
 radius = 0.45
@@ -12,3 +14,10 @@ script = ExtResource("1_3sfep")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("SphereShape3D_0djs4")
+
+[node name="Sphere" type="CSGSphere3D" parent="."]
+material_override = ExtResource("2_8x4a5")
+radius = 0.51
+radial_segments = 16
+rings = 12
+material = ExtResource("3_q1mi8")

@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://djg47v68prgjm"]
+[gd_scene load_steps=7 format=3 uid="uid://djg47v68prgjm"]
 
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="1_eodnv"]
+[ext_resource type="Script" path="res://Scripts/demos/new_worm_demo.gd" id="1_xvxd3"]
 [ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="2_8qhyh"]
 [ext_resource type="Texture2D" uid="uid://bd5kw8l0w36o5" path="res://assets/grid.jpg" id="3_v27iu"]
 
 [sub_resource type="Environment" id="Environment_yn4nj"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 2.92
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kpoj"]
 albedo_texture = ExtResource("3_v27iu")
@@ -14,9 +18,10 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [node name="NewWormDemo" type="Node3D"]
+script = ExtResource("1_xvxd3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.92722, -0.356074, 0.116078, 0.0498782, 0.424587, 0.904012, -0.371181, -0.832429, 0.411446, 1.50122, 4.96533, 2.3247)
+transform = Transform3D(0.130494, -0.955386, 0.264968, -0.031169, 0.263168, 0.964246, -0.990959, -0.134087, 0.00456347, 4.82992, 13.701, 2.3247)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yn4nj")
@@ -26,8 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 light_energy = 5.0
 
 [node name="NewWorm" parent="." instance=ExtResource("1_eodnv")]
-worm_length = 4
-spawn_points = [Vector3(-1, 0, 0), Vector3(-2, 0, 0), Vector3(-2, 0, 1)]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49974, 0, 0)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03559, 0)

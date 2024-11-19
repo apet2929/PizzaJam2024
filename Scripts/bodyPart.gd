@@ -29,7 +29,6 @@ func move_to(pos):
 	next_pos = pos
 	can_move = true
 
-
 # Updating the connection between the worm and the Worm_body path
 func update_worm_body():
 	# This gets the body part's index in the worm_body path
