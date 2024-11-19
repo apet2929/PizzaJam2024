@@ -47,7 +47,11 @@ func _process(delta: float) -> void:
 	self.velocity.y = GRAVITY
 	move()
 	move_and_slide()
+<<<<<<< Updated upstream
 	worm_body.curve.set_point_position(0, self.position)
+=======
+	self.worm_body.curve.set_point_position(0, self.position)
+>>>>>>> Stashed changes
 	
 func move() -> void:
 	if move_ready:

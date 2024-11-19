@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="PizzaJam2024"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/Menu/Menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -44,5 +48,6 @@ common/physics_ticks_per_second=100
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

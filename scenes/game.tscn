@@ -108,5 +108,4 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("9_648v7")
 
-[connection signal="button_pressed" from="ButtonSmall" to="Camera3D" method="_on_button_small_button_pressed"]
 [connection signal="body_entered" from="PressurePad" to="Worm" method="_on_pressure_pad_body_entered"]
