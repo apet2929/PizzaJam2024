@@ -10,7 +10,8 @@ var curve_index
 
 # ----! WormBodySegment does not reference its parents at all for simplicity sake !---- #
 # it doesn't even know what position within the worm it is! 
-func update(delta: float) -> void:
+# returns: whether the node snapped into place
+func update(delta: float):
 	if curve_index == null:
 		push_error("segment " + str(self) + " at " + str(self.position) + " has no curve index!")
 
@@ -20,6 +21,7 @@ func update(delta: float) -> void:
 			next_pos = null
 			can_move = false
 			snap_to_grid(self)
+			return true 
 
 func go_to_position(main_node, target_pos, delta):
 	set_global_position(lerp(self.global_position, self.next_pos, SPEED * delta))
@@ -32,4 +34,3 @@ func snap_to_grid(node):
 	print("snapping")
 	self.global_position.x = round(self.global_position.x)
 	self.global_position.z = round(self.global_position.z)
-	self.current_pos = Vector3(self.global_position)

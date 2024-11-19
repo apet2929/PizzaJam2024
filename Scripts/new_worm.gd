@@ -81,28 +81,23 @@ func _process(delta: float) -> void:
 	
 	if move_ready:
 		handle_movement(dir)
-	
-	var old_pos = Vector3(self.global_position)
-	move_and_slide()
-	var diff = self.global_position - old_pos
+
+	var should_snap = get_head().update(delta)
+	for i in range(1, segments.size()):
+		segments[i].update(delta)
+		
+	if should_snap:
+		snap_to_grid()
+	var head_pos = Vector3(get_head().position)
 
 	for segment in segments:
-		if segment != get_head():
-			segment.global_position -= diff
-		segment.update(delta)
-		
-	var head_pos = Vector3(get_head().position)
-	if head_pos.x != 0 or head_pos.z != 0:
-		push_error("Head not centered! Head at: " + str(head_pos))
-	self.position += head_pos
-	for segment in segments:
-		segment.position -= head_pos
 		curve.set_point_position(segments.find(segment), segment.position)
 
 func handle_movement(dir):
 	if wall_check(dir):
 		return
 
+	# when the head snaps to the grid, update the snap the worm as a whole
 	# Checking if: Input is pressed, Not trying to move diagonally, Isn't trying to move back inside the worm
 	var no_dir = dir == Vector2(0,0)
 	var diagonal = (dir.x != 0) and (dir.y != 0)
@@ -116,26 +111,30 @@ func handle_movement(dir):
 		await get_tree().create_timer(MOVE_TIMER).timeout
 		# Snapping the Worm's head to the grid
 		self.velocity = Vector3(0,self.velocity.y,0)
-		snap_to_grid()
+		#snap_to_grid() TODO: Reenable?
+		# snap after timer, or snap once you reach the cell?
 		
 		last_dir = dir # Saving the last movement so the player wouldn't be able to go back
 		move_ready = true
 
 func start_move(direction):
-	print("foo bar")
-	self.velocity = Vector3(direction.x, 0, direction.y) * PUSH_FORCE
-	#
-	## Going through all of the Worm's body parts and telling them to move
-	var last_body_pos = self.global_position
-	## Head always remains at (0,0,0)
-	for i in range(1, segments.size()): # BUG: Depends on order of nodes within segments (fix if causing issues)
+	# Going through all of the Worm's body parts and telling them to move
+	var last_body_pos = self.global_position + Vector3(direction.x, 0, direction.y)
+	for i in range(segments.size()): # BUG: Depends on order of nodes within segments (fix if causing issues)
 		var body = segments[i]
 		body.move_to(last_body_pos)
-		last_body_pos = body.global_position
+		last_body_pos = self.global_position + body.position
+	print("tail moving to: " + str(get_tail().next_pos))
 
 func snap_to_grid():
-	self.global_position.x = round(self.global_position.x)
-	self.global_position.z = round(self.global_position.z)
+	var head = get_head()
+	var old = Vector3(self.global_position)
+	self.global_position.x = head.global_position.x
+	self.global_position.z = head.global_position.z
+	var diff = self.global_position - old
+	head.position = Vector3(0,0,0)
+	for i in range(1, segments.size()):
+		segments[i].position -= diff
 
 func wall_check(dir):
 	# Returns TRUE if raycast is colliding

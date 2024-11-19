@@ -52,10 +52,10 @@ func _process(delta: float) -> void:
 func move() -> void:
 	if move_ready:
 		var dir = Input.get_vector("forward", "backward", "right", "left")
-		
+
 		if not wall_check(dir):
 			return
-		
+
 		# Checking if: Input is pressed, Not trying to move diagonally, Isn't trying to move back inside the worm
 		if dir != Vector2(0,0) and abs(dir.x) != abs(dir.y) and dir != -last_dir:
 			start_move(dir)

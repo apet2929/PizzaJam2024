@@ -14,14 +14,16 @@ func _process(delta: float) -> void:
 	#$NewWorm.start_move(dir)
 	pass
 	
-	#if Input.is_action_just_released("forward"):
+	if Input.is_action_just_released("ui_accept"):
 		#var dir = Vector2(1,0)
 		#$NewWorm.handle_movement(dir)
 		#print($NewWorm.velocity)
 		#for segment in $NewWorm.segments:
 			#print(segment.next_pos)
 		#$NewWorm.add_segment_to_tail(Vector3(0,0,1))
-		#$NewWorm.remove_segment($NewWorm.get_tail())
+		$NewWorm.remove_segment($NewWorm.get_tail())
+	if Input.is_action_just_released("ui_text_delete"):
+		$NewWorm.add_segment_to_tail(Vector3(0,0,1))
 		#const WORM_SCENE = preload("res://scenes/new_worm.tscn")
 		#var new_worm = WORM_SCENE.instantiate()
 		#new_worm.name = "NewWorm2"
