@@ -5,7 +5,7 @@ var part_on_pad = 0
 var part_left_pad = 0
 @export var gate : Node3D
 
-const worm_timer = 0.25 # The time it takes for a worm to move
+const worm_timer = 0.0 # The time it takes for a worm to move
 var counter = 0.0
 
 func _process(delta: float) -> void:
