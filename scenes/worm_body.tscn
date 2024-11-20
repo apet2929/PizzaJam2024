@@ -6,7 +6,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_awdf2"]
 height = 0.929189
 
-[node name="Worm" type="CharacterBody3D"]
+[node name="Worm" type="CharacterBody3D" groups=["body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486, 0)
 script = ExtResource("1_a852l")
 

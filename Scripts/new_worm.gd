@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 
 func _on_button_small_body_entered(body: Node3D) -> void:
 	if body == self:
-		self.split()
+		self.split(3)
 
 func is_worm(body: Node3D) -> bool:
 	match body.get_script():
@@ -103,8 +103,7 @@ func handle_movement(dir):
 	var no_dir = dir == Vector2(0,0)
 	var diagonal = (dir.x != 0) and (dir.y != 0)
 	var backwards = dir == -last_dir
-	if dir.x > 0:
-		print("foo")
+	
 	if !(no_dir or diagonal or backwards):
 		start_move(dir)
 		move_ready = false
@@ -118,7 +117,8 @@ func handle_movement(dir):
 		last_dir = dir # Saving the last movement so the player wouldn't be able to go back
 		move_ready = true
 
-func split():
+# Cut_from_head - the amount of body segments to cut (from the head)
+func split(cut_from_head):
 	var sp = {} # positions of each segment relative to head
 	var spg = {}
 	# segment.position isn't valida fter its removed from the tree (no parent to compare to)
@@ -127,7 +127,7 @@ func split():
 		sp[segment] = Vector3(segment.position)
 		spg[segment] = Vector3(segment.global_position)
 	var cut_off = []
-	for i in range(floor(segments.size() / 2.0), segments.size()):
+	for i in range(max(cut_from_head, 1), segments.size()):
 		var seg = self.remove_segment(self.get_tail())
 		cut_off.append(seg)
 	
@@ -158,7 +158,6 @@ func start_move(direction):
 		var body = segments[i]
 		body.move_to(last_body_pos)
 		last_body_pos = self.global_position + body.position
-	print("tail moving to: " + str(get_tail().next_pos))
 
 func snap_to_grid():
 	var head = get_head()
@@ -226,9 +225,15 @@ func set_endcaps():
 	# makes end-cap spheres visible for endpoints, and invisible for the rest
 	for segment in segments:
 		segment.get_node("Sphere").visible = false
+		segment.get_child(0).set_collision_layer_value(0, false)
 		
-	get_head().get_node("Sphere").visible = true
-	get_tail().get_node("Sphere").visible = true
+	var head = get_head().get_node("Sphere")
+	head.visible = true
+	head.set_collision_layer_value(0, true)
+	
+	var tail = get_tail().get_node("Sphere")
+	tail.visible = true
+	tail.set_collision_layer_value(0, true)
 
 
 func print_curve():
@@ -236,4 +241,3 @@ func print_curve():
 	for i in range(0, self.curve.point_count):
 		s += str(self.curve.get_point_position(i)) + ", "
 	s += "]"
-	print(s)

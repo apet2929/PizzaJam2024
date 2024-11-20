@@ -11,4 +11,6 @@ grow_amount = 0.15
 
 [resource]
 next_pass = SubResource("StandardMaterial3D_igen0")
+diffuse_mode = 3
 albedo_texture = ExtResource("1_a76sh")
+roughness = 0.06

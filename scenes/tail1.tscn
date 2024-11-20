@@ -10,7 +10,7 @@ radius = 0.45
 [node name="Tail" type="Node3D"]
 script = ExtResource("1_gia24")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["body"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("SphereShape3D_umux1")

@@ -98,7 +98,6 @@ func drop_guillotine():
 	$"../Guillotine".undrop()
 
 func _on_pressure_pad_body_entered(body: Node3D) -> void:
-	print("foo")
 	if is_worm(body):
 		var worm1_pts = [self.worm.global_position]
 		var worm2_pts = []
@@ -111,7 +110,6 @@ func _on_pressure_pad_body_entered(body: Node3D) -> void:
 			else:
 				worm2_pts.append(segments[i].global_position)
 		
-		print(pts)
 		var worms = get_tree().get_nodes_in_group("worms")
 		self.queue_free()
 		camera.worms.erase(self.worm)

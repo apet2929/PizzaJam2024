@@ -7,7 +7,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ejlxe"]
 
-[node name="NewWorm" type="CharacterBody3D"]
+[node name="NewWorm" type="CharacterBody3D" groups=["body", "head"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ecb6o")
@@ -17,6 +17,8 @@ curve = SubResource("Curve3D_cqnwp")
 
 [node name="Worm_GFX" type="CSGPolygon3D" parent="."]
 material_override = ExtResource("2_ru6pc")
+collision_layer = 8
+collision_mask = 8
 mode = 2
 path_node = NodePath("../Curve")
 path_interval_type = 0

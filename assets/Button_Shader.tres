@@ -11,4 +11,8 @@ grow_amount = 0.15
 
 [resource]
 next_pass = SubResource("StandardMaterial3D_myv1s")
+diffuse_mode = 3
 albedo_texture = ExtResource("1_0kcuq")
+metallic = 0.27
+metallic_specular = 1.0
+roughness = 0.35

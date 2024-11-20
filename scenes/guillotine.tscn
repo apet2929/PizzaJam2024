@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://br1c6x1rx1cy8"]
+[gd_scene load_steps=19 format=4 uid="uid://br1c6x1rx1cy8"]
 
 [ext_resource type="Script" path="res://Scripts/guillotine.gd" id="1_ldeu0"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="2_7kxm5"]
@@ -94,9 +94,22 @@ shadow_mesh = SubResource("ArrayMesh_gn38e")
 
 [sub_resource type="Animation" id="Animation_yr8mu"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blade:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 8.934, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_sd7tg"]
 resource_name = "drop"
+length = 0.4
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -116,10 +129,15 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckcn5"]
-size = Vector3(2.73465, 6.33545, 6.46411)
+size = Vector3(0.978899, 6.33545, 6.46411)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vt3hf"]
+size = Vector3(0.111084, 5.50537, 6.03027)
 
 [node name="Guillotine" type="Area3D"]
 transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_ldeu0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -137,7 +155,7 @@ skeleton = NodePath("")
 [node name="BladeCollision" type="Area3D" parent="Model/Blade"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Blade/BladeCollision"]
-transform = Transform3D(0.999969, 0, -3.97904e-13, 0, 0.999972, 0, -8.88178e-16, 0, 0.999972, 0.158381, -1.27903, 0.0746418)
+transform = Transform3D(0.99996, 0, -3.97904e-13, 0, 0.999963, 0, -6.66134e-16, 0, 0.999963, 0.158381, -1.27903, 0.0746418)
 shape = SubResource("BoxShape3D_3i75u")
 
 [node name="Frame" type="MeshInstance3D" parent="Model"]
@@ -149,11 +167,23 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_35h82")
 }
+speed_scale = 5.0
 
 [node name="DroppedCollision" type="StaticBody3D" parent="."]
 collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroppedCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00376888, 2.66772, 0.00109867)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00556643, 2.66772, 0.00109867)
 shape = SubResource("BoxShape3D_ckcn5")
+
+[node name="WormCheck" type="Area3D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WormCheck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213623, 2.50252, -0.116699)
+shape = SubResource("BoxShape3D_vt3hf")
+
+[connection signal="body_entered" from="WormCheck" to="." method="_on_worm_check_body_entered"]
+[connection signal="body_exited" from="WormCheck" to="." method="_on_worm_check_body_exited"]

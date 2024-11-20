@@ -1,33 +1,70 @@
 extends Camera3D
 
-const DISTANCE_OFFSET = 2.0
-const FOLLOW_SPEED = 1.1
-var worms = []
+const DISTANCE_OFFSET : float = 8.0
+const FOLLOW_SPEED : float = 0.7
+const MIN_CAMERA_SIZE : float = 10.0
+const CAMERA_DISTANCE : float = 50.0
+const CAMERA_HEIGHT : float = 20.0
+const Y_CHANGE = -30
 
+# Array to hold the player nodes (worms)
+var worms : Array = []
 
-@onready var WORM = preload("res://scenes/worm.tscn")
-# Helper function to calculate the midpoint of all worms
-func get_midpoint() -> Vector3:
-	var total_position = Vector3()
-	for worm in worms:
-		total_position += worm.get_head().global_position
-	return total_position / worms.size()
-
-func _process(delta: float) -> void:
-	if worms.size() == 0:
-		return  # Avoid division by zero if no worms are available
+func _ready():
+	# Check if worms are empty and if so, fetch them from the group "worms"
+	if len(worms) <= 0:
+		worms = get_tree().get_nodes_in_group("worms")
 	
-	# Calculate the midpoint of all worms
-	var middle_point = get_midpoint()
-	var distance = 0.0
-	if len(worms) > 1:
-		distance = abs((worms[0].global_position.x - worms[1].global_position.x) + (worms[0].global_position.z - worms[1].global_position.z))
-	else:
-		distance = 15.0
-	# Update the camera's position to follow the worms smoothly
-	var target_position = middle_point + Vector3(DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance, DISTANCE_OFFSET + distance)
+	# Ensure the camera is adjusted to fit all worms
+	update_camera_view(0.0)
 
-	# Lerp the camera position smoothly towards the target position
-	self.position.x = lerp(self.position.x, target_position.x, FOLLOW_SPEED * delta)
-	self.position.y = lerp(self.position.y, target_position.y, FOLLOW_SPEED * delta)
-	self.position.z = lerp(self.position.z, target_position.z, FOLLOW_SPEED * delta)
+func _process(delta):
+	# Ensure the camera keeps following the group of worms dynamically
+	if len(worms) > 0:
+		update_camera_view(delta)
+		follow_worms(delta)
+
+func update_camera_view(delta):
+	if len(worms) <= 0:
+		return
+	
+	# Initialize min and max positions based on the first worm's position
+	var min_pos = worms[0].global_transform.origin
+	var max_pos = min_pos
+	
+	# Loop through the worms and find the bounding box that fits all worms
+	for worm in worms:
+		var worm_pos = worm.global_transform.origin
+		
+		# Manually calculate min and max for each component
+		min_pos.x = min(min_pos.x, worm_pos.x)
+		min_pos.y = min(min_pos.y, worm_pos.y)
+		min_pos.z = min(min_pos.z, worm_pos.z)
+		
+		max_pos.x = max(max_pos.x, worm_pos.x)
+		max_pos.y = max(max_pos.y, worm_pos.y)
+		max_pos.z = max(max_pos.z, worm_pos.z)
+	
+	# Calculate the center of the bounding box
+	var center = (min_pos + max_pos) / 2
+	
+	# Ensure the camera's y position is at a fixed height above the worms
+	self.position.x = lerp(self.position.x, center.x - Y_CHANGE, FOLLOW_SPEED * delta)
+	self.position.y = lerp(self.position.y, CAMERA_HEIGHT, FOLLOW_SPEED * delta)
+	self.position.z = lerp(self.position.z, center.z - Y_CHANGE, FOLLOW_SPEED * delta)
+	
+	# Calculate the size needed to fit all the worms in the camera's view
+	var size = max(max_pos.x - min_pos.x, max_pos.z - min_pos.z) / 1.5 + DISTANCE_OFFSET
+	
+	self.size = lerp(self.size, max(size, MIN_CAMERA_SIZE), FOLLOW_SPEED * delta)
+
+func follow_worms(delta):
+	# Calculate the center position of all worms
+	var average_pos = Vector3.ZERO
+	for worm in worms:
+		average_pos += worm.global_transform.origin
+	average_pos /= len(worms)
+	
+	# Smoothly move the camera towards the average position of the worms
+	var target_position = Vector3(average_pos.x, CAMERA_HEIGHT, average_pos.z)
+	global_transform.origin = global_transform.origin.lerp(target_position, FOLLOW_SPEED * delta)

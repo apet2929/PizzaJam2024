@@ -4,16 +4,23 @@
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_8x4a5"]
 [ext_resource type="Material" uid="uid://d0nkfn05hauam" path="res://assets/Worm_Body.tres" id="3_q1mi8"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0djs4"]
-radius = 0.45
+[sub_resource type="SphereShape3D" id="SphereShape3D_0m6wd"]
+radius = 0.4
 
 [node name="WormBodySegment" type="Node3D"]
 script = ExtResource("1_3sfep")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["body"]]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("SphereShape3D_0djs4")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_0m6wd")
 
 [node name="Sphere" type="CSGSphere3D" parent="."]
 material_override = ExtResource("2_8x4a5")

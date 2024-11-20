@@ -1,22 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqit8xb7wfk0i"]
+[gd_scene load_steps=13 format=3 uid="uid://dqit8xb7wfk0i"]
 
-[ext_resource type="Texture2D" uid="uid://b6t875vqcy5kn" path="res://assets/Grass_Tile.png" id="1_p6j35"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="1_d3fv7"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_d7pap"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_q77ka"]
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="6_3i8dn"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="7_34d5a"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="7_tygho"]
-[ext_resource type="Script" path="res://Scripts/pressure_pad.gd" id="8_wofyd"]
 [ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="9_our32"]
 [ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="9_qy50k"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rxev"]
-albedo_color = Color(0.695503, 0.695503, 0.695503, 1)
-albedo_texture = ExtResource("1_p6j35")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_offset = Vector3(0.25, 0, 0.25)
-uv1_triplanar = true
-uv1_world_triplanar = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8libr"]
 
@@ -26,25 +17,30 @@ sky_material = SubResource("ProceduralSkyMaterial_8libr")
 [sub_resource type="Environment" id="Environment_s4d8a"]
 background_mode = 2
 sky = SubResource("Sky_oi8rl")
+ambient_light_color = Color(0.92549, 0.490196, 0.270588, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.72
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y3sje"]
 
 [node name="Game" type="Node3D"]
 
 [node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247235, -0.5, 0.0053215)
 layers = 2
 use_collision = true
 collision_layer = 2
 collision_mask = 2
 size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_4rxev")
+material = ExtResource("1_d3fv7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s4d8a")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+light_color = Color(1, 0.909804, 0.454902, 1)
 shadow_enabled = true
 
 [node name="walls" type="CSGBox3D" parent="."]
@@ -86,6 +82,7 @@ transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.
 projection = 1
 fov = 35.0
 size = 11.09
+far = 350.21
 script = ExtResource("4_q77ka")
 
 [node name="Guillotine" parent="." instance=ExtResource("6_3i8dn")]
@@ -94,12 +91,6 @@ transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795
 [node name="ButtonSmall" parent="." instance=ExtResource("7_34d5a")]
 transform = Transform3D(-1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0, 0.25, -0.481159, 0.597803, -1.01251)
 button_id = "2"
-
-[node name="PressurePad" parent="." instance=ExtResource("7_tygho")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.99848, 2.38419e-07, 2.97872)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("8_wofyd")
 
 [node name="DebugLayer" type="CanvasLayer" parent="."]
 
@@ -111,5 +102,9 @@ offset_bottom = 40.0
 script = ExtResource("9_qy50k")
 
 [node name="SceneTransition" parent="." instance=ExtResource("9_our32")]
+
+[node name="PressurePad" parent="." node_paths=PackedStringArray("gate") instance=ExtResource("7_tygho")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3, 0, 3)
+gate = NodePath("../Guillotine")
 
 [connection signal="body_entered" from="ButtonSmall" to="Worm" method="_on_button_small_body_entered"]
