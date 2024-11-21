@@ -47,11 +47,150 @@ light_energy = 0.5
 shadow_enabled = true
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -15.928, 0.083, -8.527)
+transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -16.928, 0.083, -8.527)
 text = "LEVEL SELECT"
 font = ExtResource("3_w4b27")
 
 [node name="3d_btn" parent="." instance=ExtResource("4_34kb6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
+
+[node name="LVL1" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+scene_path = "res://scenes/Levels/Level1.tscn"
+
+[node name="gfx" parent="LVL1" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL1" index="2"]
+text = "1"
+
+[node name="Select_Arrow" parent="LVL1" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL2" parent="." instance=ExtResource("4_34kb6")]
+scene_path = "res://scenes/Levels/Level2.tscn"
+
+[node name="gfx" parent="LVL2" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL2" index="2"]
+text = "2"
+
+[node name="Select_Arrow" parent="LVL2" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL3" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL3" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL3" index="2"]
+text = "3"
+
+[node name="Select_Arrow" parent="LVL3" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL4" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -12)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL4" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL4" index="2"]
+text = "4"
+
+[node name="Select_Arrow" parent="LVL4" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL5" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -15)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL5" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL5" index="2"]
+text = "5"
+
+[node name="Select_Arrow" parent="LVL5" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL6" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -15)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL6" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL6" index="2"]
+text = "6"
+
+[node name="Select_Arrow" parent="LVL6" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL7" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL7" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL7" index="2"]
+text = "7"
+
+[node name="Select_Arrow" parent="LVL7" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL8" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -12)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL8" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL8" index="2"]
+text = "8"
+
+[node name="Select_Arrow" parent="LVL8" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL9" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL9" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL9" index="2"]
+text = "9"
+
+[node name="Select_Arrow" parent="LVL9" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="LVL10" parent="." instance=ExtResource("4_34kb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)
+scene_path = "res://scenes/Levels/Level3.tscn"
+
+[node name="gfx" parent="LVL10" index="1"]
+size = Vector3(1, 1, 1)
+
+[node name="Label3D" parent="LVL10" index="2"]
+text = "10"
+
+[node name="Select_Arrow" parent="LVL10" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
 
 [editable path="SceneTransition"]
+[editable path="LVL1"]
+[editable path="LVL2"]
+[editable path="LVL3"]
+[editable path="LVL4"]
+[editable path="LVL5"]
+[editable path="LVL6"]
+[editable path="LVL7"]
+[editable path="LVL8"]
+[editable path="LVL9"]
+[editable path="LVL10"]

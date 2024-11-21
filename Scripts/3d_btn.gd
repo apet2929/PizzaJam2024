@@ -3,6 +3,7 @@ extends Node
 @export var scene_path = "res://"
 @onready var scene_transition: CanvasLayer = $"../SceneTransition"
 @onready var select_arrow: Node3D = $Select_Arrow
+@onready var gfx: CSGBox3D = $gfx
 
 @export var quit_btn = false
 var on_btn = false
