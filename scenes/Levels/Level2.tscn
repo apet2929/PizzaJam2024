@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="7_11ngi"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_a2ngt"]
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="9_xpsm2"]
+[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="12_2qchv"]
 [ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="12_63q33"]
 
 [sub_resource type="Environment" id="Environment_4m1be"]
@@ -144,6 +145,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_63q33")
 metadata/_edit_use_anchors_ = true
+
+[node name="SceneTransition" parent="." instance=ExtResource("12_2qchv")]
 
 [connection signal="button_pressed" from="ButtonSmall" to="." method="_on_button_small_button_pressed"]
 [connection signal="button_unpressed" from="ButtonSmall" to="." method="_on_button_small_button_unpressed"]
