@@ -1,31 +1,30 @@
 Setting:
 - garage? yard? 
 - villain?: human
-    - hangs up bugs on the wall
-    - start of each level: worm gets dropped into the level by a hand
+	- hangs up bugs on the wall
+	- start of each level: worm gets dropped into the level by a hand
 - end of each level:
-    - a flag
-    - a tunnel
+	- a flag
+	- a tunnel
 - elements of each level:
-    - goal: flag/tunnel
-    - salt (kills you)
-    - guillotine (kills you if you are <= 2 segments long)
-    - walls
-        - cardboard
-    - fences
-        - sticks
-    - movable boxes
-        - sticks
-    - button
-        - toggle
-            - turn off after timer
-            - never turn off
-        - hold
-    - lettuce
+	- goal: flag/tunnel
+	- salt (kills you)
+	- guillotine (kills you if you are <= 2 segments long)
+	- walls
+		- cardboard
+	- fences
+		- sticks
+	- movable boxes
+		- sticks
+	- button
+		- toggle
+			- turn off after timer
+			- never turn off
+		- hold
+	- lettuce
 - music
-    - tone: 
-        - fun, bubbly 
+	- tone: 
+		- fun, bubbly 
 - color design:
-    - warm/cold
-    - saturated/desaturated
-
+	- warm/cold
+	- saturated/desaturated

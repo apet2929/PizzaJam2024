@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c2apv7vg2rtcy" path="res://scenes/lettuce.tscn" id="7_xoi07"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_bik0k"]
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_a200x"]
-[ext_resource type="PackedScene" path="res://scenes/finish.tscn" id="10_kcl62"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="10_kcl62"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8wp2"]
 albedo_texture = ExtResource("2_1pc33")

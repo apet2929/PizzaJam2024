@@ -18,6 +18,12 @@ adjustment_saturation = 1.6
 
 [node name="SceneTransition" parent="." instance=ExtResource("1_j11o8")]
 
+[node name="Top" parent="SceneTransition" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom" parent="SceneTransition" index="2"]
+metadata/_edit_use_anchors_ = true
+
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1456, -33.5474, -13.6449)
 layers = 2

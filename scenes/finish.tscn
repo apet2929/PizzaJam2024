@@ -1,21 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bce6atjqp6kof"]
+[gd_scene load_steps=5 format=3 uid="uid://bce6atjqp6kof"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkkq0"]
-albedo_color = Color(0.0485845, 0.0261048, 0, 1)
+[ext_resource type="Script" path="res://Scripts/finish.gd" id="1_rgn7n"]
+[ext_resource type="PackedScene" uid="uid://cltbeb0atxauy" path="res://assets/finish_tunnel.glb" id="2_4jui5"]
+[ext_resource type="PackedScene" uid="uid://brbqwrqwjwcc5" path="res://assets/finish_flag.glb" id="3_74ajk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gboe1"]
 size = Vector3(0.677734, 1.12506, 0.390625)
 
 [node name="Finish" type="Area3D"]
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116335, -0.0508966, 0)
-polygon = PackedVector2Array(-0.0457449, 0.706789, 0.396055, 1.23634, 0.652266, 1.23757, 1.08125, 0.721331, 0.968552, 0.0560398, 0.117851, 0.0524042)
-depth = 0.45
-material = SubResource("StandardMaterial3D_lkkq0")
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_rgn7n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.377587, 0.619237, -0.211845)
 shape = SubResource("BoxShape3D_gboe1")
+
+[node name="finish_tunnel" parent="." instance=ExtResource("2_4jui5")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+visible = false
+
+[node name="finish_flag" parent="." instance=ExtResource("3_74ajk")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

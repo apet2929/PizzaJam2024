@@ -3,15 +3,20 @@ extends Node3D
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 # Contains all the setup/interaction logic specific to this level
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$SceneTransition.load_in()
+	EventBus.connect("level_finished", next_level)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	
+	if Input.is_action_just_pressed("retry"):
+		restart_level()
+
+func next_level():
+	$SceneTransition.load_out("res://scenes/Levels/Level3.tscn")
+
+func restart_level():
+	get_tree().change_scene_to_file(self.scene_file_path)
+
 func is_worm(body):
 	return body.get_script() == WORM_SCRIPT
 
@@ -34,3 +39,4 @@ func _on_pressure_pad_pressed(pressure_pad, body) -> void:
 func _on_pressure_pad_unpressed(pressure_pad, body) -> void:
 	if pressure_pad == $PressurePad:
 		$Guillotine.undrop()
+		

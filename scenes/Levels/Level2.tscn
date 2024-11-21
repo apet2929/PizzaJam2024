@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dieechvi07884"]
+[gd_scene load_steps=14 format=3 uid="uid://dieechvi07884"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_fjm78"]
+[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="2_7btwr"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_qv3cw"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_172du"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_yirqo"]
 [ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="6_4rheu"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="6_dhba3"]
-[ext_resource type="PackedScene" path="res://scenes/finish.tscn" id="7_3fl6a"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="7_3fl6a"]
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="7_11ngi"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_a2ngt"]
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="9_xpsm2"]
@@ -24,10 +25,10 @@ adjustment_saturation = 1.6
 [node name="LevelBase" type="Node3D"]
 script = ExtResource("1_fjm78")
 
-[node name="Logic" type="Node3D" parent="."]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4m1be")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_7btwr")]
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68994, -33.5474, -9.14342)
@@ -117,9 +118,8 @@ use_collision = true
 size = Vector3(2, 0.499512, 1)
 
 [node name="Finish" parent="." instance=ExtResource("7_3fl6a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.46695, 4.76837e-07, -5.483)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.98176, 0.321328, -5.00568)
 collision_layer = 8
-collision_mask = 2
 
 [node name="Fence" parent="." instance=ExtResource("9_xpsm2")]
 transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -4.40414, 0.481618, -4.9695)
@@ -147,6 +147,5 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="button_pressed" from="ButtonSmall" to="." method="_on_button_small_button_pressed"]
 [connection signal="button_unpressed" from="ButtonSmall" to="." method="_on_button_small_button_unpressed"]
-[connection signal="body_entered" from="PressurePad" to="Logic" method="_on_pressure_pad_body_entered"]
 [connection signal="pressed" from="PressurePad" to="." method="_on_pressure_pad_pressed"]
 [connection signal="unpressed" from="PressurePad" to="." method="_on_pressure_pad_unpressed"]
