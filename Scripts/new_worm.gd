@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Node3D
 
 const worm_gfx_polygon_points = [
 		Vector2(0.5, 0.0),
@@ -28,8 +28,6 @@ const WORM_BODY_SEGMENT_SCENE = preload("res://scenes/worm_body_segment.tscn")
 const WORM_SCENE = preload("res://scenes/new_worm.tscn")
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 
-
-@export var worm_length = 4
 @export var spawn_points = [ # relative to head position
 	Vector3(0, 0, 0),
 	Vector3(-1, 0, 0),
@@ -51,9 +49,12 @@ var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
 
 func _ready() -> void:
+	init_signals()
+	
 	if has_node("../GameCamera"):
 		var camera = get_node("../GameCamera")
 		camera.worms.append(self)
+	
 	move_ready = true
 	$Curve.curve = Curve3D.new()
 	curve = $Curve.curve
@@ -81,6 +82,8 @@ func _process(delta: float) -> void:
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
 		
+func init_signals():
+	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
 
 func _on_button_small_body_entered(body: Node3D) -> void:
 	if body == self:
@@ -131,9 +134,11 @@ func split(cut_from_head):
 		var seg = self.remove_segment(self.get_tail())
 		cut_off.append(seg)
 	
+	print("cut off: ", str(cut_off))
+	print("remaining: ", str(self.segments))
+	if self.segments.size() < 2:
+		self.kill()
 	if cut_off.size() < 2:
-		if self.segments.size() < 2:
-			self.kill()
 		return
 	
 	cut_off.reverse()
@@ -147,8 +152,19 @@ func split(cut_from_head):
 	new_worm.spawn_points = positions
 	get_parent().add_child(new_worm)
 	new_worm.global_position = spg[new_head]
-	
+
+func split_at(segment: Node3D):
+	if(segments.find(segment) == -1):
+		push_error("Segment not in worm! Self=" + str(self) + " Segment = " + str(segment) 
+			+ " scene path = " + segment.scene_file_path)
+	var index = segments.find(segment)
+	print("splitting at index=" + str(index))
+	split(index)
+
 func kill():
+	if has_node("../GameCamera"):
+		var camera = get_node("../GameCamera")
+		camera.worms.erase(self)
 	self.queue_free()
 
 func start_move(direction):
@@ -168,6 +184,25 @@ func snap_to_grid():
 	head.position = Vector3(0,0,0)
 	for i in range(1, segments.size()):
 		segments[i].position -= diff
+	if is_softlocked():
+		pass
+		#self.kill()
+
+func is_softlocked():
+	var dir = last_dir
+	var up_check = (dir.x == 1 or up_ray.is_colliding())
+	var down_check = (dir.x == -1 or down_ray.is_colliding())
+	var right_check = (dir.y == 1 or right_ray.is_colliding())
+	var left_check = (dir.y == -1 or left_ray.is_colliding())
+	return up_check and down_check and right_check and left_check
+	
+# TODO: Fixme!
+func colliding_with_not_head(ray):
+	if ray.is_colliding:
+		var obj = up_ray.get_collider()
+		print(obj)
+		return obj != segments[0].get_node("RigidBody3D")
+	return false
 
 func wall_check(dir):
 	# Returns TRUE if raycast is colliding
@@ -184,7 +219,6 @@ func get_head():
 func get_tail():
 	return segments[segments.size()-1]
 
-# TODO: Only allow adding and removing from the end!
 func add_segment_to_tail(offset_from_tail: Vector3):
 	var pos = offset_from_tail + segments[segments.size()-1].position
 	self._add_segment_to_end(pos)
@@ -224,20 +258,35 @@ func move_to(offset):
 func set_endcaps():
 	# makes end-cap spheres visible for endpoints, and invisible for the rest
 	for segment in segments:
-		segment.get_node("Sphere").visible = false
-		segment.get_child(0).set_collision_layer_value(0, false)
+		segment.set_sphere_visible(false)
+		#segment.disable_collision() 
 		
-	var head = get_head().get_node("Sphere")
-	head.visible = true
-	head.set_collision_layer_value(0, true)
+	var head = get_head()
+	head.set_sphere_visible(true)
+	head.enable_collision()
 	
-	var tail = get_tail().get_node("Sphere")
-	tail.visible = true
-	tail.set_collision_layer_value(0, true)
-
+	var tail = get_tail()
+	tail.set_sphere_visible(true)
+	tail.enable_collision()
 
 func print_curve():
 	var s = "["
 	for i in range(0, self.curve.point_count):
 		s += str(self.curve.get_point_position(i)) + ", "
 	s += "]"
+
+func tail_direction() -> Vector3:
+	var tail = get_tail()
+	if tail.next_pos != null:
+		return Vector3(tail.next_pos - tail.global_position) * -1
+	else:
+		var tail_parent = segments[segments.size()-2]
+		return Vector3(tail_parent.position - tail.position) * -1
+
+# TODO: more logic to prevent spawning new node inside a wall 
+func _on_lettuce_body_entered(lettuce, body) -> void:
+	print("lettuce entered")
+	if body == get_head().get_node("RigidBody3D"):
+		lettuce.queue_free()
+		var dir = tail_direction()
+		self.add_segment_to_tail(dir)

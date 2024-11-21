@@ -8,8 +8,8 @@ const DISTANCE_FROM_NEXT_POINT = 0.1
 
 var curve_index
 
-# ----! WormBodySegment does not reference its parents at all for simplicity sake !---- #
-# it doesn't even know what position within the worm it is! 
+# ----! WormBodySegment does not set any attributes of its parents for simplicity sake !---- #
+# curve_index and next_pos are set by new_worm.gd
 # returns: whether the node snapped into place
 func update(delta: float):
 	if curve_index == null:
@@ -23,13 +23,25 @@ func update(delta: float):
 			snap_to_grid(self, delta)
 			return true 
 
-func go_to_position(main_node, target_pos, delta):
+func set_sphere_visible(_is_visible):
+	$Sphere.visible = _is_visible
+
+func enable_collision():
+	call_deferred("_set_collision_disabled", false)
+
+func disable_collision():
+	call_deferred("_set_collision_disabled", true)
+
+func _set_collision_disabled(is_disabled):
+	$RigidBody3D/CollisionShape3D.disabled = is_disabled
+
+func go_to_position(_main_node, _target_pos, delta):
 	set_global_position(lerp(self.global_position, self.next_pos, SPEED * delta))
 
 func move_to(pos):
 	next_pos = pos
 	can_move = true
 
-func snap_to_grid(node, delta):
+func snap_to_grid(_node, delta):
 	self.global_position.x = round(self.global_position.x)
 	self.global_position.z = round(self.global_position.z)

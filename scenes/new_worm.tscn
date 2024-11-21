@@ -37,15 +37,23 @@ smooth_faces = true
 
 [node name="DownRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(1.5, 0, 0)
+collision_mask = 3
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="UpRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(-1.5, 0, 0)
+collision_mask = 3
+debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="LeftRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(0, 0, 1.5)
+collision_mask = 3
+debug_shape_custom_color = Color(0, 0, 1, 1)
 
 [node name="RightRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(0, 0, -1.5)
+collision_mask = 3
+debug_shape_custom_color = Color(0.732854, 0.382212, 0.601817, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ejlxe")

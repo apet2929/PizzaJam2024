@@ -4,18 +4,20 @@ var used = false
 var worm_head = null
 var parts_on = 0
 var parts_left = 0
+var parts_in = []
 
 func drop():
 	used = true
 	$Model/AnimationPlayer.play("drop")
 	# enable collision so nothing can pass through the guillotine after its been dropped
-	$DroppedCollision.collision_layer = 1
+	$DroppedCollision.collision_layer = 2
 	
-	if worm_head != null:
-		worm_head.split(parts_left)
-		worm_head = null
-		parts_on = 0
-		parts_left = 0
+	if !parts_in.is_empty():
+		var body: Node3D = parts_in[0] # RigidBody3D
+		var segment = body.get_parent() # RigidBody3D > WormBodySegment
+		var body_root = segment.get_parent() # WormBodySegment > Body
+		var worm_root = body_root.get_parent() # Body > Worm
+		worm_root.split_at(segment)
 	
 func undrop():
 	used = false
@@ -24,15 +26,11 @@ func undrop():
 	
 func reset():
 	$DroppedCollision.collision_layer = 0
-	
 
 func _on_worm_check_body_entered(body: Node3D) -> void:
 	if body.is_in_group("body"):
-		parts_on += 1
-	
-	if body.is_in_group("head"):
-		worm_head = body
+		parts_in.append(body)
 
 func _on_worm_check_body_exited(body: Node3D) -> void:
 	if body.is_in_group("body"):
-		parts_left += 1
+		parts_in.erase(body)

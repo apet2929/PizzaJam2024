@@ -11,8 +11,13 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	var cam: Camera3D = $"../../GameCamera"
-	var worm = $"../../Worm"
-	if cam and worm:
+	if has_node("../../Worm") and has_node("../../GameCamera"):
+		var worm = get_node("../../Worm")
+		var cam = get_node("../../GameCamera")
 		var pos = cam.unproject_position(worm.global_position)
 		draw_circle(pos, 5, Color.AQUA)
+		if has_node("../../Guillotine"):
+			var guillotine = get_node("../../Guillotine")
+			for body in guillotine.parts_in:
+				pos = cam.unproject_position(body.global_position)
+				draw_circle(pos, 5, Color.BISQUE)

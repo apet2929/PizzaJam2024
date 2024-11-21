@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://br1c6x1rx1cy8"]
+[gd_scene load_steps=20 format=4 uid="uid://br1c6x1rx1cy8"]
 
 [ext_resource type="Script" path="res://Scripts/guillotine.gd" id="1_ldeu0"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="2_7kxm5"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6ljn"]
 size = Vector3(1.8775, 11.2957, 7.56946)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dw1bh"]
+size = Vector3(4.21167, 6.26477, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rtq4o"]
 
@@ -144,6 +147,18 @@ script = ExtResource("1_ldeu0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0382385, 4.73161, 0.0947876)
 shape = SubResource("BoxShape3D_n6ljn")
 
+[node name="LeftWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104, 2.496, -1.778)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
+shape = SubResource("BoxShape3D_dw1bh")
+
+[node name="RightWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82074e-07, 2.49554, 1.77764)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall"]
+shape = SubResource("BoxShape3D_dw1bh")
+
 [node name="Model" type="Node3D" parent="."]
 
 [node name="Blade" type="MeshInstance3D" parent="Model"]
@@ -171,7 +186,7 @@ speed_scale = 5.0
 
 [node name="DroppedCollision" type="StaticBody3D" parent="."]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroppedCollision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00556643, 2.66772, 0.00109867)
@@ -183,6 +198,7 @@ collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WormCheck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213623, 2.50252, -0.116699)
+visible = false
 shape = SubResource("BoxShape3D_vt3hf")
 
 [connection signal="body_entered" from="WormCheck" to="." method="_on_worm_check_body_entered"]
