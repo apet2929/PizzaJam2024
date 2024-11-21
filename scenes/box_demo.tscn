@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://diw7pyokfo4v"]
+
+[ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="1_jlqi6"]
+[ext_resource type="Texture2D" uid="uid://b6t875vqcy5kn" path="res://assets/Grass_Tile.png" id="2_f84my"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_jxt3x"]
+[ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_paie2"]
+[ext_resource type="PackedScene" uid="uid://bselxo1475df2" path="res://scenes/box.tscn" id="5_vyvyb"]
+[ext_resource type="PackedScene" uid="uid://c2apv7vg2rtcy" path="res://scenes/lettuce.tscn" id="6_jwflu"]
+[ext_resource type="Script" path="res://Scripts/draw_box_next_pos.gd" id="7_6c8sl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8wp2"]
+albedo_texture = ExtResource("2_f84my")
+uv1_scale = Vector3(0.063, 0.063, 0.063)
+uv1_offset = Vector3(0.094, 0, -0.031)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4cr8f"]
+
+[sub_resource type="Sky" id="Sky_oi8rl"]
+sky_material = SubResource("ProceduralSkyMaterial_4cr8f")
+
+[sub_resource type="Environment" id="Environment_rnq1e"]
+background_mode = 2
+sky = SubResource("Sky_oi8rl")
+
+[node name="LevelBase" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000374556, -0.490079, -0.000640929)
+layers = 2
+material_override = ExtResource("1_jlqi6")
+use_collision = true
+collision_layer = 17
+collision_mask = 255
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_w8wp2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rnq1e")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Worm" parent="." instance=ExtResource("3_jxt3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457762, 2.93428)
+collision_layer = 22
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 6.1, 3.3)
+projection = 1
+fov = 35.0
+size = 8.293
+script = ExtResource("4_paie2")
+
+[node name="Box" parent="." instance=ExtResource("5_vyvyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476808, 0)
+
+[node name="Lettuce" parent="." instance=ExtResource("6_jwflu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.03502, 0, -0.14536)
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+
+[node name="DrawBoxNextPos" type="Control" parent="DebugLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_6c8sl")
+metadata/_edit_use_anchors_ = true

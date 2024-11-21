@@ -148,12 +148,14 @@ shape = SubResource("BoxShape3D_n6ljn")
 
 [node name="LeftWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104, 2.496, -1.778)
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
 shape = SubResource("BoxShape3D_dw1bh")
 
 [node name="RightWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82074e-07, 2.49554, 1.77764)
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall"]
 shape = SubResource("BoxShape3D_dw1bh")
@@ -167,6 +169,7 @@ mesh = SubResource("ArrayMesh_m2va2")
 skeleton = NodePath("")
 
 [node name="BladeCollision" type="Area3D" parent="Model/Blade"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Blade/BladeCollision"]
 transform = Transform3D(0.99996, 0, -3.97904e-13, 0, 0.999963, 0, -6.66134e-16, 0, 0.999963, 0.158381, -1.27903, 0.0746418)

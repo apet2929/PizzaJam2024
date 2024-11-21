@@ -18,7 +18,7 @@ const worm_gfx_polygon_points = [
 		Vector2(0.353553, -0.353553),
 		Vector2(0.46194, -0.191341),
 		Vector2(0.5, 0.0)
-	]
+]
 
 const MOVE_TIMER = 0.25
 const GRAVITY = -20 # Used to counter a bug that lets you fly
@@ -39,6 +39,7 @@ const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 
 var move_ready = false
 var last_dir = Vector2(0,0) # Stopping the player from going backwards
+var current_dir = Vector2(0,0) # For pushing boxes
 
 @onready var up_ray = $Rays/UpRay
 @onready var down_ray = $Rays/DownRay
@@ -88,6 +89,7 @@ func _process(delta: float) -> void:
 		
 func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
+	EventBus.box_body_entered.connect(self._on_box_body_entered)
 
 func _on_button_small_body_entered(body: Node3D) -> void:
 	if body == self:
@@ -172,6 +174,7 @@ func kill():
 	self.queue_free()
 
 func start_move(direction):
+	self.current_dir = direction
 	# Going through all of the Worm's body parts and telling them to move
 	var last_body_pos = self.global_position + Vector3(direction.x, 0, direction.y)
 	for i in range(segments.size()): # BUG: Depends on order of nodes within segments (fix if causing issues)
@@ -294,3 +297,9 @@ func _on_lettuce_body_entered(lettuce, body) -> void:
 		lettuce.queue_free()
 		var dir = tail_direction()
 		self.add_segment_to_tail(dir)
+		
+func _on_box_body_entered(box, body) -> void:
+	if body == self:
+		
+		var d = Vector3(current_dir.x, 0, current_dir.y)
+		box.push(d)

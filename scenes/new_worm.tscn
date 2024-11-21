@@ -9,7 +9,7 @@
 
 [node name="NewWorm" type="CharacterBody3D" groups=["body", "head"]]
 collision_layer = 6
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_ecb6o")
 
 [node name="Curve" type="Path3D" parent="."]
