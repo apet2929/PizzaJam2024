@@ -1,7 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dieechvi07884"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_fjm78"]
-[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="2_7btwr"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_qv3cw"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_172du"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_yirqo"]
@@ -29,7 +28,7 @@ script = ExtResource("1_fjm78")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4m1be")
 
-[node name="SceneTransition" parent="." instance=ExtResource("2_7btwr")]
+[node name="SceneTransition" parent="." instance=ExtResource("12_2qchv")]
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68994, -33.5474, -9.14342)
@@ -146,7 +145,7 @@ offset_bottom = 40.0
 script = ExtResource("12_63q33")
 metadata/_edit_use_anchors_ = true
 
-[node name="SceneTransition" parent="." instance=ExtResource("12_2qchv")]
+[node name="SceneTransition2" parent="." instance=ExtResource("12_2qchv")]
 
 [connection signal="button_pressed" from="ButtonSmall" to="." method="_on_button_small_button_pressed"]
 [connection signal="button_unpressed" from="ButtonSmall" to="." method="_on_button_small_button_unpressed"]

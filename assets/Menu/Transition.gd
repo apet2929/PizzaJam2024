@@ -8,11 +8,10 @@ func _ready() -> void:
 	anim.play("RESET")
 
 func _process(delta: float) -> void:
-	pass
 	# TODO : what is this for?
-	# if was_played == false:
-		#anim.play_backwards("load_out")
-		#was_played = true
+	if was_played == false:
+		anim.play_backwards("load_out")
+		was_played = true
 
 func load_in() -> void:
 	anim.play_backwards("load_out")
@@ -29,5 +28,5 @@ func change_scene(target: String):
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	# TODO: this isn't how it should work 
-	if anim_name == "load_out" and was_played:
+	if anim_name == "load_out":
 		get_tree().change_scene_to_file(new_scene)
