@@ -6,11 +6,13 @@ const MIN_CAMERA_SIZE : float = 10.0
 const CAMERA_DISTANCE : float = 50.0
 const CAMERA_HEIGHT : float = 20.0
 const Y_CHANGE = -30
+const START_VEC = Vector3(7.925, 20, 11)
 
 # Array to hold the player nodes (worms)
 var worms : Array = []
 
 func _ready():
+	self.position = START_VEC
 	# Check if worms are empty and if so, fetch them from the group "worms"
 	if len(worms) <= 0:
 		worms = get_tree().get_nodes_in_group("worms")

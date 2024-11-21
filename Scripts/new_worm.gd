@@ -79,6 +79,10 @@ func _process(delta: float) -> void:
 	if should_snap:
 		snap_to_grid()
 	
+	# Reset scene
+	if Input.is_action_just_pressed("retry"):
+		get_tree().reload_current_scene()
+	
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
 		

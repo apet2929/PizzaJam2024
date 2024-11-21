@@ -4,6 +4,9 @@ extends Node
 var new_scene = ""
 var was_played = false
 
+func _ready() -> void:
+	anim.play("RESET")
+
 func _process(delta: float) -> void:
 	if was_played == false:
 		anim.play_backwards("load_out")

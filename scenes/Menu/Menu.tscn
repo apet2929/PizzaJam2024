@@ -1,73 +1,82 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxx6j45f7tm7s"]
+[gd_scene load_steps=6 format=3 uid="uid://72wbefks38el"]
 
 [ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="1_b5od1"]
-[ext_resource type="Script" path="res://assets/Menu/Load_btn.gd" id="2_eiiix"]
-[ext_resource type="Script" path="res://assets/Menu/Quit_btn.gd" id="2_k2rki"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_wvqnq"]
+[ext_resource type="PackedScene" uid="uid://bqgpbclle8qpc" path="res://scenes/Menu/3d_btn.tscn" id="4_3jjvx"]
 [ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="4_rmout"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uo3po"]
+[sub_resource type="Environment" id="Environment_6knu8"]
+background_mode = 1
+background_color = Color(0, 0.506, 0.66, 1)
+ambient_light_source = 1
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.6
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slkdk"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llscb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5p07"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gcru"]
-
-[sub_resource type="Theme" id="Theme_5ieg2"]
-Button/font_sizes/font_size = 81
-Button/fonts/font = ExtResource("1_b5od1")
-Button/styles/disabled = SubResource("StyleBoxEmpty_uo3po")
-Button/styles/focus = SubResource("StyleBoxEmpty_slkdk")
-Button/styles/hover = SubResource("StyleBoxEmpty_llscb")
-Button/styles/normal = SubResource("StyleBoxEmpty_r5p07")
-Button/styles/pressed = SubResource("StyleBoxEmpty_4gcru")
-
-[node name="Menu" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Menu" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Play_btn" type="Button" parent="CanvasLayer/Menu"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -153.0
-offset_right = 290.065
-offset_bottom = -72.0
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
-theme = SubResource("Theme_5ieg2")
-text = "Play"
-script = ExtResource("2_eiiix")
-
-[node name="Quit" type="Button" parent="CanvasLayer/Menu"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -166.0
-offset_right = 291.0
-offset_bottom = -84.0
-grow_vertical = 0
-scale = Vector2(0.7, 0.7)
-theme = SubResource("Theme_5ieg2")
-text = "Quit"
-script = ExtResource("2_k2rki")
+[node name="LvlSelect1" type="Node3D"]
 
 [node name="SceneTransition" parent="." instance=ExtResource("4_rmout")]
 
-[connection signal="pressed" from="CanvasLayer/Menu/Play_btn" to="CanvasLayer/Menu/Play_btn" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/Quit" to="CanvasLayer/Menu/Quit" method="_on_pressed"]
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1456, -33.5474, -13.6449)
+layers = 2
+material_override = ExtResource("2_wvqnq")
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(88.8237, 67.095, 107.708)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6knu8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 0, 12.2343, 0)
+projection = 1
+size = 11.0
+far = 60.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527998, 0.853847, 0.703743, -0.541199, 0.460272, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -15.928, 0.083, -8.527)
+text = "The Worm game"
+font = ExtResource("1_b5od1")
+
+[node name="3d_btn" parent="." instance=ExtResource("4_3jjvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -9)
+scene_path = "res://scenes/Menu/lvl_select.tscn"
+
+[node name="gfx" parent="3d_btn" index="1"]
+size = Vector3(1, 1, 5)
+
+[node name="Label3D" parent="3d_btn" index="2"]
+text = "Play"
+
+[node name="Select_Arrow" parent="3d_btn" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 2.92986)
+
+[node name="3d_btn2" parent="." instance=ExtResource("4_3jjvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -9)
+quit_btn = true
+
+[node name="gfx" parent="3d_btn2" index="1"]
+size = Vector3(1, 1, 5)
+
+[node name="Label3D" parent="3d_btn2" index="2"]
+text = "Quit"
+
+[node name="Select_Arrow" parent="3d_btn2" index="3"]
+transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 2.92986)
 
 [editable path="SceneTransition"]
+[editable path="3d_btn"]
+[editable path="3d_btn2"]

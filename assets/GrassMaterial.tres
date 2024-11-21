@@ -9,8 +9,9 @@ alpha_scissor_threshold = 0.387
 alpha_antialiasing_mode = 0
 albedo_color = Color(0.0546, 0.39, 0.07696, 1)
 albedo_texture = ExtResource("2_e51kh")
-uv1_offset = Vector3(-0.19, 0, 0.435)
+uv1_offset = Vector3(-0.515, 0, 0.585)
 uv1_triplanar = true
+uv1_world_triplanar = true
 grow = true
 grow_amount = 0.001
 
