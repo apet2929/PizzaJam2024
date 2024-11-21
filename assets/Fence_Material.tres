@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ddrldagy3ivai"]
+
+[ext_resource type="Texture2D" uid="uid://pfchsakh4l23" path="res://assets/fence_wood_texture.png" id="1_aka1n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hhiv"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.05
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_0hhiv")
+albedo_texture = ExtResource("1_aka1n")

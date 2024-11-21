@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bjmndn0d81cmf"
-path="res://.godot/imported/fence.blend-23c3f1b5683e31b8b6f0df2fcfcd8ac3.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/fence.blend"
-dest_files=["res://.godot/imported/fence.blend-23c3f1b5683e31b8b6f0df2fcfcd8ac3.scn"]
 
 [params]
 

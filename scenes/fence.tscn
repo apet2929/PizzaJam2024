@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://k10usb8384ng"]
+[gd_scene load_steps=8 format=3 uid="uid://k10usb8384ng"]
 
 [ext_resource type="Script" path="res://Scripts/fence.gd" id="1_p6fl6"]
 [ext_resource type="PackedScene" uid="uid://biiqnl77k0pmo" path="res://assets/fence.glb" id="2_f8pwh"]
+[ext_resource type="Material" uid="uid://ddrldagy3ivai" path="res://assets/Fence_Material.tres" id="3_q063v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tr1uf"]
 size = Vector3(2.15875, 1.97327, 0.37915)
@@ -51,7 +52,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00083, 0, 0)
 [node name="Model" parent="Pivot" instance=ExtResource("2_f8pwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00083, 0, 0)
 
+[node name="Stick_001" parent="Pivot/Model" index="0"]
+material_override = ExtResource("3_q063v")
+
+[node name="Stick_002" parent="Pivot/Model" index="1"]
+material_override = ExtResource("3_q063v")
+
+[node name="Stick_003" parent="Pivot/Model" index="2"]
+material_override = ExtResource("3_q063v")
+
+[node name="Stick_004" parent="Pivot/Model" index="3"]
+material_override = ExtResource("3_q063v")
+
+[node name="Stick_006" parent="Pivot/Model" index="4"]
+material_override = ExtResource("3_q063v")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Model"]
 libraries = {
 "": SubResource("AnimationLibrary_lekm5")
 }
+
+[editable path="Pivot/Model"]

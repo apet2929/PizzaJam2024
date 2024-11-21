@@ -19,12 +19,15 @@ uv1_world_triplanar = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8libr"]
 
-[sub_resource type="Sky" id="Sky_wu3jr"]
+[sub_resource type="Sky" id="Sky_jwktj"]
 sky_material = SubResource("ProceduralSkyMaterial_8libr")
 
 [sub_resource type="Environment" id="Environment_s4d8a"]
 background_mode = 2
-sky = SubResource("Sky_wu3jr")
+sky = SubResource("Sky_jwktj")
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y3sje"]
 

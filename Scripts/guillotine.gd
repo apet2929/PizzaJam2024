@@ -17,7 +17,9 @@ func drop():
 		var segment = body.get_parent() # RigidBody3D > WormBodySegment
 		var body_root = segment.get_parent() # WormBodySegment > Body
 		var worm_root = body_root.get_parent() # Body > Worm
-		worm_root.split_at(segment)
+		
+		if worm_root != null:
+			worm_root.split_at(segment)
 	
 func undrop():
 	used = false
