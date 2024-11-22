@@ -30,6 +30,9 @@ const WORM_SCENE = preload("res://scenes/new_worm.tscn")
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 const BOX_SCRIPT = preload("res://Scripts/box.gd")
 
+const MAX_SFX_PITCH = 1.4
+const MIN_SFX_PITCH = 0.4
+
 var disabled = false
 
 
@@ -51,6 +54,8 @@ var current_dir = Vector2(0,0) # For pushing boxes
 @onready var down_ray = $Rays/DownRay
 @onready var left_ray = $Rays/LeftRay
 @onready var right_ray = $Rays/RightRay
+
+@onready var move_sfx: AudioStreamPlayer3D = $Move_sfx
 
 var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
@@ -130,6 +135,10 @@ func handle_movement(dir):
 		await get_tree().create_timer(MOVE_TIMER).timeout
 		# Snapping the Worm's head to the grid
 		self.velocity = Vector3(0,self.velocity.y,0)
+		
+		move_sfx.pitch_scale = randf_range(MIN_SFX_PITCH, MAX_SFX_PITCH)
+		move_sfx.play()
+		
 		#snap_to_grid() TODO: Reenable?
 		# snap after timer, or snap once you reach the cell?
 		

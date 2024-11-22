@@ -5,7 +5,8 @@ extends Node
 var was_played = false
 
 @onready var pause_menu: Control = $Pause_Menu
-@onready var on_btn: AudioStreamPlayer2D = $Pause_Menu/AudioStreamPlayer2D
+@onready var on_btn: AudioStreamPlayer2D = $Pause_Menu/On_btn
+@onready var btn_click: AudioStreamPlayer2D = $Pause_Menu/btn_click
 var is_menu_open = false
 
 signal anim_done
@@ -14,6 +15,7 @@ func _ready() -> void:
 	anim.play("RESET")
 	if pause_menu != null:
 		pause_menu.visible = false
+	is_menu_open = false
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("menu_toggle") and is_menu_open:
@@ -52,6 +54,8 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
 
 func _on_resume_pressed() -> void:
 	pause_menu.visible = false
+	is_menu_open = false
+	btn_click.play()
 
 
 func _on_main_menu_mouse_entered() -> void:

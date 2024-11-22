@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://btp6wnmcr0pob"]
+[gd_scene load_steps=11 format=3 uid="uid://btp6wnmcr0pob"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level_1.gd" id="1_c3xem"]
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_w3nw5"]
-[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="2_0h6v0"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_uxse0"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_ycaos"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="6_k3puw"]
@@ -11,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="7_30ekf"]
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_xayej"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="10_8hxst"]
-[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="13_pj82b"]
 
 [node name="LevelBase" instance=ExtResource("1_w3nw5")]
 script = ExtResource("1_c3xem")
@@ -36,14 +34,10 @@ material = ExtResource("3_uxse0")
 
 [node name="Worm" parent="." index="7" instance=ExtResource("3_ycaos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, -3.90225)
+visible = false
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 0, 2), Vector3(0, 0, 3), Vector3(0, 0, 4), Vector3(0, 0, 5)]
 
-[node name="Hand" parent="." index="8" instance=ExtResource("13_pj82b")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649)
-
-[node name="SceneTransition2" parent="." index="9" instance=ExtResource("2_0h6v0")]
-
-[node name="Walls" type="Node3D" parent="." index="10"]
+[node name="Walls" type="Node3D" parent="." index="8"]
 
 [node name="walls2" type="CSGBox3D" parent="Walls" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -5.5105)
@@ -93,20 +87,20 @@ material_override = ExtResource("6_sxi0b")
 use_collision = true
 size = Vector3(1, 65, 5)
 
-[node name="Finish" parent="." index="11" instance=ExtResource("7_2k2vj")]
+[node name="Finish" parent="." index="9" instance=ExtResource("7_2k2vj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.01824, 0.321328, -9.00568)
 collision_layer = 8
 
-[node name="Fence" parent="." index="12" instance=ExtResource("7_30ekf")]
+[node name="Fence" parent="." index="10" instance=ExtResource("7_30ekf")]
 transform = Transform3D(-1.96701e-08, 0, -0.45, 0, 0.45, 0, 0.45, 0, -1.96701e-08, -4.40414, 0.481618, -8.9695)
 
-[node name="ButtonSmall" parent="." index="13" instance=ExtResource("10_8hxst")]
+[node name="ButtonSmall" parent="." index="11" instance=ExtResource("10_8hxst")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.95551, 9.91821e-05, -11.0006)
 
-[node name="PressurePad" parent="." index="14" instance=ExtResource("6_k3puw")]
+[node name="PressurePad" parent="." index="12" instance=ExtResource("6_k3puw")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.01031, -4.76837e-07, -10.9931)
 
-[node name="Guillotine" parent="." index="15" instance=ExtResource("9_xayej")]
+[node name="Guillotine" parent="." index="13" instance=ExtResource("9_xayej")]
 transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -6.98647, 0.0708526, -8.6875)
 
 [node name="LeftWall" parent="Guillotine" index="1"]

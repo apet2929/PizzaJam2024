@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://bqgpbclle8qpc"]
+[gd_scene load_steps=10 format=4 uid="uid://bqgpbclle8qpc"]
 
 [ext_resource type="Script" path="res://Scripts/3d_btn.gd" id="1_6taym"]
 [ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="2_c76ob"]
 [ext_resource type="Material" uid="uid://nw8ovf7lddam" path="res://assets/3d_btn_material.tres" id="2_u6g5r"]
+[ext_resource type="AudioStream" uid="uid://3n3foxtnxnto" path="res://assets/Audio/on_btn.wav" id="4_8wg0r"]
+[ext_resource type="AudioStream" uid="uid://bhme7hx1r1hj8" path="res://assets/Audio/btn_click.wav" id="5_gan87"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l8m4t"]
 size = Vector3(1, 1, 3)
@@ -69,6 +71,16 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 material_override = ExtResource("2_u6g5r")
 mesh = SubResource("ArrayMesh_nmsuv")
 skeleton = NodePath("")
+
+[node name="On_btn" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(607, 312)
+stream = ExtResource("4_8wg0r")
+volume_db = 4.105
+
+[node name="btn_click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(607, 312)
+stream = ExtResource("5_gan87")
+volume_db = 3.42
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

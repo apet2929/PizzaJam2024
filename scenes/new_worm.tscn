@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqqp3t3gyi13u"]
+[gd_scene load_steps=6 format=3 uid="uid://bqqp3t3gyi13u"]
 
 [ext_resource type="Script" path="res://Scripts/new_worm.gd" id="1_ecb6o"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_ru6pc"]
+[ext_resource type="AudioStream" uid="uid://dmhwumdoiy78m" path="res://assets/Audio/worm_move_sfx.wav" id="3_bb5pn"]
 
 [sub_resource type="Curve3D" id="Curve3D_cqnwp"]
 
@@ -62,3 +63,7 @@ shape = SubResource("SphereShape3D_ejlxe")
 radial_segments = 24
 rings = 14
 material = ExtResource("2_ru6pc")
+
+[node name="Move_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_bb5pn")
+volume_db = 80.0

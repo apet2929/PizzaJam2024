@@ -8,6 +8,8 @@ var started = false
 var dropping = false
 var worm_vel_y = 0
 const GRAVITY = -9
+const DROP_TIMER = 0.4
+const START_Y_POS = 5.0
 var worm_initial_y
 
 # Called when the node enters the scene tree for the first time.
@@ -15,13 +17,14 @@ func _ready() -> void:
 	init_signals()
 	$SceneTransition.load_in()
 	$SceneTransition.anim_done.connect(self.start_level)
-	$Hand.dropped.connect(self.drop_worm)
 	EventBus.connect("level_finished", next_level)
 	worm_initial_y = $Worm.global_position.y
-	$Worm.global_position.y = $Hand.global_position.y - 5
+	$Worm.global_position.y = START_Y_POS
+	$Worm.visible = false
 	for worm in get_tree().get_nodes_in_group("head"):
 		worm.disabled = true
-	
+	await get_tree().create_timer(DROP_TIMER).timeout
+	dropping = true
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
@@ -46,8 +49,6 @@ func _next_level(next_level):
 func start_level():
 	if !started:
 		started = true
-		await get_tree().create_timer(0.3).timeout
-		$Hand.unpinch()
 
 func restart_level():
 	EventBus.restart_count += 1

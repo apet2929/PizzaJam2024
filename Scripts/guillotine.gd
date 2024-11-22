@@ -7,9 +7,11 @@ var parts_left = 0
 var parts_in = []
 
 @onready var blood_particle: GPUParticles3D = $Model/blood_particle
+@onready var drop_sfx: AudioStreamPlayer3D = $Model/drop_sfx
 
 func drop():
 	used = true
+	drop_sfx.play()
 	$Model/AnimationPlayer.play("drop")
 	# enable collision so nothing can pass through the guillotine after its been dropped
 	$DroppedCollision.collision_layer = 2

@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=4 uid="uid://br1c6x1rx1cy8"]
+[gd_scene load_steps=26 format=4 uid="uid://br1c6x1rx1cy8"]
 
 [ext_resource type="Script" path="res://Scripts/guillotine.gd" id="1_ldeu0"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="2_7kxm5"]
 [ext_resource type="Material" uid="uid://bo4onna3kwhrh" path="res://assets/guillotine_frame_Shader.tres" id="3_de2mh"]
 [ext_resource type="Texture2D" uid="uid://c4apjiddnuk65" path="res://assets/guillotine_guillotine_Frame_Texture.png" id="4_o2iso"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="5_3hnwb"]
+[ext_resource type="AudioStream" uid="uid://cuqhny1kb4jq7" path="res://assets/Audio/guillotine_sfx.wav" id="6_8ch85"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6ljn"]
 size = Vector3(1.8775, 11.2957, 7.56946)
@@ -217,6 +218,9 @@ explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_4mt02")
 draw_pass_1 = SubResource("SphereMesh_a7fg0")
+
+[node name="drop_sfx" type="AudioStreamPlayer3D" parent="Model"]
+stream = ExtResource("6_8ch85")
 
 [node name="DroppedCollision" type="StaticBody3D" parent="."]
 collision_layer = 0

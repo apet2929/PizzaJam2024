@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpfqxl45awiyk"]
+[gd_scene load_steps=10 format=3 uid="uid://bpfqxl45awiyk"]
 
 [ext_resource type="Script" path="res://assets/Menu/Transition.gd" id="1_8ts0x"]
 [ext_resource type="Theme" uid="uid://b7wn8s1f8i7ot" path="res://assets/Menu/button_theme.tres" id="2_crqp2"]
 [ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="2_w4113"]
 [ext_resource type="Script" path="res://assets/Menu/ui_button.gd" id="4_rbpc6"]
 [ext_resource type="AudioStream" uid="uid://3n3foxtnxnto" path="res://assets/Audio/on_btn.wav" id="5_mt3ej"]
+[ext_resource type="AudioStream" uid="uid://bhme7hx1r1hj8" path="res://assets/Audio/btn_click.wav" id="6_yybaf"]
 
 [sub_resource type="Animation" id="Animation_bi66b"]
 length = 0.001
@@ -184,8 +185,11 @@ text = "Pause menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Pause_Menu"]
+[node name="On_btn" type="AudioStreamPlayer2D" parent="Pause_Menu"]
 stream = ExtResource("5_mt3ej")
+
+[node name="btn_click" type="AudioStreamPlayer2D" parent="Pause_Menu"]
+stream = ExtResource("6_yybaf")
 
 [node name="Top" type="ColorRect" parent="."]
 offset_right = 1152.0
