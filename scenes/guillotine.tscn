@@ -155,7 +155,7 @@ rings = 3
 size = Vector3(0.978899, 6.33545, 6.46411)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vt3hf"]
-size = Vector3(0.111084, 5.50537, 6.03027)
+size = Vector3(0.111084, 5.50537, 3.46606)
 
 [node name="Guillotine" type="Area3D"]
 transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, 0, 0, 0)
@@ -231,7 +231,7 @@ collision_layer = 15
 collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WormCheck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213623, 2.50252, -0.116699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213623, 2.50252, 0.00573705)
 shape = SubResource("BoxShape3D_vt3hf")
 
 [connection signal="body_entered" from="WormCheck" to="." method="_on_worm_check_body_entered"]

@@ -75,6 +75,8 @@ func _ready() -> void:
 
 # Important - This is called before the _process fn of all segments
 func _process(delta: float) -> void:
+	if disabled:
+		return
 	var dir = Input.get_vector("left", "right", "forward", "backward")
 	self.velocity.y = GRAVITY
 	
@@ -101,10 +103,6 @@ func init_signals():
 	EventBus.salt_body_entered.connect(self._on_salt_body_entered)
 	EventBus.spike_entered.connect(self._on_spike_entered)
 
-func _on_button_small_body_entered(body: Node3D) -> void:
-	if body == self:
-		self.split(3)
-
 func is_worm(body: Node3D) -> bool:
 	match body.get_script():
 		WORM_SCRIPT:
@@ -114,7 +112,6 @@ func is_worm(body: Node3D) -> bool:
 
 func handle_movement(dir):
 	if wall_check(dir):
-		print("wall check failed!")
 		return
 	if box_check(dir):
 		return

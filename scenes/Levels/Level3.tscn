@@ -1,183 +1,184 @@
-[gd_scene load_steps=13 format=3 uid="uid://cg5or8mniimff"]
+[gd_scene load_steps=15 format=3 uid="uid://dbkwaeg85tgka"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/level_3.gd" id="1_8y8yi"]
-[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_73rsb"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_gi4wf"]
-[ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_o40nd"]
-[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="5_x7dqd"]
-[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="6_cymw5"]
-[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_bik0k"]
-[ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_a200x"]
-[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="10_kcl62"]
-[ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="11_ui8hk"]
-[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="12_ebuxp"]
+[ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_itmbt"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="2_31mxb"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_3.gd" id="2_y5164"]
+[ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="3_vwh0m"]
+[ext_resource type="Texture2D" uid="uid://b6t875vqcy5kn" path="res://assets/Grass_Tile.png" id="4_rltqj"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="5_46px8"]
+[ext_resource type="PackedScene" uid="uid://c2apv7vg2rtcy" path="res://scenes/lettuce.tscn" id="6_ro7ld"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="7_2evjv"]
+[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_4xi8g"]
+[ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_qfct7"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="10_i6k8o"]
+[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="11_00eg7"]
+[ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="12_j63oo"]
 
-[sub_resource type="Environment" id="Environment_4m1be"]
-background_mode = 1
-background_color = Color(0, 0.506, 0.66, 1)
-ambient_light_source = 1
-tonemap_mode = 3
-adjustment_enabled = true
-adjustment_brightness = 1.12
-adjustment_saturation = 1.6
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwuc2"]
+albedo_texture = ExtResource("4_rltqj")
+uv1_scale = Vector3(0.063, 0.063, 0.063)
+uv1_offset = Vector3(0.094, 0, -0.031)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
-[node name="LevelBase" type="Node3D"]
-script = ExtResource("1_8y8yi")
-next_lvl = "res://scenes/Levels/Level4.tscn"
+[node name="LevelBase2" instance=ExtResource("1_itmbt")]
+script = ExtResource("2_y5164")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4m1be")
+[node name="GameCamera" parent="." index="3"]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 14.1243, 3.3)
 
-[node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5107, -33.5474, -0.502271)
+[node name="Worm" parent="." index="5" instance=ExtResource("2_31mxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.458, -4)
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, -1)]
+
+[node name="Floor2" type="CSGBox3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.427, -0.5, -4.31696)
 layers = 2
+material_override = ExtResource("3_vwh0m")
 use_collision = true
 collision_layer = 2
 collision_mask = 2
-size = Vector3(4, 67.095, 14)
-material = ExtResource("2_73rsb")
+size = Vector3(2.05615, 1, 4.50417)
+material = SubResource("StandardMaterial3D_mwuc2")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
-light_energy = 0.5
-shadow_enabled = true
+[node name="Floor3" type="CSGBox3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1272, -0.5, -6.05606)
+layers = 2
+material_override = ExtResource("3_vwh0m")
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(4.61963, 1, 7.98237)
+material = SubResource("StandardMaterial3D_mwuc2")
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527998, 0.853847, 0.703743, -0.541199, 0.460272, 0, 0, 0)
-light_energy = 0.5
-shadow_enabled = true
+[node name="Floor4" type="CSGBox3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98737, -0.5, -12.4523)
+layers = 2
+material_override = ExtResource("3_vwh0m")
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(2.92322, 1, 3.97434)
+material = SubResource("StandardMaterial3D_mwuc2")
 
-[node name="Worm" parent="." instance=ExtResource("3_gi4wf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, -3.90225)
-spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 0, 2), Vector3(0, 0, 3), Vector3(0, 0, 4)]
+[node name="Fence" parent="." index="9" instance=ExtResource("5_46px8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.99823, 0.534031, -9.74223)
+collision_layer = 17
+open = true
 
-[node name="GameCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 9.5, 20, 12)
+[node name="Lettuce" type="Node3D" parent="." index="10"]
+
+[node name="Lettuce" parent="Lettuce" index="0" instance=ExtResource("6_ro7ld")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.05774, 2.38419e-07, -8.96172)
+
+[node name="Lettuce2" parent="Lettuce" index="1" instance=ExtResource("6_ro7ld")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.05774, 2.38419e-07, -6.1449)
+
+[node name="Lettuce3" parent="Lettuce" index="2" instance=ExtResource("6_ro7ld")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.01985, 2.38419e-07, -9.17673)
+
+[node name="Lettuce4" parent="Lettuce" index="3" instance=ExtResource("6_ro7ld")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.01985, 2.38419e-07, -6.12951)
+
+[node name="Walls" type="Node3D" parent="." index="11"]
+
+[node name="walls8" type="CSGBox3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89421, -15.2836, -5.88409)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(1, 31.6407, 8.52142)
+
+[node name="walls9" type="CSGBox3D" parent="Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99722, -15.2792, -4.06728)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(1, 31.6495, 4.90129)
+
+[node name="walls11" type="CSGBox3D" parent="Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97845, 0.145845, -7.02792)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(0.849365, 0.767212, 6.96855)
+
+[node name="walls12" type="CSGBox3D" parent="Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01835, 0.154146, -11.4496)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(1.02338, 0.783813, 3.79658)
+
+[node name="walls24" type="CSGBox3D" parent="Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99643, -17.6177, -13.9414)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(3.06723, 36.3275, 1.19565)
+
+[node name="walls14" type="CSGBox3D" parent="Walls" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07215, 0.154146, -6.01174)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(2.88192, 0.783813, 0.949145)
+
+[node name="walls13" type="CSGBox3D" parent="Walls" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97999, -20.3709, -11.4496)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(1.00854, 41.8339, 3.79658)
+
+[node name="walls10" type="CSGBox3D" parent="Walls" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87815, -14.1755, -2.04419)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(7.23816, 29.4543, 0.855125)
+
+[node name="PressurePad" parent="." index="12" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.97347, -4.76837e-07, -6.96457)
+collision_layer = 15
+collision_mask = 15
+
+[node name="PressurePad7" parent="." index="13" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.03652, -4.76837e-07, -3.01371)
+collision_layer = 15
+collision_mask = 15
+
+[node name="PressurePad2" parent="." index="14" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.97347, -4.76837e-07, -8.02922)
+collision_layer = 15
+collision_mask = 15
+
+[node name="PressurePad3" parent="." index="15" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.06291, -4.76837e-07, -8.02465)
+collision_layer = 15
+collision_mask = 15
+
+[node name="PressurePad4" parent="." index="16" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.06291, -4.76837e-07, -6.96836)
+collision_layer = 15
+collision_mask = 15
+
+[node name="PressurePad5" parent="." index="17" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.03342, -4.76837e-07, -8.04069)
+collision_layer = 15
+collision_mask = 15
+
+[node name="PressurePad6" parent="." index="18" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.03947, -4.76837e-07, -6.96343)
+collision_layer = 15
+collision_mask = 15
+
+[node name="Guillotine" parent="." index="19" instance=ExtResource("9_qfct7")]
+transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, -4.99507, -0.00554323, -4.76795)
+collision_layer = 19
+
+[node name="Finish" parent="." index="20" instance=ExtResource("10_i6k8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98565, 0.865602, -12.7635)
+
+[node name="Hand" parent="." index="21" instance=ExtResource("11_00eg7")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649)
+
+[node name="GameCamera2" type="Camera3D" parent="." index="22"]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 13.5593, 25.4558, 12)
 projection = 1
-current = true
 fov = 35.0
 size = 11.0
 far = 43.98
-script = ExtResource("4_o40nd")
-
-[node name="Walls" type="Node3D" parent="."]
-
-[node name="walls1" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -4.01046)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(1, 0.499512, 1)
-
-[node name="walls12" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00522, 0.251725, -4.01046)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(1, 0.499512, 1)
-
-[node name="walls2" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00522, 0.251725, -2.5105)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(1, 0.499512, 12)
-
-[node name="walls3" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.50522, -32.4985, 5.4895)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(2, 66, 4)
-
-[node name="walls11" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00522, -32.4985, 6.9895)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(5, 66, 1)
-
-[node name="walls9" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50522, -32.4985, 5.4895)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(2, 66, 4)
-
-[node name="walls8" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50522, -30.9985, -0.0105)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(2, 63, 9)
-
-[node name="walls10" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00522, -29.4985, -6.5105)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(1, 60, 4)
-
-[node name="walls4" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00522, 0.251725, -8.0105)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(5, 0.499512, 1)
-
-[node name="walls6" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81015, 0.251725, -7.0105)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(1.39014, 0.499512, 1)
-
-[node name="walls7" type="CSGBox3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00522, 0.251725, -6.0105)
-material_override = ExtResource("5_x7dqd")
-use_collision = true
-size = Vector3(1, 0.499512, 1)
-
-[node name="Finish" parent="." instance=ExtResource("10_kcl62")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.98176, 0.321328, 5.99432)
-collision_layer = 8
-
-[node name="Fence" parent="." instance=ExtResource("6_cymw5")]
-transform = Transform3D(-0.45, 0, 3.93403e-08, 0, 0.45, 0, -3.93403e-08, 0, -0.45, -7.0255, 0.481618, 3.52954)
-
-[node name="Guillotine" parent="." instance=ExtResource("9_a200x")]
-transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -5.98647, 0.0708526, -4.60879)
-
-[node name="CollisionShape3D" parent="Guillotine" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7726, 4.73161, 0.0947876)
-
-[node name="LeftWall" parent="Guillotine" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7068, 2.496, -1.778)
-
-[node name="RightWall" parent="Guillotine" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8108, 2.49554, 1.77765)
-
-[node name="Model" parent="Guillotine" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8108, 0, 0)
-
-[node name="DroppedCollision" parent="Guillotine" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8108, 0, 0)
-
-[node name="WormCheck" parent="Guillotine" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40541, 0, 0)
-
-[node name="PressurePad" parent="." instance=ExtResource("8_bik0k")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.01031, -4.76837e-07, -6.9931)
-
-[node name="PressurePad2" parent="." instance=ExtResource("8_bik0k")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -8.01031, -4.76837e-07, -2.9931)
-
-[node name="DebugLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="DrawWormPos" type="Control" parent="DebugLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("11_ui8hk")
-metadata/_edit_use_anchors_ = true
-
-[node name="SceneTransition" parent="." instance=ExtResource("12_ebuxp")]
-
-[connection signal="pressed" from="PressurePad" to="." method="_on_pressure_pad_pressed"]
-[connection signal="unpressed" from="PressurePad" to="." method="_on_pressure_pad_unpressed"]
-[connection signal="pressed" from="PressurePad2" to="." method="_on_pressure_pad_pressed"]
-[connection signal="unpressed" from="PressurePad2" to="." method="_on_pressure_pad_unpressed"]
-
-[editable path="Guillotine"]
+script = ExtResource("12_j63oo")

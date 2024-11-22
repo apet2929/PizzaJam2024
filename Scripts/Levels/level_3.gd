@@ -1,42 +1,34 @@
-extends Node3D
+extends LevelBase
 
-@export var next_lvl = "res://scenes/Levels/Level3.tscn"
-const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
-# Contains all the setup/interaction logic specific to this level
+var next_level_scene = "res://scenes/Levels/Level4.tscn"
+
+var buttons_that_close_the_fence = [
+	"PressurePad", "PressurePad2", "PressurePad3",
+	"PressurePad4", "PressurePad5", "PressurePad6"
+]
 
 func _ready() -> void:
-	$SceneTransition.load_in()
-	EventBus.connect("level_finished", next_level)
+	super._ready()
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("retry"):
-		restart_level()
+func _process(delta) -> void:
+	super._process(delta)
 
 func next_level():
-	$SceneTransition.load_out(next_lvl)
+	super._next_level(next_level_scene)
+	
+func init_signals():
+	EventBus.connect("button_pressed", self._on_button_pressed)
+	EventBus.connect("button_unpressed", self._on_button_unpressed)
 
-func restart_level():
-	get_tree().change_scene_to_file(self.scene_file_path)
-
-func is_worm(body):
-	return body.get_script() == WORM_SCRIPT
-
-func _on_button_small_button_pressed(button_id, body) -> void:
-	$Fence.open_fence()
-
-func _on_button_small_button_unpressed(button_id, body) -> void:
-	if $Fence.open:
+func _on_button_pressed(button: Node3D, body) -> void:
+	print(button)
+	if buttons_that_close_the_fence.has(button.name):
 		$Fence.close_fence()
-		
-func _on_pressure_pad_pressed(pressure_pad, body) -> void:
-	if pressure_pad == $PressurePad:
+	elif button == $PressurePad7:
 		$Guillotine.drop()
-	elif pressure_pad == $PressurePad2:
-		$Fence.open_fence()
 
-func _on_pressure_pad_unpressed(pressure_pad, body) -> void:
-	if pressure_pad == $PressurePad:
+func _on_button_unpressed(button, body) -> void:
+	if buttons_that_close_the_fence.has(button.name):
+		$Fence.open_fence()
+	elif button == $PressurePad7:
 		$Guillotine.undrop()
-	elif pressure_pad == $PressurePad2:
-		if $Fence.open:
-				$Fence.close_fence()

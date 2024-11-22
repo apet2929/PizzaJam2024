@@ -1,47 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://3itvhn02h1hy"]
+[gd_scene load_steps=5 format=3 uid="uid://3itvhn02h1hy"]
 
-[ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="1_kciyg"]
-[ext_resource type="Texture2D" uid="uid://b6t875vqcy5kn" path="res://assets/Grass_Tile.png" id="2_wluov"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_j32td"]
+[ext_resource type="Script" path="res://scenes/Levels/level_base_script.gd" id="1_c6xbm"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_d5ht3"]
+[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="6_7sbaw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8wp2"]
-albedo_texture = ExtResource("2_wluov")
-uv1_scale = Vector3(0.063, 0.063, 0.063)
-uv1_offset = Vector3(0.094, 0, -0.031)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4cr8f"]
-
-[sub_resource type="Sky" id="Sky_oi8rl"]
-sky_material = SubResource("ProceduralSkyMaterial_4cr8f")
-
-[sub_resource type="Environment" id="Environment_rnq1e"]
-background_mode = 2
-sky = SubResource("Sky_oi8rl")
+[sub_resource type="Environment" id="Environment_geqh8"]
+background_mode = 1
+background_color = Color(0, 0.506, 0.66, 1)
+ambient_light_source = 1
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.6
 
 [node name="LevelBase" type="Node3D"]
-
-[node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-layers = 2
-material_override = ExtResource("1_kciyg")
-use_collision = true
-collision_layer = 2
-collision_mask = 2
-size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_w8wp2")
+script = ExtResource("1_c6xbm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rnq1e")
+environment = SubResource("Environment_geqh8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Worm" parent="." instance=ExtResource("3_j32td")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457762, 0)
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527996, 0.853847, 0.703743, -0.541199, 0.460271, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
 
 [node name="GameCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 6.1, 3.3)
@@ -49,3 +34,5 @@ projection = 1
 fov = 35.0
 size = 8.293
 script = ExtResource("4_d5ht3")
+
+[node name="SceneTransition" parent="." instance=ExtResource("6_7sbaw")]

@@ -23,6 +23,12 @@ EventBus="*res://Scripts/EventBus.gd"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+body=""
+head=""
+box=""
+
 [input]
 
 forward={

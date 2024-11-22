@@ -54,6 +54,10 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00913, 0.375672, -3.99105)
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
+[node name="Worm2" parent="." instance=ExtResource("5_18hlh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0808, 0.375672, -3.99105)
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
+
 [node name="GameCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 13.5593, 25.4558, 12)
 projection = 1
@@ -99,7 +103,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.111
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.1111, 0, -14.0837)
 
 [node name="Spikes12" parent="Spikes" instance=ExtResource("15_ednuq")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.1111, 0, -14.0837)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.00783, 0, -8.13104)
+
+[node name="Spikes26" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -2.00783, 0, -2.13104)
 
 [node name="Spikes13" parent="Spikes" instance=ExtResource("15_ednuq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.1111, 0, -14.0837)

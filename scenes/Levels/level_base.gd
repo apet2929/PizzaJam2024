@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var next_lvl = "res://scenes/Levels/Level3.tscn"
+class_name LevelBase
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 # Contains all the setup/interaction logic specific to this level
 
@@ -9,7 +9,9 @@ var worm_vel_y = 0
 const GRAVITY = -9
 var worm_initial_y
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	init_signals()
 	$SceneTransition.load_in()
 	$SceneTransition.anim_done.connect(self.start_level)
 	$Hand.dropped.connect(self.drop_worm)
@@ -18,15 +20,27 @@ func _ready() -> void:
 	$Worm.global_position.y = $Hand.global_position.y - 5
 	for worm in get_tree().get_nodes_in_group("head"):
 		worm.disabled = true
+	
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
 		restart_level()
 	if dropping:
 		drop_worm_update(delta)
+		
+func init_signals():
+	push_error("Implement me in subclass!")
+	#EventBus.connect("button_pressed", self._on_button_pressed)
+	#EventBus.connect("button_unpressed", self._on_button_unpressed)
+	#EventBus.connect("pressure_pad_pressed", self._on_pressure_pad_pressed)
+	#EventBus.connect("pressure_pad_unpressed", self._on_pressure_pad_unpressed)
 
 func next_level():
-	$SceneTransition.load_out(next_lvl)
+	push_error("Implement me in subclass!")
+
+func _next_level(next_level):
+	EventBus.restart_count = 0
+	$SceneTransition.load_out(next_level)
 
 func start_level():
 	await get_tree().create_timer(0.3).timeout
@@ -53,21 +67,13 @@ func is_worm(body):
 	return body.get_script() == WORM_SCRIPT
 
 func _on_button_small_button_pressed(button_id, body) -> void:
-	$Fence.open_fence()
+	pass
 
 func _on_button_small_button_unpressed(button_id, body) -> void:
-	if $Fence.open:
-		$Fence.close_fence()
-
-func _on_pressure_pad_body_entered(body: Node3D) -> void:
-	if is_worm(body):
-		$Guillotine.drop()
+	pass
 		
 func _on_pressure_pad_pressed(pressure_pad, body) -> void:
-	if pressure_pad == $PressurePad:
-		$Guillotine.drop()
+	pass
 
 func _on_pressure_pad_unpressed(pressure_pad, body) -> void:
-	if pressure_pad == $PressurePad:
-		$Guillotine.undrop()
-		
+	pass
