@@ -28,8 +28,6 @@ script = ExtResource("1_fjm78")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4m1be")
 
-[node name="SceneTransition" parent="." instance=ExtResource("12_2qchv")]
-
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68994, -33.5474, -9.14342)
 layers = 2
@@ -56,6 +54,7 @@ spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2,
 [node name="GameCamera" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 9.5, 20, 12)
 projection = 1
+current = true
 fov = 35.0
 size = 11.0
 far = 43.98
@@ -145,7 +144,7 @@ offset_bottom = 40.0
 script = ExtResource("12_63q33")
 metadata/_edit_use_anchors_ = true
 
-[node name="SceneTransition2" parent="." instance=ExtResource("12_2qchv")]
+[node name="SceneTransition" parent="." instance=ExtResource("12_2qchv")]
 
 [connection signal="button_pressed" from="ButtonSmall" to="." method="_on_button_small_button_pressed"]
 [connection signal="button_unpressed" from="ButtonSmall" to="." method="_on_button_small_button_unpressed"]

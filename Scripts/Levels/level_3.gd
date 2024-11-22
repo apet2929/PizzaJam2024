@@ -1,34 +1,42 @@
 extends Node3D
 
-# Design Courtesy of the Nutt
-# There is no way to pass through this corridor with a length greater than 2
+@export var next_lvl = "res://scenes/Levels/Level3.tscn"
+const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
+# Contains all the setup/interaction logic specific to this level
 
-var buttons_pressed = []
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventBus.connect("button_pressed", self._on_button_pressed)
-	EventBus.connect("button_pressed", self._on_button_unpressed)
+	$SceneTransition.load_in()
+	EventBus.connect("level_finished", next_level)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("retry"):
+		restart_level()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func next_level():
+	$SceneTransition.load_out(next_lvl)
 
-func _on_button_pressed(button, _body) -> void:
-	if buttons_pressed.find(button) == -1:
-		buttons_pressed.append(button)
-		if $Fence.open:
-			$Fence.close_fence()
-	
-func _on_button_unpressed(button, _body) -> void:
-	buttons_pressed.erase(button)
-	if buttons_pressed.is_empty():
+func restart_level():
+	get_tree().change_scene_to_file(self.scene_file_path)
+
+func is_worm(body):
+	return body.get_script() == WORM_SCRIPT
+
+func _on_button_small_button_pressed(button_id, body) -> void:
+	$Fence.open_fence()
+
+func _on_button_small_button_unpressed(button_id, body) -> void:
+	if $Fence.open:
+		$Fence.close_fence()
+		
+func _on_pressure_pad_pressed(pressure_pad, body) -> void:
+	if pressure_pad == $PressurePad:
+		$Guillotine.drop()
+	elif pressure_pad == $PressurePad2:
 		$Fence.open_fence()
 
-# Guillotine
-func _on_pressure_pad_7_pressed(_button, _body) -> void:
-	$Guillotine.drop()
-
-func _on_pressure_pad_7_unpressed(_button, _body) -> void:
-	$Guillotine.undrop()
+func _on_pressure_pad_unpressed(pressure_pad, body) -> void:
+	if pressure_pad == $PressurePad:
+		$Guillotine.undrop()
+	elif pressure_pad == $PressurePad2:
+		if $Fence.open:
+				$Fence.close_fence()

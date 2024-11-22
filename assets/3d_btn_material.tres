@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://txmt7ifqxvwy"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://nw8ovf7lddam"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtgyv"]
 cull_mode = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bce6atjqp6kof"]
+[gd_scene load_steps=11 format=3 uid="uid://bce6atjqp6kof"]
 
 [ext_resource type="Script" path="res://Scripts/finish.gd" id="1_rgn7n"]
 [ext_resource type="PackedScene" uid="uid://cltbeb0atxauy" path="res://assets/finish_tunnel.glb" id="2_4jui5"]
@@ -6,6 +6,52 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gboe1"]
 size = Vector3(0.677734, 1.12506, 0.390625)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no7m0"]
+albedo_color = Color(0.61339, 0.61339, 0.61339, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8667w"]
+next_pass = SubResource("StandardMaterial3D_no7m0")
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pey26"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_041m4"]
+next_pass = SubResource("StandardMaterial3D_pey26")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+metallic = 0.87
+metallic_specular = 0.11
+roughness = 0.05
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.37
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmfm2"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.045
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cus60"]
+next_pass = SubResource("StandardMaterial3D_wmfm2")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.5, 0, 1)
+metallic = 0.62
+metallic_specular = 0.44
+roughness = 0.06
 
 [node name="Finish" type="Area3D"]
 collision_layer = 0
@@ -23,4 +69,16 @@ visible = false
 [node name="finish_flag" parent="." instance=ExtResource("3_74ajk")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
 
+[node name="Cylinder" parent="finish_flag" index="0"]
+material_override = SubResource("StandardMaterial3D_8667w")
+lod_bias = 42.174
+
+[node name="Cube" parent="finish_flag" index="1"]
+material_override = SubResource("StandardMaterial3D_041m4")
+
+[node name="Sphere" parent="finish_flag" index="2"]
+material_override = SubResource("StandardMaterial3D_cus60")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="finish_flag"]

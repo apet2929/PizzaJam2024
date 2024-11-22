@@ -72,7 +72,7 @@ func _ready() -> void:
 
 # Important - This is called before the _process fn of all segments
 func _process(delta: float) -> void:
-	var dir = Input.get_vector("forward", "backward", "right", "left")
+	var dir = Input.get_vector("left", "right", "forward", "backward")
 	self.velocity.y = GRAVITY
 	
 	if move_ready:

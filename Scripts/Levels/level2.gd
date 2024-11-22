@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var next_lvl = "res://scenes/Levels/Level3.tscn"
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 # Contains all the setup/interaction logic specific to this level
 
@@ -12,7 +13,7 @@ func _process(delta: float) -> void:
 		restart_level()
 
 func next_level():
-	$SceneTransition.load_out("res://scenes/Levels/Level3.tscn")
+	$SceneTransition.load_out(next_lvl)
 
 func restart_level():
 	get_tree().change_scene_to_file(self.scene_file_path)
@@ -21,8 +22,7 @@ func is_worm(body):
 	return body.get_script() == WORM_SCRIPT
 
 func _on_button_small_button_pressed(button_id, body) -> void:
-	if is_worm(body):
-		$Fence.open_fence()
+	$Fence.open_fence()
 
 func _on_button_small_button_unpressed(button_id, body) -> void:
 	if $Fence.open:
