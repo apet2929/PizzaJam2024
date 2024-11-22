@@ -6,6 +6,8 @@ var parts_on = 0
 var parts_left = 0
 var parts_in = []
 
+@onready var blood_particle: GPUParticles3D = $Model/blood_particle
+
 func drop():
 	used = true
 	$Model/AnimationPlayer.play("drop")
@@ -20,6 +22,8 @@ func drop():
 		
 		if worm_root != null:
 			worm_root.split_at(segment)
+		
+		blood_particle.emitting = true
 	
 func undrop():
 	used = false

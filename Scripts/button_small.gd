@@ -9,6 +9,7 @@ extends Area3D
 signal button_pressed
 signal button_unpressed
 
+@export var unpress_timer = 0.0
 var pressed = false
 
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +31,7 @@ func press(body: Node3D):
 	emit_signal("button_pressed", button_id, body)
 
 func unpress(body: Node3D):
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(unpress_timer).timeout
 	print("Unpressing")
 	$Model/AnimationPlayer.play("ButtonUnpress")
 	emit_signal("button_unpressed", button_id, body)

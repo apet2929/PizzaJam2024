@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bselxo1475df2"]
+[gd_scene load_steps=5 format=3 uid="uid://diuxd3v1qb85f"]
 
 [ext_resource type="Script" path="res://Scripts/box.gd" id="1_52yud"]
 [ext_resource type="PackedScene" uid="uid://b1uda62mxs233" path="res://assets/box.glb" id="1_82flx"]
+[ext_resource type="Material" uid="uid://bopwwff7gcxls" path="res://assets/box_material.tres" id="3_u4g4x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hq36o"]
 size = Vector3(0.841248, 0.827118, 0.844238)
 
-[node name="Box" type="RigidBody3D"]
+[node name="Box" type="RigidBody3D" groups=["box"]]
 collision_layer = 16
 collision_mask = 16
 lock_rotation = true
@@ -14,6 +15,78 @@ script = ExtResource("1_52yud")
 
 [node name="Model" parent="." instance=ExtResource("1_82flx")]
 transform = Transform3D(0.371, 0, 0, 0, 0.371, 0, 0, 0, 0.371, 0, 0, 0)
+
+[node name="Stick" parent="Model" index="0"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_001" parent="Model" index="1"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_002" parent="Model" index="2"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_003" parent="Model" index="3"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_004" parent="Model" index="4"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_005" parent="Model" index="5"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_006" parent="Model" index="6"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_007" parent="Model" index="7"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_008" parent="Model" index="8"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_009" parent="Model" index="9"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_010" parent="Model" index="10"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_011" parent="Model" index="11"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_012" parent="Model" index="12"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_013" parent="Model" index="13"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_014" parent="Model" index="14"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_015" parent="Model" index="15"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_016" parent="Model" index="16"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_017" parent="Model" index="17"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_018" parent="Model" index="18"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_019" parent="Model" index="19"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_020" parent="Model" index="20"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_021" parent="Model" index="21"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_022" parent="Model" index="22"]
+material_override = ExtResource("3_u4g4x")
+
+[node name="Stick_023" parent="Model" index="23"]
+material_override = ExtResource("3_u4g4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105896, -0.0112764, 0)
@@ -50,3 +123,5 @@ collision_mask = 19
 debug_shape_custom_color = Color(0.732854, 0.382212, 0.601817, 1)
 
 [connection signal="body_entered" from="BoxArea" to="." method="_on_box_area_body_entered"]
+
+[editable path="Model"]

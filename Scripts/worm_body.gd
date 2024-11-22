@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	
 func move() -> void:
 	if move_ready:
-		var dir = Input.get_vector("forward", "backward", "right", "left")
+		var dir = Input.get_vector("left", "right", "forward", "backward")
 
 		if not wall_check(dir):
 			return

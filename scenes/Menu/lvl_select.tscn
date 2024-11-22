@@ -100,7 +100,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL4" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -12)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level4.tscn"
 
 [node name="gfx" parent="LVL4" index="1"]
 size = Vector3(1, 1, 1)
@@ -113,7 +113,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL5" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -15)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level5.tscn"
 
 [node name="gfx" parent="LVL5" index="1"]
 size = Vector3(1, 1, 1)
@@ -126,7 +126,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL6" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -15)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level6.tscn"
 
 [node name="gfx" parent="LVL6" index="1"]
 size = Vector3(1, 1, 1)
@@ -139,7 +139,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL7" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level7.tscn"
 
 [node name="gfx" parent="LVL7" index="1"]
 size = Vector3(1, 1, 1)
@@ -152,7 +152,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL8" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -12)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level8.tscn"
 
 [node name="gfx" parent="LVL8" index="1"]
 size = Vector3(1, 1, 1)
@@ -165,7 +165,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL9" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level9.tscn"
 
 [node name="gfx" parent="LVL9" index="1"]
 size = Vector3(1, 1, 1)
@@ -178,7 +178,7 @@ transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506
 
 [node name="LVL10" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)
-scene_path = "res://scenes/Levels/Level3.tscn"
+scene_path = "res://scenes/Levels/Level10.tscn"
 
 [node name="gfx" parent="LVL10" index="1"]
 size = Vector3(1, 1, 1)
