@@ -31,22 +31,22 @@ shape = SubResource("BoxShape3D_hq36o")
 
 [node name="DownRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(0, 0, -1)
-collision_mask = 3
+collision_mask = 19
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="UpRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(0, 0, 1)
-collision_mask = 3
+collision_mask = 19
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="LeftRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(-1, 0, 0)
-collision_mask = 3
+collision_mask = 19
 debug_shape_custom_color = Color(0, 0, 1, 1)
 
 [node name="RightRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(1, 0, 0)
-collision_mask = 3
+collision_mask = 19
 debug_shape_custom_color = Color(0.732854, 0.382212, 0.601817, 1)
 
 [connection signal="body_entered" from="BoxArea" to="." method="_on_box_area_body_entered"]

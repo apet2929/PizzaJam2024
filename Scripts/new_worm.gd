@@ -95,6 +95,7 @@ func _process(delta: float) -> void:
 func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
 	EventBus.box_body_entered.connect(self._on_box_body_entered)
+	EventBus.salt_body_entered.connect(self._on_salt_body_entered)
 
 func _on_button_small_body_entered(body: Node3D) -> void:
 	if body == self:
@@ -109,10 +110,8 @@ func is_worm(body: Node3D) -> bool:
 
 func handle_movement(dir):
 	if wall_check(dir):
-		print("!wall_check")
 		return
 	if box_check(dir):
-		print("!box_check")
 		return
 
 	# when the head snaps to the grid, update the snap the worm as a whole
@@ -147,9 +146,6 @@ func split(cut_from_head):
 	for i in range(max(cut_from_head, 1), segments.size()):
 		var seg = self.remove_segment(self.get_tail())
 		cut_off.append(seg)
-	
-	print("cut off: ", str(cut_off))
-	print("remaining: ", str(self.segments))
 	if self.segments.size() < 2:
 		self.kill()
 	if cut_off.size() < 2:
@@ -172,7 +168,6 @@ func split_at(segment: Node3D):
 		push_error("Segment not in worm! Self=" + str(self) + " Segment = " + str(segment) 
 			+ " scene path = " + segment.scene_file_path)
 	var index = segments.find(segment)
-	print("splitting at index=" + str(index))
 	split(index)
 
 func kill():
@@ -223,14 +218,10 @@ func box_check(dir):
 	if !ray:
 		return false
 	var d = Vector3(dir.x, 0, dir.y)
-	print(d)
-	print(ray)
 	if ray.is_colliding():
 		var obj = ray.get_collider()
 		if obj.get_script() == BOX_SCRIPT:
 			var f = obj.cant_move_in(d)
-			if f:
-				print(f)
 			return f
 	return false
 
@@ -273,9 +264,9 @@ func remove_segment(segment):
 
 	set_endcaps()
 
-	if segments.size() == 0:
+	if segments.size() <= 1:
 		print("no segments left, killing self")
-		self.queue_free()
+		self.kill()
 		
 	return segment
 	
@@ -314,6 +305,7 @@ func print_curve():
 	for i in range(0, self.curve.point_count):
 		s += str(self.curve.get_point_position(i)) + ", "
 	s += "]"
+	
 
 func tail_direction() -> Vector3:
 	var tail = get_tail()
@@ -325,7 +317,6 @@ func tail_direction() -> Vector3:
 
 # TODO: more logic to prevent spawning new node inside a wall 
 func _on_lettuce_body_entered(lettuce, body) -> void:
-	print("lettuce entered")
 	if body == get_head().get_node("RigidBody3D"):
 		lettuce.queue_free()
 		var dir = tail_direction()
@@ -335,3 +326,9 @@ func _on_box_body_entered(box, body) -> void:
 	if body == self:
 		var d = Vector3(current_dir.x, 0, current_dir.y)
 		box.push(d)
+		
+func _on_salt_body_entered(salt, body) -> void:
+	print(body)
+	if body == get_head().get_node("RigidBody3D"):
+		salt.queue_free()
+		self.remove_segment(self.get_tail())

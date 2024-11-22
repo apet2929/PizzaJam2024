@@ -5,14 +5,11 @@ var next_pos
 # Called when the node enters the scene tree for the first time.
 
 func _process(delta: float) -> void:
-	if self.linear_velocity.length() > 100:
-		print(self.linear_velocity)
 	$Model.position = lerp($Model.position, Vector3(0,0,0), delta * SPEED)
 
 func push(dir) -> bool:
-	var foo = cant_move_in(dir)
-	if foo:
-		print("Cant move in dir: " + str(dir) + " because " + str(foo) + " is blocking it")
+	var blocking_body = cant_move_in(dir)
+	if blocking_body:
 		return false
 	var old_pos = Vector3(self.global_position)
 	next_pos = self.position + dir
@@ -32,5 +29,4 @@ func cant_move_in(dir):
 	return false
 
 func _on_box_area_body_entered(body: Node3D) -> void:
-	print("box body enterred: ", str(body))
 	EventBus.box_body_entered.emit(self, body)

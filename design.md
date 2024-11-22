@@ -28,3 +28,29 @@ Setting:
 - color design:
 	- warm/cold
 	- saturated/desaturated
+
+Level outlines:
+
+- one way gate
+
+- 3 worms needed- 
+	- 1 presses button that drops guillotine
+	- 1 p
+
+level where you need to find a way to get long enough to finish
+	- snake game, whenever you pick up a lettuce another spawns
+level where you need to push boxes in a certain order 
+	- seems simple but with a long worm it gets harder
+	- need box to hold down prm
+level where you need to curve around yourself
+
+
+Pink = worm
+Black = wall
+Green = lettuce
+Brown = box
+Red = guillotine
+Blue = pressure plate
+Purple = toggle button
+Gold = finish
+Cyan = Fence

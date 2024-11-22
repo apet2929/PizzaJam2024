@@ -54,11 +54,14 @@ fov = 35.0
 size = 8.293
 script = ExtResource("4_paie2")
 
+[node name="Lettuce" parent="." instance=ExtResource("6_jwflu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.03502, 0, -0.14536)
+
 [node name="Box" parent="." instance=ExtResource("5_vyvyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476808, 0)
 
-[node name="Lettuce" parent="." instance=ExtResource("6_jwflu")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.03502, 0, -0.14536)
+[node name="Box2" parent="." instance=ExtResource("5_vyvyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476808, 1.01057)
 
 [node name="DebugLayer" type="CanvasLayer" parent="."]
 

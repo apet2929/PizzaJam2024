@@ -56,9 +56,9 @@ func update_camera_view(delta):
 	self.position.z = lerp(self.position.z, center.z - Y_CHANGE, FOLLOW_SPEED * delta)
 	
 	# Calculate the size needed to fit all the worms in the camera's view
-	var size = max(max_pos.x - min_pos.x, max_pos.z - min_pos.z) / 1.5 + DISTANCE_OFFSET
+	var worm_size = max(max_pos.x - min_pos.x, max_pos.z - min_pos.z) / 1.5 + DISTANCE_OFFSET
 	
-	self.size = lerp(self.size, max(size, MIN_CAMERA_SIZE), FOLLOW_SPEED * delta)
+	self.size = lerp(self.size, max(worm_size, MIN_CAMERA_SIZE), FOLLOW_SPEED * delta)
 
 func follow_worms(delta):
 	# Calculate the center position of all worms

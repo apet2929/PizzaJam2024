@@ -7,7 +7,7 @@ var was_played = false
 func _ready() -> void:
 	anim.play("RESET")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# TODO : what is this for?
 	if was_played == false:
 		anim.play_backwards("load_out")

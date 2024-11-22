@@ -42,6 +42,6 @@ func move_to(pos):
 	next_pos = pos
 	can_move = true
 
-func snap_to_grid(_node, delta):
+func snap_to_grid(_node, _delta):
 	self.global_position.x = round(self.global_position.x)
 	self.global_position.z = round(self.global_position.z)

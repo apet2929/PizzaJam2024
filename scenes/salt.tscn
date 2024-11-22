@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6c1ipushch41"]
+
+[ext_resource type="Script" path="res://Scripts/salt.gd" id="1_nshhf"]
+[ext_resource type="PackedScene" uid="uid://cmvjt2gsnufow" path="res://assets/salt.glb" id="1_ro5vy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7acc"]
+size = Vector3(0.421143, 0.490356, 0.432022)
+
+[node name="Salt" type="Area3D"]
+script = ExtResource("1_nshhf")
+
+[node name="Model" parent="." instance=ExtResource("1_ro5vy")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00231934, 0.254822, -0.0180283)
+shape = SubResource("BoxShape3D_t7acc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
