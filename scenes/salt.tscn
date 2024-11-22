@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/salt.gd" id="1_nshhf"]
 [ext_resource type="PackedScene" uid="uid://cmvjt2gsnufow" path="res://assets/salt.glb" id="1_ro5vy"]
-[ext_resource type="Material" path="res://assets/Salt_Material.tres" id="3_3q7xh"]
+[ext_resource type="Material" uid="uid://bqf088bdhaxku" path="res://assets/Salt_Material.tres" id="3_3q7xh"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_sjige"]
 rings = 16

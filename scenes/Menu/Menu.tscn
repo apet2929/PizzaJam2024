@@ -1,9 +1,70 @@
-[gd_scene load_steps=6 format=3 uid="uid://72wbefks38el"]
+[gd_scene load_steps=9 format=3 uid="uid://72wbefks38el"]
 
 [ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="1_b5od1"]
+[ext_resource type="Script" path="res://assets/Menu/Transition.gd" id="1_t3fki"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_wvqnq"]
 [ext_resource type="PackedScene" uid="uid://bqgpbclle8qpc" path="res://scenes/Menu/3d_btn.tscn" id="4_3jjvx"]
-[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="4_rmout"]
+
+[sub_resource type="Animation" id="Animation_bi66b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ove04"]
+resource_name = "load_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1157, 324), Vector2(0, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1157, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdc8k"]
+_data = {
+"RESET": SubResource("Animation_bi66b"),
+"load_out": SubResource("Animation_ove04")
+}
 
 [sub_resource type="Environment" id="Environment_6knu8"]
 background_mode = 1
@@ -16,7 +77,24 @@ adjustment_saturation = 1.6
 
 [node name="LvlSelect1" type="Node3D"]
 
-[node name="SceneTransition" parent="." instance=ExtResource("4_rmout")]
+[node name="SceneTransition" type="CanvasLayer" parent="."]
+script = ExtResource("1_t3fki")
+
+[node name="Anim" type="AnimationPlayer" parent="SceneTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_vdc8k")
+}
+
+[node name="Top" type="ColorRect" parent="SceneTransition"]
+offset_right = 1152.0
+offset_bottom = 324.0
+color = Color(0, 0, 0, 1)
+
+[node name="Bottom" type="ColorRect" parent="SceneTransition"]
+offset_top = 324.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1456, -33.5474, -13.6449)
@@ -77,6 +155,7 @@ text = "Quit"
 [node name="Select_Arrow" parent="3d_btn2" index="3"]
 transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 2.92986)
 
-[editable path="SceneTransition"]
+[connection signal="animation_finished" from="SceneTransition/Anim" to="SceneTransition" method="_on_anim_animation_finished"]
+
 [editable path="3d_btn"]
 [editable path="3d_btn2"]

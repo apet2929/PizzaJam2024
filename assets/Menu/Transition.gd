@@ -4,12 +4,27 @@ extends Node
 @export var new_scene = ""
 var was_played = false
 
+@onready var pause_menu: Control = $Pause_Menu
+@onready var on_btn: AudioStreamPlayer2D = $Pause_Menu/AudioStreamPlayer2D
+var is_menu_open = false
+
 signal anim_done
 
 func _ready() -> void:
 	anim.play("RESET")
+	if pause_menu != null:
+		pause_menu.visible = false
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("menu_toggle") and is_menu_open:
+		is_menu_open = false
+		if pause_menu != null:
+			pause_menu.visible = false
+	elif Input.is_action_just_pressed("menu_toggle"):
+		is_menu_open = true
+		if pause_menu != null:
+			pause_menu.visible = true
+	
 	# TODO : what is this for?
 	if was_played == false:
 		anim.play_backwards("load_out")
@@ -33,3 +48,11 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "load_out":
 		get_tree().change_scene_to_file(new_scene)
 	anim_done.emit()
+
+
+func _on_resume_pressed() -> void:
+	pause_menu.visible = false
+
+
+func _on_main_menu_mouse_entered() -> void:
+	on_btn.play()

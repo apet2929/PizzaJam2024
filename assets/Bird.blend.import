@@ -3,12 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bggv14n7j4bnk"
+uid="uid://dr3323nyvvaly"
 valid=false
 
 [deps]
 
-source_file="res://assets/box.blend"
+source_file="res://assets/Bird.blend"
 
 [params]
 
