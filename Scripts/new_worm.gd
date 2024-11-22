@@ -52,7 +52,7 @@ var current_dir = Vector2(0,0) # For pushing boxes
 var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
 
-
+# TODO : show restart message when softlocked
 
 func _ready() -> void:
 	init_signals()
@@ -91,7 +91,7 @@ func _process(delta: float) -> void:
 	
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
-		
+
 func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
 	EventBus.box_body_entered.connect(self._on_box_body_entered)
@@ -199,25 +199,7 @@ func snap_to_grid():
 	head.position = Vector3(0,0,0)
 	for i in range(1, segments.size()):
 		segments[i].position -= diff
-	if is_softlocked():
-		pass
-		#self.kill()
-
-func is_softlocked():
-	var dir = last_dir
-	var up_check = (dir.x == 1 or up_ray.is_colliding())
-	var down_check = (dir.x == -1 or down_ray.is_colliding())
-	var right_check = (dir.y == 1 or right_ray.is_colliding())
-	var left_check = (dir.y == -1 or left_ray.is_colliding())
-	return up_check and down_check and right_check and left_check
 	
-# TODO: Fixme!
-func colliding_with_not_head(ray):
-	if ray.is_colliding:
-		var obj = up_ray.get_collider()
-		print(obj)
-		return obj != segments[0].get_node("RigidBody3D")
-	return false
 
 func wall_check(dir):
 	# Returns TRUE if raycast is colliding
@@ -240,7 +222,7 @@ func box_check(dir):
 	var ray = ray_for_dir(dir)
 	if !ray:
 		return false
-	var d = Vector3(current_dir.x, 0, current_dir.y)
+	var d = Vector3(dir.x, 0, dir.y)
 	print(d)
 	print(ray)
 	if ray.is_colliding():
@@ -299,13 +281,13 @@ func remove_segment(segment):
 	
 func ray_for_dir(dir):
 	if dir == Vector2(-1,0): 
-		return up_ray
-	if dir == Vector2(1, 0): 
-		return down_ray
-	if dir == Vector2(0, -1): 
-		return right_ray
-	if dir == Vector2(0, 1): 
 		return left_ray
+	if dir == Vector2(1, 0): 
+		return right_ray
+	if dir == Vector2(0, -1): 
+		return down_ray
+	if dir == Vector2(0, 1): 
+		return up_ray
 	else:
 		return null
 
