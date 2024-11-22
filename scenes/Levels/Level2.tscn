@@ -150,7 +150,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SceneTransition" parent="." instance=ExtResource("12_2qchv")]
 
-[connection signal="button_pressed" from="ButtonSmall" to="." method="_on_button_small_button_pressed"]
-[connection signal="button_unpressed" from="ButtonSmall" to="." method="_on_button_small_button_unpressed"]
 [connection signal="pressed" from="PressurePad" to="." method="_on_pressure_pad_pressed"]
 [connection signal="unpressed" from="PressurePad" to="." method="_on_pressure_pad_unpressed"]

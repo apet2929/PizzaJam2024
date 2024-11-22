@@ -3,12 +3,6 @@ extends Area3D
 
 @export var button_id: String
 
-
-@onready var WORM = preload("res://Scripts/new_worm.gd")
-
-signal button_pressed
-signal button_unpressed
-
 @export var unpress_timer = 0.0
 var pressed = false
 
@@ -17,29 +11,21 @@ func _ready() -> void:
 	pressed = false
 	$Model/AnimationPlayer.play("ButtonUnpress")
 
-func is_worm(body: Node3D) -> bool:
-	match body.get_script():
-		WORM:
-			return true
-		_:
-			return false
-
 func press(body: Node3D):
-	pressed = true
-	print("Pressing")
-	$Model/AnimationPlayer.play("ButtonPress")
-	emit_signal("button_pressed", button_id, body)
+	if !pressed:
+		pressed = true
+		$Model/AnimationPlayer.play("ButtonPress")
+		EventBus.button_pressed.emit(self, body)
 
 func unpress(body: Node3D):
-	await get_tree().create_timer(unpress_timer).timeout
-	print("Unpressing")
-	$Model/AnimationPlayer.play("ButtonUnpress")
-	emit_signal("button_unpressed", button_id, body)
-
+	if unpress_timer >= 0:
+		await get_tree().create_timer(unpress_timer).timeout
+		$Model/AnimationPlayer.play("ButtonUnpress")
+		EventBus.button_unpressed.emit(self, body)
+		pressed = false
 
 func _on_body_entered(body: Node3D) -> void:
 	press(body)
-
 
 func _on_body_exited(body: Node3D) -> void:
 	unpress(body)

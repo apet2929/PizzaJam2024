@@ -1,6 +1,6 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Levels/Level2.tscn"
+var next_level_scene = "res://scenes/Levels/Level3.tscn"
 
 func _ready() -> void:
 	super._ready()
@@ -10,22 +10,13 @@ func _process(delta) -> void:
 
 func next_level():
 	super._next_level(next_level_scene)
-
+	
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
 
 func _on_button_pressed(button, body) -> void:
-	print(button)
-	if button == $ButtonSmall:
-		if !$Fence.open:
-			$Fence.open_fence()
-	elif button == $PressurePad:
-		$Guillotine.drop()
+	pass
 
 func _on_button_unpressed(button, body) -> void:
-	if button == $ButtonSmall:
-		if $Fence.open:
-			$Fence.close_fence()
-	elif button == $PressurePad:
-		$Guillotine.undrop()
+	pass
