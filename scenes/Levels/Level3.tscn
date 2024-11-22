@@ -24,7 +24,7 @@ uv1_world_triplanar = true
 [node name="LevelBase" instance=ExtResource("1_itmbt")]
 script = ExtResource("2_y5164")
 
-[node name="GameCamera" parent="." index="2"]
+[node name="GameCamera" parent="." index="3"]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 14.1243, 3.3)
 visible = false
 
