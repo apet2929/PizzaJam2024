@@ -29,6 +29,8 @@ const WORM_SCENE = preload("res://scenes/new_worm.tscn")
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 const BOX_SCRIPT = preload("res://Scripts/box.gd")
 
+var disabled = false
+
 
 
 @export var spawn_points = [ # relative to head position
@@ -57,6 +59,7 @@ var curve: Curve3D
 func _ready() -> void:
 	init_signals()
 	
+	$CSGSphere3D.visible = false
 	if has_node("../GameCamera"):
 		var camera = get_node("../GameCamera")
 		camera.worms.append(self)
@@ -72,6 +75,8 @@ func _ready() -> void:
 
 # Important - This is called before the _process fn of all segments
 func _process(delta: float) -> void:
+	if disabled:
+		return
 	var dir = Input.get_vector("forward", "backward", "right", "left")
 	self.velocity.y = GRAVITY
 	
@@ -194,7 +199,6 @@ func snap_to_grid():
 	head.position = Vector3(0,0,0)
 	for i in range(1, segments.size()):
 		segments[i].position -= diff
-	
 
 func wall_check(dir):
 	# Returns TRUE if raycast is colliding
@@ -269,7 +273,7 @@ func remove_segment(segment):
 		self.kill()
 		
 	return segment
-	
+
 func ray_for_dir(dir):
 	if dir == Vector2(-1,0): 
 		return left_ray

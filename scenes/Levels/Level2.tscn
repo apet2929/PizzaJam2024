@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dieechvi07884"]
+[gd_scene load_steps=15 format=3 uid="uid://dieechvi07884"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_fjm78"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_2.gd" id="1_fjm78"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_qv3cw"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_172du"]
+[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="4_6pclf"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_yirqo"]
 [ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="6_4rheu"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="6_dhba3"]
@@ -45,16 +46,19 @@ light_energy = 0.5
 shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527998, 0.853847, 0.703743, -0.541199, 0.460272, 0, 0, 0)
+transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527996, 0.853847, 0.703743, -0.541199, 0.460271, 0, 34.6044, 0)
 light_energy = 0.5
 shadow_enabled = true
 
+[node name="Hand" parent="." instance=ExtResource("4_6pclf")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649)
+
 [node name="Worm" parent="." instance=ExtResource("3_172du")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, -3.90225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94156, 0.375672, -3.99105)
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
 [node name="GameCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 9.5, 20, 12)
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 13.5593, 25.4558, 12)
 projection = 1
 fov = 35.0
 size = 11.0

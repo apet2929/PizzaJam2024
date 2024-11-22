@@ -4,6 +4,8 @@ extends Node
 @export var new_scene = ""
 var was_played = false
 
+signal anim_done
+
 func _ready() -> void:
 	anim.play("RESET")
 
@@ -30,3 +32,4 @@ func _on_anim_animation_finished(anim_name: StringName) -> void:
 	# TODO: this isn't how it should work 
 	if anim_name == "load_out":
 		get_tree().change_scene_to_file(new_scene)
+	anim_done.emit()

@@ -54,7 +54,11 @@ debug_shape_custom_color = Color(0, 0, 1, 1)
 target_position = Vector3(1.25, 0, 0)
 collision_mask = 19
 debug_shape_custom_color = Color(0.732854, 0.382212, 0.601817, 1)
-debug_shape_thickness = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ejlxe")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radial_segments = 24
+rings = 14
+material = ExtResource("2_ru6pc")
