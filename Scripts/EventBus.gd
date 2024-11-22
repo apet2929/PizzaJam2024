@@ -7,3 +7,4 @@ signal button_unpressed(button, body)
 signal level_finished
 signal box_body_entered(box, body)
 signal salt_body_entered(salt, body)
+signal spike_entered(spike, body)

@@ -16,6 +16,11 @@ func _draw() -> void:
 		var cam = get_node("../../GameCamera")
 		var pos = cam.unproject_position(worm.global_position)
 		draw_circle(pos, 5, Color.AQUA)
+		
+		if worm.get_node("Rays/RightRay").is_colliding():
+			var c = worm.get_node("Rays/RightRay").get_collider()
+			pos = cam.unproject_position(c.global_position)
+			
 		if has_node("../../Guillotine"):
 			var guillotine = get_node("../../Guillotine")
 			for body in guillotine.parts_in:

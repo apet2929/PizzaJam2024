@@ -101,6 +101,7 @@ func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
 	EventBus.box_body_entered.connect(self._on_box_body_entered)
 	EventBus.salt_body_entered.connect(self._on_salt_body_entered)
+	EventBus.spike_entered.connect(self._on_spike_entered)
 
 func _on_button_small_body_entered(body: Node3D) -> void:
 	if body == self:
@@ -115,6 +116,7 @@ func is_worm(body: Node3D) -> bool:
 
 func handle_movement(dir):
 	if wall_check(dir):
+		print("wall check failed!")
 		return
 	if box_check(dir):
 		return
@@ -336,3 +338,7 @@ func _on_salt_body_entered(salt, body) -> void:
 	if body == get_head().get_node("RigidBody3D"):
 		salt.queue_free()
 		self.remove_segment(self.get_tail())
+
+func _on_spike_entered(spike, body) -> void:
+	if body == self:
+		self.kill()

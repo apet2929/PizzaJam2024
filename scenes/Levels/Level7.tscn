@@ -1,0 +1,213 @@
+[gd_scene load_steps=12 format=3 uid="uid://372h1i25xfxa"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/level_7.gd" id="1_s82mp"]
+[ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="2_1rqqm"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_ki2qn"]
+[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="4_ap5sf"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="5_18hlh"]
+[ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="6_p6m4t"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="7_6xb3f"]
+[ext_resource type="PackedScene" uid="uid://c2apv7vg2rtcy" path="res://scenes/lettuce.tscn" id="10_xxho6"]
+[ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="13_tqd0v"]
+[ext_resource type="PackedScene" uid="uid://cf7y1bn8e7jo7" path="res://scenes/spikes.tscn" id="15_ednuq"]
+
+[sub_resource type="Environment" id="Environment_4m1be"]
+background_mode = 1
+background_color = Color(0, 0.506, 0.66, 1)
+ambient_light_source = 1
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.6
+
+[node name="LevelBase" type="Node3D"]
+script = ExtResource("1_s82mp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4m1be")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_1rqqm")]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0162337, -33.5474, -11.1864)
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(16.9889, 67.095, 18.8037)
+material = ExtResource("3_ki2qn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527996, 0.853847, 0.703743, -0.541199, 0.460271, 0, 34.6044, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Hand" parent="." instance=ExtResource("4_ap5sf")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649)
+
+[node name="Worm" parent="." instance=ExtResource("5_18hlh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00913, 0.375672, -3.99105)
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 13.5593, 25.4558, 12)
+projection = 1
+fov = 35.0
+size = 11.0
+far = 43.98
+script = ExtResource("6_p6m4t")
+
+[node name="Spikes" type="Node3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -1.04002, 0.508775, -9.02286)
+
+[node name="Spikes" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Spikes2" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2.38419e-07)
+
+[node name="Spikes3" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4.76837e-07)
+
+[node name="Spikes4" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4.76837e-07)
+
+[node name="Spikes5" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.1111, 0, -2.0837)
+
+[node name="Spikes6" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.1111, 0, -4.0837)
+
+[node name="Spikes7" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.1111, 0, -6.0837)
+
+[node name="Spikes8" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.1111, 0, -8.0837)
+
+[node name="Spikes9" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.1111, 0, -10.0837)
+
+[node name="Spikes10" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.1111, 0, -12.0837)
+
+[node name="Spikes11" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.1111, 0, -14.0837)
+
+[node name="Spikes12" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.1111, 0, -14.0837)
+
+[node name="Spikes13" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.1111, 0, -14.0837)
+
+[node name="Spikes14" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.111099, 0, -14.0837)
+
+[node name="Spikes15" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.10283, 0, -12.1694)
+
+[node name="Spikes16" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.10283, 0, -10.1694)
+
+[node name="Spikes17" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.10283, 0, -8.16938)
+
+[node name="Spikes18" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.02969, 0, -6.16938)
+
+[node name="Spikes25" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 1.053e-07, 0, 1, 0, -1.053e-07, 0, -1, 2.02969, 0, -6.16938)
+
+[node name="Spikes19" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.02969, 0, -6.16938)
+
+[node name="Spikes20" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.02969, 0, -6.16938)
+
+[node name="Spikes21" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 8.02969, 0, -1.99496)
+
+[node name="Spikes22" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6.02969, 0, -1.99496)
+
+[node name="Spikes23" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 4.02969, 0, -1.99496)
+
+[node name="Spikes24" parent="Spikes" instance=ExtResource("15_ednuq")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.02969, 0, -1.99496)
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="walls8" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00522, 0.251725, -7.98374)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(1, 0.499512, 1)
+
+[node name="walls9" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98752, 0.251725, -8.01304)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(0.985474, 0.499512, 0.941406)
+
+[node name="walls10" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.99478, 0.251725, -12.9837)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(1, 0.499512, 1)
+
+[node name="walls11" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00522, 0.490067, -12.9837)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(1, 0.976196, 1)
+
+[node name="walls2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -10.4878)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(1, 0.499512, 17.9546)
+
+[node name="walls3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48929, -32.4985, -2.0105)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(16.0319, 66, 1)
+
+[node name="walls4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388335, 0.251725, -19.9843)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(17.7871, 0.499512, 1)
+
+[node name="walls5" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52256, -31.9985, -10.5254)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(1.61426, 65, 18.0298)
+
+[node name="walls6" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92514, -0.237929, -11.1236)
+material_override = ExtResource("7_6xb3f")
+use_collision = true
+size = Vector3(0.768341, 1.45329, 17.5334)
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DrawWormPos" type="Control" parent="DebugLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_tqd0v")
+metadata/_edit_use_anchors_ = true
+
+[node name="SceneTransition2" parent="." instance=ExtResource("2_1rqqm")]
+
+[node name="Lettuce" parent="." instance=ExtResource("10_xxho6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.98829, 9.91821e-05, -10.1845)
