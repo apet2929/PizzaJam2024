@@ -4,6 +4,7 @@ class_name LevelBase
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 # Contains all the setup/interaction logic specific to this level
 
+var started = false
 var dropping = false
 var worm_vel_y = 0
 const GRAVITY = -9
@@ -43,8 +44,10 @@ func _next_level(next_level):
 	$SceneTransition.load_out(next_level)
 
 func start_level():
-	await get_tree().create_timer(0.3).timeout
-	$Hand.unpinch()
+	if !started:
+		started = true
+		await get_tree().create_timer(0.3).timeout
+		$Hand.unpinch()
 
 func restart_level():
 	EventBus.restart_count += 1

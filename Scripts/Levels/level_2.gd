@@ -7,6 +7,7 @@ var dropping = false
 var worm_vel_y = 0
 const GRAVITY = -9
 var worm_initial_y
+var started = false
 
 func _ready() -> void:
 	$SceneTransition.load_in()
@@ -16,7 +17,6 @@ func _ready() -> void:
 	worm_initial_y = $Worm.global_position.y
 	$Worm.disabled = true
 	$Worm.global_position.y = $Hand.global_position.y - 5
-	
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
@@ -27,10 +27,12 @@ func _process(delta: float) -> void:
 func next_level():
 	EventBus.restart_count = 0
 	$SceneTransition.load_out("res://scenes/Levels/Level3.tscn")
-	
+
 func start_level():
-	await get_tree().create_timer(0.3).timeout
-	$Hand.unpinch()
+	if !started:
+		await get_tree().create_timer(0.3).timeout
+		$Hand.unpinch()
+		started = true
 
 func restart_level():
 	EventBus.restart_count += 1

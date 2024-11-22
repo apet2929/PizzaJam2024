@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://co26415x3bmfc"]
+[gd_scene load_steps=15 format=3 uid="uid://dsb6dlnft70ip"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_qgtr3"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_1.gd" id="1_c3xem"]
 [ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="2_0h6v0"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_uxse0"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_ycaos"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_xayej"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="10_8hxst"]
 [ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="12_basb8"]
+[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="13_pj82b"]
 
 [sub_resource type="Environment" id="Environment_4m1be"]
 background_mode = 1
@@ -23,8 +24,7 @@ adjustment_brightness = 1.12
 adjustment_saturation = 1.6
 
 [node name="LevelBase" type="Node3D"]
-script = ExtResource("1_qgtr3")
-next_lvl = "res://scenes/Levels/Level2.tscn"
+script = ExtResource("1_c3xem")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4m1be")
@@ -163,6 +163,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
 
 [node name="DroppedCollision" parent="Guillotine" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
+
+[node name="Hand" parent="." instance=ExtResource("13_pj82b")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649)
 
 [connection signal="button_pressed" from="ButtonSmall" to="." method="_on_button_small_button_pressed"]
 [connection signal="button_unpressed" from="ButtonSmall" to="." method="_on_button_small_button_unpressed"]
