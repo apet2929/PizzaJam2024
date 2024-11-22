@@ -1,19 +1,19 @@
 [gd_scene load_steps=12 format=3 uid="uid://b6bj8xn07apce"]
 
-[ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_aor2d"]
-[ext_resource type="Script" path="res://Scripts/Levels/new_level_2.gd" id="2_0ljb1"]
-[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_82f11"]
-[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="4_mb7q8"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="5_wojjo"]
-[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="6_8h35g"]
-[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="7_me8xm"]
-[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="8_i2b6p"]
-[ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_0xqk8"]
-[ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="10_f0awl"]
-[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="11_1e3fx"]
+[ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_jd8r1"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_2.gd" id="2_gh1mx"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_qv3cw"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_172du"]
+[ext_resource type="PackedScene" uid="uid://u0gl550spa8i" path="res://scenes/hand.tscn" id="4_6pclf"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="6_4rheu"]
+[ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="6_dhba3"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="7_3fl6a"]
+[ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="7_11ngi"]
+[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_a2ngt"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="9_xpsm2"]
 
-[node name="LevelBase" instance=ExtResource("1_aor2d")]
-script = ExtResource("2_0ljb1")
+[node name="LevelBase" instance=ExtResource("1_jd8r1")]
+script = ExtResource("2_gh1mx")
 
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68994, -33.5474, -9.14342)
@@ -22,12 +22,12 @@ use_collision = true
 collision_layer = 2
 collision_mask = 2
 size = Vector3(7.64152, 67.095, 14.7177)
-material = ExtResource("3_82f11")
+material = ExtResource("2_qv3cw")
 
-[node name="Hand" parent="." index="6" instance=ExtResource("4_mb7q8")]
+[node name="Hand" parent="." index="6" instance=ExtResource("4_6pclf")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.46692, 14.787, -1.13649)
 
-[node name="Worm" parent="." index="7" instance=ExtResource("5_wojjo")]
+[node name="Worm" parent="." index="7" instance=ExtResource("3_172du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94156, 0.375672, -3.99105)
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
@@ -35,71 +35,71 @@ spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2,
 
 [node name="walls1" type="CSGBox3D" parent="Walls" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50522, 0.251725, -10.9971)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(2, 0.499512, 2.97328)
 
 [node name="walls2" type="CSGBox3D" parent="Walls" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -9.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(1, 0.499512, 15)
 
 [node name="walls3" type="CSGBox3D" parent="Walls" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, -32.4985, -2.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(4, 66, 1)
 
 [node name="walls8" type="CSGBox3D" parent="Walls" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50522, -30.9985, -3.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(4, 63, 3)
 
 [node name="walls10" type="CSGBox3D" parent="Walls" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50522, 0.251725, -8.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(4, 0.499512, 5)
 
 [node name="walls4" type="CSGBox3D" parent="Walls" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50522, 0.251725, -16.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(8, 0.499512, 1)
 
 [node name="walls5" type="CSGBox3D" parent="Walls" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50522, -31.9985, -9.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(2, 65, 15)
 
 [node name="walls6" type="CSGBox3D" parent="Walls" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, -12.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(2, 0.499512, 1)
 
 [node name="walls7" type="CSGBox3D" parent="Walls" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, -10.0105)
-material_override = ExtResource("6_8h35g")
+material_override = ExtResource("6_4rheu")
 use_collision = true
 size = Vector3(2, 0.499512, 1)
 
-[node name="Finish" parent="." index="9" instance=ExtResource("7_me8xm")]
+[node name="Finish" parent="." index="9" instance=ExtResource("7_3fl6a")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.98176, 0.321328, -5.00568)
 collision_layer = 8
 
-[node name="Fence" parent="." index="10" instance=ExtResource("8_i2b6p")]
+[node name="Fence" parent="." index="10" instance=ExtResource("9_xpsm2")]
 transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -4.40414, 0.481618, -4.9695)
 
-[node name="Guillotine" parent="." index="11" instance=ExtResource("9_0xqk8")]
+[node name="Guillotine" parent="." index="11" instance=ExtResource("7_11ngi")]
 transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -3.98647, 0.0708526, -13.6875)
 
-[node name="ButtonSmall" parent="." index="12" instance=ExtResource("10_f0awl")]
+[node name="ButtonSmall" parent="." index="12" instance=ExtResource("6_dhba3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.03883, 0, -10.9923)
 button_id = "0"
 
-[node name="PressurePad" parent="." index="13" instance=ExtResource("11_1e3fx")]
+[node name="PressurePad" parent="." index="13" instance=ExtResource("8_a2ngt")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.01031, -4.76837e-07, -11.9931)
