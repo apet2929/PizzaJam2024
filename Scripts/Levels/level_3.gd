@@ -20,14 +20,14 @@ func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
 
-func _on_button_pressed(button: Node3D, body) -> void:
+func _on_button_pressed(button: Node3D, _body) -> void:
 	print(button)
 	if buttons_that_close_the_fence.has(button.name):
 		$Fence.close_fence()
 	elif button == $PressurePad7:
 		$Guillotine.drop()
 
-func _on_button_unpressed(button, body) -> void:
+func _on_button_unpressed(button, _body) -> void:
 	if buttons_that_close_the_fence.has(button.name):
 		$Fence.open_fence()
 	elif button == $PressurePad7:

@@ -1,5 +1,6 @@
 extends Node3D
 
+# TODO : make worm smaller
 const worm_gfx_polygon_points = [
 		Vector2(0.5, 0.0),
 		Vector2(0.46194, 0.191341),
