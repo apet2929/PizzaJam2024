@@ -69,3 +69,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_6c8sl")
 metadata/_edit_use_anchors_ = true
+
+[node name="walls18" type="CSGBox3D" parent="DebugLayer/DrawBoxNextPos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.397022, 0.263932, -2.05059)
+use_collision = true
+collision_layer = 17
+size = Vector3(1.85359, 0.523926, 0.857022)

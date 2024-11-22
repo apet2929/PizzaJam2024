@@ -27,6 +27,9 @@ const PUSH_FORCE = 4.0
 const WORM_BODY_SEGMENT_SCENE = preload("res://scenes/worm_body_segment.tscn")
 const WORM_SCENE = preload("res://scenes/new_worm.tscn")
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
+const BOX_SCRIPT = preload("res://Scripts/box.gd")
+
+
 
 @export var spawn_points = [ # relative to head position
 	Vector3(0, 0, 0),
@@ -48,6 +51,8 @@ var current_dir = Vector2(0,0) # For pushing boxes
 
 var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
+
+
 
 func _ready() -> void:
 	init_signals()
@@ -102,9 +107,12 @@ func is_worm(body: Node3D) -> bool:
 		_:
 			return false
 
-
 func handle_movement(dir):
 	if wall_check(dir):
+		print("!wall_check")
+		return
+	if box_check(dir):
+		print("!box_check")
 		return
 
 	# when the head snaps to the grid, update the snap the worm as a whole
@@ -213,12 +221,43 @@ func colliding_with_not_head(ray):
 
 func wall_check(dir):
 	# Returns TRUE if raycast is colliding
-	var up_check = (dir.x == -1 and up_ray.is_colliding())
-	var down_check = (dir.x == 1 and down_ray.is_colliding())
-	var right_check = (dir.y == -1 and right_ray.is_colliding())
-	var left_check = (dir.y == 1 and left_ray.is_colliding())
-	var colliding = up_check or down_check or right_check or left_check
+	# Ignore boxes
+	var ray = ray_for_dir(dir)
+	if !ray:
+		return false
+
+	var colliding = ray.is_colliding()
+	if colliding:
+		# Box, or some other non-wall object
+		if ray.get_collider().get_collision_layer() == 16:
+			return false
 	return colliding
+
+func box_check(dir):
+	# Returns TRUE if raycast is colliding wtih a box AND
+	# 	the box can't move to where you want to push it
+	
+	var ray = ray_for_dir(dir)
+	if !ray:
+		return false
+	var d = Vector3(current_dir.x, 0, current_dir.y)
+	print(d)
+	print(ray)
+	if ray.is_colliding():
+		var obj = ray.get_collider()
+		if obj.get_script() == BOX_SCRIPT:
+			var f = obj.cant_move_in(d)
+			if f:
+				print(f)
+			return f
+	return false
+
+func ray_check_for_obj(worm_dir: Vector2, dir_x: int, dir_y: int, ray: RayCast3D, obj_script):
+	if worm_dir.x == dir_x and worm_dir.y == dir_y:
+		if ray.is_colliding():
+			var obj = ray.get_collider()
+			return obj.get_script() == obj_script
+	return false
 
 func get_head():
 	return segments[0]
@@ -257,6 +296,18 @@ func remove_segment(segment):
 		self.queue_free()
 		
 	return segment
+	
+func ray_for_dir(dir):
+	if dir == Vector2(-1,0): 
+		return up_ray
+	if dir == Vector2(1, 0): 
+		return down_ray
+	if dir == Vector2(0, -1): 
+		return right_ray
+	if dir == Vector2(0, 1): 
+		return left_ray
+	else:
+		return null
 
 func move_to(offset):
 	last_dir = offset
@@ -300,6 +351,5 @@ func _on_lettuce_body_entered(lettuce, body) -> void:
 		
 func _on_box_body_entered(box, body) -> void:
 	if body == self:
-		
 		var d = Vector3(current_dir.x, 0, current_dir.y)
 		box.push(d)
