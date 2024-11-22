@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dr3323nyvvaly"
-valid=false
+path="res://.godot/imported/Bird.blend-79a8548c57867bb9ada3cc7000cd1e72.scn"
 
 [deps]
 
 source_file="res://assets/Bird.blend"
+dest_files=["res://.godot/imported/Bird.blend-79a8548c57867bb9ada3cc7000cd1e72.scn"]
 
 [params]
 
