@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3ja3pirw1oyb"]
+[gd_scene load_steps=12 format=3 uid="uid://c3rvg27q7un2v"]
 
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_gqleq"]
 [ext_resource type="Script" path="res://Scripts/Levels/level_12.gd" id="2_w78h6"]
@@ -174,10 +174,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
 
 [node name="Spikes8" parent="." index="28" instance=ExtResource("12_ogohh")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -1.91579, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -1.91579, 0.256971, -12.9935)
 
 [node name="Spikes9" parent="." index="29" instance=ExtResource("12_ogohh")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -2.91579, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -2.91579, 0.256971, -12.9935)
 
 [node name="LettuceSpawnPoint" type="Node3D" parent="." index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.762419, -5)
