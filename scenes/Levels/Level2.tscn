@@ -92,7 +92,7 @@ collision_layer = 8
 transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -4.40414, 0.481618, -4.9695)
 
 [node name="Guillotine" parent="." index="10" instance=ExtResource("7_11ngi")]
-transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -3.98647, 0.0708526, -13.6875)
+transform = Transform3D(-8.0866e-09, 0, -0.185, 0, 0.185, 0, 0.185, 0, -8.0866e-09, -3.98647, 0.0708526, -13.5787)
 
 [node name="ButtonSmall" parent="." index="11" instance=ExtResource("6_dhba3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.03883, 0, -10.9923)

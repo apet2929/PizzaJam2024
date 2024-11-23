@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqqp3t3gyi13u"]
+[gd_scene load_steps=7 format=3 uid="uid://bqqp3t3gyi13u"]
 
 [ext_resource type="Script" path="res://Scripts/new_worm.gd" id="1_ecb6o"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_ru6pc"]
 [ext_resource type="AudioStream" uid="uid://dmhwumdoiy78m" path="res://assets/Audio/worm_move_sfx.wav" id="3_bb5pn"]
+[ext_resource type="PackedScene" uid="uid://djdwtt0okptqj" path="res://assets/crown.glb" id="4_lnt86"]
 
 [sub_resource type="Curve3D" id="Curve3D_cqnwp"]
 
@@ -33,6 +34,9 @@ path_joined = false
 smooth_faces = true
 
 [node name="Body" type="Node3D" parent="."]
+
+[node name="crown" parent="Body" instance=ExtResource("4_lnt86")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0.278012, 0)
 
 [node name="Rays" type="Node3D" parent="."]
 

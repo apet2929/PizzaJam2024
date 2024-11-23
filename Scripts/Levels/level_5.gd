@@ -15,7 +15,7 @@ func next_level(body):
 	body.kill()
 	if num_finished == 2:
 		super._next_level(next_level_scene)
-	
+
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)

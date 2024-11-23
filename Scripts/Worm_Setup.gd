@@ -4,6 +4,7 @@ extends Node
 var worm_length = 4
 var spawn_points = [Vector3(-0.03, 0.486, 4),Vector3(-1.03, 0.486, 4),Vector3(-2.03, 0.486, 4),Vector3(-3.03, 0.486, 4),Vector3(-4.03, 0.486, 4),Vector3(-5.03, 0.486, 4)]
 const HEAD_AND_TAIL = 2
+var has_crown = false
 
 @onready var body_parts: Node3D = $BodyParts
 @onready var worm_body: Path3D = $worm_body

@@ -1,7 +1,7 @@
 extends Node
 
 var restart_count = 0
-var levels_beaten = {}
+var levels_beaten = []
 signal lettuce_body_entered(lettuce, body)
 signal button_pressed(button, body)
 signal button_unpressed(button, body)

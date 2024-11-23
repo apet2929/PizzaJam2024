@@ -153,7 +153,7 @@ radial_segments = 9
 rings = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckcn5"]
-size = Vector3(2.90986, 6.33545, 6.46411)
+size = Vector3(1.00786, 6.33545, 6.46411)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vt3hf"]
 size = Vector3(1.64685, 5.50537, 3.46606)
@@ -227,6 +227,11 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroppedCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0379748, 2.66772, 0.00109863)
+shape = SubResource("BoxShape3D_ckcn5")
+disabled = true
+
+[node name="OneWayCollision" type="CollisionShape3D" parent="DroppedCollision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.959914, 2.66772, 0.00109867)
 shape = SubResource("BoxShape3D_ckcn5")
 
@@ -235,6 +240,11 @@ collision_layer = 15
 collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WormCheck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455895, 2.50252, 0.00573708)
+shape = SubResource("BoxShape3D_vt3hf")
+disabled = true
+
+[node name="OneWayCollision" type="CollisionShape3D" parent="WormCheck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.746521, 2.50252, 0.00573705)
 shape = SubResource("BoxShape3D_vt3hf")
 

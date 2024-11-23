@@ -28,7 +28,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="Worm" parent="." index="6" instance=ExtResource("2_qqnwj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00913, 0.375672, -3.99105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0522223, 0.375672, -3.99105)
 visible = false
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
@@ -42,12 +42,12 @@ size = Vector3(5, 67.095, 7)
 material = ExtResource("3_agj88")
 
 [node name="Floor3" type="CSGBox3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52349, -33.5474, -6.78457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40557, -33.5474, -6.78457)
 layers = 2
 use_collision = true
 collision_layer = 18
 collision_mask = 2
-size = Vector3(2, 67.095, 4)
+size = Vector3(1.76416, 67.095, 4)
 material = ExtResource("3_agj88")
 
 [node name="Floor2" type="CSGBox3D" parent="." index="9"]
@@ -67,11 +67,11 @@ collision_layer = 17
 size = Vector3(1, 0.499512, 5.99005)
 
 [node name="walls3" type="CSGBox3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09333, 0.251725, -9.45022)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56428, -32.023, -9.37875)
 material_override = ExtResource("4_yle41")
 use_collision = true
 collision_layer = 17
-size = Vector3(7, 0.499512, 1.84399)
+size = Vector3(7.94189, 65.049, 1.98694)
 
 [node name="walls4" type="CSGBox3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.975624, 0.251725, -8.4623)
@@ -88,11 +88,11 @@ collision_layer = 17
 size = Vector3(0.799286, 0.499512, 3.21596)
 
 [node name="walls11" type="CSGBox3D" parent="." index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27202, 0.251725, -5.06208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27202, -39.6508, -5.06111)
 material_override = ExtResource("4_yle41")
 use_collision = true
 collision_layer = 17
-size = Vector3(2.04491, 0.499512, 0.75565)
+size = Vector3(2.04491, 80.3046, 0.757586)
 
 [node name="walls12" type="CSGBox3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91069, 0.251725, -6.73135)
@@ -116,11 +116,11 @@ collision_layer = 17
 size = Vector3(11.2236, 113.358, 1.183)
 
 [node name="walls9" type="CSGBox3D" parent="." index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08843, 0.251725, -2.13489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08843, -249.647, -1.92335)
 material_override = ExtResource("4_yle41")
 use_collision = true
 collision_layer = 17
-size = Vector3(4.92011, 0.499512, 0.615246)
+size = Vector3(4.92011, 500.297, 0.615246)
 
 [node name="walls7" type="CSGBox3D" parent="." index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53581, 0.251725, -8.90382)
@@ -147,6 +147,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0911381, 9.91821e-05, -12.0
 
 [node name="Guillotine" parent="." index="22" instance=ExtResource("6_sjq17")]
 transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, 1.00343, 9.87053e-05, -8.47769)
+one_way = true
 
 [node name="ButtonSmall" parent="." index="23" instance=ExtResource("8_jjt2w")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.02567, 9.53674e-05, -10.002)

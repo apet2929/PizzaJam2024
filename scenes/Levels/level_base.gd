@@ -30,6 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
 		retry()
+		return
 
 	if dropping:
 		drop_worm_update(delta)
@@ -62,6 +63,7 @@ func disable_movement():
 		worm.disabled = true
 
 func _next_level(next_level):
+	EventBus.levels_beaten.append(self.scene_file_path)
 	EventBus.restart_count = 0
 	$SceneTransition.load_out(next_level)
 

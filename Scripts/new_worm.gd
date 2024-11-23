@@ -34,6 +34,7 @@ const MAX_SFX_PITCH = 1.4
 const MIN_SFX_PITCH = 0.4
 
 var disabled = false
+@export var has_crown = false
 
 
 
@@ -74,6 +75,8 @@ func _ready() -> void:
 	$Curve.curve = Curve3D.new()
 	curve = $Curve.curve
 	$Worm_GFX.polygon = worm_gfx_polygon_points
+	
+	$Body/crown.visible = has_crown
 
 	for i in range(spawn_points.size()):
 		var p = spawn_points[i]
@@ -85,6 +88,7 @@ func _process(delta: float) -> void:
 		return
 	var dir = Input.get_vector("left", "right", "forward", "backward")
 	self.velocity.y = GRAVITY
+	$Body/crown.visible = has_crown
 	
 	if move_ready:
 		handle_movement(dir)
