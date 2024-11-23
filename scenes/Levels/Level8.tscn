@@ -1,0 +1,237 @@
+[gd_scene load_steps=12 format=3 uid="uid://dedeskbl7i3kk"]
+
+[ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_f52wl"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_5.gd" id="2_vr0yn"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_njsjo"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="4_lho0c"]
+[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="5_atwaq"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="6_xrk01"]
+[ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="7_wunhb"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="8_yy56a"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="9_kcll4"]
+[ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="10_768ti"]
+[ext_resource type="PackedScene" uid="uid://diuxd3v1qb85f" path="res://scenes/box.tscn" id="11_n5u7i"]
+
+[node name="LevelBase" instance=ExtResource("1_f52wl")]
+script = ExtResource("2_vr0yn")
+
+[node name="GameCamera" parent="." index="3"]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 14.1243, 3.3)
+visible = false
+
+[node name="Worm" parent="." index="4" instance=ExtResource("3_njsjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.458, -4)
+visible = false
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 0, 2), Vector3(0, 0, 3), Vector3(0, 0, 4), Vector3(0, 0, 5)]
+
+[node name="Fence" parent="." index="5" instance=ExtResource("4_lho0c")]
+transform = Transform3D(5.90103e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, 5.90103e-08, -9.60419, 0.447811, -0.0231565)
+collision_layer = 19
+collision_mask = 19
+
+[node name="Fence3" parent="." index="6" instance=ExtResource("4_lho0c")]
+transform = Transform3D(-9.83506e-08, 0, -0.45, 0, 0.45, 0, 0.45, 0, -9.83506e-08, 1.06561, 0.447811, -1.02316)
+collision_layer = 19
+collision_mask = 19
+
+[node name="Fence2" parent="." index="7" instance=ExtResource("4_lho0c")]
+transform = Transform3D(-0.45, 0, -3.93403e-08, 0, 0.45, 0, 3.93403e-08, 0, -0.45, -1.9998, 0.447811, -1.9808)
+collision_layer = 19
+collision_mask = 19
+
+[node name="PressurePad7" parent="." index="8" instance=ExtResource("5_atwaq")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.02653, -4.76837e-07, -2.96457)
+
+[node name="PressurePad" parent="." index="9" instance=ExtResource("5_atwaq")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.02653, -4.76837e-07, 1.97078)
+
+[node name="PressurePad3" parent="." index="10" instance=ExtResource("5_atwaq")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.97347, -4.76837e-07, 1.97078)
+
+[node name="PressurePad2" parent="." index="11" instance=ExtResource("5_atwaq")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -8.97347, -4.76837e-07, 3.97078)
+
+[node name="Finish" parent="." index="12" instance=ExtResource("6_xrk01")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -12, 0.554779, 0)
+
+[node name="CollisionShape3D" parent="Finish" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0545273, -0.0272324, 0.0180783)
+
+[node name="GameCamera2" type="Camera3D" parent="." index="13"]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 13.5593, 25.4558, 12)
+projection = 1
+fov = 35.0
+size = 11.0
+far = 43.98
+script = ExtResource("7_wunhb")
+
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Floor" type="CSGBox3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.36918, -33.5474, -1.00227)
+layers = 2
+use_collision = true
+collision_layer = 18
+collision_mask = 18
+size = Vector3(7, 67.095, 11)
+material = ExtResource("8_yy56a")
+
+[node name="Floor3" type="CSGBox3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3692, -33.5474, -0.00226998)
+layers = 2
+use_collision = true
+collision_layer = 18
+collision_mask = 18
+size = Vector3(5, 67.095, 3)
+material = ExtResource("8_yy56a")
+
+[node name="Floor2" type="CSGBox3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36918, -33.5474, -2.00227)
+layers = 2
+use_collision = true
+collision_layer = 18
+collision_mask = 18
+size = Vector3(5, 67.095, 9)
+material = ExtResource("8_yy56a")
+
+[node name="Floor4" type="CSGBox3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63082, -33.5474, 0.49773)
+layers = 2
+use_collision = true
+collision_layer = 18
+collision_mask = 18
+size = Vector3(7, 67.095, 6)
+material = ExtResource("8_yy56a")
+
+[node name="Walls" type="Node3D" parent="." index="20"]
+
+[node name="walls1" type="CSGBox3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0052, 0.251725, -3.51046)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 0.499512, 6)
+
+[node name="walls11" type="CSGBox3D" parent="Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0052, 0.251725, 0.98954)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 0.499512, 1)
+
+[node name="walls13" type="CSGBox3D" parent="Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99478, 0.251725, 1.48954)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 0.499512, 4)
+
+[node name="walls2" type="CSGBox3D" parent="Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0052, 0.251725, -0.0105)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 0.499512, 5)
+
+[node name="walls3" type="CSGBox3D" parent="Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0052, -32.4985, 1.9895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(5, 66, 1)
+
+[node name="walls9" type="CSGBox3D" parent="Walls" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0052, -32.4985, 3.9895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 66, 3)
+
+[node name="walls8" type="CSGBox3D" parent="Walls" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00522, -30.9985, 0.4895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 63, 8)
+
+[node name="walls16" type="CSGBox3D" parent="Walls" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99478, -30.9985, 0.9895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 63, 7)
+
+[node name="walls15" type="CSGBox3D" parent="Walls" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00522, -30.9985, -0.0105)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 63, 3)
+
+[node name="walls10" type="CSGBox3D" parent="Walls" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, -33.9985, 4.9895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(8, 69, 1)
+
+[node name="walls4" type="CSGBox3D" parent="Walls" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50522, 0.251725, -7.0105)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(12, 0.499512, 1)
+
+[node name="walls5" type="CSGBox3D" parent="Walls" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99478, -31.9985, 3.9895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(7, 65, 1)
+
+[node name="walls6" type="CSGBox3D" parent="Walls" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5052, 0.251725, -2.0105)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(4, 0.499512, 1)
+
+[node name="walls12" type="CSGBox3D" parent="Walls" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99478, 0.251725, -2.0105)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(5, 0.499512, 1)
+
+[node name="walls14" type="CSGBox3D" parent="Walls" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, 1.9895)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(2, 0.499512, 1)
+
+[node name="walls7" type="CSGBox3D" parent="Walls" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99478, -37.4985, -4.5105)
+material_override = ExtResource("9_kcll4")
+use_collision = true
+size = Vector3(1, 76, 6)
+
+[node name="Guillotine" parent="." index="21" instance=ExtResource("10_768ti")]
+transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -1.98647, 0.0708526, -2.6875)
+
+[node name="CollisionShape3D" parent="Guillotine" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.80178, 4.73161, 2.63216)
+
+[node name="LeftWall" parent="Guillotine" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.67457, 2.496, 2.5664)
+
+[node name="RightWall" parent="Guillotine" index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.11893, 2.49554, 2.6704)
+
+[node name="Model" parent="Guillotine" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.89657, 5.96046e-08, 2.6704)
+
+[node name="DroppedCollision" parent="Guillotine" index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.89657, 5.96046e-08, 2.6704)
+
+[node name="WormCheck" parent="Guillotine" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04541, 0, 0)
+
+[node name="Box" parent="." index="22" instance=ExtResource("11_n5u7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.440785, -1)
+
+[editable path="Finish"]
+[editable path="Finish/finish_flag"]
+[editable path="SceneTransition"]
+[editable path="Guillotine"]
