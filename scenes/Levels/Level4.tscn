@@ -254,7 +254,7 @@ use_collision = true
 size = Vector3(2, 0.499512, 3)
 
 [node name="Finish" parent="." instance=ExtResource("7_8iuvg")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.98176, 0.321328, -8.00568)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.1345, 0.834338, -8.00568)
 collision_layer = 8
 
 [node name="Fence" parent="." instance=ExtResource("7_p6uro")]

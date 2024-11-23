@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/box.gd" id="1_52yud"]
 [ext_resource type="PackedScene" uid="uid://b1uda62mxs233" path="res://assets/box.glb" id="1_82flx"]
-[ext_resource type="Material" uid="uid://bopwwff7gcxls" path="res://assets/box_material.tres" id="3_u4g4x"]
+[ext_resource type="Material" uid="uid://c1ddkoicls5up" path="res://assets/box_material.tres" id="3_u4g4x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hq36o"]
-size = Vector3(0.841248, 0.827118, 0.844238)
+size = Vector3(0.710014, 0.680962, 0.844238)
 
 [node name="Box" type="RigidBody3D" groups=["box"]]
 collision_layer = 16
@@ -14,7 +14,7 @@ lock_rotation = true
 script = ExtResource("1_52yud")
 
 [node name="Model" parent="." instance=ExtResource("1_82flx")]
-transform = Transform3D(0.371, 0, 0, 0, 0.371, 0, 0, 0, 0.371, 0, 0, 0)
+transform = Transform3D(0.352, 0, 0, 0, 0.352, 0, 0, 0, 0.352, 0, 0, 0)
 
 [node name="Stick" parent="Model" index="0"]
 material_override = ExtResource("3_u4g4x")
@@ -89,7 +89,6 @@ material_override = ExtResource("3_u4g4x")
 material_override = ExtResource("3_u4g4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105896, -0.0112764, 0)
 shape = SubResource("BoxShape3D_hq36o")
 
 [node name="BoxArea" type="Area3D" parent="."]
@@ -97,7 +96,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxArea"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.0105896, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("BoxShape3D_hq36o")
 
 [node name="Rays" type="Node3D" parent="."]

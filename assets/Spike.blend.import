@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bln7cioukb17y"
-valid=false
+path="res://.godot/imported/Spike.blend-152e545ee1960bec2a167476af9021f3.scn"
 
 [deps]
 
 source_file="res://assets/Spike.blend"
+dest_files=["res://.godot/imported/Spike.blend-152e545ee1960bec2a167476af9021f3.scn"]
 
 [params]
 

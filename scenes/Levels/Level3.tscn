@@ -83,46 +83,46 @@ use_collision = true
 size = Vector3(1, 31.6407, 8.52142)
 
 [node name="walls9" type="CSGBox3D" parent="Walls" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99722, -15.2792, -4.06728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99722, -15.2826, -4.06728)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1, 31.6495, 4.90129)
+size = Vector3(1, 31.6426, 4.90129)
 
 [node name="walls11" type="CSGBox3D" parent="Walls" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97845, 0.145845, -7.02792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97845, 0.148866, -7.02792)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(0.849365, 0.767212, 6.96855)
+size = Vector3(0.849365, 0.773254, 6.96855)
 
 [node name="walls12" type="CSGBox3D" parent="Walls" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01835, 0.154146, -11.4496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10333, 0.150469, -11.4496)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1.02338, 0.783813, 3.79658)
+size = Vector3(1.19333, 0.776459, 3.79658)
 
 [node name="walls24" type="CSGBox3D" parent="Walls" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99643, -17.6177, -13.9414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99598, -17.6183, -13.9414)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(3.06723, 36.3275, 1.19565)
+size = Vector3(3.41096, 36.3262, 1.19565)
 
 [node name="walls14" type="CSGBox3D" parent="Walls" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07215, 0.154146, -6.01174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07215, 0.152269, -6.01174)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(2.88192, 0.783813, 0.949145)
+size = Vector3(2.88192, 0.78006, 0.949145)
 
 [node name="walls13" type="CSGBox3D" parent="Walls" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97999, -20.3709, -11.4496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90894, -20.3709, -11.4496)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1.00854, 41.8339, 3.79658)
+size = Vector3(1.15063, 41.8339, 3.79658)
 
 [node name="walls10" type="CSGBox3D" parent="Walls" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94746, -14.1755, -2.04419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94746, -14.1821, -2.04419)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(7.09955, 29.4543, 0.855125)
+size = Vector3(7.09955, 29.4412, 0.855125)
 
 [node name="PressurePad" parent="." index="11" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.97347, -4.76837e-07, -6.96457)

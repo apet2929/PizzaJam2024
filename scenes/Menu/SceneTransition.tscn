@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpfqxl45awiyk"]
 
 [ext_resource type="Script" path="res://assets/Menu/Transition.gd" id="1_8ts0x"]
-[ext_resource type="Theme" uid="uid://b7wn8s1f8i7ot" path="res://assets/Menu/button_theme.tres" id="2_crqp2"]
+[ext_resource type="Theme" path="res://assets/Menu/button_theme.tres" id="2_crqp2"]
 [ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="2_w4113"]
 [ext_resource type="Script" path="res://assets/Menu/ui_button.gd" id="4_rbpc6"]
 [ext_resource type="AudioStream" uid="uid://3n3foxtnxnto" path="res://assets/Audio/on_btn.wav" id="5_mt3ej"]
@@ -109,13 +109,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -131.0
-offset_top = -123.0
-offset_right = 570.0
-offset_bottom = 41.0
+offset_left = -299.0
+offset_top = -115.0
+offset_right = 1304.0
+offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.375, 0.375)
+scale = Vector2(0.37, 0.37)
 theme = ExtResource("2_crqp2")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 55
@@ -130,13 +130,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -176.0
-offset_top = 59.0
-offset_right = 765.0
-offset_bottom = 223.0
+offset_left = -299.0
+offset_top = -27.0
+offset_right = 1293.0
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.375, 0.375)
+scale = Vector2(0.37, 0.37)
 theme = ExtResource("2_crqp2")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 55
@@ -154,13 +154,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -139.0
-offset_top = 147.0
-offset_right = 602.0
-offset_bottom = 311.0
+offset_left = -298.0
+offset_top = 64.0
+offset_right = 1294.0
+offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.375, 0.375)
+scale = Vector2(0.37, 0.37)
 theme = ExtResource("2_crqp2")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 55
@@ -192,15 +192,13 @@ stream = ExtResource("5_mt3ej")
 stream = ExtResource("6_yybaf")
 
 [node name="Top" type="ColorRect" parent="."]
-offset_left = 1157.0
-offset_right = 2309.0
+offset_right = 1152.0
 offset_bottom = 324.0
 color = Color(0, 0, 0, 1)
 
 [node name="Bottom" type="ColorRect" parent="."]
-offset_left = -1157.0
 offset_top = 324.0
-offset_right = -5.0
+offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 

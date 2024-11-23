@@ -29,6 +29,9 @@ func _on_button_pressed(button, body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
 		$Fence.open_fence()
+	if button == $ButtonSmall2:
+		$Guillotine2.drop()
+		$Fence2.open_fence()
 	elif button == $ButtonSmall4:
 		$Fence3.open_fence()
 	elif button == $ButtonSmall5:
@@ -36,7 +39,7 @@ func _on_button_pressed(button, body) -> void:
 			var l = LETTUCE_SCENE.instantiate()
 			l.position = $LettuceSpawnPosition.position
 			var l2 = LETTUCE_SCENE.instantiate()
-			l.position = $LettuceSpawnPosition2.position
+			l2.position = $LettuceSpawnPosition2.position
 			add_child(l)
 			add_child(l2)
 	elif button == $ButtonSmall6:
