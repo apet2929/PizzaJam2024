@@ -6,6 +6,7 @@ const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 
 var started = false
 var dropping = false
+var is_game_over = false
 var worm_vel_y = 0
 const GRAVITY = -9
 const DROP_TIMER = 0.4
@@ -20,6 +21,7 @@ func _ready() -> void:
 	worm_initial_y = $Worm.global_position.y
 	$Worm.global_position.y = START_Y_POS
 	$Worm.visible = false
+	EventBus.connect("game_over", self._on_game_over)
 	for worm in get_tree().get_nodes_in_group("head"):
 		worm.disabled = true
 	await get_tree().create_timer(DROP_TIMER).timeout
@@ -27,12 +29,15 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
-		game_over()
-		#retry()
+		retry()
 
 	if dropping:
 		drop_worm_update(delta)
-		
+	
+	var worms = get_tree().get_nodes_in_group("head")
+	if worms.size() == 0:
+		game_over()
+
 func init_signals():
 	push_error("Implement me in subclass!")
 	#EventBus.connect("button_pressed", self._on_button_pressed)
@@ -47,9 +52,11 @@ func retry():
 	restart_level()
 
 func game_over():
-	$GameOver.run()
-	disable_movement()
-		
+	if !is_game_over:
+		is_game_over = true
+		$GameOver.run()
+		disable_movement()
+
 func disable_movement():
 	for worm in get_tree().get_nodes_in_group("head"):
 		worm.disabled = true
@@ -78,6 +85,9 @@ func drop_worm_update(delta):
 		await get_tree().create_timer(0.1).timeout
 		for worm in get_tree().get_nodes_in_group("head"):
 			worm.disabled = false
+
+func _on_game_over():
+	self.game_over()
 
 func is_worm(body):
 	return body.get_script() == WORM_SCRIPT

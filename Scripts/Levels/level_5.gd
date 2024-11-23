@@ -30,6 +30,6 @@ func _on_button_pressed(button, body) -> void:
 func _on_button_unpressed(button, body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
-		
+
 func _on_spike_entered(spike, body) -> void:
-	print("YOU LOSE")
+	EventBus.emit_signal("game_over")

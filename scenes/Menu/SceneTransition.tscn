@@ -192,13 +192,15 @@ stream = ExtResource("5_mt3ej")
 stream = ExtResource("6_yybaf")
 
 [node name="Top" type="ColorRect" parent="."]
-offset_right = 1152.0
+offset_left = 1157.0
+offset_right = 2309.0
 offset_bottom = 324.0
 color = Color(0, 0, 0, 1)
 
 [node name="Bottom" type="ColorRect" parent="."]
+offset_left = -1157.0
 offset_top = 324.0
-offset_right = 1152.0
+offset_right = -5.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
