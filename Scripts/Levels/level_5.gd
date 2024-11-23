@@ -32,4 +32,5 @@ func _on_button_unpressed(button, body) -> void:
 		$Guillotine.drop()
 
 func _on_spike_entered(spike, body) -> void:
-	EventBus.emit_signal("game_over")
+	if is_worm(body):
+		EventBus.emit_signal("game_over")

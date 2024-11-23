@@ -1,13 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7y1bn8e7jo7"]
+[gd_scene load_steps=8 format=3 uid="uid://cf7y1bn8e7jo7"]
 
 [ext_resource type="PackedScene" uid="uid://bq8y5rmyb224p" path="res://assets/spikes.glb" id="1_0g85d"]
 [ext_resource type="Script" path="res://Scripts/spikes.gd" id="1_gf6f6"]
+[ext_resource type="Material" uid="uid://b2l8hijmlad1m" path="res://assets/spike_material.tres" id="3_a3tqx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pr3jg"]
 size = Vector3(1.96637, 1.46349, 0.480957)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ot8wd"]
-size = Vector3(1.64209, 1, 0.892365)
+size = Vector3(1.64209, 0.755005, 1.18593)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nc2a5"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbm82"]
+next_pass = SubResource("StandardMaterial3D_nc2a5")
+albedo_color = Color(0.2, 0.0921, 0.034, 1)
 
 [node name="Spikes" type="StaticBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -24,9 +36,23 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="SpikesCollision" type="CollisionShape3D" parent="Spikes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0559082, 0, -0.356003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0559082, 0.346252, -0.209221)
 shape = SubResource("BoxShape3D_ot8wd")
 
 [node name="spikes" parent="." instance=ExtResource("1_0g85d")]
 
+[node name="Cube" parent="spikes" index="0"]
+material_override = SubResource("StandardMaterial3D_rbm82")
+
+[node name="Cone" parent="spikes" index="1"]
+material_override = ExtResource("3_a3tqx")
+
+[node name="Cone_001" parent="spikes" index="2"]
+material_override = ExtResource("3_a3tqx")
+
+[node name="Cone_002" parent="spikes" index="3"]
+material_override = ExtResource("3_a3tqx")
+
 [connection signal="body_entered" from="Spikes" to="." method="_on_spikes_body_entered"]
+
+[editable path="spikes"]

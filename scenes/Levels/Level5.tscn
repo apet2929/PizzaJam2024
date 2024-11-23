@@ -132,58 +132,58 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.969108, 9.91821e-05, -11.99
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0911381, 9.91821e-05, -12.0505)
 
 [node name="Guillotine" parent="." index="22" instance=ExtResource("6_sjq17")]
-transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, 1.00343, 9.87053e-05, -8.47769)
+transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, 1.00343, -0.0309387, -8.47769)
 one_way = true
 
 [node name="ButtonSmall" parent="." index="23" instance=ExtResource("8_jjt2w")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.02567, 9.53674e-05, -10.002)
 
 [node name="Finish" parent="." index="24" instance=ExtResource("10_rerg5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.97876, 1.03568, -7.8935)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.97876, 0.438008, -7.8935)
 collision_layer = 8
 
 [node name="Finish2" parent="." index="25" instance=ExtResource("10_rerg5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.7874, 1.03568, -12.0165)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.7874, 0.438008, -12.0165)
 collision_layer = 8
 
 [node name="Spikes7" parent="." index="26" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.35, 0, 0.5, 0, -2.18557e-08, -0.0728126, 0.364096, -8.00446)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.106506, 0.258051, -8.01271)
 
 [node name="Spikes16" parent="." index="27" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.35, 0, 0.5, 0, -2.18557e-08, -0.0728126, 0.364096, -7.00446)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.106506, 0.258051, -7.01271)
 
 [node name="Spikes15" parent="." index="28" instance=ExtResource("10_sbncx")]
-transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.35, 0, -0.5, 0, 3.7749e-08, 2.21661, 0.364096, -11.0045)
+transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 3.7749e-08, 2.11087, 0.249309, -11.0045)
 
 [node name="Spikes17" parent="." index="29" instance=ExtResource("10_sbncx")]
-transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.35, 0, -0.5, 0, 3.7749e-08, 2.21661, 0.364096, -10.0045)
+transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 3.7749e-08, 2.11087, 0.249309, -10.0045)
 
 [node name="Spikes5" parent="." index="30" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -3.09051, 0.364096, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -3.02491, 0.249309, -13.1177)
 
 [node name="Spikes6" parent="." index="31" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -2.09051, 0.364096, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -2.02491, 0.249309, -13.1177)
 
 [node name="Spikes8" parent="." index="32" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -1.09051, 0.364096, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -1.02491, 0.249309, -13.1177)
 
 [node name="Spikes12" parent="." index="33" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -4.09051, 0.364096, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -4.02491, 0.249309, -13.1177)
 
 [node name="Spikes14" parent="." index="34" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -5.09051, 0.364096, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, -5.02491, 0.249309, -13.1177)
 
 [node name="Spikes9" parent="." index="35" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -2.0905, 0.364096, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -2.00793, 0.261555, -10.9106)
 
 [node name="Spikes10" parent="." index="36" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -3.0905, 0.364096, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -3.00793, 0.261555, -10.9106)
 
 [node name="Spikes11" parent="." index="37" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -1.0905, 0.364096, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -1.00793, 0.261555, -10.9106)
 
 [node name="Spikes13" parent="." index="38" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -4.0905, 0.364096, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -4.00793, 0.261555, -10.9106)
 
 [node name="Fence" parent="." index="39" instance=ExtResource("8_4wb0a")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.99864, 0.440126, -6.92346)
