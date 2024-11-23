@@ -88,7 +88,6 @@ func _process(delta: float) -> void:
 		return
 	var dir = Input.get_vector("left", "right", "forward", "backward")
 	self.velocity.y = GRAVITY
-	$Body/crown.visible = has_crown
 	
 	if move_ready:
 		handle_movement(dir)
@@ -106,6 +105,11 @@ func _process(delta: float) -> void:
 	
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
+		
+	$Body/crown.visible = has_crown
+	var head_pos = get_head().position
+	$Body/crown.position = Vector3(head_pos.x, $Body/crown.position.y, head_pos.z)
+	
 
 func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
@@ -163,7 +167,7 @@ func split(cut_from_head):
 		var seg = self.remove_segment(self.get_tail())
 		cut_off.append(seg)
 	if self.segments.size() < 2:
-		self.kill()
+		self.die()
 	if cut_off.size() < 2:
 		return
 	
@@ -191,6 +195,10 @@ func kill():
 		var camera = get_node("../GameCamera")
 		camera.worms.erase(self)
 	self.queue_free()
+	
+func die():
+	EventBus.worm_died.emit(self)
+	self.kill()
 
 func start_move(direction):
 	self.current_dir = direction
@@ -281,7 +289,7 @@ func remove_segment(segment):
 
 	if segments.size() <= 1:
 		print("no segments left, killing self")
-		self.kill()
+		self.die()
 		
 	return segment
 
@@ -350,4 +358,4 @@ func _on_salt_body_entered(salt, body) -> void:
 
 func _on_spike_entered(spike, body) -> void:
 	if body == self:
-		self.kill()
+		self.die()

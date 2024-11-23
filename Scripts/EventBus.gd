@@ -9,4 +9,5 @@ signal level_finished(body)
 signal box_body_entered(box, body)
 signal salt_body_entered(salt, body)
 signal spike_entered(spike, body)
+signal worm_died(worm)
 signal game_over
