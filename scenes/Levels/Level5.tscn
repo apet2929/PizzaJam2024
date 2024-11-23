@@ -15,9 +15,6 @@
 [node name="LevelBase" instance=ExtResource("1_c7l2s")]
 script = ExtResource("2_g2u21")
 
-[node name="DirectionalLight3D" parent="." index="1"]
-light_energy = 1.0
-
 [node name="GameCamera" parent="." index="3"]
 far = 4000.0
 
@@ -33,12 +30,12 @@ visible = false
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
 [node name="Floor" type="CSGBox3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97651, -33.5474, -5.28457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97651, -33.5474, -6.12979)
 layers = 2
 use_collision = true
 collision_layer = 18
 collision_mask = 2
-size = Vector3(5, 67.095, 7)
+size = Vector3(5, 67.095, 8.69043)
 material = ExtResource("3_agj88")
 
 [node name="Floor3" type="CSGBox3D" parent="." index="8"]
@@ -51,90 +48,79 @@ size = Vector3(1.76416, 67.095, 4)
 material = ExtResource("3_agj88")
 
 [node name="Floor2" type="CSGBox3D" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51709, -33.5474, -10.9867)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51709, -33.5474, -11.2778)
 layers = 2
 use_collision = true
 collision_layer = 18
 collision_mask = 2
-size = Vector3(11.9872, 67.095, 5)
+size = Vector3(11.9872, 67.095, 4.41785)
 material = ExtResource("3_agj88")
 
-[node name="walls2" type="CSGBox3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -11.5062)
+[node name="walls11" type="CSGBox3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00522, -37.4985, -5.0105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(1, 0.499512, 5.99005)
+size = Vector3(3, 76, 1)
 
-[node name="walls3" type="CSGBox3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56428, -32.023, -9.37875)
+[node name="walls17" type="CSGBox3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50522, -37.4985, -14.0105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(7.94189, 65.049, 1.98694)
+size = Vector3(12, 76, 1)
 
-[node name="walls4" type="CSGBox3D" parent="." index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.975624, 0.251725, -8.4623)
+[node name="walls14" type="CSGBox3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00522, 0.251725, -3.5105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(0.764587, 0.499512, 3.81982)
+size = Vector3(1, 0.499512, 4)
 
-[node name="walls8" type="CSGBox3D" parent="." index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.958274, 0.251725, -3.83193)
+[node name="walls16" type="CSGBox3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99478, -43.4985, -7.5105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(0.799286, 0.499512, 3.21596)
+size = Vector3(1, 88, 12)
 
-[node name="walls11" type="CSGBox3D" parent="." index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27202, -39.6508, -5.06111)
+[node name="walls15" type="CSGBox3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99478, -42.4985, -2.0105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(2.04491, 80.3046, 0.757586)
+size = Vector3(5, 86, 1)
 
 [node name="walls12" type="CSGBox3D" parent="." index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91069, 0.251725, -6.73135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00522, -35.4985, -7.5105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(0.767563, 0.499512, 4.09419)
+size = Vector3(1, 72, 6)
 
-[node name="walls5" type="CSGBox3D" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1248, -56.1773, -8.30381)
+[node name="walls19" type="CSGBox3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00522, -35.4985, -8.5105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(0.859371, 113.358, 12.7144)
+size = Vector3(1, 72, 4)
 
-[node name="walls10" type="CSGBox3D" parent="." index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9157, -56.1773, -14.0857)
+[node name="walls20" type="CSGBox3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.563753, -35.4985, -9.0105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(11.2236, 113.358, 1.183)
+size = Vector3(1.88293, 72, 1)
 
-[node name="walls9" type="CSGBox3D" parent="." index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08843, -249.647, -1.92335)
+[node name="walls21" type="CSGBox3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62369, -35.4985, -9.0105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(4.92011, 500.297, 0.615246)
+size = Vector3(1.74219, 72, 1)
 
-[node name="walls7" type="CSGBox3D" parent="." index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53581, 0.251725, -8.90382)
+[node name="walls18" type="CSGBox3D" parent="." index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, -35.4985, -11.5105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(1.76439, 0.499512, 0.873932)
+size = Vector3(1, 72, 6)
 
-[node name="walls6" type="CSGBox3D" parent="." index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436399, 0.251725, -9.02034)
+[node name="walls13" type="CSGBox3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00522, -38.9985, -9.5105)
 material_override = ExtResource("4_yle41")
 use_collision = true
-collision_layer = 17
-size = Vector3(1.48278, 0.499512, 0.783646)
+size = Vector3(7, 79, 2)
 
 [node name="Lettuce" type="Node3D" parent="." index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 1.19209e-07)
@@ -161,43 +147,43 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.787
 collision_layer = 8
 
 [node name="Spikes7" parent="." index="26" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.0728126, 0.529847, -8.00446)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.35, 0, 0.5, 0, -2.18557e-08, -0.0728126, 0.364096, -8.00446)
 
 [node name="Spikes16" parent="." index="27" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.0728126, 0.529847, -7.00446)
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.35, 0, 0.5, 0, -2.18557e-08, -0.0728126, 0.364096, -7.00446)
 
 [node name="Spikes15" parent="." index="28" instance=ExtResource("10_sbncx")]
-transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, 2.21661, 0.529847, -11.0045)
+transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.35, 0, -0.5, 0, 3.7749e-08, 2.21661, 0.364096, -11.0045)
 
 [node name="Spikes17" parent="." index="29" instance=ExtResource("10_sbncx")]
-transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, 2.21661, 0.529847, -10.0045)
+transform = Transform3D(3.7749e-08, 0, 0.5, 0, 0.35, 0, -0.5, 0, 3.7749e-08, 2.21661, 0.364096, -10.0045)
 
 [node name="Spikes5" parent="." index="30" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -3.09051, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -3.09051, 0.364096, -12.9935)
 
 [node name="Spikes6" parent="." index="31" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -2.09051, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -2.09051, 0.364096, -12.9935)
 
 [node name="Spikes8" parent="." index="32" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -1.09051, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -1.09051, 0.364096, -12.9935)
 
 [node name="Spikes12" parent="." index="33" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -4.09051, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -4.09051, 0.364096, -12.9935)
 
 [node name="Spikes14" parent="." index="34" instance=ExtResource("10_sbncx")]
-transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -5.09051, 0.529847, -12.9935)
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.35, 0, -7.54979e-08, 0, -0.5, -5.09051, 0.364096, -12.9935)
 
 [node name="Spikes9" parent="." index="35" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -2.0905, 0.529847, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -2.0905, 0.364096, -10.9508)
 
 [node name="Spikes10" parent="." index="36" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -3.0905, 0.529847, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -3.0905, 0.364096, -10.9508)
 
 [node name="Spikes11" parent="." index="37" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -1.0905, 0.529847, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -1.0905, 0.364096, -10.9508)
 
 [node name="Spikes13" parent="." index="38" instance=ExtResource("10_sbncx")]
-transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -4.0905, 0.529847, -10.9508)
+transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.35, 0, 8.74228e-08, 0, 0.5, -4.0905, 0.364096, -10.9508)
 
 [node name="Fence" parent="." index="39" instance=ExtResource("8_4wb0a")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.99864, 0.440126, -6.92346)

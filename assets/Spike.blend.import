@@ -3,12 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://t3niw66xfj2g"
+uid="uid://bln7cioukb17y"
 valid=false
 
 [deps]
 
-source_file="res://assets/crown.blend"
+source_file="res://assets/Spike.blend"
 
 [params]
 

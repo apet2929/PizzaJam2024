@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7y1bn8e7jo7"]
+[gd_scene load_steps=8 format=3 uid="uid://cf7y1bn8e7jo7"]
 
-[ext_resource type="PackedScene" uid="uid://bq8y5rmyb224p" path="res://assets/spikes.glb" id="1_0g85d"]
 [ext_resource type="Script" path="res://Scripts/spikes.gd" id="1_gf6f6"]
+[ext_resource type="PackedScene" uid="uid://bxjfj3xnvmmvm" path="res://assets/Spike.glb" id="2_mjjyc"]
+[ext_resource type="Texture2D" uid="uid://us8276juflcw" path="res://assets/Spike_Texture.png" id="3_44yg2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pr3jg"]
 size = Vector3(1.96637, 1.96869, 0.480957)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ot8wd"]
 size = Vector3(1.64209, 1, 0.892365)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4wqn"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8rug"]
+next_pass = SubResource("StandardMaterial3D_i4wqn")
+albedo_color = Color(0.65834, 0.65834, 0.65834, 1)
+albedo_texture = ExtResource("3_44yg2")
 
 [node name="Spikes" type="StaticBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -19,8 +32,6 @@ script = ExtResource("1_gf6f6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0.0340881, 0.571533)
 shape = SubResource("BoxShape3D_pr3jg")
 
-[node name="Model" parent="." instance=ExtResource("1_0g85d")]
-
 [node name="Spikes" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 2
@@ -29,4 +40,12 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0559082, 0, -0.356003)
 shape = SubResource("BoxShape3D_ot8wd")
 
+[node name="Spike" parent="." instance=ExtResource("2_mjjyc")]
+transform = Transform3D(-2.42598e-08, 0, 1.14, 0, 1.105, 0, -0.555, 0, -4.9831e-08, 0, -1.06459, 0.293046)
+
+[node name="Cube" parent="Spike" index="0"]
+material_override = SubResource("StandardMaterial3D_q8rug")
+
 [connection signal="body_entered" from="Spikes" to="." method="_on_spikes_body_entered"]
+
+[editable path="Spike"]
