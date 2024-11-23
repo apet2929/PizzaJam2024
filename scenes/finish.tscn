@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bce6atjqp6kof"]
+[gd_scene load_steps=12 format=3 uid="uid://bce6atjqp6kof"]
 
 [ext_resource type="Script" path="res://Scripts/finish.gd" id="1_rgn7n"]
 [ext_resource type="PackedScene" uid="uid://cltbeb0atxauy" path="res://assets/finish_tunnel.glb" id="2_4jui5"]
 [ext_resource type="PackedScene" uid="uid://brbqwrqwjwcc5" path="res://assets/finish_flag.glb" id="3_74ajk"]
+[ext_resource type="AudioStream" uid="uid://8fu8vgptnokv" path="res://assets/Audio/win_sfx.mp3" id="4_wbfdt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gboe1"]
 size = Vector3(0.677734, 2.36868, 0.390625)
@@ -78,6 +79,11 @@ material_override = SubResource("StandardMaterial3D_041m4")
 
 [node name="Sphere" parent="finish_flag" index="2"]
 material_override = SubResource("StandardMaterial3D_cus60")
+
+[node name="win_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_wbfdt")
+volume_db = 20.984
+pitch_scale = 4.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 

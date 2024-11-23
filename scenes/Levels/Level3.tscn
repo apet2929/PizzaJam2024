@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbkwaeg85tgka"]
+[gd_scene load_steps=14 format=3 uid="uid://dyxllcqs0jf8v"]
 
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_itmbt"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="2_31mxb"]
@@ -130,6 +130,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94746, -14.1755, -2.04419)
 material_override = ExtResource("7_2evjv")
 use_collision = true
 size = Vector3(7.09955, 29.4543, 0.855125)
+
+[node name="walls6" type="CSGBox3D" parent="Walls" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, -12.0105)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(2, 0.499512, 1)
 
 [node name="PressurePad" parent="." index="11" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.97347, -4.76837e-07, -6.96457)
