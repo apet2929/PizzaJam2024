@@ -8,7 +8,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	super._process(delta)
 
-func next_level():
+func next_level(_body):
 	super._next_level(next_level_scene)
 	
 func init_signals():

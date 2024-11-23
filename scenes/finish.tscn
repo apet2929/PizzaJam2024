@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brbqwrqwjwcc5" path="res://assets/finish_flag.glb" id="3_74ajk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gboe1"]
-size = Vector3(0.677734, 1.12506, 0.390625)
+size = Vector3(0.677734, 2.36868, 0.390625)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no7m0"]
 albedo_color = Color(0.61339, 0.61339, 0.61339, 1)
@@ -59,7 +59,7 @@ collision_mask = 4
 script = ExtResource("1_rgn7n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.377587, 0.619237, -0.211845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00266495, -0.00257415, -0.0281383)
 shape = SubResource("BoxShape3D_gboe1")
 
 [node name="finish_tunnel" parent="." instance=ExtResource("2_4jui5")]

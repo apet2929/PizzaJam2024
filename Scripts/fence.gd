@@ -5,6 +5,11 @@ extends StaticBody3D
 const OPEN_POSITION = Vector3(0, 0, 0)
 const CLOSED_POSITION = Vector3(-0.878, 0, -0.96)
 
+func _ready() -> void:
+	if open:
+		$Pivot/Model/AnimationPlayer.play("Open")
+		$Pivot/Model/AnimationPlayer.seek(0.75)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	update_collision()
@@ -17,11 +22,13 @@ func update_collision():
 
 
 func open_fence():
-	open = true
-	print("Opening")
-	$Pivot/Model/AnimationPlayer.play("Open")
+	if !open:
+		open = true
+		print("Opening")
+		$Pivot/Model/AnimationPlayer.play("Open")
 	
 func close_fence():
-	open = false
-	print("Closing")
-	$Pivot/Model/AnimationPlayer.play_backwards("Open")
+	if open:
+		open = false
+		print("Closing")
+		$Pivot/Model/AnimationPlayer.play_backwards("Open")

@@ -20,7 +20,7 @@ uv1_offset = Vector3(0.094, 0, -0.031)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="LevelBase" instance=ExtResource("1_itmbt")]
+[node name="LevelBase2" instance=ExtResource("1_itmbt")]
 script = ExtResource("2_y5164")
 
 [node name="GameCamera" parent="." index="3"]

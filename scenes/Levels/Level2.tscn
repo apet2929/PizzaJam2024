@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="8_a2ngt"]
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="9_xpsm2"]
 
-[node name="LevelBase" instance=ExtResource("1_jd8r1")]
+[node name="LevelBase3" instance=ExtResource("1_jd8r1")]
 script = ExtResource("2_gh1mx")
 
 [node name="Floor" type="CSGBox3D" parent="." index="5"]

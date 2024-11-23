@@ -17,7 +17,6 @@ func _ready() -> void:
 	init_signals()
 	$SceneTransition.load_in()
 	$SceneTransition.anim_done.connect(self.start_level)
-	EventBus.connect("level_finished", next_level)
 	worm_initial_y = $Worm.global_position.y
 	$Worm.global_position.y = START_Y_POS
 	$Worm.visible = false
@@ -39,7 +38,7 @@ func init_signals():
 	#EventBus.connect("pressure_pad_pressed", self._on_pressure_pad_pressed)
 	#EventBus.connect("pressure_pad_unpressed", self._on_pressure_pad_unpressed)
 
-func next_level():
+func next_level(_body):
 	push_error("Implement me in subclass!")
 
 func _next_level(next_level):

@@ -54,7 +54,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xw8nt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3i75u"]
-size = Vector3(4.81372, 3.55811, 4.96082)
+size = Vector3(10.2713, 3.55811, 4.96082)
 
 [sub_resource type="Animation" id="Animation_yr8mu"]
 length = 0.001
@@ -153,10 +153,10 @@ radial_segments = 9
 rings = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckcn5"]
-size = Vector3(0.978899, 6.33545, 6.46411)
+size = Vector3(2.90986, 6.33545, 6.46411)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vt3hf"]
-size = Vector3(0.111084, 5.50537, 3.46606)
+size = Vector3(1.64685, 5.50537, 3.46606)
 
 [node name="Guillotine" type="Area3D"]
 transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, 0, 0, 0)
@@ -194,7 +194,7 @@ skeleton = NodePath("")
 collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Blade/BladeCollision"]
-transform = Transform3D(0.99996, 0, -3.97904e-13, 0, 0.999963, 0, -6.66134e-16, 0, 0.999963, 0.158381, -1.27903, 0.0746418)
+transform = Transform3D(0.999942, 0, -3.41061e-13, 0, 0.999946, 0, -8.88178e-16, 0, 0.999946, -2.57044, -1.27903, 0.0746417)
 shape = SubResource("BoxShape3D_3i75u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model"]
@@ -227,7 +227,7 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroppedCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00556643, 2.66772, 0.00109867)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.959914, 2.66772, 0.00109867)
 shape = SubResource("BoxShape3D_ckcn5")
 
 [node name="WormCheck" type="Area3D" parent="."]
@@ -235,7 +235,7 @@ collision_layer = 15
 collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WormCheck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213623, 2.50252, 0.00573705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.746521, 2.50252, 0.00573705)
 shape = SubResource("BoxShape3D_vt3hf")
 
 [connection signal="body_entered" from="WormCheck" to="." method="_on_worm_check_body_entered"]
