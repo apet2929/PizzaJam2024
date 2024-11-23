@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://3itvhn02h1hy"]
+[gd_scene load_steps=14 format=4 uid="uid://3itvhn02h1hy"]
 
 [ext_resource type="Script" path="res://scenes/Levels/level_base_script.gd" id="1_c6xbm"]
+[ext_resource type="PackedScene" uid="uid://cnmv701vlv0hs" path="res://scenes/Menu/GameOver.tscn" id="4_7r1d0"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_d5ht3"]
 [ext_resource type="Script" path="res://Scripts/bird.gd" id="4_ys1n3"]
 [ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="6_7sbaw"]
@@ -137,6 +138,12 @@ far = 40.91
 script = ExtResource("4_d5ht3")
 
 [node name="SceneTransition" parent="." instance=ExtResource("6_7sbaw")]
+
+[node name="GameOver" parent="." instance=ExtResource("4_7r1d0")]
+offset_left = 591.15
+offset_top = 107.624
+offset_right = 591.15
+offset_bottom = 107.624
 
 [node name="bird" type="Node3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.8479, 5.0001, -1.05856)

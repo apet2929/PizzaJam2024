@@ -27,7 +27,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
-		restart_level()
+		game_over()
+		#retry()
+
 	if dropping:
 		drop_worm_update(delta)
 		
@@ -40,6 +42,17 @@ func init_signals():
 
 func next_level(_body):
 	push_error("Implement me in subclass!")
+
+func retry():
+	restart_level()
+
+func game_over():
+	$GameOver.run()
+	disable_movement()
+		
+func disable_movement():
+	for worm in get_tree().get_nodes_in_group("head"):
+		worm.disabled = true
 
 func _next_level(next_level):
 	EventBus.restart_count = 0

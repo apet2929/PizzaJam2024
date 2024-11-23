@@ -115,4 +115,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
 [node name="DroppedCollision" parent="Guillotine" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
 
+[node name="GameOver" parent="." index="14"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
 [editable path="Guillotine"]

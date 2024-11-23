@@ -1,0 +1,169 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnmv701vlv0hs"]
+
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_cif33"]
+[ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="2_33ydn"]
+[ext_resource type="Theme" path="res://assets/Menu/button_theme.tres" id="2_tm65e"]
+[ext_resource type="Script" path="res://assets/Menu/ui_button.gd" id="4_wrx6o"]
+[ext_resource type="AudioStream" uid="uid://3n3foxtnxnto" path="res://assets/Audio/on_btn.wav" id="5_rfoxw"]
+[ext_resource type="AudioStream" uid="uid://bhme7hx1r1hj8" path="res://assets/Audio/btn_click.wav" id="6_tu1bp"]
+
+[sub_resource type="Animation" id="Animation_glpln"]
+resource_name = "ui_visibility"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rmx2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a68xk"]
+_data = {
+"RESET": SubResource("Animation_rmx2f"),
+"ui_visibility": SubResource("Animation_glpln")
+}
+
+[node name="GameOver" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cif33")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = 82.0
+offset_right = 300.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0.27, 0.27, 0.670588)
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -123.0
+offset_right = 570.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.375, 0.375)
+theme = ExtResource("2_tm65e")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("2_33ydn")
+theme_override_font_sizes/font_size = 83
+text = "Retry"
+
+[node name="Level select" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = 59.0
+offset_right = 765.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.375, 0.375)
+theme = ExtResource("2_tm65e")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("2_33ydn")
+theme_override_font_sizes/font_size = 83
+text = "Level select"
+autowrap_mode = 1
+script = ExtResource("4_wrx6o")
+scene_path = "res://scenes/Menu/lvl_select.tscn"
+
+[node name="Main menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = 147.0
+offset_right = 602.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.375, 0.375)
+theme = ExtResource("2_tm65e")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("2_33ydn")
+theme_override_font_sizes/font_size = 83
+text = "Main menu"
+autowrap_mode = 1
+script = ExtResource("4_wrx6o")
+scene_path = "res://scenes/Menu/Menu.tscn"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 82.0
+offset_right = 867.0
+offset_bottom = 191.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("2_33ydn")
+theme_override_font_sizes/font_size = 51
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="On_btn" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 324)
+stream = ExtResource("5_rfoxw")
+
+[node name="btn_click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 324)
+stream = ExtResource("6_tu1bp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a68xk")
+}
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Level select" to="Level select" method="_on_pressed"]
+[connection signal="pressed" from="Main menu" to="Main menu" method="_on_pressed"]

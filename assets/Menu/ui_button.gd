@@ -4,5 +4,5 @@ extends Node
 @onready var btn_click: AudioStreamPlayer2D = $"../btn_click"
 
 func _on_pressed() -> void:
-	$"../..".change_scene(scene_path)
+	get_tree().change_scene_to_file(scene_path)
 	btn_click.play()
