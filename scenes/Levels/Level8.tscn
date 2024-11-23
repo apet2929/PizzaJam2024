@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dedeskbl7i3kk"]
 
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_f52wl"]
-[ext_resource type="Script" path="res://Scripts/Levels/level_5.gd" id="2_vr0yn"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_8.gd" id="2_ior6f"]
 [ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_njsjo"]
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="4_lho0c"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="5_atwaq"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://diuxd3v1qb85f" path="res://scenes/box.tscn" id="11_n5u7i"]
 
 [node name="LevelBase" instance=ExtResource("1_f52wl")]
-script = ExtResource("2_vr0yn")
+script = ExtResource("2_ior6f")
+next_lvl = "res://scenes/Levels/Level3.tscn"
 
 [node name="GameCamera" parent="." index="3"]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 14.1243, 3.3)

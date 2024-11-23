@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var next_lvl = "res://scenes/Levels/Level5.tscn"
+@export var next_lvl = "res://scenes/Levels/Level3.tscn"
 const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
 # Contains all the setup/interaction logic specific to this level
 
@@ -24,9 +24,22 @@ func is_worm(body):
 func _on_pressure_pad_pressed(pressure_pad, _body) -> void:
 	if pressure_pad == $PressurePad:
 		$Fence.open_fence()
+	elif pressure_pad == $PressurePad2:
+		$Fence2.open_fence()
+	elif pressure_pad == $PressurePad3:
+		$Fence3.open_fence()
+	elif pressure_pad == $PressurePad7:
+		$Guillotine.drop()
 
 func _on_pressure_pad_unpressed(pressure_pad, _body) -> void:
 	if pressure_pad == $PressurePad:
 		if $Fence.open:
 			$Fence.close_fence()
-		
+	elif pressure_pad == $PressurePad2:
+		if $Fence2.open:
+			$Fence2.close_fence()
+	elif pressure_pad == $PressurePad3:
+		if $Fence3.open:
+			$Fence3.close_fence()
+	elif pressure_pad == $PressurePad7:
+		$Guillotine.undrop()

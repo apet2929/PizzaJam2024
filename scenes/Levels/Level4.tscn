@@ -122,7 +122,6 @@ _data = {
 
 [node name="LevelBase4" type="Node3D"]
 script = ExtResource("1_8urtx")
-next_lvl = "res://scenes/Levels/Level5.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4m1be")
