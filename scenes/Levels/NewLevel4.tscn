@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://dblpttjff11wx"]
+
+[ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_nqyfv"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_4.gd" id="2_amvjb"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_muiia"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_mxnwx"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="6_m5mkn"]
+[ext_resource type="PackedScene" uid="uid://diuxd3v1qb85f" path="res://scenes/box.tscn" id="8_3804s"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="8_j58lm"]
+[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="9_buk3n"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="11_jqmv6"]
+
+[node name="LevelBase" instance=ExtResource("1_nqyfv")]
+script = ExtResource("2_amvjb")
+
+[node name="Floor" type="CSGBox3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5107, -33.5474, -0.502271)
+layers = 2
+use_collision = true
+collision_layer = 18
+collision_mask = 2
+size = Vector3(4, 67.095, 14)
+material = ExtResource("2_muiia")
+
+[node name="Floor2" type="CSGBox3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5107, -33.5474, -2.50227)
+layers = 2
+use_collision = true
+collision_layer = 18
+collision_mask = 2
+size = Vector3(8, 67.095, 12)
+material = ExtResource("2_muiia")
+
+[node name="Worm" parent="." index="9" instance=ExtResource("3_mxnwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, 4.09775)
+visible = false
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(-1, 0, 1), Vector3(-1, 0, 2), Vector3(0, 0, 2), Vector3(1, 0, 2), Vector3(1, 0, 1)]
+
+[node name="Walls" type="Node3D" parent="." index="10"]
+
+[node name="walls1" type="CSGBox3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00522, 0.251725, 0.98954)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 0.499512, 1)
+
+[node name="walls13" type="CSGBox3D" parent="Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00522, 0.251725, -4.51046)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 0.499512, 4)
+
+[node name="walls5" type="CSGBox3D" parent="Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5052, -7.49852, 3.98954)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(2, 16, 1)
+
+[node name="walls12" type="CSGBox3D" parent="Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -0.0104599)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 0.499512, 3)
+
+[node name="walls14" type="CSGBox3D" parent="Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, 0.48954)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(4, 0.499512, 2)
+
+[node name="walls2" type="CSGBox3D" parent="Walls" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0052, -6.49852, -2.0105)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 14, 13)
+
+[node name="walls3" type="CSGBox3D" parent="Walls" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00522, -32.4985, 5.4895)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 66, 4)
+
+[node name="walls11" type="CSGBox3D" parent="Walls" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00522, -32.4985, 6.9895)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(5, 66, 1)
+
+[node name="walls9" type="CSGBox3D" parent="Walls" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00522, -32.4985, 5.4895)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 66, 4)
+
+[node name="walls8" type="CSGBox3D" parent="Walls" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50522, -30.9985, -0.0105)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(2, 63, 9)
+
+[node name="walls10" type="CSGBox3D" parent="Walls" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00522, -29.4985, -6.5105)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1, 60, 4)
+
+[node name="walls4" type="CSGBox3D" parent="Walls" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, -27.4985, -8.0105)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(6, 56, 3)
+
+[node name="walls6" type="CSGBox3D" parent="Walls" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81015, 0.251725, -9.0105)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(1.39014, 0.499512, 1)
+
+[node name="walls7" type="CSGBox3D" parent="Walls" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5052, 0.251725, -8.0105)
+material_override = ExtResource("8_j58lm")
+use_collision = true
+size = Vector3(2, 0.499512, 3)
+
+[node name="Finish" parent="." index="11" instance=ExtResource("11_jqmv6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.1345, 0.834338, -8.00568)
+collision_layer = 8
+
+[node name="Fence" parent="." index="12" instance=ExtResource("6_m5mkn")]
+transform = Transform3D(0.45, 0, -7.86806e-08, 0, 0.45, 0, 7.86806e-08, 0, 0.45, -10.0255, 0.481618, -6.47046)
+
+[node name="PressurePad" parent="." index="13" instance=ExtResource("9_buk3n")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -8.01031, -4.76837e-07, -3.9931)
+
+[node name="Box" parent="." index="14" instance=ExtResource("8_3804s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.440785, 2)
