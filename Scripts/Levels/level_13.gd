@@ -30,6 +30,12 @@ func _on_button_pressed(button, body) -> void:
 		$Guillotine.drop()
 	if button == $ButtonSmall2:
 		$Guillotine2.drop()
+	elif button == $ButtonSmall3:
+		$Fence3.open_fence()
+	if button == $ButtonSmall4:
+		$Fence.open_fence()
+		$Fence2.open_fence()
+		$Fence4.open_fence()
 
 func _on_button_unpressed(button, body) -> void:
 	pass
