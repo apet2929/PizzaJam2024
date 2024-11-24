@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/lvl_select.gd" id="1_43gvy"]
 [ext_resource type="Script" path="res://assets/Menu/Transition.gd" id="1_agdlk"]
 [ext_resource type="Material" uid="uid://cm4rfqbvkw1jm" path="res://assets/Level_select_ground.tres" id="2_b07w3"]
-[ext_resource type="PackedScene" uid="uid://bij5fs5dn0bt7" path="res://scenes/Menu/WinConditionLabel.tscn" id="4_0xqvt"]
 [ext_resource type="PackedScene" uid="uid://bqgpbclle8qpc" path="res://scenes/Menu/3d_btn.tscn" id="4_34kb6"]
+[ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="5_sah8g"]
 
 [sub_resource type="Animation" id="Animation_bi66b"]
 length = 0.001
@@ -127,8 +127,6 @@ shadow_enabled = true
 transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527998, 0.853847, 0.703743, -0.541199, 0.460272, 0, 0, 0)
 light_energy = 0.5
 shadow_enabled = true
-
-[node name="Label3D" parent="." instance=ExtResource("4_0xqvt")]
 
 [node name="BackButton" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
@@ -261,6 +259,12 @@ text = "10"
 
 [node name="Select_Arrow" parent="LVL10" index="3"]
 transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 0.92986)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1.59547e-07, -3.65, -1.59547e-07, 0, -1.59547e-07, 3.65, -3.65, 1.59547e-07, 6.974e-15, -16.92, 0.083, -8.527)
+text = "Level Select"
+font = ExtResource("5_sah8g")
+font_size = 48
 
 [connection signal="animation_finished" from="SceneTransition/Anim" to="SceneTransition" method="_on_anim_animation_finished"]
 
