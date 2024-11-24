@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 		
 		btn_click.play()
 		scene_transition.change_scene(scene_path)
+		if self.name != "BackButton" and self.name != "PlayButton":
+			Music.game_state()
 
 
 func _on_mouse_entered() -> void:

@@ -6,3 +6,4 @@ extends Node
 func _on_pressed() -> void:
 	get_tree().change_scene_to_file(scene_path)
 	btn_click.play()
+	Music.menu_state()

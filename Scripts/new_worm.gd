@@ -328,7 +328,8 @@ func print_curve():
 	for i in range(0, self.curve.point_count):
 		s += str(self.curve.get_point_position(i)) + ", "
 	s += "]"
-	
+	print(s)
+
 
 func tail_direction() -> Vector3:
 	var tail = get_tail()

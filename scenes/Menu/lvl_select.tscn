@@ -133,7 +133,7 @@ transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, 
 text = "LEVEL SELECT"
 font = ExtResource("3_w4b27")
 
-[node name="3d_btn" parent="." instance=ExtResource("4_34kb6")]
+[node name="BackButton" parent="." instance=ExtResource("4_34kb6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
 
 [node name="LVL1" parent="." instance=ExtResource("4_34kb6")]

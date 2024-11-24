@@ -62,14 +62,15 @@ func disable_movement():
 	for worm in get_tree().get_nodes_in_group("head"):
 		worm.disabled = true
 
-func _next_level(next_level):
+func _next_level(next_level_scene):
 	EventBus.levels_beaten.append(self.scene_file_path)
 	EventBus.restart_count = 0
-	$SceneTransition.load_out(next_level)
+	$SceneTransition.load_out(next_level_scene)
 
 func start_level():
 	if !started:
 		started = true
+	Music.game_state()
 
 func restart_level():
 	EventBus.restart_count += 1

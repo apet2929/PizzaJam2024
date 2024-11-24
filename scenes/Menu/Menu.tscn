@@ -129,33 +129,33 @@ transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, 
 text = "The Worm game"
 font = ExtResource("1_b5od1")
 
-[node name="3d_btn" parent="." instance=ExtResource("4_3jjvx")]
+[node name="PlayButton" parent="." instance=ExtResource("4_3jjvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -9)
 scene_path = "res://scenes/Menu/lvl_select.tscn"
 
-[node name="gfx" parent="3d_btn" index="1"]
+[node name="gfx" parent="PlayButton" index="1"]
 size = Vector3(1, 1, 5)
 
-[node name="Label3D" parent="3d_btn" index="2"]
+[node name="Label3D" parent="PlayButton" index="2"]
 text = "Play"
 
-[node name="Select_Arrow" parent="3d_btn" index="3"]
+[node name="Select_Arrow" parent="PlayButton" index="3"]
 transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 2.92986)
 
-[node name="3d_btn2" parent="." instance=ExtResource("4_3jjvx")]
+[node name="QuitButton" parent="." instance=ExtResource("4_3jjvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -9)
 quit_btn = true
 
-[node name="gfx" parent="3d_btn2" index="1"]
+[node name="gfx" parent="QuitButton" index="1"]
 size = Vector3(1, 1, 5)
 
-[node name="Label3D" parent="3d_btn2" index="2"]
+[node name="Label3D" parent="QuitButton" index="2"]
 text = "Quit"
 
-[node name="Select_Arrow" parent="3d_btn2" index="3"]
+[node name="Select_Arrow" parent="QuitButton" index="3"]
 transform = Transform3D(0.225, 0, 0, 0, -1.68289e-08, 0.225, 0, -0.385, -9.83506e-09, 0, 0.375083, 2.92986)
 
 [connection signal="animation_finished" from="SceneTransition/Anim" to="SceneTransition" method="_on_anim_animation_finished"]
 
-[editable path="3d_btn"]
-[editable path="3d_btn2"]
+[editable path="PlayButton"]
+[editable path="QuitButton"]

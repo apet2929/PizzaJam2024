@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b68s4kq5e7vlx"]
+
+[ext_resource type="Script" path="res://Scripts/music.gd" id="1_xtypm"]
+[ext_resource type="AudioStream" uid="uid://bw0qh7kdoo1eg" path="res://assets/Audio/menu_music.mp3" id="2_0q22g"]
+[ext_resource type="AudioStream" uid="uid://c10fnc5ob12tu" path="res://assets/Audio/game.mp3" id="3_k27q3"]
+[ext_resource type="AudioStream" uid="uid://dadt502b2l3a4" path="res://assets/Audio/transition.mp3" id="4_vypb6"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_xtypm")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0q22g")
+volume_db = -5.0
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k27q3")
+volume_db = -5.0
+
+[node name="TransitionMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vypb6")
+volume_db = -5.0
+
+[connection signal="finished" from="MenuMusic" to="." method="_on_menu_music_finished"]
+[connection signal="finished" from="GameMusic" to="." method="_on_game_music_finished"]
+[connection signal="finished" from="TransitionMusic" to="." method="_on_transition_music_finished"]

@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*res://Scripts/EventBus.gd"
+Music="*res://scenes/music.tscn"
 
 [display]
 
