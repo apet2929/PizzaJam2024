@@ -134,3 +134,5 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -8.01031, -4.76837e-
 
 [node name="Box" parent="." index="14" instance=ExtResource("8_3804s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.440785, 2)
+
+[editable path="SceneTransition"]

@@ -15,9 +15,6 @@
 [node name="LevelBase" instance=ExtResource("1_c7l2s")]
 script = ExtResource("2_g2u21")
 
-[node name="GameCamera" parent="." index="3"]
-far = 4000.0
-
 [node name="Worm" parent="." index="6" instance=ExtResource("2_qqnwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0522223, 0.375672, -3.99105)
 visible = false
@@ -181,3 +178,5 @@ transform = Transform3D(0.5, 0, -8.74228e-08, 0, 0.5, 0, 8.74228e-08, 0, 0.5, -4
 
 [node name="Fence" parent="." index="39" instance=ExtResource("8_4wb0a")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.99864, 0.440126, -6.92346)
+
+[editable path="SceneTransition"]

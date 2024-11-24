@@ -173,3 +173,5 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -5.973
 
 [node name="Lettuce2" parent="." index="24" instance=ExtResource("10_e403v")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.80259, 9.91821e-05, -11.041)
+
+[editable path="SceneTransition"]

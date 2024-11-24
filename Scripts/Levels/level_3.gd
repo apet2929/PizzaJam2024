@@ -1,6 +1,6 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Levels/Level5.tscn"
+var next_level_scene = "res://scenes/Levels/Level4.tscn"
 
 var buttons_that_close_the_fence = [
 	"PressurePad", "PressurePad2", "PressurePad3",

@@ -14,6 +14,14 @@
 [node name="LevelBase" instance=ExtResource("1_w3nw5")]
 script = ExtResource("1_c3xem")
 
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
+
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0107, -33.5474, -5.50227)
 layers = 2
@@ -115,10 +123,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
 [node name="DroppedCollision" parent="Guillotine" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
 
-[node name="GameOver" parent="." index="14"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
+[editable path="SceneTransition"]
 [editable path="Guillotine"]

@@ -100,3 +100,5 @@ button_id = "0"
 
 [node name="PressurePad" parent="." index="12" instance=ExtResource("8_a2ngt")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.01031, -4.76837e-07, -11.9931)
+
+[editable path="SceneTransition"]

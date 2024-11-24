@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cnmv701vlv0hs" path="res://scenes/Menu/GameOver.tscn" id="4_7r1d0"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_d5ht3"]
 [ext_resource type="Script" path="res://Scripts/bird.gd" id="4_ys1n3"]
-[ext_resource type="Theme" path="res://assets/Menu/button_theme.tres" id="5_tivpk"]
+[ext_resource type="Theme" uid="uid://b7wn8s1f8i7ot" path="res://assets/Menu/button_theme.tres" id="5_tivpk"]
 [ext_resource type="Texture2D" uid="uid://wf24385l8obx" path="res://assets/Menu/Restart_lvl.png" id="6_0qrw7"]
 [ext_resource type="PackedScene" uid="uid://bpfqxl45awiyk" path="res://scenes/Menu/SceneTransition.tscn" id="6_7sbaw"]
 
@@ -141,6 +141,16 @@ script = ExtResource("4_d5ht3")
 
 [node name="SceneTransition" parent="." instance=ExtResource("6_7sbaw")]
 
+[node name="Top" parent="SceneTransition" index="2"]
+visible = true
+offset_left = 1157.0
+offset_right = 2309.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+visible = true
+offset_left = -1157.0
+offset_right = -5.0
+
 [node name="GameOver" parent="." instance=ExtResource("4_7r1d0")]
 
 [node name="RestartText" type="Control" parent="."]
@@ -153,8 +163,8 @@ offset_bottom = 52.0
 theme = ExtResource("5_tivpk")
 
 [node name="Sprite2D" type="Sprite2D" parent="RestartText"]
-position = Vector2(375, 67)
-scale = Vector2(0.4, 0.4)
+position = Vector2(487, 25)
+scale = Vector2(0.19, 0.19)
 texture = ExtResource("6_0qrw7")
 
 [node name="bird" type="Node3D" parent="."]
@@ -173,3 +183,5 @@ libraries = {
 "": SubResource("AnimationLibrary_37di5")
 }
 speed_scale = 0.5
+
+[editable path="SceneTransition"]

@@ -10,15 +10,15 @@ script = ExtResource("1_xtypm")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0q22g")
-volume_db = -5.0
+volume_db = -7.75
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_k27q3")
-volume_db = -5.0
+volume_db = -7.75
 
 [node name="TransitionMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_vypb6")
-volume_db = -5.0
+volume_db = -7.75
 
 [connection signal="finished" from="MenuMusic" to="." method="_on_menu_music_finished"]
 [connection signal="finished" from="GameMusic" to="." method="_on_game_music_finished"]

@@ -32,23 +32,23 @@ visible = false
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, -1)]
 
 [node name="Floor2" type="CSGBox3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.427, -0.5, -4.31696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.427, -0.5, -4.09089)
 layers = 2
 material_override = ExtResource("3_vwh0m")
 use_collision = true
 collision_layer = 18
 collision_mask = 2
-size = Vector3(2.05615, 1, 4.50417)
+size = Vector3(2.05615, 1, 4.9563)
 material = SubResource("StandardMaterial3D_mwuc2")
 
 [node name="Floor3" type="CSGBox3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1272, -0.5, -6.02531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1272, -0.5, -5.78687)
 layers = 2
 material_override = ExtResource("3_vwh0m")
 use_collision = true
 collision_layer = 18
 collision_mask = 2
-size = Vector3(4.61963, 1, 7.92087)
+size = Vector3(4.61963, 1, 8.39776)
 material = SubResource("StandardMaterial3D_mwuc2")
 
 [node name="Floor4" type="CSGBox3D" parent="." index="7"]
@@ -62,7 +62,7 @@ size = Vector3(2.92322, 1, 4.49608)
 material = SubResource("StandardMaterial3D_mwuc2")
 
 [node name="Fence" parent="." index="8" instance=ExtResource("5_46px8")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.99823, 0.534031, -9.74223)
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -4.99823, 0.434325, -9.74223)
 collision_layer = 17
 open = true
 
@@ -76,95 +76,107 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.01985, 2.38419e-07, -9.176
 
 [node name="Walls" type="Node3D" parent="." index="10"]
 
-[node name="walls8" type="CSGBox3D" parent="Walls" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89421, -15.2836, -5.88409)
+[node name="walls15" type="CSGBox3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00523, -56.5438, -6.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1, 31.6407, 8.52142)
+size = Vector3(1, 114.091, 9)
 
-[node name="walls9" type="CSGBox3D" parent="Walls" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99722, -15.2826, -4.06728)
+[node name="walls16" type="CSGBox3D" parent="Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00523, -67.1805, -2.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1, 31.6426, 4.90129)
+size = Vector3(7, 135.364, 1)
 
-[node name="walls11" type="CSGBox3D" parent="Walls" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97845, 0.148866, -7.02792)
+[node name="walls17" type="CSGBox3D" parent="Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00523, -27.9985, -4.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(0.849365, 0.773254, 6.96855)
+size = Vector3(1, 57, 5)
 
-[node name="walls12" type="CSGBox3D" parent="Walls" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10333, 0.150469, -11.4496)
+[node name="walls18" type="CSGBox3D" parent="Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00523, -1.99852, -6.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1.19333, 0.776459, 3.79658)
+size = Vector3(3, 5, 1)
 
-[node name="walls24" type="CSGBox3D" parent="Walls" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99598, -17.6183, -13.9414)
+[node name="walls19" type="CSGBox3D" parent="Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00523, -1.99852, -7.5105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(3.41096, 36.3262, 1.19565)
+size = Vector3(1, 5, 6)
 
-[node name="walls14" type="CSGBox3D" parent="Walls" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07215, 0.152269, -6.01174)
+[node name="walls20" type="CSGBox3D" parent="Walls" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50523, -1.99852, -10.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(2.88192, 0.78006, 0.949145)
+size = Vector3(2, 5, 1)
 
-[node name="walls13" type="CSGBox3D" parent="Walls" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90894, -20.3709, -11.4496)
+[node name="walls24" type="CSGBox3D" parent="Walls" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50523, -1.99852, -14.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(1.15063, 41.8339, 3.79658)
+size = Vector3(2, 5, 1)
 
-[node name="walls10" type="CSGBox3D" parent="Walls" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94746, -14.1821, -2.04419)
+[node name="walls21" type="CSGBox3D" parent="Walls" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50523, -1.99852, -10.0105)
 material_override = ExtResource("7_2evjv")
 use_collision = true
-size = Vector3(7.09955, 29.4412, 0.855125)
+size = Vector3(2, 5, 1)
 
-[node name="PressurePad" parent="." index="11" groups=["fence_pps"] instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.97347, -4.76837e-07, -6.96457)
+[node name="walls22" type="CSGBox3D" parent="Walls" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00523, -39.9985, -12.0105)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(1, 81, 5)
+
+[node name="walls23" type="CSGBox3D" parent="Walls" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00523, -39.9985, -12.0105)
+material_override = ExtResource("7_2evjv")
+use_collision = true
+size = Vector3(1, 81, 5)
+
+[node name="PressurePad7" parent="." index="11" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00585, -4.76837e-07, -3.01371)
 collision_layer = 15
 collision_mask = 15
 
-[node name="PressurePad7" parent="." index="12" instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.03652, -4.76837e-07, -3.01371)
+[node name="PressurePad" parent="." index="12" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00585, -4.76837e-07, -8.01371)
 collision_layer = 15
 collision_mask = 15
 
-[node name="PressurePad2" parent="." index="13" groups=["fence_pps"] instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.97347, -4.76837e-07, -8.02922)
+[node name="PressurePad2" parent="." index="13" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.00585, -4.76837e-07, -8.01371)
 collision_layer = 15
 collision_mask = 15
 
-[node name="PressurePad3" parent="." index="14" groups=["fence_pps"] instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.06291, -4.76837e-07, -8.02465)
+[node name="PressurePad3" parent="." index="14" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.00585, -4.76837e-07, -8.01371)
 collision_layer = 15
 collision_mask = 15
 
-[node name="PressurePad4" parent="." index="15" groups=["fence_pps"] instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.06291, -4.76837e-07, -6.96836)
+[node name="PressurePad4" parent="." index="15" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00585, -4.76837e-07, -7.01371)
 collision_layer = 15
 collision_mask = 15
 
-[node name="PressurePad5" parent="." index="16" groups=["fence_pps"] instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.03342, -4.76837e-07, -8.04069)
+[node name="PressurePad5" parent="." index="16" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.00585, -4.76837e-07, -7.01371)
 collision_layer = 15
 collision_mask = 15
 
-[node name="PressurePad6" parent="." index="17" groups=["fence_pps"] instance=ExtResource("8_4xi8g")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.03947, -4.76837e-07, -6.96343)
+[node name="PressurePad6" parent="." index="17" instance=ExtResource("8_4xi8g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.00585, -4.76837e-07, -7.01371)
 collision_layer = 15
 collision_mask = 15
 
 [node name="Guillotine" parent="." index="18" instance=ExtResource("9_qfct7")]
-transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, -4.99507, -0.00554323, -4.76795)
+transform = Transform3D(-8.30516e-09, 0, 0.19, 0, 0.19, 0, -0.19, 0, -8.30516e-09, -4.98076, -0.0172499, -4.76795)
 collision_layer = 19
 
 [node name="Finish" parent="." index="19" instance=ExtResource("10_i6k8o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98565, 0.865602, -12.7635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98565, 0.477171, -12.7635)
 
 [node name="GameCamera2" type="Camera3D" parent="." index="20"]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 13.5593, 25.4558, 12)
@@ -173,3 +185,13 @@ fov = 35.0
 size = 11.0
 far = 43.98
 script = ExtResource("12_j63oo")
+
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[editable path="SceneTransition"]
