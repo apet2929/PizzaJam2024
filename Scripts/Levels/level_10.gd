@@ -1,6 +1,6 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Levels/Level1.tscn"
+var next_level_scene = "res://scenes/Menu/YouWin.tscn"
 const LETTUCE_SCENE = preload("res://scenes/lettuce.tscn")
 var lettuce_dropped = false
 
@@ -12,12 +12,7 @@ func _process(delta) -> void:
 
 func next_level(body):
 	if body.has_crown:
-		if get_tree().get_nodes_in_group("head").size() != 1:
-			body.kill()
-		else:
-			super._next_level(next_level_scene)
-			return
-	get_tree().get_nodes_in_group("head")[0].has_crown = true
+		super._next_level(next_level_scene)
 
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
@@ -42,6 +37,7 @@ func _on_button_pressed(button, body) -> void:
 			l2.position = $LettuceSpawnPosition2.position
 			add_child(l)
 			add_child(l2)
+			lettuce_dropped = true
 	elif button == $ButtonSmall6:
 		$Fence2.open_fence()
 

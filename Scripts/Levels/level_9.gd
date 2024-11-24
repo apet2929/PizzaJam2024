@@ -1,6 +1,6 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Menu/YouWin.tscn"
+var next_level_scene = "res://scenes/Levels/Level10.tscn"
 
 func _ready() -> void:
 	super._ready()
