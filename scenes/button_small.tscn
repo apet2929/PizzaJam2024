@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://b7yhrd8oma55f"]
+[gd_scene load_steps=23 format=4 uid="uid://b7yhrd8oma55f"]
 
 [ext_resource type="Script" path="res://Scripts/button_small.gd" id="1_begb6"]
+[ext_resource type="AudioStream" uid="uid://7fj5dsukalny" path="res://assets/Audio/buttonPress.mp3" id="2_rvajx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cpkp"]
 size = Vector3(1.29352, 0.767151, 1.24121)
@@ -181,6 +182,18 @@ tracks/0/path = NodePath("ButtonTop")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.0432911, 0, 0.0333333, 1, 0, 0.0432911, 0, 0.0666667, 1, 0, 0.00482592, 0, 0.1, 1, 0, -0.0688052, 0, 0.133333, 1, 0, -0.159935, 0, 0.166667, 1, 0, -0.236528, 0, 0.208333, 1, 0, -0.140231, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../btn_sfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_bpsw6"]
 resource_name = "ButtonUnpress"
@@ -193,10 +206,26 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.043291, 0, 0.0333333, 1, 0, -0.099179, 0, 0.0666667, 1, 0, -0.118101, 0, 0.1, 1, 0, -0.0824833, 0, 0.166667, 1, 0, 0.0154648, 0, 0.208333, 1, 0, 0.043291, 0)
 
+[sub_resource type="Animation" id="Animation_iai8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../btn_sfx:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dboi3"]
 _data = {
 "ButtonPress": SubResource("Animation_vvdhp"),
-"ButtonUnpress": SubResource("Animation_bpsw6")
+"ButtonUnpress": SubResource("Animation_bpsw6"),
+"RESET": SubResource("Animation_iai8r")
 }
 
 [node name="ButtonSmall" type="Area3D"]
@@ -218,7 +247,7 @@ mesh = SubResource("ArrayMesh_rts6j")
 skeleton = NodePath("")
 
 [node name="ButtonTop" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0432911, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140231, 0)
 material_override = SubResource("StandardMaterial3D_r4ua3")
 lod_bias = 28.251
 mesh = SubResource("ArrayMesh_l55la")
@@ -235,6 +264,10 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_dboi3")
 }
+
+[node name="btn_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_rvajx")
+volume_db = 61.732
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

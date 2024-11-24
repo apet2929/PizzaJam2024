@@ -6,9 +6,12 @@ var is_pressed = false
 signal pressed
 signal unpressed
 
+@onready var btn_sfx: AudioStreamPlayer3D = $btn_sfx
+
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("body") or body.is_in_group("head") or body.is_in_group("box"):
 		bodies.append(body)
+		btn_sfx.play()
 		
 		if body.is_in_group("head") or body.is_in_group("box"):
 			is_pressed = true

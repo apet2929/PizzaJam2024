@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://d076us4fj6gri"]
+[gd_scene load_steps=8 format=4 uid="uid://d076us4fj6gri"]
 
 [ext_resource type="Script" path="res://Scripts/pressure_pad.gd" id="1_5vmqf"]
 [ext_resource type="Material" uid="uid://bf5p4wgfygcfi" path="res://assets/Button_Shader.tres" id="1_18krv"]
+[ext_resource type="AudioStream" uid="uid://g4dwv3jxlmo2" path="res://assets/Audio/FlatButtonPress.mp3" id="3_rj8qi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiqtn"]
 resource_name = "Material"
@@ -61,6 +62,10 @@ surface_material_override/0 = ExtResource("1_18krv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0355072, 1.42712, 0.0426407)
 shape = SubResource("BoxShape3D_ik5w0")
+
+[node name="btn_sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_rj8qi")
+volume_db = 45.419
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

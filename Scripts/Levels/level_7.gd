@@ -8,10 +8,6 @@ func _ready() -> void:
 	super._ready()
 
 func _process(delta) -> void:
-	var should_open_fence3 = $PressurePad.is_pressed and $PressurePad3.is_pressed
-	if should_open_fence3 and not $Fence3.open:
-		$Fence3.open_fence()
-	
 	if Input.is_action_just_pressed("skip"):
 		super._next_level(next_level_scene)
 		return
