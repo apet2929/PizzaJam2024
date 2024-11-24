@@ -14,7 +14,6 @@
 
 [node name="LevelBase" instance=ExtResource("1_f52wl")]
 script = ExtResource("2_ior6f")
-next_lvl = "res://scenes/Levels/Level3.tscn"
 
 [node name="GameCamera" parent="." index="3"]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 14.1243, 3.3)
@@ -65,12 +64,6 @@ fov = 35.0
 size = 11.0
 far = 43.98
 script = ExtResource("7_wunhb")
-
-[node name="GameOver" parent="." index="15"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="Floor" type="CSGBox3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.36918, -33.5474, -1.00227)

@@ -2,25 +2,32 @@ extends LevelBase
 
 var next_level_scene = "res://scenes/Levels/Level8.tscn"
 var fence5_open = false
+var num_finishes = 0
 
 func _ready() -> void:
 	super._ready()
 
 func _process(delta) -> void:
-	super._process(delta)
-	var should_open_fence3 = true
-	for plate in get_tree().get_nodes_in_group("fence3_pps"):
-		if !plate.is_pressed:
-			should_open_fence3 = false
+	var should_open_fence3 = $PressurePad.is_pressed and $PressurePad3.is_pressed
 	if should_open_fence3 and not $Fence3.open:
 		$Fence3.open_fence()
-
-func next_level(_body):
-	super._next_level(next_level_scene)
 	
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
+	
+	super._process(delta)
+
+func next_level(body):
+	num_finishes += 1
+	if num_finishes == 2:
+		super._next_level(next_level_scene)
+	body.kill()
+
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
+	EventBus.connect("level_finished", self.next_level)
 
 func _on_button_pressed(button, body) -> void:
 	if button == $ButtonSmall:

@@ -23,6 +23,11 @@ func menu_state():
 	state = States.MENU
 	transition_queued = false
 
+func set_volume(val: float):
+	$MenuMusic.volume_db = linear_to_db(val)
+	$GameMusic.volume_db = linear_to_db(val)
+	$TransitionMusic.volume_db = linear_to_db(val) 
+
 func _on_menu_music_finished() -> void:
 	if state == States.MENU:
 		$MenuMusic.play()

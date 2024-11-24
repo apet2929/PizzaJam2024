@@ -14,6 +14,7 @@ func next_level(_body):
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
+	EventBus.connect("level_finished", self.next_level)
 
 func _on_button_pressed(button, body) -> void:
 	pass

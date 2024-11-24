@@ -1,12 +1,15 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Levels/Level14.tscn"
+var next_level_scene = "res://scenes/Menu/YouWin.tscn"
 
 func _ready() -> void:
 	super._ready()
 
 func _process(delta) -> void:
 	super._process(delta)
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
 
 func next_level(body):
 	if body.has_crown:
@@ -19,6 +22,7 @@ func next_level(body):
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
+	EventBus.connect("level_finished", self.next_level)
 	EventBus.connect("worm_died", self._on_worm_died)
 
 func _on_button_pressed(button, body) -> void:
@@ -26,7 +30,6 @@ func _on_button_pressed(button, body) -> void:
 		$Guillotine.drop()
 	if button == $ButtonSmall2:
 		$Guillotine2.drop()
-	
 
 func _on_button_unpressed(button, body) -> void:
 	pass

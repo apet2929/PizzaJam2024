@@ -8,6 +8,9 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	super._process(delta)
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
 
 func next_level(_body):
 	super._next_level(next_level_scene)
@@ -15,6 +18,7 @@ func next_level(_body):
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
+	EventBus.connect("level_finished", self.next_level)
 
 func _on_button_pressed(button, body) -> void:
 	if button == $PressurePad:

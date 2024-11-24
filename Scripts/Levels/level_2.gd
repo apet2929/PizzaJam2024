@@ -7,6 +7,9 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	super._process(delta)
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
 
 func next_level(_body):
 	super._next_level(next_level_scene)

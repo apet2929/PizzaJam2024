@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("retry"):
 		retry()
 		return
+	
 
 	if dropping:
 		drop_worm_update(delta)

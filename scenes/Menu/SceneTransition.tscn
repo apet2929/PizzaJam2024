@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpfqxl45awiyk"]
+[gd_scene load_steps=11 format=3 uid="uid://bpfqxl45awiyk"]
 
 [ext_resource type="Script" path="res://assets/Menu/Transition.gd" id="1_8ts0x"]
 [ext_resource type="Theme" path="res://assets/Menu/button_theme.tres" id="2_crqp2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://assets/Menu/ui_button.gd" id="4_rbpc6"]
 [ext_resource type="AudioStream" uid="uid://3n3foxtnxnto" path="res://assets/Audio/on_btn.wav" id="5_mt3ej"]
 [ext_resource type="AudioStream" uid="uid://bhme7hx1r1hj8" path="res://assets/Audio/btn_click.wav" id="6_yybaf"]
+[ext_resource type="Script" path="res://scenes/Menu/h_slider.gd" id="7_c77yu"]
 
 [sub_resource type="Animation" id="Animation_bi66b"]
 length = 0.001
@@ -171,6 +172,30 @@ autowrap_mode = 1
 script = ExtResource("4_rbpc6")
 scene_path = "res://scenes/Menu/Menu.tscn"
 
+[node name="Main menu2" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = 132.0
+offset_right = 502.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.37, 0.37)
+theme = ExtResource("2_crqp2")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("2_w4113")
+theme_override_font_sizes/font_size = 83
+text = "Music Volume"
+autowrap_mode = 1
+script = ExtResource("4_rbpc6")
+scene_path = "res://scenes/Menu/Menu.tscn"
+
 [node name="Title" type="Label" parent="PauseMenu"]
 layout_mode = 0
 offset_left = -293.0
@@ -191,12 +216,25 @@ stream = ExtResource("5_mt3ej")
 [node name="btn_click" type="AudioStreamPlayer2D" parent="PauseMenu"]
 stream = ExtResource("6_yybaf")
 
+[node name="HSlider" type="HSlider" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 123.0
+offset_right = 280.0
+offset_bottom = 200.0
+max_value = 1.0
+step = 0.05
+value = 0.95
+script = ExtResource("7_c77yu")
+
 [node name="Top" type="ColorRect" parent="."]
+visible = false
 offset_right = 1152.0
 offset_bottom = 324.0
 color = Color(0, 0, 0, 1)
 
 [node name="Bottom" type="ColorRect" parent="."]
+visible = false
 offset_top = 324.0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -209,3 +247,6 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="PauseMenu/Level select" to="PauseMenu/Level select" method="_on_pressed"]
 [connection signal="mouse_entered" from="PauseMenu/Main menu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="PauseMenu/Main menu" to="PauseMenu/Main menu" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Main menu2" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/Main menu2" to="PauseMenu/Main menu2" method="_on_pressed"]
+[connection signal="drag_ended" from="PauseMenu/HSlider" to="." method="_on_h_slider_drag_ended"]

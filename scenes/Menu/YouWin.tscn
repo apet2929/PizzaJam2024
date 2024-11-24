@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://dojm5ibwwggvb"]
+
+[ext_resource type="Script" path="res://assets/Menu/Transition.gd" id="1_dl73b"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="2_dvtun"]
+[ext_resource type="FontFile" uid="uid://ufs7obindayu" path="res://assets/Menu/font.TTF" id="3_48ewb"]
+
+[sub_resource type="Animation" id="Animation_bi66b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ove04"]
+resource_name = "load_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1157, 324), Vector2(0, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1157, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdc8k"]
+_data = {
+"RESET": SubResource("Animation_bi66b"),
+"load_out": SubResource("Animation_ove04")
+}
+
+[sub_resource type="Environment" id="Environment_6knu8"]
+background_mode = 1
+background_color = Color(0, 0.506, 0.66, 1)
+ambient_light_source = 1
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.6
+
+[node name="YouWin" type="Node3D"]
+
+[node name="LvlSelect1" type="Node3D" parent="."]
+
+[node name="SceneTransition" type="CanvasLayer" parent="LvlSelect1"]
+script = ExtResource("1_dl73b")
+
+[node name="Anim" type="AnimationPlayer" parent="LvlSelect1/SceneTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_vdc8k")
+}
+
+[node name="Top" type="ColorRect" parent="LvlSelect1/SceneTransition"]
+offset_right = 1152.0
+offset_bottom = 324.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom" type="ColorRect" parent="LvlSelect1/SceneTransition"]
+offset_top = 324.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Floor" type="CSGBox3D" parent="LvlSelect1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1456, -33.5474, -13.6449)
+layers = 2
+material_override = ExtResource("2_dvtun")
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(88.8237, 67.095, 107.708)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LvlSelect1"]
+environment = SubResource("Environment_6knu8")
+
+[node name="Camera3D" type="Camera3D" parent="LvlSelect1"]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 0, 12.2343, 0)
+projection = 1
+size = 11.0
+far = 60.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LvlSelect1"]
+transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="LvlSelect1"]
+transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527998, 0.853847, 0.703743, -0.541199, 0.460272, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Label3D" type="Label3D" parent="LvlSelect1"]
+transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -15.928, 0.083, -8.527)
+text = "The Worm game"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D3" type="Label3D" parent="LvlSelect1"]
+transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -13.928, 0.083, -8.527)
+text = "Rate 5 Stars"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D2" type="Label3D" parent="LvlSelect1"]
+transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -17.928, 0.083, -8.527)
+text = "You Just Won"
+font = ExtResource("3_48ewb")
+
+[connection signal="animation_finished" from="LvlSelect1/SceneTransition/Anim" to="LvlSelect1/SceneTransition" method="_on_anim_animation_finished"]

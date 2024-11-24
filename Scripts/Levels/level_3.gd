@@ -1,6 +1,6 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Levels/Level4.tscn"
+var next_level_scene = "res://scenes/Levels/Level5.tscn"
 
 var buttons_that_close_the_fence = [
 	"PressurePad", "PressurePad2", "PressurePad3",
@@ -29,6 +29,9 @@ func _process(delta) -> void:
 		$Fence.close_fence()
 	
 	super._process(delta)
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
 
 func next_level(_body):
 	super._next_level(next_level_scene)

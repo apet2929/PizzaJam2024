@@ -14,12 +14,6 @@
 [node name="LevelBase" instance=ExtResource("1_gv1f0")]
 script = ExtResource("2_kkckx")
 
-[node name="GameOver" parent="." index="5"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
 [node name="Boxes" type="Node3D" parent="." index="7"]
 
 [node name="Box" parent="Boxes" index="0" instance=ExtResource("3_tqir3")]
