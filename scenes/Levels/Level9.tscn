@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://h4totajio8gt"]
 
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_k56cu"]
-[ext_resource type="Script" path="res://Scripts/Levels/level_13.gd" id="2_1m6cj"]
+[ext_resource type="Script" path="res://Scripts/Levels/level_9.gd" id="2_1m6cj"]
 [ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_3oyik"]
 [ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="4_aq0d0"]
 [ext_resource type="PackedScene" uid="uid://cw0t8ms343grd" path="res://scenes/salt.tscn" id="5_pbr8r"]

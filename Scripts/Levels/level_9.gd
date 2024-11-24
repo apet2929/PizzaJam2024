@@ -1,14 +1,15 @@
 extends LevelBase
 
-var next_level_scene = "res://scenes/Levels/Level1.tscn"
-const LETTUCE_SCENE = preload("res://scenes/lettuce.tscn")
-var lettuce_dropped = false
+var next_level_scene = "res://scenes/Levels/Level10.tscn"
 
 func _ready() -> void:
 	super._ready()
 
 func _process(delta) -> void:
 	super._process(delta)
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
 
 func next_level(body):
 	if body.has_crown:
@@ -17,7 +18,6 @@ func next_level(body):
 		else:
 			super._next_level(next_level_scene)
 			return
-	get_tree().get_nodes_in_group("head")[0].has_crown = true
 
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
@@ -28,26 +28,18 @@ func init_signals():
 func _on_button_pressed(button, body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
-		$Fence.open_fence()
 	if button == $ButtonSmall2:
 		$Guillotine2.drop()
-		$Fence2.open_fence()
-	elif button == $ButtonSmall4:
+	elif button == $ButtonSmall3:
 		$Fence3.open_fence()
-	elif button == $ButtonSmall5:
-		if !lettuce_dropped:
-			var l = LETTUCE_SCENE.instantiate()
-			l.position = $LettuceSpawnPosition.position
-			var l2 = LETTUCE_SCENE.instantiate()
-			l2.position = $LettuceSpawnPosition2.position
-			add_child(l)
-			add_child(l2)
-	elif button == $ButtonSmall6:
+	if button == $ButtonSmall4:
+		$Fence.open_fence()
 		$Fence2.open_fence()
+		$Fence4.open_fence()
 
 func _on_button_unpressed(button, body) -> void:
 	pass
-	
+
 func _on_worm_died(worm) -> void:
 	if worm.has_crown:
 		game_over()
