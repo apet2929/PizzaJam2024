@@ -114,7 +114,7 @@ environment = SubResource("Environment_6knu8")
 [node name="Camera3D" type="Camera3D" parent="LvlSelect1"]
 transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 0, 12.2343, 0)
 projection = 1
-size = 11.0
+size = 15.082
 far = 60.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="LvlSelect1"]
@@ -127,18 +127,56 @@ transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527998, 0.853
 light_energy = 0.5
 shadow_enabled = true
 
-[node name="Label3D" type="Label3D" parent="LvlSelect1"]
-transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -15.928, 0.083, -8.527)
-text = "The Worm game"
+[node name="Credits" type="Node3D" parent="LvlSelect1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0022, 0, -10.4898)
+
+[node name="Label3D4" type="Label3D" parent="LvlSelect1/Credits"]
+transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -23.5456, 0.083, 1.62385)
+text = "Credits
+
+Little babboon"
 font = ExtResource("3_48ewb")
 
-[node name="Label3D3" type="Label3D" parent="LvlSelect1"]
-transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -13.928, 0.083, -8.527)
+[node name="Label3D5" type="Label3D" parent="LvlSelect1/Credits"]
+transform = Transform3D(5.49997, 0.0184306, 8.0563e-10, -1.16467e-21, -2.40413e-07, 5.5, 0.0184306, -5.49997, -2.40412e-07, -16.85, 0.083, 2.55495)
+text = "game"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D7" type="Label3D" parent="LvlSelect1/Credits"]
+transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -23.6394, 0.083, 4.52062)
+text = "moonshell"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D8" type="Label3D" parent="LvlSelect1/Credits"]
+transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -23.6394, 0.083, 6.54428)
+text = "Lordofthewest"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D11" type="Label3D" parent="LvlSelect1/Credits"]
+transform = Transform3D(5.49997, 0.0184306, 8.0563e-10, -1.16467e-21, -2.40413e-07, 5.5, 0.0184306, -5.49997, -2.40412e-07, -16.837, 0.083, 4.58338)
+text = "game"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D9" type="Label3D" parent="LvlSelect1/Credits"]
+transform = Transform3D(5.49997, 0.0184306, 8.0563e-10, -1.16467e-21, -2.40413e-07, 5.5, 0.0184306, -5.49997, -2.40412e-07, -16.9938, 0.083, 6.50902)
+text = "music"
+font = ExtResource("3_48ewb")
+
+[node name="YouWon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04586, 0, 1.6022)
+
+[node name="Label3D" type="Label3D" parent="YouWon"]
+transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -14.928, 0.083, -17.527)
+text = "EArly Bird"
+font = ExtResource("3_48ewb")
+
+[node name="Label3D3" type="Label3D" parent="YouWon"]
+transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -14.928, 0.083, -15.527)
 text = "Rate 5 Stars"
 font = ExtResource("3_48ewb")
 
-[node name="Label3D2" type="Label3D" parent="LvlSelect1"]
-transform = Transform3D(-2.40413e-07, -5.5, -2.40413e-07, 0, -2.40413e-07, 5.5, -5.5, 2.40413e-07, 1.05088e-14, -17.928, 0.083, -8.527)
+[node name="Label3D2" type="Label3D" parent="YouWon"]
+transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -14.928, 0.083, -19.527)
 text = "You Just Won"
 font = ExtResource("3_48ewb")
 
