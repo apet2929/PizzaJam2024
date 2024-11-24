@@ -4,9 +4,9 @@ extends Node
 @export var new_scene = ""
 var was_played = false
 
-@onready var pause_menu: Control = $Pause_Menu
-@onready var on_btn: AudioStreamPlayer2D = $Pause_Menu/On_btn
-@onready var btn_click: AudioStreamPlayer2D = $Pause_Menu/btn_click
+@onready var pause_menu: Control = $PauseMenu
+@onready var on_btn: AudioStreamPlayer2D = $PauseMenu/On_btn
+@onready var btn_click: AudioStreamPlayer2D = $PauseMenu/btn_click
 var is_menu_open = false
 
 signal anim_done

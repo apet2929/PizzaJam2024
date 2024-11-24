@@ -140,10 +140,6 @@ script = ExtResource("4_d5ht3")
 [node name="SceneTransition" parent="." instance=ExtResource("6_7sbaw")]
 
 [node name="GameOver" parent="." instance=ExtResource("4_7r1d0")]
-offset_left = 591.15
-offset_top = 107.624
-offset_right = 591.15
-offset_bottom = 107.624
 
 [node name="bird" type="Node3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.8479, 5.0001, -1.05856)

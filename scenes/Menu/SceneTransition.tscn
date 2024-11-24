@@ -76,7 +76,7 @@ libraries = {
 "": SubResource("AnimationLibrary_vdc8k")
 }
 
-[node name="Pause_Menu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -86,7 +86,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Pause_Menu"]
+[node name="Background" type="ColorRect" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -100,9 +100,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.27, 0.27, 0.27, 0.670588)
 
-[node name="Pause_Menu_Anim" type="AnimationPlayer" parent="Pause_Menu"]
+[node name="Pause_Menu_Anim" type="AnimationPlayer" parent="PauseMenu"]
 
-[node name="Resume" type="Button" parent="Pause_Menu"]
+[node name="Resume" type="Button" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,7 +123,7 @@ theme_override_fonts/font = ExtResource("2_w4113")
 theme_override_font_sizes/font_size = 83
 text = "Resume"
 
-[node name="Level select" type="Button" parent="Pause_Menu"]
+[node name="Level select" type="Button" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -147,7 +147,7 @@ autowrap_mode = 1
 script = ExtResource("4_rbpc6")
 scene_path = "res://scenes/Menu/lvl_select.tscn"
 
-[node name="Main menu" type="Button" parent="Pause_Menu"]
+[node name="Main menu" type="Button" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,7 +171,7 @@ autowrap_mode = 1
 script = ExtResource("4_rbpc6")
 scene_path = "res://scenes/Menu/Menu.tscn"
 
-[node name="Title" type="Label" parent="Pause_Menu"]
+[node name="Title" type="Label" parent="PauseMenu"]
 layout_mode = 0
 offset_left = -293.0
 offset_top = -242.0
@@ -185,10 +185,10 @@ text = "Pause menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="On_btn" type="AudioStreamPlayer2D" parent="Pause_Menu"]
+[node name="On_btn" type="AudioStreamPlayer2D" parent="PauseMenu"]
 stream = ExtResource("5_mt3ej")
 
-[node name="btn_click" type="AudioStreamPlayer2D" parent="Pause_Menu"]
+[node name="btn_click" type="AudioStreamPlayer2D" parent="PauseMenu"]
 stream = ExtResource("6_yybaf")
 
 [node name="Top" type="ColorRect" parent="."]
@@ -203,9 +203,9 @@ offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
-[connection signal="mouse_entered" from="Pause_Menu/Resume" to="." method="_on_main_menu_mouse_entered"]
-[connection signal="pressed" from="Pause_Menu/Resume" to="." method="_on_resume_pressed"]
-[connection signal="mouse_entered" from="Pause_Menu/Level select" to="." method="_on_main_menu_mouse_entered"]
-[connection signal="pressed" from="Pause_Menu/Level select" to="Pause_Menu/Level select" method="_on_pressed"]
-[connection signal="mouse_entered" from="Pause_Menu/Main menu" to="." method="_on_main_menu_mouse_entered"]
-[connection signal="pressed" from="Pause_Menu/Main menu" to="Pause_Menu/Main menu" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Resume" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Level select" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/Level select" to="PauseMenu/Level select" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseMenu/Main menu" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="PauseMenu/Main menu" to="PauseMenu/Main menu" method="_on_pressed"]
