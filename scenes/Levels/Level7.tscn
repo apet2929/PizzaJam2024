@@ -17,6 +17,12 @@
 [node name="LevelBase" instance=ExtResource("1_pgaem")]
 script = ExtResource("1_s82mp")
 
+[node name="GameOver" parent="." index="5"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="Worm" parent="." index="7" instance=ExtResource("5_18hlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0511146, 0.463309, -12.0478)
 visible = false

@@ -7,21 +7,27 @@ var buttons_that_close_the_fence = [
 	"PressurePad4", "PressurePad5", "PressurePad6"
 ]
 
+var t = 0
+const min_t = 0.1 # min amt of time every button has to be unpressed for fence to be opened
+# This is because the fence would randomly open when it shouldn't (quirk with worm mvmt)
 func _ready() -> void:
 	super._ready()
 
 func _process(delta) -> void:
 	var should_be_open = true
+	t += delta
 	for btn_name in buttons_that_close_the_fence:
 		if get_node(btn_name).is_pressed:
 			should_be_open = false
-	
-	if should_be_open and !$Fence.open:
-		$Fence.open_fence()
+			t = 0
+			
+	if should_be_open:
+		t += delta
+		if t > min_t and !$Fence.open:
+			$Fence.open_fence()
 	elif !should_be_open and $Fence.open:
 		$Fence.close_fence()
 	
-			
 	super._process(delta)
 
 func next_level(_body):

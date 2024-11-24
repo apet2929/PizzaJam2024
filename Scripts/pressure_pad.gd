@@ -11,7 +11,6 @@ func _on_body_entered(body: Node3D) -> void:
 		bodies.append(body)
 		
 		if body.is_in_group("head") or body.is_in_group("box"):
-			print("foo ", str(body))
 			is_pressed = true
 			pressed.emit(self, body)
 			EventBus.button_pressed.emit(self, body)
