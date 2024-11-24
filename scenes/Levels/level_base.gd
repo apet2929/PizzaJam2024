@@ -22,6 +22,7 @@ func _ready() -> void:
 	$Worm.global_position.y = START_Y_POS
 	$Worm.visible = false
 	EventBus.connect("game_over", self._on_game_over)
+	EventBus.connect("worm_died", self._on_worm_died)
 	for worm in get_tree().get_nodes_in_group("head"):
 		worm.disabled = true
 	await get_tree().create_timer(DROP_TIMER).timeout
@@ -32,7 +33,6 @@ func _process(delta: float) -> void:
 		retry()
 		return
 	
-
 	if dropping:
 		drop_worm_update(delta)
 	
@@ -107,3 +107,7 @@ func _on_pressure_pad_pressed(pressure_pad, body) -> void:
 
 func _on_pressure_pad_unpressed(pressure_pad, body) -> void:
 	pass
+
+func _on_worm_died(worm) -> void:
+	$WormDeathSound.play()
+	self.game_over()

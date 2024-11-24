@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://3kt2fo6ca4cv"
-valid=false
+path="res://.godot/imported/finish_tunnel.blend-def30532370964dc6db974fcaed1c2d8.scn"
 
 [deps]
 
 source_file="res://assets/finish_tunnel.blend"
+dest_files=["res://.godot/imported/finish_tunnel.blend-def30532370964dc6db974fcaed1c2d8.scn"]
 
 [params]
 

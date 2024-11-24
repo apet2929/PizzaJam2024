@@ -15,12 +15,12 @@
 script = ExtResource("2_gh1mx")
 
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68994, -33.5474, -9.14342)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36918, -33.5474, -9.14342)
 layers = 2
 use_collision = true
 collision_layer = 2
 collision_mask = 2
-size = Vector3(7.64152, 67.095, 14.7177)
+size = Vector3(9, 67.095, 14.7177)
 material = ExtResource("2_qv3cw")
 
 [node name="Worm" parent="." index="6" instance=ExtResource("3_172du")]
@@ -31,16 +31,16 @@ spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2,
 [node name="Walls" type="Node3D" parent="." index="7"]
 
 [node name="walls1" type="CSGBox3D" parent="Walls" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50522, 0.251725, -10.9971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.98813, 0.251725, -10.9971)
 material_override = ExtResource("6_4rheu")
 use_collision = true
-size = Vector3(2, 0.499512, 2.97328)
+size = Vector3(1, 0.499512, 2.97328)
 
 [node name="walls2" type="CSGBox3D" parent="Walls" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -9.0105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26755, 0.251725, -9.0105)
 material_override = ExtResource("6_4rheu")
 use_collision = true
-size = Vector3(1, 0.499512, 15)
+size = Vector3(1.5271, 0.499512, 15)
 
 [node name="walls3" type="CSGBox3D" parent="Walls" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, -32.4985, -2.0105)
@@ -73,32 +73,43 @@ use_collision = true
 size = Vector3(2, 65, 15)
 
 [node name="walls6" type="CSGBox3D" parent="Walls" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, -12.0105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00522, 0.251725, -12.0105)
 material_override = ExtResource("6_4rheu")
 use_collision = true
-size = Vector3(2, 0.499512, 1)
+size = Vector3(3, 0.499512, 1)
 
 [node name="walls7" type="CSGBox3D" parent="Walls" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50522, 0.251725, -10.0105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00522, 0.251725, -10.0105)
 material_override = ExtResource("6_4rheu")
 use_collision = true
-size = Vector3(2, 0.499512, 1)
+size = Vector3(3, 0.499512, 1)
 
 [node name="Finish" parent="." index="8" instance=ExtResource("7_3fl6a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.98176, 0.321328, -5.00568)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.98176, 0.697635, -5.00568)
 collision_layer = 8
 
-[node name="Fence" parent="." index="9" instance=ExtResource("9_xpsm2")]
+[node name="Finish2" parent="." index="9" instance=ExtResource("7_3fl6a")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.98176, 1.00545, -11.0057)
+collision_layer = 8
+
+[node name="Fence" parent="." index="10" instance=ExtResource("9_xpsm2")]
 transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -4.40414, 0.481618, -4.9695)
 
-[node name="Guillotine" parent="." index="10" instance=ExtResource("7_11ngi")]
+[node name="Fence2" parent="." index="11" instance=ExtResource("9_xpsm2")]
+transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -6.6363, 0.481618, -10.9695)
+
+[node name="Guillotine" parent="." index="12" instance=ExtResource("7_11ngi")]
 transform = Transform3D(-8.0866e-09, 0, -0.185, 0, 0.185, 0, 0.185, 0, -8.0866e-09, -3.98647, 0.0708526, -13.5787)
 
-[node name="ButtonSmall" parent="." index="11" instance=ExtResource("6_dhba3")]
+[node name="ButtonSmall" parent="." index="13" instance=ExtResource("6_dhba3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.03883, 0, -10.9923)
 button_id = "0"
 
-[node name="PressurePad" parent="." index="12" instance=ExtResource("8_a2ngt")]
+[node name="ButtonSmall2" parent="." index="14" instance=ExtResource("6_dhba3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.80939, 0, -4.9923)
+button_id = "0"
+
+[node name="PressurePad" parent="." index="15" instance=ExtResource("8_a2ngt")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.01031, -4.76837e-07, -11.9931)
 
 [editable path="SceneTransition"]

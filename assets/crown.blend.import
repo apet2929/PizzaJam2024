@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://t3niw66xfj2g"
-valid=false
+path="res://.godot/imported/crown.blend-f7fc90fa0eae54f7b2ed8d41dc5fc578.scn"
 
 [deps]
 
 source_file="res://assets/crown.blend"
+dest_files=["res://.godot/imported/crown.blend-f7fc90fa0eae54f7b2ed8d41dc5fc578.scn"]
 
 [params]
 

@@ -11,12 +11,14 @@ signal unpressed
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("body") or body.is_in_group("head") or body.is_in_group("box"):
 		bodies.append(body)
-		btn_sfx.play()
 		
 		if body.is_in_group("head") or body.is_in_group("box"):
-			is_pressed = true
-			pressed.emit(self, body)
-			EventBus.button_pressed.emit(self, body)
+			if !is_pressed:
+				btn_sfx.play()
+				is_pressed = true
+				pressed.emit(self, body)
+				EventBus.button_pressed.emit(self, body)
+
 
 func _on_body_exited(body: Node3D) -> void:
 	if body.is_in_group("body") or body.is_in_group("head") or body.is_in_group("box"):

@@ -2,7 +2,6 @@ extends LevelBase
 
 var next_level_scene = "res://scenes/Levels/Level6.tscn"
 
-var num_finished = 0
 func _ready() -> void:
 	super._ready()
 
@@ -13,10 +12,9 @@ func _process(delta) -> void:
 		return
 
 func next_level(body):
-	print("foo")
-	num_finished += 1
-	body.kill()
-	if num_finished == 2:
+	if get_tree().get_nodes_in_group("head").size() != 1:
+		body.kill()
+	else:
 		super._next_level(next_level_scene)
 
 func init_signals():

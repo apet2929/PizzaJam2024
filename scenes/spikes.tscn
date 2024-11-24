@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf7y1bn8e7jo7"]
+[gd_scene load_steps=8 format=3 uid="uid://cf7y1bn8e7jo7"]
 
 [ext_resource type="PackedScene" uid="uid://bq8y5rmyb224p" path="res://assets/spikes.glb" id="1_0g85d"]
 [ext_resource type="Script" path="res://Scripts/spikes.gd" id="1_gf6f6"]
 [ext_resource type="Material" uid="uid://b2l8hijmlad1m" path="res://assets/spike_material.tres" id="3_a3tqx"]
-[ext_resource type="AudioStream" uid="uid://d1ewrblfmc2fi" path="res://assets/Audio/wormDeath.mp3" id="4_suqfx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pr3jg"]
 size = Vector3(1.96637, 1.46349, 0.480957)
@@ -53,11 +52,6 @@ material_override = ExtResource("3_a3tqx")
 
 [node name="Cone_002" parent="spikes" index="3"]
 material_override = ExtResource("3_a3tqx")
-
-[node name="hit_SFX" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_suqfx")
-volume_db = 25.807
-pitch_scale = 3.39
 
 [connection signal="body_entered" from="Spikes" to="." method="_on_spikes_body_entered"]
 

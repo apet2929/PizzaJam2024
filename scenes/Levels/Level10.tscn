@@ -32,7 +32,6 @@ offset_bottom = 1.0
 [node name="Worm" parent="." index="7" instance=ExtResource("3_iq8jn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96883, 0.375672, -4.01213)
 visible = false
-has_crown = true
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
 [node name="Floor" type="CSGBox3D" parent="." index="8"]

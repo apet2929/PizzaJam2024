@@ -186,12 +186,4 @@ size = 11.0
 far = 43.98
 script = ExtResource("12_j63oo")
 
-[node name="Top" parent="SceneTransition" index="2"]
-offset_left = 0.0
-offset_right = 1152.0
-
-[node name="Bottom" parent="SceneTransition" index="3"]
-offset_left = 0.0
-offset_right = 1152.0
-
 [editable path="SceneTransition"]

@@ -2,7 +2,6 @@ extends LevelBase
 
 var next_level_scene = "res://scenes/Levels/Level8.tscn"
 var fence5_open = false
-var num_finishes = 0
 
 func _ready() -> void:
 	super._ready()
@@ -14,11 +13,12 @@ func _process(delta) -> void:
 	
 	super._process(delta)
 
+
 func next_level(body):
-	num_finishes += 1
-	if num_finishes == 2:
+	if get_tree().get_nodes_in_group("head").size() != 1:
+		body.kill()
+	else:
 		super._next_level(next_level_scene)
-	body.kill()
 
 func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
