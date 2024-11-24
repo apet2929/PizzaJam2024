@@ -38,8 +38,6 @@ func _on_button_pressed(button, body) -> void:
 			add_child(l)
 			add_child(l2)
 			lettuce_dropped = true
-	elif button == $ButtonSmall6:
-		$Fence2.open_fence()
 
 func _on_button_unpressed(button, body) -> void:
 	pass
