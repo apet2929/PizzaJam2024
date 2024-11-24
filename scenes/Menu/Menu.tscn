@@ -125,13 +125,13 @@ light_energy = 0.5
 shadow_enabled = true
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-2.40413e-07, -5.83815, -2.40413e-07, 0, -2.55194e-07, 5.5, -5.5, 2.55194e-07, 1.05088e-14, -15.4419, 0.005, -6.46744)
+transform = Transform3D(-2.40413e-07, -5.83815, -2.40413e-07, 0, -2.55194e-07, 5.5, -5.5, 2.55194e-07, 1.05088e-14, -15.522, 0.005, -6.46744)
 text = "Early"
 font = ExtResource("1_b5od1")
 font_size = 58
 
 [node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(-2.40413e-07, -5.83815, -2.40413e-07, 0, -2.55194e-07, 5.5, -5.5, 2.55194e-07, 1.05088e-14, -15.4419, 0.005, -12.5707)
+transform = Transform3D(-2.40413e-07, -5.83815, -2.40413e-07, 0, -2.55194e-07, 5.5, -5.5, 2.55194e-07, 1.05088e-14, -15.522, 0.005, -12.5707)
 text = "Bird
 "
 font = ExtResource("1_b5od1")

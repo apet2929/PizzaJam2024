@@ -134,7 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0022, 0, -10.4898)
 transform = Transform3D(5.5, -3.41061e-13, -1.35525e-20, -1.16467e-21, -2.40413e-07, 5.5, -3.41061e-13, -5.5, -2.40413e-07, -23.5456, 0.083, 1.62385)
 text = "Credits
 
-Little babboon"
+Little baboon"
 font = ExtResource("3_48ewb")
 
 [node name="Label3D5" type="Label3D" parent="LvlSelect1/Credits"]

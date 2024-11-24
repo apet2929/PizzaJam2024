@@ -77,6 +77,14 @@ size = 11.0
 far = 43.98
 script = ExtResource("7_wunhb")
 
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
+
 [node name="Floor" type="CSGBox3D" parent="." index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.36918, -33.5474, -1.00227)
 layers = 2
@@ -209,10 +217,10 @@ use_collision = true
 size = Vector3(7, 65, 1)
 
 [node name="walls19" type="CSGBox3D" parent="Walls" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99478, -31.9985, 2.9895)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99478, -31.9985, 3.05548)
 material_override = ExtResource("9_kcll4")
 use_collision = true
-size = Vector3(7, 65, 1)
+size = Vector3(7, 65, 1.13196)
 
 [node name="walls6" type="CSGBox3D" parent="Walls" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5052, 0.251725, -2.0105)

@@ -84,64 +84,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99198, 9.91821e-05, -9.026
 [node name="Finish" parent="." index="22" instance=ExtResource("8_ovaer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94137, 0.458316, -13.0015)
 
-[node name="Guillotine" parent="." index="23" instance=ExtResource("9_1duyb")]
+[node name="Finish2" parent="." index="23" instance=ExtResource("8_ovaer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94137, 0.458316, -15.0015)
+
+[node name="Guillotine" parent="." index="24" instance=ExtResource("9_1duyb")]
 transform = Transform3D(0.2, 0, -3.30485e-15, 0, 0.2, 0, 3.30485e-15, 0, 0.2, -4.46682, -0.0151368, -4.99133)
 one_way = true
 
-[node name="Guillotine2" parent="." index="24" instance=ExtResource("9_1duyb")]
+[node name="Guillotine2" parent="." index="25" instance=ExtResource("9_1duyb")]
 transform = Transform3D(0.18, 0, -2.97436e-15, 0, 0.18, 0, 2.97436e-15, 0, 0.18, -4.47955, -0.03096, -14.9835)
 one_way = true
 
-[node name="LettuceSpawnPosition" type="Node3D" parent="." index="25"]
+[node name="LettuceSpawnPosition" type="Node3D" parent="." index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -4.0039)
 
-[node name="LettuceSpawnPosition2" type="Node3D" parent="." index="26"]
+[node name="LettuceSpawnPosition2" type="Node3D" parent="." index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
 
-[node name="Spikes8" parent="." index="27" instance=ExtResource("10_hqvg3")]
+[node name="Spikes8" parent="." index="28" instance=ExtResource("10_hqvg3")]
 transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -1.49333, 0.259214, -13.136)
 
-[node name="Spikes9" parent="." index="28" instance=ExtResource("10_hqvg3")]
+[node name="Spikes9" parent="." index="29" instance=ExtResource("10_hqvg3")]
 transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -3.4573, 0.259214, -13.136)
 
-[node name="Spikes10" parent="." index="29" instance=ExtResource("10_hqvg3")]
+[node name="Spikes10" parent="." index="30" instance=ExtResource("10_hqvg3")]
 transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, -2.47038, 0.259214, -13.136)
 
-[node name="LettuceSpawnPoint" type="Node3D" parent="." index="30"]
+[node name="LettuceSpawnPoint" type="Node3D" parent="." index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.762419, -5)
 
-[node name="LettuceSpawnPoint2" type="Node3D" parent="." index="31"]
+[node name="LettuceSpawnPoint2" type="Node3D" parent="." index="32"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.762419, -10)
 
-[node name="walls10" type="CSGBox3D" parent="." index="33"]
+[node name="walls10" type="CSGBox3D" parent="." index="34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9979, 0.251725, -3.47388)
 material_override = ExtResource("11_ccxl0")
 use_collision = true
 size = Vector3(1, 0.499512, 1.92676)
 
-[node name="walls16" type="CSGBox3D" parent="." index="34"]
+[node name="walls16" type="CSGBox3D" parent="." index="35"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42014, 0.251725, -9.0105)
 material_override = ExtResource("11_ccxl0")
 use_collision = true
 size = Vector3(1.84448, 0.499512, 1)
 
-[node name="walls17" type="CSGBox3D" parent="." index="35"]
+[node name="walls17" type="CSGBox3D" parent="." index="36"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9979, 0.251725, -11.0706)
 material_override = ExtResource("11_ccxl0")
 use_collision = true
 size = Vector3(1, 0.499512, 6.87988)
 
-[node name="walls18" type="CSGBox3D" parent="." index="36"]
+[node name="walls18" type="CSGBox3D" parent="." index="37"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86356, 0.251725, -14.0105)
 material_override = ExtResource("11_ccxl0")
 use_collision = true
 size = Vector3(3.26868, 0.499512, 1)
-
-[node name="walls20" type="CSGBox3D" parent="." index="37"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72922, 0.251725, -15.0611)
-material_override = ExtResource("11_ccxl0")
-use_collision = true
-size = Vector3(1, 0.499512, 2.63806)
 
 [node name="walls15" type="CSGBox3D" parent="." index="38"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41257, 0.251725, -6.00293)

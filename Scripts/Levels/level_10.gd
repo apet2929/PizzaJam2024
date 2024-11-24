@@ -9,9 +9,14 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	super._process(delta)
+	if Input.is_action_just_pressed("skip"):
+		super._next_level(next_level_scene)
+		return
 
 func next_level(body):
-	if body.has_crown:
+	if get_tree().get_nodes_in_group("head").size() != 1:
+		body.kill()
+	else:
 		super._next_level(next_level_scene)
 
 func init_signals():
