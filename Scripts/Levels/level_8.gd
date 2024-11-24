@@ -11,7 +11,6 @@ func _process(delta) -> void:
 		super._next_level(next_level_scene)
 		return
 
-
 func next_level(body):
 	if get_tree().get_nodes_in_group("head").size() != 1:
 		body.kill()
@@ -32,6 +31,8 @@ func _on_button_pressed(button, body) -> void:
 		$Fence3.open_fence()
 	elif button == $PressurePad7:
 		$Guillotine.drop()
+	elif button == $ButtonSmall:
+		$Fence4.open_fence()
 
 func _on_button_unpressed(button, body) -> void:
 	if button == $PressurePad:

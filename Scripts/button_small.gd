@@ -15,6 +15,7 @@ func press(body: Node3D):
 	if !pressed:
 		pressed = true
 		$Model/AnimationPlayer.play("ButtonPress")
+		$btn_sfx.play()
 		EventBus.button_pressed.emit(self, body)
 
 func unpress(body: Node3D):
