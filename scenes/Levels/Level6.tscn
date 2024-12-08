@@ -14,14 +14,6 @@
 [node name="LevelBase" instance=ExtResource("1_gv1f0")]
 script = ExtResource("2_kkckx")
 
-[node name="Top" parent="SceneTransition" index="2"]
-offset_left = 0.0
-offset_right = 1152.0
-
-[node name="Bottom" parent="SceneTransition" index="3"]
-offset_left = 0.0
-offset_right = 1152.0
-
 [node name="Boxes" type="Node3D" parent="." index="7"]
 
 [node name="Box" parent="Boxes" index="0" instance=ExtResource("3_tqir3")]

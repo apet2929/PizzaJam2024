@@ -14,14 +14,6 @@
 [node name="LevelBase3" instance=ExtResource("1_jd8r1")]
 script = ExtResource("2_gh1mx")
 
-[node name="Top" parent="SceneTransition" index="2"]
-offset_left = 0.0
-offset_right = 1152.0
-
-[node name="Bottom" parent="SceneTransition" index="3"]
-offset_left = 0.0
-offset_right = 1152.0
-
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36918, -33.5474, -9.14342)
 layers = 2
