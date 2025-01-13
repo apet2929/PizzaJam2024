@@ -13,6 +13,7 @@ var transition_queued = false
 func _ready() -> void:
 	state = States.MENU
 	$MenuMusic.play()
+	set_volume(0)
 
 func game_state():
 	if state == States.MENU:
