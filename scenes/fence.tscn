@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://k10usb8384ng"]
+[gd_scene load_steps=9 format=3 uid="uid://k10usb8384ng"]
 
 [ext_resource type="Script" path="res://Scripts/fence.gd" id="1_p6fl6"]
 [ext_resource type="PackedScene" uid="uid://biiqnl77k0pmo" path="res://assets/fence.glb" id="2_f8pwh"]
+[ext_resource type="PackedScene" uid="uid://b8c2vgykbrjd0" path="res://scenes/Recolorer.tscn" id="2_nd4qy"]
 [ext_resource type="Material" uid="uid://ddrldagy3ivai" path="res://assets/Fence_Material.tres" id="3_q063v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tr1uf"]
@@ -38,6 +39,10 @@ _data = {
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.00176525, 0, 0)
 script = ExtResource("1_p6fl6")
 
+[node name="Recolorer" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("2_nd4qy")]
+targets = [NodePath("../Pivot/Model/Stick_001"), NodePath("../Pivot/Model/Stick_002"), NodePath("../Pivot/Model/Stick_003"), NodePath("../Pivot/Model/Stick_004"), NodePath("../Pivot/Model/Stick_006")]
+override_mesh_texture = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tr1uf")
 
@@ -53,19 +58,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00083, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00083, 0, 0)
 
 [node name="Stick_001" parent="Pivot/Model" index="0"]
-material_override = ExtResource("3_q063v")
+surface_material_override/0 = ExtResource("3_q063v")
 
 [node name="Stick_002" parent="Pivot/Model" index="1"]
-material_override = ExtResource("3_q063v")
+surface_material_override/0 = ExtResource("3_q063v")
 
 [node name="Stick_003" parent="Pivot/Model" index="2"]
-material_override = ExtResource("3_q063v")
+surface_material_override/0 = ExtResource("3_q063v")
 
 [node name="Stick_004" parent="Pivot/Model" index="3"]
-material_override = ExtResource("3_q063v")
+surface_material_override/0 = ExtResource("3_q063v")
 
 [node name="Stick_006" parent="Pivot/Model" index="4"]
-material_override = ExtResource("3_q063v")
+surface_material_override/0 = ExtResource("3_q063v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Model"]
 libraries = {

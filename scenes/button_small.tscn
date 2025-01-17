@@ -1,7 +1,9 @@
 [gd_scene load_steps=23 format=4 uid="uid://b7yhrd8oma55f"]
 
 [ext_resource type="Script" path="res://Scripts/button_small.gd" id="1_begb6"]
+[ext_resource type="PackedScene" uid="uid://b8c2vgykbrjd0" path="res://scenes/Recolorer.tscn" id="2_mri0d"]
 [ext_resource type="AudioStream" uid="uid://7fj5dsukalny" path="res://assets/Audio/buttonPress.mp3" id="2_rvajx"]
+[ext_resource type="Material" uid="uid://becydw7or3mbp" path="res://assets/button_small_top.tres" id="3_cihaw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cpkp"]
 size = Vector3(1.29352, 0.767151, 1.24121)
@@ -61,22 +63,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_78hwm")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhaga"]
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.05
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4ua3"]
-next_pass = SubResource("StandardMaterial3D_lhaga")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.51, 0.3111, 0.3111, 1)
-metallic = 0.28
-metallic_specular = 0.0
-roughness = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vhv6"]
 resource_name = "Material.001"
@@ -233,7 +219,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 18
 collision_mask = 18
 script = ExtResource("1_begb6")
-color = 2
+
+[node name="Recolorer" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("2_mri0d")]
+targets = [NodePath("../Model/ButtonTop")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196228, 0.433258, 0.00146484)
@@ -248,11 +236,11 @@ mesh = SubResource("ArrayMesh_rts6j")
 skeleton = NodePath("")
 
 [node name="ButtonTop" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140231, 0)
-material_override = SubResource("StandardMaterial3D_r4ua3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0432911, 0)
 lod_bias = 28.251
 mesh = SubResource("ArrayMesh_l55la")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_cihaw")
 
 [node name="Cylinder" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0659119, 0)

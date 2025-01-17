@@ -5,6 +5,7 @@ var worm_head = null
 var parts_on = 0
 var parts_left = 0
 var parts_in = []
+@export var color: Colors.COLOR = Colors.COLOR.DEFAULT
 @export var one_way = false # if you want the guillotine to function as a 1-way door,
 							# you need different collision (CollisionShape3D2)
 

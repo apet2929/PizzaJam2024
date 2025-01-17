@@ -1,3 +1,5 @@
+extends Node
+
 const green = Color("127304")
 const red = Color("A4031F")
 const purple = Color("240B36")

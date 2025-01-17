@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://br1c6x1rx1cy8"]
+[gd_scene load_steps=27 format=4 uid="uid://br1c6x1rx1cy8"]
 
 [ext_resource type="Script" path="res://Scripts/guillotine.gd" id="1_ldeu0"]
 [ext_resource type="Material" uid="uid://cri5qjjrfjhvl" path="res://assets/guillotine_blade_Shader.tres" id="2_7kxm5"]
+[ext_resource type="PackedScene" uid="uid://b8c2vgykbrjd0" path="res://scenes/Recolorer.tscn" id="2_c8s3r"]
 [ext_resource type="Material" uid="uid://bo4onna3kwhrh" path="res://assets/guillotine_frame_Shader.tres" id="3_de2mh"]
 [ext_resource type="Texture2D" uid="uid://c4apjiddnuk65" path="res://assets/guillotine_guillotine_Frame_Texture.png" id="4_o2iso"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="5_3hnwb"]
@@ -164,6 +165,9 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_ldeu0")
 
+[node name="Recolorer" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("2_c8s3r")]
+targets = [NodePath("../Model/Blade")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0382385, 4.73161, 0.0947876)
 shape = SubResource("BoxShape3D_n6ljn")
@@ -186,9 +190,9 @@ shape = SubResource("BoxShape3D_dw1bh")
 
 [node name="Blade" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(0.0566846, 0, -7.10543e-15, 0, 1, 0, 8.88178e-16, 0, 1, 0, 8.934, 0)
-material_override = ExtResource("2_7kxm5")
 mesh = SubResource("ArrayMesh_m2va2")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7kxm5")
 
 [node name="BladeCollision" type="Area3D" parent="Model/Blade"]
 collision_layer = 17

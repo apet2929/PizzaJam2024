@@ -1,6 +1,6 @@
 extends Node3D
 
-
+@export var color: Colors.COLOR
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print($Fence.open)

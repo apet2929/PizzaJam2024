@@ -10,7 +10,6 @@ var pressed = false
 func _ready() -> void:
 	pressed = false
 	$Model/AnimationPlayer.play("ButtonUnpress")
-	_set_color(color)
 
 func press(body: Node3D):
 	if !pressed:
@@ -25,12 +24,6 @@ func unpress(body: Node3D):
 		$Model/AnimationPlayer.play("ButtonUnpress")
 		EventBus.button_unpressed.emit(self, body)
 		pressed = false
-
-func _set_color(color: Colors.COLOR) -> void:
-	if color != Colors.COLOR.DEFAULT:
-		print("New color = ", color)
-		var base_mat = $Model/ButtonTop.material_override
-		base_mat.albedo_color = Colors.colors[color]
 
 func _on_body_entered(body: Node3D) -> void:
 	press(body)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8c2vgykbrjd0"]
+
+[ext_resource type="Script" path="res://Scripts/recolorer.gd" id="1_ixrb1"]
+
+[node name="Recolorer" type="Node"]
+script = ExtResource("1_ixrb1")

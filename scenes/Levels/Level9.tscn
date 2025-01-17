@@ -175,22 +175,28 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.948
 
 [node name="ButtonSmall" parent="." index="18" instance=ExtResource("6_f1v7m")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -2.99839, 9.91821e-05, -10.0255)
+color = 1
 
 [node name="ButtonSmall2" parent="." index="19" instance=ExtResource("6_f1v7m")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -3.01055, 9.91821e-05, -13.9992)
+color = 2
 
 [node name="ButtonSmall3" parent="." index="20" instance=ExtResource("6_f1v7m")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -7.93407, 9.91821e-05, -16.0203)
+color = 4
 
 [node name="ButtonSmall4" parent="." index="21" instance=ExtResource("6_f1v7m")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -12.9341, 9.91821e-05, -10.0203)
+color = 3
 
 [node name="Guillotine" parent="." index="22" instance=ExtResource("7_uei20")]
 transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, -2.9962, 9.87053e-05, -8.49708)
+color = 1
 one_way = true
 
 [node name="Guillotine2" parent="." index="23" instance=ExtResource("7_uei20")]
 transform = Transform3D(-9.39795e-09, 0, 0.215, 0, 0.215, 0, -0.215, 0, -9.39795e-09, -2.97697, 9.87053e-05, -12.4971)
+color = 2
 one_way = true
 
 [node name="Finish" parent="." index="24" instance=ExtResource("9_03bbc")]
@@ -204,15 +210,19 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -7.802
 
 [node name="Fence" parent="." index="28" instance=ExtResource("11_d5crn")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -11.0842, 0.57261, -7.96115)
+color = 3
 
 [node name="Fence4" parent="." index="29" instance=ExtResource("11_d5crn")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -10.0842, 0.57261, -6.96115)
+color = 3
 
 [node name="Fence2" parent="." index="30" instance=ExtResource("11_d5crn")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -11.0163, 0.56405, -11.9612)
+color = 3
 
 [node name="Fence3" parent="." index="31" instance=ExtResource("11_d5crn")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -10.0163, 0.56405, -10.0672)
+color = 4
 
 [node name="Spikes" parent="." index="32" instance=ExtResource("12_c2503")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -1.97178, 0.246568, -12.02)

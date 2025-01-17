@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://d076us4fj6gri"]
+[gd_scene load_steps=9 format=4 uid="uid://d076us4fj6gri"]
 
 [ext_resource type="Script" path="res://Scripts/pressure_pad.gd" id="1_5vmqf"]
 [ext_resource type="Material" uid="uid://bf5p4wgfygcfi" path="res://assets/Button_Shader.tres" id="1_18krv"]
+[ext_resource type="PackedScene" uid="uid://b8c2vgykbrjd0" path="res://scenes/Recolorer.tscn" id="2_7o6ae"]
 [ext_resource type="AudioStream" uid="uid://g4dwv3jxlmo2" path="res://assets/Audio/FlatButtonPress.mp3" id="3_rj8qi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiqtn"]
@@ -51,6 +52,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 collision_layer = 31
 collision_mask = 31
 script = ExtResource("1_5vmqf")
+
+[node name="Recolorer" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("2_7o6ae")]
+targets = [NodePath("../Button_Model/Button")]
 
 [node name="Button_Model" type="Node3D" parent="."]
 

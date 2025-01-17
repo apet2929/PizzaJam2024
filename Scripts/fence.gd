@@ -1,6 +1,7 @@
 extends StaticBody3D
 
 @export var open = false
+@export var color: Colors.COLOR
 
 const OPEN_POSITION = Vector3(0, 0, 0)
 const CLOSED_POSITION = Vector3(-0.878, 0, -0.96)

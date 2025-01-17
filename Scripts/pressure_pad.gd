@@ -5,6 +5,7 @@ var is_pressed = false
 
 signal pressed
 signal unpressed
+@export var color: Colors.COLOR
 
 @onready var btn_sfx: AudioStreamPlayer3D = $btn_sfx
 
