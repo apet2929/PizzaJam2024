@@ -4,21 +4,6 @@ extends Node
 @export var targets: Array[MeshInstance3D] = []
 @export var override_mesh_texture = false
 
-const green = Color("127304")
-const red = Color("A4031F")
-const purple = Color("240B36")
-const orange = Color("F2A359")
-const default = null
-
-enum COLOR { DEFAULT, GREEN, RED, PURPLE, ORANGE }
-const colors = {
-	COLOR.DEFAULT: default,
-	COLOR.GREEN: green,
-	COLOR.RED: red,
-	COLOR.PURPLE: purple,
-	COLOR.ORANGE: orange,
-}
-
 var default_materials = []
 
 # Called when the node enters the scene tree for the first time.
@@ -30,8 +15,9 @@ func _ready() -> void:
 	set_color(get_parent().color)
 
 func set_color(new_color_enum) -> void:
+	
 	for i in range(targets.size()):
-		if new_color_enum == COLOR.DEFAULT:
+		if new_color_enum == Colors.COLOR.DEFAULT:
 			targets[i].set_surface_override_material(0, default_materials[i])
 			continue
 		
@@ -39,7 +25,14 @@ func set_color(new_color_enum) -> void:
 		var base_mat = default_materials[i]
 		var new_mat = ResourceLoader.load(base_mat.resource_path, "StandardMaterial3D", ResourceLoader.CACHE_MODE_IGNORE)
 		
-		new_mat.albedo_color = colors[new_color_enum]
+		var overrides = get_parent().get("COLOR_OVERRIDES")
+		var new_color = Colors.colors[new_color_enum]
+		print("Setting color: ", new_color_enum)
+		print(new_color)
+		if overrides != null:
+			new_color = overrides.get(new_color_enum, new_color)
+		
+		new_mat.albedo_color = new_color
 		if override_mesh_texture:
 			new_mat.albedo_texture = null
 		

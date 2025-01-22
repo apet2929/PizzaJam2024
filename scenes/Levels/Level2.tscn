@@ -94,9 +94,11 @@ collision_layer = 8
 
 [node name="Fence" parent="." index="10" instance=ExtResource("9_xpsm2")]
 transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -4.40414, 0.481618, -4.9695)
+color = 3
 
 [node name="Fence2" parent="." index="11" instance=ExtResource("9_xpsm2")]
 transform = Transform3D(-1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, -6.6363, 0.481618, -10.9695)
+color = 4
 
 [node name="Guillotine" parent="." index="12" instance=ExtResource("7_11ngi")]
 transform = Transform3D(-8.0866e-09, 0, -0.185, 0, 0.185, 0, 0.185, 0, -8.0866e-09, -3.98647, 0.0708526, -13.5787)
@@ -104,10 +106,12 @@ transform = Transform3D(-8.0866e-09, 0, -0.185, 0, 0.185, 0, 0.185, 0, -8.0866e-
 [node name="ButtonSmall" parent="." index="13" instance=ExtResource("6_dhba3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.03883, 0, -10.9923)
 button_id = "0"
+color = 3
 
 [node name="ButtonSmall2" parent="." index="14" instance=ExtResource("6_dhba3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.80939, 0, -4.9923)
 button_id = "0"
+color = 4
 
 [node name="PressurePad" parent="." index="15" instance=ExtResource("8_a2ngt")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.01031, -4.76837e-07, -11.9931)

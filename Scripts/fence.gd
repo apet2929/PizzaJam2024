@@ -6,6 +6,11 @@ extends StaticBody3D
 const OPEN_POSITION = Vector3(0, 0, 0)
 const CLOSED_POSITION = Vector3(-0.878, 0, -0.96)
 
+const COLOR_OVERRIDES = {
+	Colors.COLOR.ORANGE: Color("#c96c14"),
+	Colors.COLOR.RED: Color("#a34152"),
+}
+
 func _ready() -> void:
 	if open:
 		$Pivot/Model/AnimationPlayer.play("Open")

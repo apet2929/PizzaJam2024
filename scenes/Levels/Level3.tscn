@@ -65,6 +65,7 @@ material = SubResource("StandardMaterial3D_mwuc2")
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -4.99823, 0.434325, -9.74223)
 collision_layer = 17
 open = true
+color = 4
 
 [node name="Lettuce" type="Node3D" parent="." index="9"]
 
@@ -145,31 +146,37 @@ collision_mask = 15
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00585, -4.76837e-07, -8.01371)
 collision_layer = 15
 collision_mask = 15
+color = 4
 
 [node name="PressurePad2" parent="." index="13" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.00585, -4.76837e-07, -8.01371)
 collision_layer = 15
 collision_mask = 15
+color = 4
 
 [node name="PressurePad3" parent="." index="14" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.00585, -4.76837e-07, -8.01371)
 collision_layer = 15
 collision_mask = 15
+color = 4
 
 [node name="PressurePad4" parent="." index="15" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00585, -4.76837e-07, -7.01371)
 collision_layer = 15
 collision_mask = 15
+color = 4
 
 [node name="PressurePad5" parent="." index="16" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -6.00585, -4.76837e-07, -7.01371)
 collision_layer = 15
 collision_mask = 15
+color = 4
 
 [node name="PressurePad6" parent="." index="17" instance=ExtResource("8_4xi8g")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.00585, -4.76837e-07, -7.01371)
 collision_layer = 15
 collision_mask = 15
+color = 4
 
 [node name="Guillotine" parent="." index="18" instance=ExtResource("9_qfct7")]
 transform = Transform3D(-8.30516e-09, 0, 0.19, 0, 0.19, 0, -0.19, 0, -8.30516e-09, -4.98076, -0.0172499, -4.76795)
@@ -185,5 +192,13 @@ fov = 35.0
 size = 11.0
 far = 43.98
 script = ExtResource("12_j63oo")
+
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
 
 [editable path="SceneTransition"]

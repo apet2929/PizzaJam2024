@@ -14,6 +14,14 @@
 [node name="LevelBase" instance=ExtResource("1_w3nw5")]
 script = ExtResource("1_c3xem")
 
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
+
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0107, -33.5474, -5.50227)
 layers = 2
@@ -100,6 +108,7 @@ collision_layer = 8
 
 [node name="Fence" parent="." index="12" instance=ExtResource("7_30ekf")]
 transform = Transform3D(-1.96701e-08, 0, -0.45, 0, 0.45, 0, 0.45, 0, -1.96701e-08, -4.40414, 0.481618, -8.9695)
+color = 2
 
 [node name="ButtonSmall" parent="." index="13" instance=ExtResource("10_8hxst")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.95551, 9.91821e-05, -11.0006)
@@ -107,20 +116,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.95551, 9.91821e-05, 
 [node name="PressurePad" parent="." index="14" instance=ExtResource("6_k3puw")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.01031, -4.76837e-07, -10.9931)
 
-[node name="Guillotine" parent="." index="15" instance=ExtResource("9_xayej")]
-transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -6.98647, 0.0708526, -8.6875)
-
-[node name="LeftWall" parent="Guillotine" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3014, 2.496, -1.778)
-
-[node name="RightWall" parent="Guillotine" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 2.49554, 1.77764)
-
-[node name="Model" parent="Guillotine" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
-
-[node name="DroppedCollision" parent="Guillotine" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4054, 0, 0)
+[node name="Guillotine" parent="." index="19" instance=ExtResource("9_xayej")]
+transform = Transform3D(-0.000277643, -0.000320445, 0.215, 6.21308e-06, 0.215, 0.000320453, -0.215, 6.62689e-06, -0.000277633, -6.92261, 9.91821e-05, -9.50642)
 
 [editable path="SceneTransition"]
-[editable path="Guillotine"]
+[editable path="ButtonSmall"]

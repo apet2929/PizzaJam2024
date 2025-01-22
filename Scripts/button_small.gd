@@ -6,6 +6,10 @@ extends Area3D
 @export var unpress_timer = 0.0
 var pressed = false
 
+const COLOR_OVERRIDES = {
+	Colors.COLOR.ORANGE: Color("#c96c14")
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pressed = false
