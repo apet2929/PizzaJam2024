@@ -7,15 +7,15 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func _on_pressure_pad_pressed(pad, body) -> void:
+func _on_pressure_pad_pressed(_pad, _body) -> void:
 	print("pressed 2")
 	$Guillotine.drop()
 	
 
-func _on_pressure_pad_unpressed(pad, body) -> void:
+func _on_pressure_pad_unpressed(_pad, _body) -> void:
 	$Guillotine.undrop()
 	

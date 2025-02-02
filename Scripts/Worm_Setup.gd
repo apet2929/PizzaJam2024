@@ -43,7 +43,7 @@ func create_worm(old_points):
 		var new_part = PART_1.instantiate()
 		body_parts.add_child(new_part, true)
 		
-		var part_number = int(body_parts.get_child(i).name.substr(4, body_parts.get_child(i).name.length() - 4))
+		var pn = int(body_parts.get_child(i).name.substr(4, body_parts.get_child(i).name.length() - 4))
 		new_part.worm_body = worm_body
 		
 		if i < len(old_points):
@@ -52,9 +52,9 @@ func create_worm(old_points):
 		else:
 			if old_points != []:
 				var last_old_point = old_points[max(0,old_points_used - 1)]
-				new_part.global_position = Vector3(last_old_point.x,last_old_point.y,last_old_point.z + part_number)
+				new_part.global_position = Vector3(last_old_point.x,last_old_point.y,last_old_point.z + pn)
 			else:
-				new_part.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + part_number)
+				new_part.global_position = Vector3(worm.global_position.x,worm.global_position.y,worm.global_position.z + pn)
 		
 	# Creating the worm's tail
 	
@@ -106,6 +106,7 @@ func _on_pressure_pad_body_entered(body: Node3D) -> void:
 		var pts = []
 		for i in range(segments.size()):
 			pts.append(segments[i].global_position)
+			@warning_ignore("integer_division")
 			if i < segments.size() / 2:
 				worm1_pts.append(segments[i].global_position)
 			else:

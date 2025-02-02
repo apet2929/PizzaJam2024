@@ -23,15 +23,15 @@ func init_signals():
 	EventBus.connect("level_finished", self.next_level)
 	EventBus.connect("spike_entered", self._on_spike_entered)
 
-func _on_button_pressed(button, body) -> void:
+func _on_button_pressed(button, _body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
 		$Fence.open_fence()
 
-func _on_button_unpressed(button, body) -> void:
+func _on_button_unpressed(button, _body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
 
-func _on_spike_entered(spike, body) -> void:
+func _on_spike_entered(_spike, body) -> void:
 	if is_worm(body):
 		EventBus.emit_signal("game_over")

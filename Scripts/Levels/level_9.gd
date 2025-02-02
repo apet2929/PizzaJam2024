@@ -35,5 +35,5 @@ func _on_button_pressed(button, _body) -> void:
 		$Fence2.open_fence()
 		$Fence4.open_fence()
 
-func _on_button_unpressed(button, _body) -> void:
+func _on_button_unpressed(_button, _body) -> void:
 	pass

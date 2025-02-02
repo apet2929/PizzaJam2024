@@ -24,7 +24,7 @@ func init_signals():
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
 	EventBus.connect("level_finished", self.next_level)
 
-func _on_button_pressed(button, body) -> void:
+func _on_button_pressed(button, _body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
 		$Fence.open_fence()
@@ -43,5 +43,5 @@ func _on_button_pressed(button, body) -> void:
 			add_child(l2)
 			lettuce_dropped = true
 
-func _on_button_unpressed(button, body) -> void:
+func _on_button_unpressed(_button, _body) -> void:
 	pass

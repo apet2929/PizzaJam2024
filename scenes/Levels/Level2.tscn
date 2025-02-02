@@ -14,6 +14,9 @@
 [node name="LevelBase3" instance=ExtResource("1_jd8r1")]
 script = ExtResource("2_gh1mx")
 
+[node name="GameCamera" parent="." index="3"]
+transform = Transform3D(0.865284, -0.3202, 0.385687, -0.012044, 0.755901, 0.654575, -0.501137, -0.571039, 0.650213, 0.281153, 6.1, 4.84488)
+
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36918, -33.5474, -9.14342)
 layers = 2
@@ -26,6 +29,7 @@ material = ExtResource("2_qv3cw")
 [node name="Worm" parent="." index="6" instance=ExtResource("3_172du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94156, 0.375672, -3.99105)
 visible = false
+has_crown = true
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(1, 0, 1), Vector3(2, 0, 1)]
 
 [node name="Walls" type="Node3D" parent="." index="7"]

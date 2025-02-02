@@ -12,6 +12,13 @@ var parts_in = []
 @onready var blood_particle: GPUParticles3D = $Model/blood_particle
 @onready var drop_sfx: AudioStreamPlayer3D = $Model/drop_sfx
 
+const COLOR_OVERRIDES = {
+	#Colors.COLOR.ORANGE: Color("#ce6633"),
+	#Colors.COLOR.YELLOW: Color("#fff566"),
+	#Colors.COLOR.BLUE: Color("#2462ff"),
+#	0f2a6e
+}
+
 func ready():
 	if one_way:
 		$DroppedCollision.remove_child($DroppedCollision/CollisionShape3D)

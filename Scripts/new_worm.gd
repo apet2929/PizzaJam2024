@@ -357,6 +357,6 @@ func _on_salt_body_entered(salt, body) -> void:
 		salt.queue_free()
 		self.remove_segment(self.get_tail())
 
-func _on_spike_entered(spike, body) -> void:
+func _on_spike_entered(_spike, body) -> void:
 	if body == self:
 		self.die()

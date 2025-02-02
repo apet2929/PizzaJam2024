@@ -23,10 +23,10 @@ func init_signals():
 	EventBus.connect("button_pressed", self._on_button_pressed)
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
 
-func _on_button_pressed(button, body) -> void:
+func _on_button_pressed(button, _body) -> void:
 	if button == $PressurePad:
 		$Fence.open_fence()
 
-func _on_button_unpressed(button, body) -> void:
+func _on_button_unpressed(button, _body) -> void:
 	if button == $PressurePad:
 		$Fence.close_fence()

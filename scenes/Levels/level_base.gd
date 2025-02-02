@@ -96,18 +96,18 @@ func _on_game_over():
 func is_worm(body):
 	return body.get_script() == WORM_SCRIPT
 
-func _on_button_small_button_pressed(button_id, body) -> void:
+func _on_button_small_button_pressed(_button_id, _body) -> void:
 	pass
 
-func _on_button_small_button_unpressed(button_id, body) -> void:
+func _on_button_small_button_unpressed(_button_id, _body) -> void:
 	pass
 		
-func _on_pressure_pad_pressed(pressure_pad, body) -> void:
+func _on_pressure_pad_pressed(_pressure_pad, _body) -> void:
 	pass
 
-func _on_pressure_pad_unpressed(pressure_pad, body) -> void:
+func _on_pressure_pad_unpressed(_pressure_pad, _body) -> void:
 	pass
 
-func _on_worm_died(worm) -> void:
+func _on_worm_died(_worm) -> void:
 	$WormDeathSound.play()
 	self.game_over()

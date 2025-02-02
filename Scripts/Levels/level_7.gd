@@ -25,7 +25,7 @@ func init_signals():
 	EventBus.connect("button_unpressed", self._on_button_unpressed)
 	EventBus.connect("level_finished", self.next_level)
 
-func _on_button_pressed(button, body) -> void:
+func _on_button_pressed(button, _body) -> void:
 	if button == $ButtonSmall:
 		$Guillotine.drop()
 	if button == $ButtonSmall2:
@@ -37,7 +37,7 @@ func _on_button_pressed(button, body) -> void:
 	elif button == $PressurePad:
 		$Fence4.open_fence()
 
-func _on_button_unpressed(button, body) -> void:
+func _on_button_unpressed(button, _body) -> void:
 	if button == $PressurePad3:
 		if !fence5_open:
 			$Fence5.close_fence()

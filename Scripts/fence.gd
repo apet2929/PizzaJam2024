@@ -7,8 +7,8 @@ const OPEN_POSITION = Vector3(0, 0, 0)
 const CLOSED_POSITION = Vector3(-0.878, 0, -0.96)
 
 const COLOR_OVERRIDES = {
-	Colors.COLOR.ORANGE: Color("#c96c14"),
-	Colors.COLOR.RED: Color("#a34152"),
+	#Colors.COLOR.ORANGE: Color("#c96c14"),
+	#Colors.COLOR.RED: Color("#a34152"),
 }
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 		$Pivot/Model/AnimationPlayer.seek(0.75)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_collision()
 		
 func update_collision():

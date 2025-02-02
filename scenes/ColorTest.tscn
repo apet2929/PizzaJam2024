@@ -1,0 +1,309 @@
+[gd_scene load_steps=10 format=3 uid="uid://f4ggvxx1rfun"]
+
+[ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_0ubr8"]
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_ymccr"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="4_djint"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="5_ks3ro"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="6_fb61y"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="7_4nduc"]
+[ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="8_t5p6u"]
+[ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="9_no28x"]
+[ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="10_5lsgc"]
+
+[node name="LevelBase" instance=ExtResource("1_0ubr8")]
+script = null
+
+[node name="Top" parent="SceneTransition" index="2"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Bottom" parent="SceneTransition" index="3"]
+offset_left = 0.0
+offset_right = 1152.0
+
+[node name="Floor" type="CSGBox3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527785, -33.5474, -5.50227)
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(15.9658, 67.095, 14)
+material = ExtResource("3_ymccr")
+
+[node name="Worm" parent="." index="6" instance=ExtResource("4_djint")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.996459, 0.463309, 1.13904)
+visible = false
+has_crown = true
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1)]
+
+[node name="Walls" type="Node3D" parent="." index="7"]
+
+[node name="walls2" type="CSGBox3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -5.5105)
+material_override = ExtResource("5_ks3ro")
+use_collision = true
+size = Vector3(1, 0.499512, 14)
+
+[node name="walls3" type="CSGBox3D" parent="Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.374574, -32.4985, 1.9895)
+material_override = ExtResource("5_ks3ro")
+use_collision = true
+size = Vector3(16.2613, 66, 1)
+
+[node name="walls8" type="CSGBox3D" parent="Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37909, -30.9985, -5.51953)
+material_override = ExtResource("5_ks3ro")
+use_collision = true
+size = Vector3(1, 63, 14.0181)
+
+[node name="walls9" type="CSGBox3D" parent="Walls" index="3"]
+transform = Transform3D(0.00678923, -0.999977, 0, 0.999977, 0.00678923, 0, 0, 0, 1, 15.1287, 14.622, -11.3411)
+material_override = ExtResource("5_ks3ro")
+use_collision = true
+size = Vector3(1, 13.5667, 27.1345)
+
+[node name="walls4" type="CSGBox3D" parent="Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463776, 0.251725, -12.0105)
+material_override = ExtResource("5_ks3ro")
+use_collision = true
+size = Vector3(16.0829, 0.499512, 1)
+
+[node name="Flags" type="Node3D" parent="." index="12"]
+transform = Transform3D(-0.996862, 0, -0.079155, 0, 1, 0, 0.079155, 0, -0.996862, -7.06247, 0.700039, -10.0676)
+
+[node name="Finish2" parent="Flags" index="0" instance=ExtResource("6_fb61y")]
+collision_layer = 8
+
+[node name="Finish3" parent="Flags" index="1" instance=ExtResource("6_fb61y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9749, 0, -0.63324)
+collision_layer = 8
+
+[node name="Fences" type="Node3D" parent="." index="13"]
+transform = Transform3D(-1.96701e-08, 0, -0.45, 0, 0.45, 0, 0.45, 0, -1.96701e-08, -7.40414, 0.481618, -7.9695)
+
+[node name="Fence" parent="Fences" index="0" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.24259, 0, -1.03743)
+
+[node name="Fence3" parent="Fences" index="1" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.24259, 0, -5.48187)
+color = 2
+
+[node name="Fence5" parent="Fences" index="2" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.24259, 0, -9.92632)
+color = 4
+
+[node name="Fence7" parent="Fences" index="3" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.24259, 0, -14.3708)
+color = 6
+
+[node name="Fence2" parent="Fences" index="4" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.44842, 0, -3.25965)
+color = 1
+
+[node name="Fence4" parent="Fences" index="5" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.44842, 0, -7.70409)
+color = 3
+
+[node name="Fence6" parent="Fences" index="6" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.44842, 0, -12.1485)
+color = 5
+
+[node name="Fence8" parent="Fences" index="7" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4648, 0, -16.593)
+
+[node name="Fence9" parent="Fences" index="8" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4648, 0, -21.0374)
+color = 2
+
+[node name="Fence10" parent="Fences" index="9" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4648, 0, -25.4819)
+color = 4
+
+[node name="Fence11" parent="Fences" index="10" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.4648, 0, -29.9263)
+color = 6
+
+[node name="Fence12" parent="Fences" index="11" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.6706, 0, -18.8152)
+color = 1
+
+[node name="Fence13" parent="Fences" index="12" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.6706, 0, -23.2597)
+color = 3
+
+[node name="Fence14" parent="Fences" index="13" instance=ExtResource("7_4nduc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.6706, 0, -27.7041)
+color = 5
+
+[node name="PressurePads" type="Node3D" parent="." index="14"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.01031, -4.76837e-07, -4.97604)
+
+[node name="PressurePad" parent="PressurePads" index="0" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="PressurePad2" parent="PressurePads" index="1" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12)
+color = 1
+
+[node name="PressurePad3" parent="PressurePads" index="2" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
+color = 2
+
+[node name="PressurePad4" parent="PressurePads" index="3" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+color = 3
+
+[node name="PressurePad5" parent="PressurePads" index="4" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 12)
+color = 4
+
+[node name="PressurePad6" parent="PressurePads" index="5" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 12)
+color = 5
+
+[node name="PressurePad7" parent="PressurePads" index="6" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 12)
+color = 6
+
+[node name="PressurePad8" parent="PressurePads" index="7" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 12)
+
+[node name="PressurePad9" parent="PressurePads" index="8" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 12)
+color = 1
+
+[node name="PressurePad10" parent="PressurePads" index="9" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 12)
+color = 2
+
+[node name="PressurePad11" parent="PressurePads" index="10" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 12)
+color = 3
+
+[node name="PressurePad12" parent="PressurePads" index="11" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 12)
+color = 4
+
+[node name="PressurePad13" parent="PressurePads" index="12" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 12)
+color = 5
+
+[node name="PressurePad14" parent="PressurePads" index="13" instance=ExtResource("9_no28x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0, 12)
+color = 6
+
+[node name="Buttons" type="Node3D" parent="." index="15"]
+transform = Transform3D(0.215, -6.6269e-06, 0.000277624, 6.21308e-06, 0.215, 0.000320453, -0.000277634, -0.000320445, 0.215, -6.90076, 9.91821e-05, -2.061)
+
+[node name="ButtonSmall17" parent="Buttons" index="0" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 4.34681, -0.0144176, 9.58885)
+color = 1
+
+[node name="ButtonSmall23" parent="Buttons" index="1" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, -0.304348, -0.0142742, 9.58284)
+
+[node name="ButtonSmall18" parent="Buttons" index="2" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 8.99796, -0.014561, 9.59485)
+color = 2
+
+[node name="ButtonSmall19" parent="Buttons" index="3" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 13.6491, -0.0147043, 9.60086)
+color = 3
+
+[node name="ButtonSmall20" parent="Buttons" index="4" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 18.3003, -0.0148477, 9.60687)
+color = 4
+
+[node name="ButtonSmall21" parent="Buttons" index="5" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 22.9514, -0.014991, 9.61287)
+color = 5
+
+[node name="ButtonSmall22" parent="Buttons" index="6" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 27.6026, -0.0151344, 9.61888)
+color = 6
+
+[node name="ButtonSmall24" parent="Buttons" index="7" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 36.9049, -0.0154211, 9.63089)
+color = 1
+
+[node name="ButtonSmall25" parent="Buttons" index="8" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 32.2537, -0.0152778, 9.62488)
+
+[node name="ButtonSmall26" parent="Buttons" index="9" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 41.556, -0.0155645, 9.63689)
+color = 2
+
+[node name="ButtonSmall27" parent="Buttons" index="10" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 46.2072, -0.0157078, 9.6429)
+color = 3
+
+[node name="ButtonSmall28" parent="Buttons" index="11" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 50.8584, -0.0158512, 9.64891)
+color = 4
+
+[node name="ButtonSmall29" parent="Buttons" index="12" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 55.5095, -0.0159946, 9.65491)
+color = 5
+
+[node name="ButtonSmall30" parent="Buttons" index="13" instance=ExtResource("8_t5p6u")]
+transform = Transform3D(2.32558, 6.72049e-05, -0.00300306, -7.16805e-05, 2.32558, -0.00346613, 0.00300296, 0.00346622, 2.32557, 60.1607, -0.0161379, 9.66092)
+color = 6
+
+[node name="Guillotines" type="Node3D" parent="." index="16"]
+transform = Transform3D(0.215, -6.6269e-06, 0.000277624, 6.21308e-06, 0.215, 0.000320453, -0.000277634, -0.000320445, 0.215, -6.90076, 9.91821e-05, -2.061)
+
+[node name="Guillotine" parent="Guillotines" index="0" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(1, -6.36646e-12, -2.32831e-10, 7.50333e-12, 1, -2.32831e-10, 0, 1.16415e-10, 1, 0.024025, 0.027729, -18.6046)
+
+[node name="Guillotine2" parent="Guillotines" index="1" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999358, -5.34542e-05, 0.0358763, 5.34913e-05, 1, -8.00937e-08, -0.0358762, 1.99606e-06, 0.999358, 4.06875, 0.0275084, -18.535)
+color = 1
+
+[node name="Guillotine3" parent="Guillotines" index="2" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999046, 6.51713e-05, -0.0437066, -6.5116e-05, 1, 2.68477e-06, 0.0437065, 1.63331e-07, 0.999046, 9.37568, 0.0273449, -18.5281)
+color = 2
+
+[node name="Guillotine4" parent="Guillotines" index="3" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 1, -2.45753e-07, -0.0122345, 4.64846e-07, 0.999927, 14.652, 0.0271822, -18.5213)
+color = 3
+
+[node name="Guillotine10" parent="Guillotines" index="4" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 1, -2.45753e-07, -0.0122345, 4.64846e-07, 0.999927, 19.615, 0.0270292, -18.5149)
+color = 4
+
+[node name="Guillotine11" parent="Guillotines" index="5" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 1, -2.45753e-07, -0.0122345, 4.64846e-07, 0.999927, 24.2662, 0.0268859, -18.5089)
+color = 5
+
+[node name="Guillotine12" parent="Guillotines" index="6" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 1, -2.45869e-07, -0.0122345, 4.64846e-07, 0.999927, 28.2286, 0.0267637, -18.5038)
+color = 6
+
+[node name="Guillotine5" parent="Guillotines" index="7" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(1, -1.61435e-11, -2.32831e-10, 2.02363e-11, 0.999999, -9.31323e-10, 0, 2.32831e-10, 1, 37.2333, 0.0265822, -18.5565)
+
+[node name="Guillotine6" parent="Guillotines" index="8" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999358, -5.34542e-05, 0.0358763, 5.34913e-05, 1, -8.05594e-08, -0.0358762, 1.99617e-06, 0.999358, 36.6148, 0.0126404, -9.19065)
+color = 1
+
+[node name="Guillotine7" parent="Guillotines" index="9" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999046, 6.51713e-05, -0.0437066, -6.5116e-05, 1, 2.68442e-06, 0.0437065, 1.63447e-07, 0.999045, 41.9218, 0.0124768, -9.1838)
+color = 2
+
+[node name="Guillotine8" parent="Guillotines" index="10" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 1, -2.46218e-07, -0.0122345, 4.64963e-07, 0.999927, 47.1981, 0.0123142, -9.17699)
+color = 3
+
+[node name="Guillotine13" parent="Guillotines" index="11" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 1, -2.46335e-07, -0.0122345, 4.65079e-07, 0.999927, 52.1671, 0.0190935, -13.8217)
+color = 4
+
+[node name="Guillotine14" parent="Guillotines" index="12" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 0.999999, -2.46451e-07, -0.0122345, 4.65079e-07, 0.999927, 42.8708, 0.0263124, -18.4849)
+color = 5
+
+[node name="Guillotine15" parent="Guillotines" index="13" instance=ExtResource("10_5lsgc")]
+transform = Transform3D(0.999923, -1.82332e-05, 0.0122345, 1.82375e-05, 0.999999, -2.46451e-07, -0.0122345, 4.65079e-07, 0.999927, 47.522, 0.0261691, -18.4789)
+color = 6
+
+[editable path="SceneTransition"]
