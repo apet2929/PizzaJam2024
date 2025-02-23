@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dapultlk7gt1v"
-path="res://.godot/imported/wood_diffuse.jpg-75fea7d0ff25f3fc3c812daf80b5bc3e.ctex"
+uid="uid://dpe2d1hj2fapj"
+path="res://.godot/imported/worm_Icosphere Base Color.png-4f538a341c493480929ae630535ca288.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets/materials/simple-wood_238c1cbd-57fd-470b-8580-eb47995df390/textures/wood_diffuse.jpg"
-dest_files=["res://.godot/imported/wood_diffuse.jpg-75fea7d0ff25f3fc3c812daf80b5bc3e.ctex"]
+source_file="res://assets/worm_Icosphere Base Color.png"
+dest_files=["res://.godot/imported/worm_Icosphere Base Color.png-4f538a341c493480929ae630535ca288.ctex"]
 
 [params]
 

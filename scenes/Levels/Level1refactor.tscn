@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsfc242u51do7"]
+
+[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="1_ohowc"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="2_xn1we"]
+[ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="3_7221p"]
+[ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="4_ep8gr"]
+[ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="5_131mk"]
+[ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="6_mq3ff"]
+
+[node name="Level1Refactor" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0107, -33.5474, -5.50227)
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(5, 67.095, 14)
+material = ExtResource("1_ohowc")
+
+[node name="Floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.996133, -33.5474, -10.0023)
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(3, 67.095, 5)
+material = ExtResource("1_ohowc")
+
+[node name="Floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99613, -33.5474, -10.5023)
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(3, 67.095, 4)
+material = ExtResource("1_ohowc")
+
+[node name="Worm" parent="." instance=ExtResource("2_xn1we")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, -3.90225)
+visible = false
+spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 0, 2), Vector3(0, 0, 3), Vector3(0, 0, 4), Vector3(0, 0, 5)]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="walls2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00522, 0.251725, -5.5105)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(1, 0.499512, 14)
+
+[node name="walls3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00522, -32.4985, 1.9895)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(5, 66, 1)
+
+[node name="walls8" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00522, -30.9985, -3.5105)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(1, 63, 10)
+
+[node name="walls10" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98325, 0.251725, -10.0105)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(6.83105, 0.499512, 1)
+
+[node name="walls12" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39878, -101.499, -7.91675)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(4, 204, 1.1875)
+
+[node name="walls4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02182, 0.251725, -12.0105)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(8.9668, 0.499512, 1)
+
+[node name="walls5" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318284, -31.9985, -9.91587)
+material_override = ExtResource("3_7221p")
+use_collision = true
+size = Vector3(1.0741, 65, 5.18677)
+
+[node name="Finish" parent="." instance=ExtResource("4_ep8gr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.98176, 0.321328, -9.00568)
+collision_layer = 8
+
+[node name="Finish2" parent="." instance=ExtResource("4_ep8gr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.98176, 0.321328, -11.0057)
+collision_layer = 8
+
+[node name="Fence" parent="." instance=ExtResource("5_131mk")]
+transform = Transform3D(-1.96701e-08, 0, -0.45, 0, 0.45, 0, 0.45, 0, -1.96701e-08, -4.40414, 0.481618, -8.9695)
+color = 2
+
+[node name="ButtonSmall" parent="." instance=ExtResource("6_mq3ff")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.95551, 9.91821e-05, -11.0006)
+
+[editable path="ButtonSmall"]

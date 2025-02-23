@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cud1xmc3mx8ag"]
+[gd_scene load_steps=5 format=3 uid="uid://bfy7ts66tpnru"]
 
 [ext_resource type="Script" path="res://Scripts/worm_body_segment.gd" id="1_3sfep"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_8x4a5"]

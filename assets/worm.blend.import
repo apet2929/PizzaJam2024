@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bgsu4q8nrxeqr"
-valid=false
+uid="uid://barsumiiuif0o"
+path="res://.godot/imported/worm.blend-8e11f6d8259b692f2919d4839acf9f93.scn"
 
 [deps]
 
-source_file="res://assets/assets/materials/cabin-wood_32002d4a-f835-4d6a-9e4f-bfe572cd37b0/cabin-wood_2K_f9ce5205-faf9-4152-8f9b-265cc33f56da.blend"
+source_file="res://assets/worm.blend"
+dest_files=["res://.godot/imported/worm.blend-8e11f6d8259b692f2919d4839acf9f93.scn"]
 
 [params]
 

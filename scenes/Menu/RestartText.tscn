@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnxtlvatxv6ve"]
+
+[ext_resource type="Theme" uid="uid://b7wn8s1f8i7ot" path="res://assets/Menu/button_theme.tres" id="1_0mj8o"]
+[ext_resource type="Texture2D" uid="uid://wf24385l8obx" path="res://assets/Menu/Restart_lvl.png" id="2_bhq5b"]
+
+[node name="RestartText" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 600.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 52.0
+theme = ExtResource("1_0mj8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(487, 25)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("2_bhq5b")

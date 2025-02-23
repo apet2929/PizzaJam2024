@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnhokcv7bmisx"]
+
+[ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="1_4qk01"]
+[ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_ceyue"]
+[ext_resource type="PackedScene" uid="uid://cnmv701vlv0hs" path="res://scenes/Menu/GameOver.tscn" id="2_bxj2d"]
+[ext_resource type="PackedScene" uid="uid://dnxtlvatxv6ve" path="res://scenes/Menu/RestartText.tscn" id="3_muqy6"]
+[ext_resource type="AudioStream" uid="uid://d1ewrblfmc2fi" path="res://assets/Audio/wormDeath.mp3" id="4_35df6"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="6_7ywy3"]
+[ext_resource type="PackedScene" uid="uid://xx3im153nvii" path="res://scenes/bird.tscn" id="7_dim0a"]
+
+[sub_resource type="Environment" id="Environment_452e5"]
+background_mode = 1
+background_color = Color(0, 0.506, 0.66, 1)
+ambient_light_source = 1
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_brightness = 1.12
+adjustment_saturation = 1.6
+
+[node name="Gameplay" type="Node3D"]
+script = ExtResource("1_ceyue")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_452e5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.673273, -0.556626, 0.486694, -0.543889, 0.073076, 0.835969, -0.500888, -0.827542, -0.253544, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.486403, 0.839235, 0.243097, -0.51784, 0.0527996, 0.853847, 0.703743, -0.541199, 0.460271, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.45452, 0.541675, 0, 0.766045, 0.642788, -0.707107, -0.45452, 0.541675, 3.3, 6.1, 3.3)
+projection = 1
+fov = 35.0
+size = 8.293
+far = 40.91
+script = ExtResource("1_4qk01")
+
+[node name="GameOver" parent="." instance=ExtResource("2_bxj2d")]
+
+[node name="RestartText" parent="." instance=ExtResource("3_muqy6")]
+
+[node name="WormDeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_35df6")
+
+[node name="NewWorm" parent="." instance=ExtResource("6_7ywy3")]
+
+[node name="bird" parent="." instance=ExtResource("7_dim0a")]

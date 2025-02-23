@@ -64,6 +64,7 @@ debug_shape_custom_color = Color(0.732854, 0.382212, 0.601817, 1)
 shape = SubResource("SphereShape3D_ejlxe")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.45
 radial_segments = 24
 rings = 14
 material = ExtResource("2_ru6pc")
