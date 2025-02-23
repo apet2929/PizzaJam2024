@@ -60,6 +60,7 @@ var current_dir = Vector2(0,0) # For pushing boxes
 
 var segments = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
+var postprocessed_curve: Curve3D
 
 # TODO : show restart message when softlocked
 
@@ -73,9 +74,10 @@ func _ready() -> void:
 	
 	move_ready = true
 	$Curve.curve = Curve3D.new()
+	$Curve2.curve = Curve3D.new()
 	curve = $Curve.curve
+	postprocessed_curve = $Curve2.curve
 	$Worm_GFX.polygon = worm_gfx_polygon_points
-	
 	$Body/crown.visible = has_crown
 
 	for i in range(spawn_points.size()):
@@ -84,6 +86,7 @@ func _ready() -> void:
 
 # Important - This is called before the _process fn of all segments
 func _process(delta: float) -> void:
+	postprocess_curve()
 	if disabled:
 		return
 	var dir = Input.get_vector("left", "right", "forward", "backward")
@@ -105,11 +108,31 @@ func _process(delta: float) -> void:
 	
 	for segment in segments:
 		curve.set_point_position(segments.find(segment), segment.position)
+		curve.set_point_in(segments.find(segment), Vector3(0,0,0))
+		curve.set_point_out(segments.find(segment), Vector3(0,0,0))
+	postprocess_curve()
 		
 	$Body/crown.visible = has_crown
 	var head_pos = get_head().position
 	$Body/crown.position = Vector3(head_pos.x, $Body/crown.position.y, head_pos.z)
 	
+func postprocess_curve():
+	for i in range(curve.point_count):
+		if i == 0 || i == curve.point_count-1:
+			continue
+		var last_pt = curve.get_point_position(i-1)
+		var next_pt = curve.get_point_position(i+1)
+		# this segment is the corner in a turn
+		#if last_pt[1] != next_pt[1] and last_pt[2] != next_pt[2]:
+
+		var diff = next_pt - last_pt
+		curve.set_point_in(i, -diff * 0.01)
+		curve.set_point_out(i, diff * 0.01)
+		
+	#for point in curve:
+		#if is_turn(point, last_pt, next_pt):
+			#derivative = next_pt - last_pt
+			#point.out
 
 func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)

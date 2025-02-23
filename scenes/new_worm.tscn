@@ -14,6 +14,9 @@ collision_layer = 6
 collision_mask = 18
 script = ExtResource("1_ecb6o")
 
+[node name="Curve2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_cqnwp")
+
 [node name="Curve" type="Path3D" parent="."]
 curve = SubResource("Curve3D_cqnwp")
 
