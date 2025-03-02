@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_f52wl"]
 [ext_resource type="Script" path="res://Scripts/Levels/level_8.gd" id="2_ior6f"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_njsjo"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/worm.tscn" id="3_njsjo"]
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="4_lho0c"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="5_atwaq"]
 [ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="6_xrk01"]
@@ -247,22 +247,22 @@ size = Vector3(1, 76, 6)
 [node name="Guillotine" parent="." index="24" instance=ExtResource("10_768ti")]
 transform = Transform3D(-8.08661e-09, 0, 0.185, 0, 0.185, 0, -0.185, 0, -8.08661e-09, -1.98647, 0.0708526, -2.6875)
 
-[node name="CollisionShape3D" parent="Guillotine" index="0"]
+[node name="CollisionShape3D" parent="Guillotine" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.80178, 4.73161, 2.63216)
 
-[node name="LeftWall" parent="Guillotine" index="1"]
+[node name="LeftWall" parent="Guillotine" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.67457, 2.496, 2.5664)
 
-[node name="RightWall" parent="Guillotine" index="2"]
+[node name="RightWall" parent="Guillotine" index="3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.11893, 2.49554, 2.6704)
 
-[node name="Model" parent="Guillotine" index="3"]
+[node name="Model" parent="Guillotine" index="4"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.89657, 5.96046e-08, 2.6704)
 
-[node name="DroppedCollision" parent="Guillotine" index="4"]
+[node name="DroppedCollision" parent="Guillotine" index="5"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.89657, 5.96046e-08, 2.6704)
 
-[node name="WormCheck" parent="Guillotine" index="5"]
+[node name="WormCheck" parent="Guillotine" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04541, 0, 0)
 
 [node name="Box" parent="." index="25" instance=ExtResource("11_n5u7i")]

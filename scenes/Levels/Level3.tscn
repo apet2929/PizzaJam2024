@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dyxllcqs0jf8v"]
 
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_itmbt"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="2_31mxb"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/worm.tscn" id="2_31mxb"]
 [ext_resource type="Script" path="res://Scripts/Levels/level_3.gd" id="2_y5164"]
 [ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="3_vwh0m"]
 [ext_resource type="Texture2D" uid="uid://b6t875vqcy5kn" path="res://assets/Grass_Tile.png" id="4_rltqj"]

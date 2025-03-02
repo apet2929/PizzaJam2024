@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://k1i3br0f6xst"]
+
+[ext_resource type="Material" uid="uid://dsoa4mah6vw53" path="res://assets/IceMaterial.tres" id="1_eoo2l"]
+[ext_resource type="Script" path="res://Scripts/ice_floor.gd" id="2_6dqng"]
+
+[node name="IceFloor" type="CSGBox3D"]
+layers = 2
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(5, 67.095, 5.02722)
+material = ExtResource("1_eoo2l")
+script = ExtResource("2_6dqng")

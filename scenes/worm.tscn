@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqqp3t3gyi13u"]
 
-[ext_resource type="Script" path="res://Scripts/new_worm.gd" id="1_ecb6o"]
+[ext_resource type="Script" path="res://Scripts/worm.gd" id="1_ecb6o"]
 [ext_resource type="Material" uid="uid://der7bv8nk8223" path="res://assets/Worm_Shader.tres" id="2_ru6pc"]
 [ext_resource type="AudioStream" uid="uid://dmhwumdoiy78m" path="res://assets/Audio/worm_move_sfx.wav" id="3_bb5pn"]
 [ext_resource type="PackedScene" uid="uid://djdwtt0okptqj" path="res://assets/crown.glb" id="4_lnt86"]
@@ -9,7 +9,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ejlxe"]
 
-[node name="NewWorm" type="CharacterBody3D" groups=["body", "head"]]
+[node name="Worm" type="CharacterBody3D" groups=["body", "head"]]
 collision_layer = 6
 collision_mask = 18
 script = ExtResource("1_ecb6o")
@@ -46,6 +46,12 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0.412371, 0)
 [node name="DownRay" type="RayCast3D" parent="Rays"]
 target_position = Vector3(0, 0, -1)
 collision_mask = 19
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="FloorRay" type="RayCast3D" parent="Rays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49763, 0)
+target_position = Vector3(0, -2, 0)
+collision_mask = 2
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="UpRay" type="RayCast3D" parent="Rays"]

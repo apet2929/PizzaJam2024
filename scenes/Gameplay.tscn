@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cnmv701vlv0hs" path="res://scenes/Menu/GameOver.tscn" id="2_bxj2d"]
 [ext_resource type="PackedScene" uid="uid://dnxtlvatxv6ve" path="res://scenes/Menu/RestartText.tscn" id="3_muqy6"]
 [ext_resource type="AudioStream" uid="uid://d1ewrblfmc2fi" path="res://assets/Audio/wormDeath.mp3" id="4_35df6"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="6_7ywy3"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/worm.tscn" id="6_7ywy3"]
 [ext_resource type="PackedScene" uid="uid://xx3im153nvii" path="res://scenes/bird.tscn" id="7_dim0a"]
 
 [sub_resource type="Environment" id="Environment_452e5"]

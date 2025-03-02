@@ -26,12 +26,15 @@ const GRAVITY = -20 # Used to counter a bug that lets you fly
 const PUSH_FORCE = 4.0
 
 const WORM_BODY_SEGMENT_SCENE = preload("res://scenes/worm_body_segment.tscn")
-const WORM_SCENE = preload("res://scenes/new_worm.tscn")
-const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
+const WORM_SCENE = preload("res://scenes/worm.tscn")
+const WORM_SCRIPT = preload("res://Scripts/worm.gd")
 const BOX_SCRIPT = preload("res://Scripts/box.gd")
+const ICE_SCRIPT = preload("res://Scripts/ice_floor.gd")
 
 const MAX_SFX_PITCH = 1.4
 const MIN_SFX_PITCH = 0.4
+
+var debug_next_tick = false
 
 var disabled = false
 @export var has_crown = false
@@ -50,12 +53,14 @@ var disabled = false
 var move_ready = false
 var last_dir = Vector2(0,0) # Stopping the player from going backwards
 var current_dir = Vector2(0,0) # For pushing boxes
+var ice_sliding = false # For pushing boxes
 
 @onready var up_ray = $Rays/UpRay
 @onready var down_ray = $Rays/DownRay
 @onready var left_ray = $Rays/LeftRay
 @onready var right_ray = $Rays/RightRay
-
+@onready var floor_ray = $Rays/FloorRay
+ 
 @onready var move_sfx: AudioStreamPlayer3D = $Move_sfx
 
 var segments = [] # list of segments, 0 = head, last = tail
@@ -63,6 +68,8 @@ var curve: Curve3D
 var postprocessed_curve: Curve3D
 
 # TODO : show restart message when softlocked
+# TODO : if all worms on screen finish at the same time, its marked as a game over rather than a win
+
 
 func _ready() -> void:
 	init_signals()
@@ -90,10 +97,24 @@ func _process(delta: float) -> void:
 	if disabled:
 		return
 	var dir = Input.get_vector("left", "right", "forward", "backward")
-	self.velocity.y = GRAVITY
+	if Input.is_action_just_released("left_click"):
+		debug_next_tick = true
 	
+	#if move_ready:
+		 #if is_standing_on_ice() and last_dir != Vector2(0,0):
+			#print("Foo bar")
+			#handle_movement(last_dir)
+		#else:
+			#handle_movement(dir)
 	if move_ready:
-		handle_movement(dir)
+		if is_standing_on_ice() and can_move_in_dir(last_dir):
+			set_sliding(true)
+			handle_movement(last_dir)
+		else:
+			set_sliding(false)
+			handle_movement(dir)
+		
+	self.velocity.y = GRAVITY
 
 	var should_snap = get_head().update(delta)
 	for i in range(1, segments.size()):
@@ -111,28 +132,10 @@ func _process(delta: float) -> void:
 		curve.set_point_in(segments.find(segment), Vector3(0,0,0))
 		curve.set_point_out(segments.find(segment), Vector3(0,0,0))
 	postprocess_curve()
-		
+
 	$Body/crown.visible = has_crown
 	var head_pos = get_head().position
 	$Body/crown.position = Vector3(head_pos.x, $Body/crown.position.y, head_pos.z)
-	
-func postprocess_curve():
-	for i in range(curve.point_count):
-		if i == 0 || i == curve.point_count-1:
-			continue
-		var last_pt = curve.get_point_position(i-1)
-		var next_pt = curve.get_point_position(i+1)
-		# this segment is the corner in a turn
-		#if last_pt[1] != next_pt[1] and last_pt[2] != next_pt[2]:
-
-		var diff = next_pt - last_pt
-		curve.set_point_in(i, -diff * 0.01)
-		curve.set_point_out(i, diff * 0.01)
-		
-	#for point in curve:
-		#if is_turn(point, last_pt, next_pt):
-			#derivative = next_pt - last_pt
-			#point.out
 
 func init_signals():
 	EventBus.lettuce_body_entered.connect(self._on_lettuce_body_entered)
@@ -148,33 +151,43 @@ func is_worm(body: Node3D) -> bool:
 			return false
 
 func handle_movement(dir):
-	if wall_check(dir):
-		return
-	if box_check(dir):
-		return
+	if not can_move_in_dir(dir):
+		return false
 
 	# when the head snaps to the grid, update the snap the worm as a whole
 	# Checking if: Input is pressed, Not trying to move diagonally, Isn't trying to move back inside the worm
+	start_move(dir)
+	
+	if(debug_next_tick): # TODO create more useful debug mode with the `breakpoint` statement
+		var wall = wall_check(dir)
+		debug_next_tick = false
+		
+	move_ready = false
+	
+	await get_tree().create_timer(MOVE_TIMER).timeout
+	# Snapping the Worm's head to the grid
+	self.velocity = Vector3(0,self.velocity.y,0)
+	
+	move_sfx.pitch_scale = randf_range(MIN_SFX_PITCH, MAX_SFX_PITCH)
+	move_sfx.play()
+	
+	#snap_to_grid() TODO: Reenable?
+	# snap after timer, or snap once you reach the cell?
+	
+	last_dir = dir # Saving the last movement so the player wouldn't be able to go back
+	move_ready = true
+
+func can_move_in_dir(dir):
+	var backwards = dir == -last_dir
 	var no_dir = dir == Vector2(0,0)
 	var diagonal = (dir.x != 0) and (dir.y != 0)
-	var backwards = dir == -last_dir
-	
-	if !(no_dir or diagonal or backwards):
-		start_move(dir)
-		move_ready = false
-		
-		await get_tree().create_timer(MOVE_TIMER).timeout
-		# Snapping the Worm's head to the grid
-		self.velocity = Vector3(0,self.velocity.y,0)
-		
-		move_sfx.pitch_scale = randf_range(MIN_SFX_PITCH, MAX_SFX_PITCH)
-		move_sfx.play()
-		
-		#snap_to_grid() TODO: Reenable?
-		# snap after timer, or snap once you reach the cell?
-		
-		last_dir = dir # Saving the last movement so the player wouldn't be able to go back
-		move_ready = true
+	var wall = wall_check(dir)
+	var box = box_check(dir)
+	if(backwards or no_dir or diagonal or wall or box):
+		return false
+
+	return not ( backwards or no_dir or diagonal or 
+				wall_check(dir) or box_check(dir))
 
 # Cut_from_head - the amount of body segments to cut (from the head)
 func split(cut_from_head):
@@ -239,6 +252,7 @@ func snap_to_grid():
 	self.global_position.z = head.global_position.z
 	var diff = self.global_position - old
 	head.position = Vector3(0,0,0)
+	
 	for i in range(1, segments.size()):
 		segments[i].position -= diff
 
@@ -252,7 +266,8 @@ func wall_check(dir):
 	var colliding = ray.is_colliding()
 	if colliding:
 		# Box, or some other non-wall object
-		if ray.get_collider().get_collision_layer() == 16:
+		var collider = ray.get_collider()
+		if collider.get_collision_layer() == 16:
 			return false
 	return colliding
 
@@ -270,6 +285,15 @@ func box_check(dir):
 			var f = obj.cant_move_in(d)
 			return f
 	return false
+	
+func set_sliding(sliding: bool):
+	ice_sliding = sliding
+
+func is_standing_on_ice():
+	if floor_ray.is_colliding():
+		var obj = floor_ray.get_collider()
+		return obj.get_script() == ICE_SCRIPT
+	return false
 
 func ray_check_for_obj(worm_dir: Vector2, dir_x: int, dir_y: int, ray: RayCast3D, obj_script):
 	if worm_dir.x == dir_x and worm_dir.y == dir_y:
@@ -277,6 +301,20 @@ func ray_check_for_obj(worm_dir: Vector2, dir_x: int, dir_y: int, ray: RayCast3D
 			var obj = ray.get_collider()
 			return obj.get_script() == obj_script
 	return false
+	
+
+func postprocess_curve():
+	for i in range(curve.point_count):
+		if i == 0 || i == curve.point_count-1:
+			continue
+		var last_pt = curve.get_point_position(i-1)
+		var next_pt = curve.get_point_position(i+1)
+		# this segment is the corner in a turn
+		#if last_pt[1] != next_pt[1] and last_pt[2] != next_pt[2]:
+
+		var diff = next_pt - last_pt
+		curve.set_point_in(i, -diff * 0.01)
+		curve.set_point_out(i, diff * 0.01)
 
 func get_head():
 	return segments[0]

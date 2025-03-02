@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="1_jlqi6"]
 [ext_resource type="Texture2D" uid="uid://b6t875vqcy5kn" path="res://assets/Grass_Tile.png" id="2_f84my"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_jxt3x"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/worm.tscn" id="3_jxt3x"]
 [ext_resource type="Script" path="res://Scripts/Camera_Follow.gd" id="4_paie2"]
-[ext_resource type="PackedScene" uid="uid://bselxo1475df2" path="res://scenes/box.tscn" id="5_vyvyb"]
+[ext_resource type="PackedScene" uid="uid://diuxd3v1qb85f" path="res://scenes/box.tscn" id="5_vyvyb"]
 [ext_resource type="PackedScene" uid="uid://c2apv7vg2rtcy" path="res://scenes/lettuce.tscn" id="6_jwflu"]
 [ext_resource type="Script" path="res://Scripts/draw_box_next_pos.gd" id="7_6c8sl"]
 

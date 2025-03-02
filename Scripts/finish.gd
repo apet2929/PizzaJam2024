@@ -1,7 +1,7 @@
 extends Area3D
 
 
-const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
+const WORM_SCRIPT = preload("res://Scripts/worm.gd")
 @onready var win_sfx: AudioStreamPlayer3D = $win_sfx
 
 func _on_body_entered(body: Node3D) -> void:

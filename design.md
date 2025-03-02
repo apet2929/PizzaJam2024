@@ -45,12 +45,12 @@ level where you need to push boxes in a certain order
 level where you need to curve around yourself
 
 
-Pink = worm
-Black = wall
-Green = lettuce
-Brown = box
-Red = guillotine
-Blue = pressure plate
-Purple = toggle button
-Gold = finish
-Cyan = Fence
+Worm movement decision tree
+
+Worm chooses to move
+|					
+Blocked by a wall?
+	/				\ 
+blocked by a box?	can't
+				\ 
+				can 

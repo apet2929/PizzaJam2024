@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://btp6wnmcr0pob"]
+[gd_scene load_steps=12 format=3 uid="uid://btp6wnmcr0pob"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level_1.gd" id="1_c3xem"]
 [ext_resource type="PackedScene" uid="uid://3itvhn02h1hy" path="res://scenes/Levels/LevelBase.tscn" id="1_w3nw5"]
-[ext_resource type="Material" uid="uid://0jed1sk6jq5" path="res://assets/GrassMaterial.tres" id="3_uxse0"]
-[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/new_worm.tscn" id="3_ycaos"]
+[ext_resource type="Material" uid="uid://d28i7xt3e1ww0" path="res://assets/Floor_Material.tres" id="3_bwtxy"]
+[ext_resource type="PackedScene" uid="uid://bqqp3t3gyi13u" path="res://scenes/worm.tscn" id="3_ycaos"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="6_k3puw"]
 [ext_resource type="Material" uid="uid://dk0job0vsm27r" path="res://assets/Dirt_Material.tres" id="6_sxi0b"]
 [ext_resource type="PackedScene" uid="uid://bce6atjqp6kof" path="res://scenes/finish.tscn" id="7_2k2vj"]
 [ext_resource type="PackedScene" uid="uid://k10usb8384ng" path="res://scenes/fence.tscn" id="7_30ekf"]
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="9_xayej"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="10_8hxst"]
+[ext_resource type="PackedScene" uid="uid://k1i3br0f6xst" path="res://scenes/ice_floor.tscn" id="11_diocr"]
 
 [node name="LevelBase" instance=ExtResource("1_w3nw5")]
 script = ExtResource("1_c3xem")
@@ -23,13 +24,13 @@ offset_left = 0.0
 offset_right = 1152.0
 
 [node name="Floor" type="CSGBox3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0107, -33.5474, -5.50227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0107, -33.5474, -5.50227)
 layers = 2
 use_collision = true
 collision_layer = 2
 collision_mask = 2
 size = Vector3(5, 67.095, 14)
-material = ExtResource("3_uxse0")
+material = ExtResource("3_bwtxy")
 
 [node name="Floor2" type="CSGBox3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.996133, -33.5474, -10.0023)
@@ -38,7 +39,7 @@ use_collision = true
 collision_layer = 2
 collision_mask = 2
 size = Vector3(3, 67.095, 5)
-material = ExtResource("3_uxse0")
+material = ExtResource("3_bwtxy")
 
 [node name="Floor3" type="CSGBox3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99613, -33.5474, -10.5023)
@@ -47,10 +48,10 @@ use_collision = true
 collision_layer = 2
 collision_mask = 2
 size = Vector3(3, 67.095, 4)
-material = ExtResource("3_uxse0")
+material = ExtResource("3_bwtxy")
 
 [node name="Worm" parent="." index="8" instance=ExtResource("3_ycaos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, -3.90225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98681, 0.463309, -4.01358)
 visible = false
 spawn_points = [Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 0, 2), Vector3(0, 0, 3), Vector3(0, 0, 4), Vector3(0, 0, 5)]
 
@@ -118,6 +119,10 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -7.01031, -4.76837e-
 
 [node name="Guillotine" parent="." index="19" instance=ExtResource("9_xayej")]
 transform = Transform3D(-0.000277643, -0.000320445, 0.215, 6.21308e-06, 0.215, 0.000320453, -0.215, 6.62689e-06, -0.000277633, -6.92261, 9.91821e-05, -9.50642)
+
+[node name="IceFloor" parent="." index="20" instance=ExtResource("11_diocr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.518, -33.559, -5.229)
+size = Vector3(4.39111, 67.0991, 14.703)
 
 [editable path="SceneTransition"]
 [editable path="ButtonSmall"]

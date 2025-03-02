@@ -62,5 +62,5 @@ func _on_main_menu_mouse_entered() -> void:
 	on_btn.play()
 
 
-func _on_h_slider_drag_ended(value_changed: bool) -> void:
+func _on_h_slider_drag_ended(_value_changed: bool) -> void:
 	Music.set_volume($PauseMenu/HSlider.value)

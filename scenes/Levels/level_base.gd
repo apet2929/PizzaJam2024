@@ -1,7 +1,7 @@
 extends Node3D
 
 class_name LevelBase
-const WORM_SCRIPT = preload("res://Scripts/new_worm.gd")
+const WORM_SCRIPT = preload("res://Scripts/worm.gd")
 # Contains all the setup/interaction logic specific to this level
 
 var started = false
