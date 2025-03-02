@@ -26,9 +26,14 @@ EventBus="*res://Scripts/EventBus.gd"
 Music="*res://scenes/music.tscn"
 Colors="*res://Scripts/colors.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [global_group]
 

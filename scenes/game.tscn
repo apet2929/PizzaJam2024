@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://br1c6x1rx1cy8" path="res://scenes/guillotine.tscn" id="6_3i8dn"]
 [ext_resource type="PackedScene" uid="uid://b7yhrd8oma55f" path="res://scenes/button_small.tscn" id="7_34d5a"]
 [ext_resource type="PackedScene" uid="uid://d076us4fj6gri" path="res://scenes/pressure_pad.tscn" id="7_tygho"]
-[ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="9_qy50k"]
+[ext_resource type="PackedScene" uid="uid://d36v1tp0yhxf5" path="res://scenes/debug_draw_worm.tscn" id="9_o04dv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xpbn"]
 albedo_texture = ExtResource("1_6hh32")
@@ -106,15 +106,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.99848, 2.38419e-0
 collision_layer = 2
 collision_mask = 2
 
-[node name="DebugLayer" type="CanvasLayer" parent="."]
-
-[node name="DrawWormPos" type="Control" parent="DebugLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_qy50k")
-metadata/_edit_use_anchors_ = true
+[node name="DebugLayer" parent="." instance=ExtResource("9_o04dv")]
 
 [connection signal="body_entered" from="ButtonSmall" to="Worm" method="_on_button_small_body_entered"]
 [connection signal="pressed" from="PressurePad" to="." method="_on_pressure_pad_pressed"]

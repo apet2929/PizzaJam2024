@@ -15,7 +15,16 @@ func _draw() -> void:
 		var worm = get_node("../../Worm")
 		var cam = get_node("../../GameCamera")
 		var pos = cam.unproject_position(worm.global_position)
+		
 		draw_circle(pos, 5, Color.AQUA)
+
+		var hpos = cam.unproject_position(worm.get_head().global_position)
+		draw_circle(hpos, 5, Color.DARK_BLUE)
+		
+		for segment in worm.segments:
+			if segment.next_pos:
+				var npos = cam.unproject_position(segment.next_pos)
+				draw_circle(npos, 3, Color.YELLOW_GREEN)
 		
 		if worm.get_node("Rays/RightRay").is_colliding():
 			var c = worm.get_node("Rays/RightRay").get_collider()

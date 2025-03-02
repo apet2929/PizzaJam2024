@@ -21,15 +21,16 @@ const worm_gfx_polygon_points = [
 		Vector2(0.5, 0.0)
 ]
 
-const MOVE_TIMER = 0.25
 const GRAVITY = -20 # Used to counter a bug that lets you fly
 const PUSH_FORCE = 4.0
+const MOVE_DELAY = 0.0
 
 const WORM_BODY_SEGMENT_SCENE = preload("res://scenes/worm_body_segment.tscn")
 const WORM_SCENE = preload("res://scenes/worm.tscn")
 const WORM_SCRIPT = preload("res://Scripts/worm.gd")
 const BOX_SCRIPT = preload("res://Scripts/box.gd")
 const ICE_SCRIPT = preload("res://Scripts/ice_floor.gd")
+
 
 const MAX_SFX_PITCH = 1.4
 const MIN_SFX_PITCH = 0.4
@@ -63,12 +64,41 @@ var ice_sliding = false # For pushing boxes
  
 @onready var move_sfx: AudioStreamPlayer3D = $Move_sfx
 
-var segments = [] # list of segments, 0 = head, last = tail
+var segments: Array[WormBodySegment] = [] # list of segments, 0 = head, last = tail
 var curve: Curve3D
-var postprocessed_curve: Curve3D
 
 # TODO : show restart message when softlocked
 # TODO : if all worms on screen finish at the same time, its marked as a game over rather than a win
+
+"""
+Worm movement:
+	Worm is made up of segments. Segments[0] = head (seg0), Segments[last] = tail, seg1 = head's child
+		Each segment has the same script: worm_body_segment.gd
+	Each segment's position is represented by a point in $Curve
+		Position is stored relative to the main body's position
+	The body updates in this order: worm.gd > head > seg1 > ... > tail
+	Every update, every segment moves towards its parent.
+		Head moves towards its destination, seg1 moves towards head, seg2 moves towards seg1, etc
+			This is done with lerp(self.position, dest, delta * SPEED)
+			This is why the worm's speed is not constant.
+				pos = pos + (dest - pos)*(SPEED*dt)
+				dpos/dt = (dest-pos)*(SPEED*dt)
+				as dest-pos shrinks, dpos/dt shrinks, meaning it gets slower as the worm gets closer to the target
+			 
+				
+		Once each segment gets close enough to its destination, it snaps to it and _update() returns true
+			snapping = calling round(segment.global_position)
+		If _update() causes the segment to snap, it returns true, else false
+		If the head snaps, 
+			the main body's global position is set to the head's global position
+			move_ready = true
+	
+	If move_ready:
+		get player input for desired move direction
+		if the worm can move in that direction:
+			set head's target position to position + direction
+			move_ready = false
+"""
 
 
 func _ready() -> void:
@@ -81,9 +111,7 @@ func _ready() -> void:
 	
 	move_ready = true
 	$Curve.curve = Curve3D.new()
-	$Curve2.curve = Curve3D.new()
 	curve = $Curve.curve
-	postprocessed_curve = $Curve2.curve
 	$Worm_GFX.polygon = worm_gfx_polygon_points
 	$Body/crown.visible = has_crown
 
@@ -93,19 +121,13 @@ func _ready() -> void:
 
 # Important - This is called before the _process fn of all segments
 func _process(delta: float) -> void:
-	postprocess_curve()
+	#postprocess_curve()
 	if disabled:
 		return
 	var dir = Input.get_vector("left", "right", "forward", "backward")
 	if Input.is_action_just_released("left_click"):
 		debug_next_tick = true
 	
-	#if move_ready:
-		 #if is_standing_on_ice() and last_dir != Vector2(0,0):
-			#print("Foo bar")
-			#handle_movement(last_dir)
-		#else:
-			#handle_movement(dir)
 	if move_ready:
 		if is_standing_on_ice() and can_move_in_dir(last_dir):
 			set_sliding(true)
@@ -122,16 +144,19 @@ func _process(delta: float) -> void:
 	
 	if should_snap:
 		snap_to_grid()
+		
+	for segment in segments:
+		curve.set_point_position(segments.find(segment), segment.position)
+	postprocess_curve()
 	
 	# Reset scene
 	if Input.is_action_just_pressed("retry"):
 		get_tree().reload_current_scene()
 	
-	for segment in segments:
-		curve.set_point_position(segments.find(segment), segment.position)
-		curve.set_point_in(segments.find(segment), Vector3(0,0,0))
-		curve.set_point_out(segments.find(segment), Vector3(0,0,0))
-	postprocess_curve()
+	
+		#curve.set_point_in(segments.find(segment), Vector3(0,0,0))
+		#curve.set_point_out(segments.find(segment), Vector3(0,0,0))
+	#postprocess_curve()
 
 	$Body/crown.visible = has_crown
 	var head_pos = get_head().position
@@ -161,12 +186,16 @@ func handle_movement(dir):
 	if(debug_next_tick): # TODO create more useful debug mode with the `breakpoint` statement
 		var wall = wall_check(dir)
 		debug_next_tick = false
-		
+	
 	move_ready = false
 	
-	await get_tree().create_timer(MOVE_TIMER).timeout
+	await get_head().move_done
+	await get_tree().create_timer(MOVE_DELAY).timeout
+	
 	# Snapping the Worm's head to the grid
 	self.velocity = Vector3(0,self.velocity.y,0)
+	# 30fps: 0.03333333333333 
+	# uncapped: 0.00241
 	
 	move_sfx.pitch_scale = randf_range(MIN_SFX_PITCH, MAX_SFX_PITCH)
 	move_sfx.play()
@@ -240,7 +269,7 @@ func start_move(direction):
 	self.current_dir = direction
 	# Going through all of the Worm's body parts and telling them to move
 	var last_body_pos = self.global_position + Vector3(direction.x, 0, direction.y)
-	for i in range(segments.size()): # BUG: Depends on order of nodes within segments (fix if causing issues)
+	for i in range(segments.size()):
 		var body = segments[i]
 		body.move_to(last_body_pos)
 		last_body_pos = self.global_position + body.position
@@ -251,7 +280,7 @@ func snap_to_grid():
 	self.global_position.x = head.global_position.x
 	self.global_position.z = head.global_position.z
 	var diff = self.global_position - old
-	head.position = Vector3(0,0,0)
+	head.position = Vector3(0.0001,0,0)
 	
 	for i in range(1, segments.size()):
 		segments[i].position -= diff
@@ -304,6 +333,8 @@ func ray_check_for_obj(worm_dir: Vector2, dir_x: int, dir_y: int, ray: RayCast3D
 	
 
 func postprocess_curve():
+	curve.set_point_in(0, -Vector3(current_dir.x, 0, current_dir.y) * 0.01)
+	curve.set_point_out(0, Vector3(current_dir.x, 0, current_dir.y) * 0.01)
 	for i in range(curve.point_count):
 		if i == 0 || i == curve.point_count-1:
 			continue
@@ -313,8 +344,8 @@ func postprocess_curve():
 		#if last_pt[1] != next_pt[1] and last_pt[2] != next_pt[2]:
 
 		var diff = next_pt - last_pt
-		curve.set_point_in(i, -diff * 0.01)
-		curve.set_point_out(i, diff * 0.01)
+		#curve.set_point_in(i, -diff * 0.001)
+		#curve.set_point_out(i, diff * 0.001)
 
 func get_head():
 	return segments[0]

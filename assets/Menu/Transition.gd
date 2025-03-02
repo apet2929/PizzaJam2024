@@ -11,6 +11,11 @@ var is_menu_open = false
 
 signal anim_done
 
+"""
+
+
+"""
+
 func _ready() -> void:
 	anim.play("RESET")
 	if pause_menu != null:

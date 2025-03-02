@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d36v1tp0yhxf5"]
+
+[ext_resource type="Script" path="res://Scripts/draw_worm_pos.gd" id="1_uhelj"]
+[ext_resource type="Script" path="res://Scripts/draw_perf_stats.gd" id="2_hodxx"]
+
+[node name="DebugLayer" type="CanvasLayer"]
+
+[node name="DrawWormPos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_uhelj")
+metadata/_edit_use_anchors_ = true
+
+[node name="DrawPerfStats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 214.0
+offset_bottom = 158.0
+script = ExtResource("2_hodxx")
+
+[node name="FPSDisplay" type="Label" parent="DrawPerfStats"]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 75.0
+text = "FPS: "
